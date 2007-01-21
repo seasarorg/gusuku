@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org">
+	<m:doRender m:id="formTag" >
+	<m:with>
+		<m:element name="form">
+			<m:attribute name="action" value="${binding.action}" />
+		</m:element>
+	</m:with>
+	</m:doRender>
+
+</m:mayaa>

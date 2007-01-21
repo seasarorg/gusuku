@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork"
+	extends="/base.html">
+	
+    <m:doRender m:id="menuSlot" name="menu">
+    	<m:insert path="/admin/menu.html" name="menu"/>
+    </m:doRender>
+
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+	<m:insert m:id="search_name" path="/component/textfield.html"
+		nameValue="name" value="${model.name}" />
+	
+	<m:forEach m:id="list" items="${groupList}" var="item" replace="false" />
+	<m:insert m:id="del" path="/component/checkbox.html"
+		nameValue="delid" value="${item.id}"/>
+	<m:write id="name" value="${item.name}"/>
+	<m:insert id="update_link" path="/component/a.html"
+		href="group_edit.html?id=${item.id}" link="${item.name}" />
+		
+	<m:insert id="member_link" path="/component/a.html"
+		href="group_member.html?id=${item.id}" link="編集" />
+</m:mayaa>

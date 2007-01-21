@@ -1,0 +1,12 @@
+${report.title}
+
+プロジェクト: ${report.project.name}
+KEY         : ${report.key}
+タイプ      : ${report.type.name}
+優先度      : ${report.priority.name}
+報告者      : ${report.reporter.name}
+アサイン先  : ${report.assignee.name}
+状態        : ${report.resolution.name}
+ステータス  : ${report.status.name} => ${next.name}
+
+${report.detail}

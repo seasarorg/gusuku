@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE provider
+	PUBLIC "-//The Seasar Foundation//DTD Mayaa Provider 1.0//EN"
+	"http://mayaa.seasar.org/dtd/mayaa-provider_1_0.dtd">
+<provider>
+    <engine>
+        <parameter name="notTemplatePathPattern" value="/js/.*/.*.html"/>
+        <!--
+        <parameter name="autoBuild" value="false"/>
+        -->
+    </engine>
+
+</provider>

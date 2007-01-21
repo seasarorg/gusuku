@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork">
+
+    <m:null id="remove" />
+<!--
+    <m:null xpath="div[@class='adminhelp']" />
+    <m:null xpath="div[@class='help']" />
+-->
+
+   	<ww:token m:id="token"/>
+    
+   	<m:insert m:id="error" path="/component/error.html" />
+   	
+</m:mayaa>

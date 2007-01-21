@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org">
+	<m:doRender m:id="aTag" >
+	<m:with>
+		<m:element name="a">
+			<m:attribute name="href" value="${binding.href}" />
+			<m:attribute name="target" value="${binding.target}" />
+			<m:attribute name="title" value="${binding.title}" />
+			<m:write value="${binding.link}" />
+		</m:element>
+	</m:with>
+	</m:doRender>
+
+</m:mayaa>

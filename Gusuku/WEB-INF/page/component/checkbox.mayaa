@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org">
+	<m:doRender m:id="checkboxTag" >
+	<m:with>
+		<m:element name="input">
+			<m:attribute name="type" value="checkbox" />
+			<m:attribute name="name" value="${binding.nameValue}" />
+			<m:attribute name="value" value="${binding.value}" />
+
+			<m:forEach items="${binding.checked}" var="item">
+			<m:if test="${item.equals(binding.value)}">
+				<m:attribute name="checked" value="checked" />				
+			</m:if>
+			</m:forEach>
+		</m:element>
+	</m:with>
+	</m:doRender>
+
+</m:mayaa>

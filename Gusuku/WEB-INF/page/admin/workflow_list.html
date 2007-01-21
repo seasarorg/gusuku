@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="../css/default_style.css">
+<script type="text/javascript">
+	var normalColor = "transparent";
+	var hoverColor = "#EEEEEE";
+	function mout(obj) {
+		obj.style.backgroundColor = normalColor; 
+	}
+	function mover(obj) {
+		obj.style.backgroundColor = hoverColor;
+	}
+</script>
+<title></title>
+</head>
+<body>
+
+<div class="header">
+Gusuku ヘッダ
+</div>
+
+<div class="headermenu">
+ヘッダめにゅー1 | ヘッダめにゅー2 | ヘッダめにゅー3
+</div>
+
+<div class="container">
+	<div id="contentSlot">
+	<div id="menuSlot">
+	<div class="sidemenu">
+		<div class="border">
+			<div class="menugroup">メニューカテゴリ</div>
+			<div class="menu">メニューコンテンツ1</div>
+			<div class="menu">メニューコンテンツ2</div>
+			<div class="menugroup">メニューカテゴリ</div>
+			<div class="menu">メニューコンテンツ1</div>
+			<div class="menu">メニューコンテンツ2</div>
+		</div>
+	</div>
+	</div>
+
+	<div class="content">
+		<div class="border">
+			<div class="label">ワークフロー</div>
+			<div class="adminhelp">
+			<table>
+				<tr>
+				<td><img src="./../image/help.gif"/></td>
+				<td>ワークフローの管理を行います。<br>ワークフローの設定は下記手順を参考にして下さい。
+				<ol>
+				<li>「ワークフロー＞新規登録」 でワークフローを登録</li>
+				<li>「ワークフロー＞編集」 で使用するステータスを追加</li>
+				<li>「ワークフロー＞編集」 で任意のステータスをクリックし、次ステータスへの遷移を編集</li>
+				</ol>
+				作成したワークフローは、プロジェクト管理で関連付けます。
+				</td>
+				</tr>
+			</table>
+			</div>	
+			<p><a href="workflow_edit.html">新規登録</a></p>
+			<form action="workflow_list.html" method="post">
+				<fieldset>
+					<legend>検索</legend>
+				<table>
+				<tr>
+					<td>名前</td><td><input type="text" name="" id="search_name"/></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit" value=" 検索 " class="submit" /></td>
+				</tr>
+				</table>
+				</fieldset>
+			</form>
+			<p/>
+			<div class="label">ワークフロー一覧</div>
+			<form action="workflow_delete.html" method="post">
+			<table border="1" cellspacing="0" cellpadding="3">
+			<thead>
+			<tr><td></td><td>名前</td><td>フロー</td></tr>
+			</thead>
+			<tbody>
+			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="list"><td><input type="checkbox" id="del"/></td><td><a href="" id="update_link"><span id="name">デフォルトワークフロー</span></a></td><td><a href="" id="flow_link">編集</a></td></tr>
+			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="remove"><td><input type="checkbox"/></td><td>あああああああああああ</td><td>あ</td></tr>
+			</tbody>
+			</table>
+			<p>
+			<input type="submit" value=" 削除 " class="submit"/>
+			</p>
+			</form>
+		</div>
+	</div>
+	</div>
+</div>
+
+<div class="footer">
+フッタ
+</div>
+</body>
+</html>

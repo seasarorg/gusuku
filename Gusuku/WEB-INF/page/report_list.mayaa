@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork" extends="/base.html">
+	
+	<m:beforeRender>
+	var project = projectHelper.getProject(parameters.projectid[0]);
+	</m:beforeRender>
+	
+    <m:doRender m:id="contentSlot" name="content"/>
+	<m:write id="project_name" value="${project.name}"/>    
+
+    <m:forEach m:id="reportList" items="${reportHelper.getProjectTypeReportList(parameters.projectid[0],parameters.typeid!=null?parameters.typeid[0]:null,project.workflowid)}" var="item" replace="false" />
+	<!--m:write id="report_type" value="${item.type.name}"/-->
+   	<m:insert id="report_type" path="/component/img.html"
+		src="${item.type.icon}" alt="${item.type.name}"/>
+	<m:insert id="report_title_link" path="/component/a.html"
+		href="report_detail.html?id=${item.id}" link="${item.title}" title="${item.detail}"/>
+	<m:write id="report_key" value="${item.key}"/>
+	<!--m:write id="report_priority" value="${item.priority.name}"/-->
+	<m:insert id="report_priority" path="/component/img.html"
+		src="${item.priority.icon}" alt="${item.priority.name}"/>
+	<m:insert id="report_status" path="/component/img.html"
+		src="${item.status.icon}" alt="${item.status.name}"/>
+			
+</m:mayaa>

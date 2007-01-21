@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork"
+	extends="/base.html">
+	
+    <m:doRender m:id="menuSlot" name="menu">
+    	<m:insert path="/mypage/menu.html" name="menu"/>
+    </m:doRender>
+
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+    <m:forEach id="list" items="${searchConditionHelper.getSearchConditionHead(loginid)}" var="condition" replace="false"/>
+    <m:insert id="del" path="/component/checkbox.html"
+    	nameValue="delids" value="${condition.id}" />
+	<m:insert id="search_link" path="/component/a.html"
+		href="search_load.html?id=${condition.id}" link="${condition.name}"/>
+
+</m:mayaa>

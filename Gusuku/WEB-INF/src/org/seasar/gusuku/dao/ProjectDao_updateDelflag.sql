@@ -1,0 +1,4 @@
+UPDATE
+ PROJECT
+SET DELFLAG = TRUE
+WHERE ID IN /*delids*/()

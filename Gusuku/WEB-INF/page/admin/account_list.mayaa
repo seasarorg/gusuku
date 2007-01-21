@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork"
+	extends="/base.html">
+	
+    <m:doRender m:id="menuSlot" name="menu">
+    	<m:insert path="/admin/menu.html" name="menu"/>
+    </m:doRender>
+
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+	<m:insert m:id="search_mailaddr" path="/component/textfield.html"
+		nameValue="mailaddr" value="${model.mailaddr}" />
+	<m:insert m:id="search_name" path="/component/textfield.html"
+		nameValue="name" value="${model.name}" />
+	<m:insert m:id="search_kind" path="/component/select.html"
+        nameValue="kind" list="${accountKindHelper.getList()}"
+        selected="${model.kind}" listKey="id"
+        listValue="kindname" headerKey="" headerValue="全て"/>
+
+	
+	<m:forEach m:id="list" items="${list}" var="item" replace="false" />
+	<m:insert m:id="del" path="/component/checkbox.html"
+		nameValue="delid" value="${item.id}"/>
+	<m:write id="mailaddr" value="${item.mailaddr}"/>
+	<m:write id="kindname" value="${item.accountKind.kindname}"/>
+	<m:insert id="update_link" path="/component/a.html"
+		href="account_edit.html?id=${item.id}" link="${item.name}" />
+	
+</m:mayaa>

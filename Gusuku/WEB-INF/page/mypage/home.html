@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="../css/default_style.css">
+<script type="text/javascript">
+	var normalColor = "transparent";
+	var hoverColor = "#EEEEEE";
+	function mout(obj) {
+		obj.style.backgroundColor = normalColor; 
+	}
+	function mover(obj) {
+		obj.style.backgroundColor = hoverColor;
+	}
+</script>
+<title></title>
+</head>
+<body>
+
+<div class="header">
+Gusuku ヘッダ
+</div>
+
+<div class="headermenu">
+ヘッダめにゅー1 | ヘッダめにゅー2 | ヘッダめにゅー3
+</div>
+
+<div class="container">
+	<div id="contentSlot">
+	<div id="menuSlot">
+	<div class="sidemenu">
+		<div class="border">
+			<div class="menugroup">メニューカテゴリ</div>
+			<div class="menu">メニューコンテンツ1</div>
+			<div class="menu">メニューコンテンツ2</div>
+			<div class="menugroup">メニューカテゴリ</div>
+			<div class="menu">メニューコンテンツ1</div>
+			<div class="menu">メニューコンテンツ2</div>
+		</div>
+	</div>
+	</div>
+
+	<div class="content">
+		<div class="border">
+			<div class="label">ホーム設定</div>
+			<div class="help">
+			<table>
+				<tr>
+				<td><img src="./../image/help.gif"/></td>
+				<td>ホームの設定を行います。<br>
+				ここでは、保存した検索条件をホームに表示する件数と順序を設定します。<br>
+				表示する検索条件にチェックを入れ「表示変更」ボタンを押下して下さい。
+				</td>
+				</tr>
+			</table>
+			</div>
+			<form action="portlet_update.html" method="post">
+			<table border="1" cellspacing="0" cellpadding="3">
+			<thead>
+			<tr><td>表示</td><td>検索条件名</td><td>件数</td><td colspan="2">順序</td></tr>
+			</thead>
+			<tbody>
+			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="list"><td><input type="checkbox" id="visible"/></td><td><a href="" id="search_link">オープン</a></td><td><input type="text" size="2" id="amount"></td><td id="sort">↓</td></tr>
+			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="remove"><td><input type="checkbox"/></td><td>あああああああああああ</td><td><input type="text" size="2"></td><td>↓</td></tr>
+			</tbody>
+			</table>
+			<p>
+			<input type="submit" value=" 表示変更 " class="submit"/>
+			</p>
+			</form>
+			<p/>
+		</div>
+	</div>
+	</div>
+</div>
+
+<div class="footer">
+フッタ
+</div>
+</body>
+</html>

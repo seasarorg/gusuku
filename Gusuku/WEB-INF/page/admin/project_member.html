@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="../css/default_style.css">
+<script type="text/javascript">
+	var normalColor = "transparent";
+	var hoverColor = "#EEEEEE";
+	function mout(obj) {
+		obj.style.backgroundColor = normalColor; 
+	}
+	function mover(obj) {
+		obj.style.backgroundColor = hoverColor;
+	}
+</script>
+<title></title>
+</head>
+<body>
+
+<div class="header">
+Gusuku ヘッダ
+</div>
+
+<div class="headermenu">
+ヘッダめにゅー1 | ヘッダめにゅー2 | ヘッダめにゅー3
+</div>
+
+<div class="container">
+	<div id="contentSlot">
+	<div id="menuSlot">
+	<div class="sidemenu">
+		<div class="border">
+			<div class="menugroup">メニューカテゴリ</div>
+			<div class="menu">メニューコンテンツ1</div>
+			<div class="menu">メニューコンテンツ2</div>
+			<div class="menugroup">メニューカテゴリ</div>
+			<div class="menu">メニューコンテンツ1</div>
+			<div class="menu">メニューコンテンツ2</div>
+		</div>
+	</div>
+	</div>
+
+	<div class="content">
+		<div class="border">
+			<div class="label"><span id="project_name">プロジェクト名</span> メンバー</div>
+			
+			<form action="project_move.html" method="post">
+			<input type="hidden" name="id" id="id"/>
+				<fieldset>
+					<legend>グループ</legend>
+				<table>
+
+				<tr>
+					<td><select size="10" id="groupList"><option>ダミー</option></select></td>
+					<td><input type="submit" value=" 追加 >> " name="method:addbutton" class="submit"/><p/><input type="submit" value=" << 削除 " name="method:deletebutton" class="submit"/></td><td><select size="10" id="memberList"><option>ダミー</option></select></td>
+				</tr>
+				</table>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	</div>
+</div>
+
+<div class="footer">
+フッタ
+</div>
+</body>
+</html>

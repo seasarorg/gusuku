@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork"
+	extends="/base.html">
+	
+    <m:doRender m:id="menuSlot" name="menu">
+    	<m:insert path="/mypage/menu.html" name="menu"/>
+    </m:doRender>
+
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+	<m:insert m:id="mailaddr" path="/component/textfield.html"
+		nameValue="mailaddr" value="${model.mailaddr}" />
+	<m:insert m:id="password" path="/component/password.html"
+		nameValue="password" value="" />
+	<m:insert m:id="newpassword" path="/component/password.html"
+		nameValue="newpassword" value="" />
+	<m:insert m:id="repassword" path="/component/password.html"
+		nameValue="repassword" value="" />
+	<m:insert m:id="name" path="/component/textfield.html"
+		nameValue="name" value="${model.name}" />
+    
+    <m:forEach id="list" items="${groupbaseHelper.getJoinGroupList(loginid)}" var="group" replace="false"/>
+	<m:write id="group_name" value="${group.name}"/>
+
+</m:mayaa>

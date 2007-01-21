@@ -1,0 +1,16 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd">
+<validators>
+	<field name="paramerters.projectid">
+		<field-validator type="requiredstring">
+			<message key="report.projectid.required"/>
+		</field-validator>
+	</field>
+	<field name="paramerters">
+
+		<field-validator type="requiredstring">
+			<param name="keyname">typeid</param>
+			<message key="report.typeid.required"/>
+		</field-validator>
+	</field>
+</validators>

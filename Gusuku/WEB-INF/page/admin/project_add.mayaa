@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork" extends="/base.html">
+
+    <m:doRender m:id="menuSlot" name="menu">
+    	<m:insert path="/admin/menu.html" name="menu"/>
+    </m:doRender>
+
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+    <m:insert id="newlabel" path="/component/newlabel.html" value="${model.id}"/>
+    <m:insert id="newbutton" path="/component/newbutton.html" value="${model.id}"/>
+    
+	<m:insert m:id="id" path="/component/hidden.html"
+		nameValue="id" value="${model.id}" />
+	<m:insert m:id="name" path="/component/textfield.html"
+		nameValue="name" value="${model.name}" />
+	<m:insert m:id="key" path="/component/textfield.html"
+		nameValue="key" value="${model.key}" size="8"/>
+
+	<m:insert m:id="workflow" path="/component/select.html"
+        nameValue="workflowid" list="${workflowHelper.getWorkflowList()}"
+        selected="${model.workflowid}" listKey="id"
+        listValue="name" />
+	<m:insert m:id="type" path="/component/select.html"
+        nameValue="typeid" list="${typeHelper.getTypeHeadList()}"
+        selected="${model.typeid}" listKey="id"
+        listValue="name" />
+	<m:insert m:id="priority" path="/component/select.html"
+        nameValue="priorityid" list="${priorityHelper.getPriorityHeadList()}"
+        selected="${model.priorityid}" listKey="id"
+        listValue="name" />
+	<m:insert m:id="resolution" path="/component/select.html"
+        nameValue="resolutionid" list="${resolutionHelper.getResolutionHeadList()}"
+        selected="${model.resolutionid}" listKey="id"
+        listValue="name" />
+
+	<m:insert m:id="custom_form" path="/component/select.html"
+        nameValue="formid" list="${customFormHelper.getCustomFormHeadList()}"
+        selected="${model.formid}" listKey="id"
+        listValue="name" headerKey="" headerValue="選択して下さい"/>
+	<m:insert m:id="leader" path="/component/select.html"
+        nameValue="leaderid" list="${accountHelper.getAccountList()}"
+        selected="${model.leaderid}" listKey="id"
+        listValue="name" headerKey="" headerValue="選択して下さい"/>
+
+	<m:insert m:id="start_year" path="/component/datepicker.html"
+		nameValue="sdate" value="${model.sdate}" />
+<!--
+	<m:insert m:id="start_month" path="/component/textfield.html"
+		nameValue="start_month" value="${model.smonth}" size="2" />
+	<m:insert m:id="start_day" path="/component/textfield.html"
+		nameValue="start_day" value="${model.sday}" size="2" />
+-->
+	<m:insert m:id="end_year" path="/component/datepicker.html"
+		nameValue="edate" value="${model.edate}" />
+<!--
+	<m:insert m:id="end_month" path="/component/textfield.html"
+		nameValue="end_month" value="${model.emonth}" size="2" />
+	<m:insert m:id="end_day" path="/component/textfield.html"
+		nameValue="end_day" value="${model.eday}" size="2" />
+-->
+		
+	<m:insert m:id="url" path="/component/textfield.html"
+		nameValue="url" value="${model.url}" />
+	<m:insert m:id="devurl" path="/component/textfield.html"
+		nameValue="devurl" value="${model.devurl}" />
+	<m:insert m:id="mailaddr" path="/component/textfield.html"
+		nameValue="mailaddr" value="${model.mailaddr}" />
+	<m:insert m:id="subject" path="/component/textfield.html"
+		nameValue="subject" value="${model.subject}" />
+	<m:insert m:id="description" path="/component/textarea.html"
+		nameValue="description" value="${model.description}" />
+	
+
+
+</m:mayaa>

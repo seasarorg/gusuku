@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="../css/default_style.css">
+<script type="text/javascript">
+	var normalColor = "transparent";
+	var hoverColor = "#EEEEEE";
+	function mout(obj) {
+		obj.style.backgroundColor = normalColor; 
+	}
+	function mover(obj) {
+		obj.style.backgroundColor = hoverColor;
+	}
+</script>
+<title></title>
+</head>
+<body>
+
+<div class="header">
+Gusuku ヘッダ
+</div>
+
+<div class="headermenu">
+ヘッダめにゅー1 | ヘッダめにゅー2 | ヘッダめにゅー3
+</div>
+
+<div class="container">
+<div id="contentSlot">
+	<div id="menuSlot">
+	<div class="sidemenu">
+		<div class="border">
+			<div class="menugroup">メニューカテゴリ</div>
+			<div class="menu">メニューコンテンツ1</div>
+			<div class="menu">メニューコンテンツ2</div>
+			<div class="menugroup">メニューカテゴリ</div>
+			<div class="menu">メニューコンテンツ1</div>
+			<div class="menu">メニューコンテンツ2</div>
+		</div>
+	</div>
+	</div>
+
+	<div class="content">
+		<div class="border">
+			<div class="label"><span id="flow_name">ワークフロー名</span> ステータス</div>
+			
+			<form action="flow_add.html" method="post" name="form">
+				<input type="hidden" id="id"/>
+				<input type="hidden" name="delid"/>
+				<fieldset>
+					<legend>使用ステータス編集</legend>
+				<table border="1" cellspacing="0" cellpadding="3">
+				<tr>
+					<td>開始</td><td><a href="" id="start">開始ステータス</a></td><td rowspan="3"><input type="submit" value=" << 追加 " name="method:addStatus" class="submit"/></td><td rowspan="3"><select size="10" id="statusList"></select></td>
+				</tr>
+				<tr>
+					<td>経過</td><td><table><tr id="intervalList"><td><a href=""id="transition_link">中間ステータス1</a></td><td><input type="submit" value=" 削除 " name="method:deleteStatus" id="status_delete" class="submit"></td></tr><tr id="remove"><td><a href="">中間ステータス2</a></td><td><input type="submit" value=" 削除 "></td></tr></table></td>
+				</tr>
+				<tr>
+					<td>終了</td><td><a href="" id="end">終了ステータス</a></td>
+				</tr>
+				</table>
+				</fieldset>
+			</form>
+			
+		</div>
+	</div>
+</div>
+</div>
+
+<div class="footer">
+フッタ
+</div>
+</body>
+</html>

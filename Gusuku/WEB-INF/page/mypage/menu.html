@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="../css/default_style.css">
+<script type="text/javascript">
+	var normalColor = "transparent";
+	var hoverColor = "#EEEEEE";
+	function mout(obj) {
+		obj.style.backgroundColor = normalColor; 
+	}
+	function mover(obj) {
+		obj.style.backgroundColor = hoverColor;
+	}
+</script>
+<title></title>
+</head>
+<body>
+
+<div class="header">
+Gusuku ヘッダ
+</div>
+
+<div class="headermenu">
+ヘッダめにゅー1 | ヘッダめにゅー2 | ヘッダめにゅー3
+</div>
+
+<div class="container">
+
+	<div id="menuBody">
+	<div class="sidemenu">
+		<div class="border">
+			<div class="menu"><a href="profile.html">プロフィール変更</a></div>
+			<div class="menu"><a href="portlet.html">ホーム設定</a></div>
+			<div class="menu"><a href="condition.html">保存済み検索条件</a></div>
+		</div>
+	</div>
+	</div>
+
+	<div class="content">
+		<div class="border">
+						<div class="label">プロフィール</div>
+			
+				<table border="1" cellspacing="0" cellpadding="3">
+				<tr>
+					<td>メールアドレス</td><td>gusuku@gusuku.org</td>
+				</tr>
+				<tr>
+					<td>名前</td><td>名前</td>
+				</tr>
+				<tr>
+					<td>パスワード</td><td>*****</td>
+				</tr>
+				</table>
+			<p/>
+			<div class="label">所属グループ</div>
+			<table border="1" cellspacing="0" cellpadding="3">
+			<thead>
+			<tr><td>グループ名</td></tr>
+			</thead>
+			<tbody>
+			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="list"><td><span id="name">オープン</span></td></tr>
+			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="remove"><td>あああああああああああ</td></tr>
+			</tbody>
+			</table>
+		</div>
+
+	</div>
+</div>
+
+<div class="footer">
+フッタ
+</div>
+</body>
+</html>

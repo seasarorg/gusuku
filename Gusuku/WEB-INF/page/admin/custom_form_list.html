@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="../css/default_style.css">
+<script type="text/javascript">
+	var normalColor = "transparent";
+	var hoverColor = "#EEEEEE";
+	function mout(obj) {
+		obj.style.backgroundColor = normalColor; 
+	}
+	function mover(obj) {
+		obj.style.backgroundColor = hoverColor;
+	}
+</script>
+<title></title>
+</head>
+<body>
+
+<div class="header">
+Gusuku ヘッダ
+</div>
+
+<div class="headermenu">
+ヘッダめにゅー1 | ヘッダめにゅー2 | ヘッダめにゅー3
+</div>
+
+<div class="container">
+	<div id="contentSlot">
+	<div id="menuSlot">
+	<div class="sidemenu">
+		<div class="border">
+			<div class="menugroup">メニューカテゴリ</div>
+			<div class="menu">メニューコンテンツ1</div>
+			<div class="menu">メニューコンテンツ2</div>
+			<div class="menugroup">メニューカテゴリ</div>
+			<div class="menu">メニューコンテンツ1</div>
+			<div class="menu">メニューコンテンツ2</div>
+		</div>
+	</div>
+	</div>
+
+	<div class="content">
+		<div class="border">
+			<div class="label">カスタムフォーム</div>
+			<div class="adminhelp">
+			<table>
+				<tr>
+				<td><img src="./../image/help.gif"/></td>
+				<td>カスタムフォームの管理を行います。<br>
+				カスタムフォームとは、報告の際に標準のフォーマット以外に任意のフォーマットを追加したい場合に使用します。<br>
+				カスタムフォームの設定は、下記手順を参考にして下さい。
+				<ol>
+				<li>「カスタムフォーム＞新規登録」 でカスタムフォームを登録</li>
+				<li>「カスタムフォーム＞編集」 で使用するフォームを追加</li>
+				</ol>
+				作成したカスタムフォームは、プロジェクト管理で関連付けます。
+				</td>
+				</tr>
+			</table>
+			</div>
+			<p><a href="custom_form_edit.html">新規登録</a></p>
+			<form action="custom_form_list.html" method="post">
+				<fieldset>
+					<legend>検索</legend>
+				<table>
+				<tr>
+					<td>名前</td><td><input type="text" name="" id="search_name"/></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit" value=" 検索 " class="submit" /></td>
+				</tr>
+				</table>
+				</fieldset>
+			</form>
+			<p/>
+			<div class="label">カスタムフォーム一覧</div>
+			<form action="custom_form_delete.html" method="post">
+			<table border="1" cellspacing="0" cellpadding="3">
+			<thead>
+			<tr><td></td><td>名前</td><td>フォーム</td></tr>
+			</thead>
+			<tbody>
+			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="list"><td><input type="checkbox" id="del"/></td><td><a href="" id="update_link"><span id="name">オープン</span></a></td><td><span id="form_link">編集</span></td></tr>
+			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="remove"><td><input type="checkbox"/></td><td>あああああああああああ</td><td>編集</td></tr>
+			</tbody>
+			</table>
+			<p>
+			<input type="submit" value="　削除　" class="submit"/>
+			</p>
+			</form>
+		</div>
+	</div>
+	</div>
+</div>
+
+<div class="footer">
+フッタ
+</div>
+</body>
+</html>

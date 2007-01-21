@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org">
+	<m:doRender m:id="reportvalueTag" >
+	<m:with>
+		<m:if test="${binding.value != null}">
+
+			<m:if test="${binding.form.valuetype == 1}">
+				<m:write value="${binding.value.textvalue}" />
+			</m:if>
+			<m:if test="${binding.form.valuetype == 2}">
+				<m:write value="${binding.value.numericvalue}" />
+			</m:if>
+			<m:if test="${binding.form.valuetype == 3}">
+				<m:formatDate value="${binding.value.datevalue}" pattern="yyyy/MM/dd"/>
+			</m:if>
+			<m:if test="${binding.download == 'true'}">　
+				<m:element name="a">
+				<m:attribute name="href"  value="./../download/${binding.value.id}/${Packages.java.net.URLEncoder.encode(binding.value.textvalue,'UTF-8')}" />
+				<img src="./../image/download.gif" alt="ダウンロード" border="0"/>
+				</m:element>
+			</m:if>		</m:if>		
+	</m:with>
+	</m:doRender>
+
+</m:mayaa>

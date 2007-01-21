@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork" extends="/base.html">
+	
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+    <m:forEach m:id="assignList" items="${assignList}" var="item" replace="false" />
+
+	<m:insert id="assign_type" path="/component/img.html"
+		src="${item.type.icon}" alt="${item.type.name}"/>
+	
+	<m:insert id="assign_title_link" path="/component/a.html"
+		href="report_detail.html?id=${item.id}" link="${item.title}" title="${item.detail}"/>
+	<m:write id="assign_key" value="${item.key}"/>
+	<m:insert id="assign_priority" path="/component/img.html"
+		src="${item.priority.icon}" alt="${item.priority.name}"/>
+	<m:insert id="assign_status" path="/component/img.html"
+		src="${item.status.icon}" alt="${item.status.name}"/>
+	
+	<m:forEach m:id="homeList" items="${homeList}" var="item" />
+	<m:write id="condition_name" value="${item.searchConditionHead.name}"/>
+	
+    <m:forEach m:id="resultList" items="${item.searchResult}" var="result" replace="false" />
+	<m:insert id="result_type" path="/component/img.html"
+		src="${result.type.icon}" alt="${result.type.name}"/>
+	<m:insert id="result_title_link" path="/component/a.html"
+		href="report_detail.html?id=${result.id}" link="${result.title}" title="${result.detail}"/>
+	<m:write id="result_key" value="${result.key}"/>
+	<m:insert id="result_priority" path="/component/img.html"
+		src="${result.priority.icon}" alt="${result.priority.name}"/>
+	<m:insert id="result_status" path="/component/img.html"
+		src="${result.status.icon}" alt="${result.status.name}"/>		
+</m:mayaa>

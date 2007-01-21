@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org">
+	<m:doRender m:id="radioTag" >
+	<m:with>
+		<m:element name="input">
+			<m:attribute name="type" value="radio" />
+			<m:attribute name="name" value="${binding.nameValue}" />
+			<m:attribute name="value" value="${binding.value}" />
+			<m:if test="${binding.checked != null &amp;&amp; binding.value.equals(binding.checked)}">
+				<m:attribute name="checked" value="checked" />
+			</m:if>
+			<m:if test="${binding.checked == null &amp;&amp; binding.value.equals(binding.defaultValue)}">
+				<m:attribute name="checked" value="checked" />
+			</m:if>
+		</m:element>
+	</m:with>
+	</m:doRender>
+
+</m:mayaa>

@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="./css/default_style.css">
+<script type="text/javascript">
+	var normalColor = "transparent";
+	var hoverColor = "#EEEEEE";
+	function mout(obj) {
+		obj.style.backgroundColor = normalColor; 
+	}
+	function mover(obj) {
+		obj.style.backgroundColor = hoverColor;
+	}
+</script>
+	<script type="text/javascript"><!--
+		function swapVisibility(elementId, anchorElement) {
+			var style = document.getElementById(elementId).style;
+			if (style.display == 'none') {
+				style.display = 'block';
+				anchorElement.innerHTML = '[-]';
+			} else {
+				style.display = 'none';
+				anchorElement.innerHTML = '[+]';
+			}
+		}
+		function hideFoldings() {
+			var i = 1;
+			var element = document.getElementById('project' + i);
+			while (element) {
+				element.style.display = 'none';
+				element = document.getElementById('project' + ++i)
+			}
+		}
+/*  */
+	//--></script>
+<title></title>
+</head>
+<body onload="hideFoldings()">
+
+<div class="header">
+Gusuku ヘッダ
+</div>
+
+<div class="headermenu">
+<a href="main.html">ホーム</a> | <a href="entry_project.html">プロジェクト</a> | <a href="seach.html">検索</a> | <a href="report_type.html">新規登録</a> | <a href="./admin/project_list.html">管理</a>
+</div>
+
+<div class="container">
+	<div id="contentSlot">
+	<div class="searchmenu">
+		<div class="border">
+			<div class="label">検索条件設定</div>
+			<form action="search_load.html" method="post">
+			■保存済み条件<br/>
+			<select id="save_condition"></select>
+			<input type="submit" value=" 読み込み " class="submit">
+			</form>
+			<br/>
+			<form action="search_list.html" method="post">
+			<input type="hidden" id="conditionid" />
+			<input type="hidden" id="token" />
+			<div id="searchList">
+				<span onClick="swapVisibility('project1', this)" id="script">[+]</span><span id="project_name">サンプルプロジェクト1</span>
+				<div id="project">
+					<input type="hidden" id="projectid"/>
+					<table border="1" cellspacing="0" cellpadding="3">
+					<tr>
+					<td class="collabel">タイプ</td><td class="colitem"><select id="type"><option>バグ</option></select></td>
+					</tr>
+					<tr>
+						<td class="collabel">件名</td><td class="colitem"><input type="text" id="title" /></td>
+					</tr>
+					<tr>
+						<td class="collabel">優先度</td><td class="colitem"><select id="priorityid"><option>5</option></select></td>
+					</tr>
+					<tr>
+						<td class="collabel">状態</td><td class="colitem"><select id="statusid"><option>オープン</option></select></td>
+					</tr>
+					<tr>
+						<td class="collabel">アサイン先</td><td class="colitem"><select id="assigneeid"><option>和田</option></select></td>
+					</tr>
+					<tr>
+						<td class="collabel">環境</td><td class="colitem"><textarea id="environment"></textarea></td>
+					</tr>
+					<span id="custom">
+					<span id="if"><tr><td id="customLabel" class="collabel"></td><td id="customForm" class="colitem"></td></tr></span>
+					</span>
+					<tr>
+					<td class="collabel">詳細</td><td class="colitem"><textarea id="detail"></textarea></td>
+					</tr>
+					<tr><td class="collabel">登録日</td><td class="colitem"><input type="text" size="8" id="datefrom"/> ～ <input type="text" size="8" id="dateto"/></td></tr>
+					</table>
+				</div>
+				<br/>
+			</div>
+			<div id="remove">
+			<span onClick="swapVisibility('project2', this)" class="foldingAnchor">[-]</span>サンプルプロジェクト2
+			<div id="project2">
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr><td>件名</td><td><span id="report_title">バグが出ました</span></td></tr>
+			<tr><td>登録日</td><td><span id="report_rdate">2006/12/12</span></td></tr>
+			<tr><td>更新日</td><td><span id="report_udate">2006/12/12</span></td></tr>
+			<tr><td>環境</td><td><span id="report_environment">Windows2000</span></td></tr>
+			<tr><td id="customLabel"></td><td id="customForm"></td></tr>
+			<tr><td>詳細</td><td><span id="report_detail">登録ができません。</span></td></tr>
+			</table>
+			</div>
+			</div>
+		<span id="error"/>
+		<p>条件名：<input type="text" id="condition_name"/>&nbsp;<input type="submit" name="method:save" value=" 保存 " class="submit"/><br/>
+		<div align="center"><input type="submit" value=" 検索 " class="submit"/></div></p>
+		</form>
+		</div>
+	</div>
+	<div class="searchresult">
+		<div class="border">
+			<div class="label">検索結果</div>
+			<table border="1" cellspacing="0" cellpadding="3">
+			<thead>
+			<tr><td>タイプ</td><td>KEY</td><td>件名</td><td>優先度</td><td>ステータス</td></tr>
+			</thead>
+			<tbody>
+			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="resultList"><td align="center"><span id="result_type">バグ</span></td><td><span id="result_key">TEST-1</span></td><td><span id="result_title_link">バグが見つかりました</span></td><td align="center"><span id="result_priority">5</span></td><td align="center"><span id="result_status">オープン</span></td></tr>
+			</tbody>
+			</table>
+		</div>
+
+
+	</div>
+	</div>
+</div>
+
+<div class="footer">
+フッタ
+</div>
+</body>
+</html>

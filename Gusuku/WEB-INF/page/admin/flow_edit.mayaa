@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork"
+	extends="/base.html">
+	
+    <m:doRender m:id="menuSlot" name="menu">
+    	<m:insert path="/admin/menu.html" name="menu"/>
+    </m:doRender>
+
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+    <m:write id="flow_name" value="${workflowHelper.getWorkflow(model.id).name}" />
+    
+    <m:insert m:id="id" path="/component/hidden.html"
+		nameValue="id" value="${model.id}" />
+	<m:with id="start">
+		<m:exec script="${var start = workflowStatusHelper.getStartStatus(model.id);}"/>
+		<m:insert path="/component/a.html"
+			href="transition_edit.html?id=${model.id}&amp;wsid=${start.id}" link="${start.status.name}"/>
+	</m:with>
+	<m:with id="end">
+		<m:exec script="${var end = workflowStatusHelper.getEndStatus(model.id);}"/>
+		<m:insert path="/component/a.html"
+			href="transition_edit.html?id=${model.id}&amp;wsid=${end.id}" link="${end.status.name}"/>
+	</m:with>
+	
+	<m:forEach id="intervalList" items="${workflowStatusHelper.getStatusListWithoutStartAndEnd(model.id)}" var="item" replace="false"/>
+		<m:insert id="transition_link" path="/component/a.html"
+			href="transition_edit.html?id=${model.id}&amp;wsid=${item.id}" link="${item.status.name}"/>
+		<m:echo id="status_delete">
+			<m:attribute name="onClick" value="document.form.delid.value=${item.id};"/>
+		</m:echo>
+
+   	<m:insert m:id="statusList" path="/component/select.html"
+        nameValue="addstatusid" list="${statusHelper.getStatusListWithoutWorkflowid(model.id)}"
+        selected="" listKey="id" size="10"
+        listValue="name" force="true"/>
+      
+</m:mayaa>

@@ -1,0 +1,2 @@
+DELETE FROM NEXTSTATUS WHERE WORKFLOWSTATUSID = /*workflowstatusid*/ AND NEXTSTATUSID = /*nextstatusid*/
+

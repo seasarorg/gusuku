@@ -1,0 +1,8 @@
+SELECT COUNT(*)
+FROM REPORT
+WHERE
+ PROJECTID = /*projectid*/
+AND
+ STATUSID = /*statusid*/
+AND
+ DELFLAG = FALSE

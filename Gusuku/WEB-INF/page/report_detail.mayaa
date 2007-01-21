@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork" extends="/base.html">
+	
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+   	<m:insert id="project_name" path="/component/a.html"
+		href="project_detail.html?id=${project.id}" link="${project.name}" />
+    <!--m:write id="project_url" value="${project.url}"/-->
+    
+    <m:insert id="project_url" path="/component/a.html"
+    	href="${project.url}" link="${project.url}" target="_blank" />
+    <m:insert id="project_devurl" path="/component/a.html"
+    	href="${project.devurl}" link="${project.devurl}" target="_blank" />
+
+    <m:write id="report_key" value="${report.key}"/>
+   	<m:insert id="report_type" path="/component/img.html"
+		src="${report.type.icon}" alt="${report.type.name}"/>
+	<m:write id="report_title" value="${report.title}"/>
+	<m:formatDate id="report_rdate" value="${report.rdate}" pattern="yyyy/MM/dd hh:mm" />
+	<m:formatDate id="report_udate" value="${report.udate}" pattern="yyyy/MM/dd hh:mm" />
+	<m:write id="report_environment" value="${report.environment}"/>
+	<m:write id="report_detail" value="${report.detail}"/>
+	
+		<m:forEach id="custom" items="${customFormHelper.getFormList(project.formid)}" var="form"/>
+
+		<m:with id="if">
+		<m:if test="${form.formType.tagname.equals('textfield')}">
+			<tr>
+			<td><m:write id="customLabel" value="${form.label}"/></td>
+			<td><m:insert path="/component/report_value.html" value="${reportDataHelper.getReportData(report.id,form.id)}" form="${form}"/></td>
+			</tr>
+		</m:if>
+
+		<m:if test="${form.formType.tagname.equals('file')}">
+			<tr>
+			<td><m:write id="customLabel" value="${form.label}"/></td>
+			<td><m:insert path="/component/report_value.html" value="${reportDataHelper.getReportData(report.id,form.id)}" form="${form}" download="true"/></td>
+			</tr>
+		</m:if>
+
+		<m:if test="${form.formType.tagname.equals('select')}">
+			<tr>
+			<td><m:write value="${form.label}"/></td>
+			<td><m:insert id="customForm" path="/component/report_customvalue.html"
+				list="${customValueHelper.getValueList(form.valueid)}" listKey="value" listValue="label"
+				selected="${reportDataHelper.getReportData(report.id,form.id)}" form="${form}"/></td>
+			</tr>
+		</m:if>
+
+		<m:if test="${form.formType.tagname.equals('textarea')}">
+			<tr>
+			<td><m:write value="${form.label}"/></td>
+			<td><m:insert path="/component/report_value.html" value="${reportDataHelper.getReportData(report.id,form.id)}" form="${form}"/></td>
+			</tr>
+		</m:if>
+
+		<m:if test="${form.formType.tagname.equals('radio')}">
+			<tr>
+			<td><m:write value="${form.label}"/></td>
+			<td><m:insert id="customForm" path="/component/report_customvalue.html"
+				list="${customValueHelper.getValueList(form.valueid)}" listKey="value" listValue="label"
+				selected="${reportDataHelper.getReportData(report.id,form.id)}" form="${form}"/></td>
+			</tr>
+		</m:if>
+
+		<m:if test="${form.formType.tagname.equals('checkbox')}">
+			<tr>
+			<td><m:write value="${form.label}"/></td>
+			<td><m:insert id="customForm" path="/component/report_customvalue.html"
+				list="${customValueHelper.getValueList(form.valueid)}" listKey="value" listValue="label"
+				selected="${reportDataHelper.getReportData(report.id,form.id)}" form="${form}"/></td>
+			</tr>
+		</m:if>
+
+		</m:with>
+	
+	<m:if id="report_update" test="${report.reporterid == loginid}" replace="false"/>	
+	
+    <m:write id="report_reporter" value="${report.reporter.name}"/>    
+	
+	<m:insert id="report_priority" path="/component/img.html"
+		src="${report.priority.icon}" alt="${report.priority.name}"/>
+	
+	<m:insert id="report_status" path="/component/img.html"
+		src="${report.status.icon}" alt="${report.status.name}"/>
+		
+	<m:write id="report_assignee" value="${report.assignee.name}"/>
+	<m:write id="report_resolution" value="${report.resolution.name}"/>
+
+	<m:forEach id="workflow" items="${statusHelper.getNextstatus(project.workflowid,report.status.id)}" var="item" replace="false"/>
+		<m:insert id="nextstatusid" path="/component/hidden.html"
+			nameValue="nextstatusid" value="${item.id}"/>
+			
+		<m:with id="component">
+			<m:if  test="${item.assignflag}">
+			<m:element name="tr">
+				<m:element name="td">
+			    <m:insert path="/component/select.html"
+			        nameValue="assigneeid" list="${accountHelper.getProjectAccountList(project.id)}"
+			        selected="${new String(report.assignee.id)}" listKey="id"
+			        listValue="name" headerKey="" headerValue="アサイン先を選択して下さい"/>
+		        </m:element>
+	        </m:element>
+			</m:if>
+			<m:if  test="${item.resolutionflag}">
+			<m:element name="tr">
+				<m:element name="td">
+			    <m:insert path="/component/select.html"
+			        nameValue="resolutionid" list="${resolutionHelper.getResolutionListWithScheme(project.resolutionid)}"
+			        selected="${new String(report.resolution.id)}" listKey="resolution"
+			        listValue="resolution" headerKey="" headerValue="完了理由を選択して下さい" extra="true" />
+		        </m:element>
+	        </m:element>
+			</m:if>
+			
+		</m:with>
+		<m:echo id="submit">
+			<m:attribute name="value" value="${item.transition}"/>
+		</m:echo>
+
+	<m:forEach id="workflow_history" items="${statusHistoryHelper.getStatusHistoryList(report.id)}" var="item" replace="false" />
+		<m:write id="history_status" value="${item.status.name}"/>
+		<m:write id="history_changer" value="${item.changer.name}"/>
+		<m:formatDate id="history_rdate" value="${item.rdate}" pattern="yyyy/MM/dd hh:mm" />
+	
+	<m:forEach id="commentList" items="${commentHelper.getCommentList(parameters.id[0])}" var="item" replace="false"/>
+	<m:insert m:id="comment_id" path="/component/hidden.html"
+		nameValue="commentid" value="${item.id}"/>
+	<m:write id="comment_comment" value="${item.comment}" />
+	<m:formatDate id="comment_rdate" value="${item.rdate}" pattern="yyyy/MM/dd hh:mm" />
+	<m:write id="comment_writer" value="${item.writer.name}" />
+	<m:if id="comment_delete" test="${item.writerid == loginid}" >
+		<m:element name="input">
+		  <m:attribute name="type" value="submit"/>
+		  <m:attribute name="value" value=" 削除 " />
+		  <m:attribute name="class" value="submit"/>
+		</m:element>
+	</m:if>
+
+		<m:if id="comment_file" test="${item.filename != null}">
+			<m:write value="${item.filename}"/>
+			<m:element name="a">
+			<m:attribute name="href" value="./download/cmt${item.id}/${Packages.java.net.URLEncoder.encode(item.filename,'UTF-8')}"/>
+			<img src="./image/download.gif" alt="ダウンロード" border="0"/>
+			</m:element>
+		</m:if>
+
+
+	<m:insert m:id="id" path="/component/hidden.html"
+		nameValue="id" value="${report.id}"/>
+	<m:insert m:id="comment" path="/component/textarea.html"
+		nameValue="comment" value="" rows="3" cols="60"/>
+	<m:insert m:id="attachfile" path="/component/file.html"
+		nameValue="comment_file" value="" />
+	   
+</m:mayaa>

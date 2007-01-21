@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork" extends="/base.html">
+
+    <m:doRender m:id="menuSlot" name="menu">
+    	<m:insert path="/admin/menu.html" name="menu"/>
+    </m:doRender>
+
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+    <m:insert id="newlabel" path="/component/newlabel.html" value="${model.id}"/>
+    <m:insert id="newbutton" path="/component/newbutton.html" value="${model.id}"/>
+    
+	<m:insert m:id="id" path="/component/hidden.html"
+		nameValue="id" value="${model.id}" />
+	<m:insert m:id="mailaddr" path="/component/textfield.html"
+		nameValue="mailaddr" value="${model.mailaddr}" />
+	<m:insert m:id="password" path="/component/password.html"
+		nameValue="password" value="${model.password}" />
+	<m:insert m:id="name" path="/component/textfield.html"
+		nameValue="name" value="${model.name}" />
+	<m:insert m:id="kind" path="/component/select.html"
+        nameValue="kind" list="${accountKindHelper.getList()}"
+        selected="${model.kind}" listKey="id"
+        listValue="kindname" headerKey="" headerValue="選択して下さい"/>
+
+</m:mayaa>

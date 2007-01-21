@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork" extends="/base.html">
+	
+	<m:beforeRender>
+	var project = projectHelper.getProject(parameters.projectid[0]);
+	</m:beforeRender>
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+    <m:insert id="newlabel" path="/component/newlabel.html" value="${parameters.id}"/>
+    <m:insert id="newbutton" path="/component/newbutton.html" value="${parameters.id}"/>
+    
+    <m:insert m:id="reportid" path="/component/hidden.html"
+		nameValue="id" value="${parameters.id !=null ? parameters.id[0]:''}" />
+		
+    <m:insert m:id="projectid" path="/component/hidden.html"
+		nameValue="projectid" value="${parameters.projectid[0]}" />
+		
+    <m:with id="typeid">
+   		<m:if test="${parameters.id ==null}">
+	    <m:insert path="/component/hidden.html"
+			nameValue="typeid" value="${parameters.typeid[0]}" />
+		</m:if>
+	</m:with>
+		
+    <m:insert m:id="reporterid" path="/component/hidden.html"
+		nameValue="reporterid" value="${parameters.reporterid[0]}" />
+						    
+    <m:write id="projectname" value="${project.name}" />
+    
+    <m:with id="typename">
+    	<m:if test="${parameters.id ==null}">
+		    <m:write id="typename" value="${typeHelper.getType(parameters.typeid[0]).name}" />  
+	    </m:if>
+    	<m:if test="${parameters.id !=null}">
+		    <m:insert m:id="type" path="/component/select.html"
+		        nameValue="typeid" list="${typeHelper.getTypeListWithScheme(projectHelper.getProject(parameters.projectid[0]).typeid)}"
+		        selected="${parameters.typeid !=null ? parameters.typeid[0] : ''}" listKey="type"
+		        listValue="type" extra="true"/>
+	    </m:if>
+    </m:with>
+    
+   	<m:insert m:id="title" path="/component/textfield.html"
+		nameValue="title" value="${parameters.title !=null ? parameters.title[0]:''}" />
+
+    <m:insert m:id="priorityid" path="/component/select.html"
+        nameValue="priorityid" list="${priorityHelper.getPriorityListWithScheme(project.priorityid)}"
+        selected="${parameters.priorityid !=null ? parameters.priorityid[0] : ''}" listKey="priority"
+        listValue="priority" headerKey="" headerValue="優先度を選択して下さい" extra="true" />      
+        
+    <m:insert m:id="assigneeid" path="/component/select.html"
+        nameValue="assigneeid" list="${accountHelper.getProjectAccountList(parameters.projectid[0])}"
+        selected="${parameters.assigneeid != null ? parameters.assigneeid[0] : ''}" listKey="id"
+        listValue="name" headerKey="" headerValue="アサイン先を選択して下さい"/>
+        
+	<m:insert m:id="environment" path="/component/textarea.html"
+		nameValue="environment" value="${parameters.environment != null ? parameters.environment[0] : ''}" />	
+
+	<m:forEach id="custom" items="${customFormHelper.getFormList(projectHelper.getProject(parameters.projectid[0]).formid)}" var="form"/>
+
+		<m:with id="if">
+		<m:if test="${form.formType.tagname.equals('textfield') &amp;&amp; form.valuetype == 3}">
+			<tr>
+			<td class="collabel"><m:write id="customLabel" value="${form.label}"/>
+			<m:if test="${form.requireflag}">
+			<span class="require">*</span>
+			</m:if>
+			</td>
+			<td class="colitem"><m:insert id="customForm" path="/component/datepicker.html"
+				nameValue="custom${form.id}" value="${parameters['custom'+form.id]!=null?parameters['custom'+form.id][0]:''}" defaultValue="${form.defaultvalue}"/>
+			<m:if test="${form.comment != null }">
+				<span class="note"><m:write value="${form.comment}"/></span>
+			</m:if></td>
+			</tr>
+		</m:if>
+		<m:if test="${form.formType.tagname.equals('textfield') &amp;&amp; (form.valuetype == 1 || form.valuetype == 2)}">
+			<tr>
+			<td class="collabel"><m:write id="customLabel" value="${form.label}"/>
+			<m:if test="${form.requireflag}">
+			<span class="require">*</span>
+			</m:if>
+			</td>
+			<td class="colitem"><m:insert id="customForm" path="/component/textfield.html"
+				nameValue="custom${form.id}" value="${parameters['custom'+form.id]!=null?parameters['custom'+form.id][0]:''}" defaultValue="${form.defaultvalue}"/>
+			<m:if test="${form.comment != null }">
+				<span class="note"><m:write value="${form.comment}"/></span>
+			</m:if></td>
+			</tr>
+		</m:if>
+		<m:if test="${form.formType.tagname.equals('file')}">
+			<tr>
+			<td class="collabel"><m:write id="customLabel" value="${form.label}"/>
+			<m:if test="${form.requireflag}">
+			<span class="require">*</span>
+			</m:if></td>
+			<td class="colitem"><m:insert id="customForm" path="/component/file.html"
+				nameValue="custom${form.id}" />
+			<m:if test="${form.comment != null }">
+				<span class="note"><m:write value="${form.comment}"/></span>
+			</m:if></td>
+			</tr>
+		</m:if>
+
+		<m:if test="${form.formType.tagname.equals('select')}">
+			<tr>
+			<td class="collabel"><m:write value="${form.label}"/>
+			<m:if test="${form.requireflag}">
+			<span class="require">*</span>
+			</m:if></td>
+			<td class="colitem"><m:insert id="customForm" path="/component/select.html"
+				nameValue="custom${form.id}" list="${customValueHelper.getValueList(form.valueid)}" listKey="value" listValue="label"
+				selected="${parameters['custom'+form.id]!=null?parameters['custom'+form.id][0]:''}" headerKey="" headerValue="選択して下さい"/>
+			<m:if test="${form.comment != null }">
+				<span class="note"><m:write value="${form.comment}"/></span>
+			</m:if></td>
+			</tr>
+		</m:if>
+
+		<m:if test="${form.formType.tagname.equals('textarea')}">
+			<tr>
+			<td class="collabel"><m:write value="${form.label}"/>
+			<m:if test="${form.requireflag}">
+			<span class="require">*</span>
+			</m:if></td>
+			<td class="colitem"><m:insert id="customForm" path="/component/textarea.html"
+				nameValue="custom${form.id}" value="${parameters['custom'+form.id]!=null?parameters['custom'+form.id][0]:''}"/>
+			<m:if test="${form.comment != null }">
+				<span class="note"><m:write value="${form.comment}"/></span>
+			</m:if></td>
+			</tr>
+		</m:if>
+
+		<m:if test="${form.formType.tagname.equals('radio')}">
+			<tr>
+			<td class="collabel"><m:write value="${form.label}"/>
+			<m:if test="${form.requireflag}">
+			<span class="require">*</span>
+			</m:if></td>
+			<td class="colitem">
+			<m:forEach items="${customValueHelper.getValueList(form.valueid)}" var="value">
+				<m:insert path="/component/radio.html"
+					nameValue="custom${form.id}" value="${value.value}" checked="${parameters['custom'+form.id]!=null?parameters['custom'+form.id][0]:''}" defaultValue="1"/>
+				<m:write value="${value.label}"/>　
+			</m:forEach>
+			<m:if test="${form.comment != null }">
+				<span class="note"><m:write value="${form.comment}"/></span>
+			</m:if></td>
+			</tr>
+		</m:if>
+
+		<m:if test="${form.formType.tagname.equals('checkbox')}">
+			<tr>
+			<td class="collabel"><m:write value="${form.label}"/>
+			<m:if test="${form.requireflag}">
+			<span class="require">*</span>
+			</m:if></td>
+			<td class="colitem">
+			<m:forEach items="${customValueHelper.getValueList(form.valueid)}" var="value">
+				<m:insert path="/component/checkbox.html"
+					nameValue="custom${form.id}" value="${value.value}" checked="${parameters['custom'+form.id]}"/>
+				<m:write value="${value.label}"/>　
+			</m:forEach>
+			<m:if test="${form.comment != null }">
+				<span class="note"><m:write value="${form.comment}"/></span>
+			</m:if></td>
+			</tr>
+		</m:if>
+
+		</m:with>
+	<m:insert m:id="detail" path="/component/textarea.html"
+		nameValue="detail" value="${parameters.detail != null ? parameters.detail[0] : ''}" />
+</m:mayaa>

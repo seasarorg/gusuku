@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork" extends="/base.html">
+
+    <m:doRender m:id="menuSlot" name="menu">
+    	<m:insert path="/admin/menu.html" name="menu"/>
+    </m:doRender>
+
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+    <m:insert id="newlabel" path="/component/newlabel.html" value="${model.id}"/>
+    <m:insert id="newbutton" path="/component/newbutton.html" value="${model.id}"/>
+    
+	<m:insert m:id="id" path="/component/hidden.html"
+		nameValue="id" value="${model.id}" />
+	<m:insert m:id="name" path="/component/textfield.html"
+		nameValue="name" value="${model.name}" />
+
+<!--
+	<m:insert m:id="icon" path="/component/textfield.html"
+		nameValue="icon" value="${model.icon}" />
+-->
+	<m:insert m:id="icon" path="/component/file.html"
+		nameValue="icon"  />
+	<m:insert m:id="noiconflag" path="/component/checkbox.html"
+		nameValue="noiconflag" value="true" checked="${model.noiconflag? 'true' : 'false'}"/>
+		
+	<m:insert m:id="transition" path="/component/textfield.html"
+		nameValue="transition" value="${model.transition}" />
+
+	<m:insert m:id="assign_on" path="/component/radio.html"
+		nameValue="assignflag" checked="${model.assignflag}" value="true" />
+	<m:insert m:id="assign_off" path="/component/radio.html"
+		nameValue="assignflag" checked="${model.assignflag}" value="false" defaultValue="false"/>
+
+
+	<m:insert m:id="resolution_on" path="/component/radio.html"
+		nameValue="resolutionflag" checked="${model.resolutionflag}" value="true"/>
+	<m:insert m:id="resolution_off" path="/component/radio.html"
+		nameValue="resolutionflag" checked="${model.resolutionflag}" value="false" defaultValue="false"/>
+		
+	<m:insert m:id="mail_on" path="/component/radio.html"
+		nameValue="mailflag" checked="${model.mailflag}" value="true"/>
+	<m:insert m:id="mail_off" path="/component/radio.html"
+		nameValue="mailflag" checked="${model.mailflag}" value="false" defaultValue="false"/>
+
+	<m:insert m:id="description" path="/component/textarea.html"
+		nameValue="description" value="${model.description}" />
+
+</m:mayaa>

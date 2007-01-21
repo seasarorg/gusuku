@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork" extends="/base.html">
+	
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+    <m:forEach id="entryList" items="${entryList}" var="item" replace="false"/>
+    
+    <m:insert id="detail_link" path="/component/a.html"
+		href="project_detail.html?id=${item.id}" link="${item.name}" />
+	
+    <m:write id="key" value="${item.key}"/>
+    <m:insert id="url" path="/component/a.html"
+    	href="${item.url}" link="${item.url}" target="_blank" />
+    <m:insert id="devurl" path="/component/a.html"
+    	href="${item.devurl}" link="${item.devurl}" target="_blank" />
+    <m:write id="leader" value="${item.leader.name}"/>
+    
+</m:mayaa>

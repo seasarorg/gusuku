@@ -1,0 +1,9 @@
+SELECT
+ P.ID,P.NAME,P.KEY,P.LEADERID,P.URL,P.SDATE,P.EDATE,P.DESCRIPTION,A.NAME AS NAME_0
+FROM
+ PROJECT P LEFT OUTER JOIN ACCOUNT A ON P.LEADERID = A.ID AND A.DELFLAG = FALSE
+WHERE
+/*IF dto.name != null && dto.name != "" */P.NAME LIKE /*dto.likeName*/ AND/*END*/
+/*IF dto.key!= null && dto.key != "" */P.KEY LIKE /*dto.likeKey*/ AND/*END*/
+P.DELFLAG = FALSE
+ORDER BY P.ID

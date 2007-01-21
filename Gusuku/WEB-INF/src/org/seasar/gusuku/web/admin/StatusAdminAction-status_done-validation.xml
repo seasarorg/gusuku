@@ -1,0 +1,21 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd">
+<validators>
+	<field name="name">
+		<field-validator type="requiredstring">
+			<message key="status.name.required"/>
+		</field-validator>
+	</field>
+	<!--
+	<field name="iconFileName">
+		<field-validator type="requiredstring">
+			<message key="status.icon.required"/>
+		</field-validator>
+	</field>
+	-->
+	<field name="transition">
+		<field-validator type="requiredstring">
+			<message key="status.transition.required"/>
+		</field-validator>
+	</field>
+</validators>

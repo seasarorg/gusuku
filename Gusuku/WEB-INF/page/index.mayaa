@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork" extends="/base.html">
+		<m:beforeRender>
+	var onload = "ABCD";
+	</m:beforeRender>
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+	<m:insert m:id="mailaddr" path="/component/textfield.html"
+		nameValue="mailaddr" value="${model.mailaddr}" />
+
+	<m:insert m:id="password" path="/component/password.html"
+		nameValue="password" value="${model.password}" />
+</m:mayaa>

@@ -1,0 +1,10 @@
+${report.title}
+
+プロジェクト: ${report.project.name}
+KEY         : ${report.key}
+タイプ      : ${report.type.name}
+優先度      : ${report.priority.name}
+
+投稿者      : ${writer}
+
+${comment}

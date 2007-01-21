@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork" extends="/base.html">
+	
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+    <m:write id="name" value="${project.name}"/>
+    <m:write id="key" value="${project.key}"/>
+    <!--m:write id="url" value="${project.url}"/-->
+    <m:insert id="url" path="/component/a.html"
+    	href="${project.url}" link="${project.url}" target="_blank" />
+    <m:insert id="devurl" path="/component/a.html"
+    	href="${project.devurl}" link="${project.devurl}" target="_blank" />
+    <!--m:write id="devurl" value="${project.devurl}"/-->
+    <m:write id="leader" value="${project.leader.name}"/>
+    
+    <m:insert id="plist_link" path="/component/a.html"
+		href="report_list.html?projectid=${project.id}" link="一覧" />
+	<m:insert id="padd_link" path="/component/a.html"
+		href="report_step1.html?projectid=${project.id}" link="追加" />
+		
+    <m:forEach id="typelist" items="${typeHelper.getTypeListWithScheme(project.typeid)}" var="item" replace="false"/>
+    <m:insert id="type_link" path="/component/a.html"
+		href="report_list.html?projectid=${project.id}&amp;typeid=${item.type.id}" link="${item.type.name}一覧" />
+    <m:insert id="add_link" path="/component/a.html"
+		href="report_step1.html?projectid=${project.id}&amp;typeid=${item.type.id}" link="追加" />
+	
+	<m:insert id="conditionid" path="/component/hidden.html"
+		nameValue="id" value="${mailCondition.id}" />
+	<m:insert id="projectid" path="/component/hidden.html"
+		nameValue="projectid" value="${project.id}" />
+
+	<m:insert id="comment_all" path="/component/radio.html"
+		nameValue="comment" value="1" checked="${mailCondition.comment}" defaultValue="1" />
+	<m:insert id="comment_assign" path="/component/radio.html"
+		nameValue="comment" value="2" checked="${mailCondition.comment}" />
+	<m:insert id="comment_deny" path="/component/radio.html"
+		nameValue="comment" value="3" checked="${mailCondition.comment}" />
+		
+	<m:insert id="start_all" path="/component/radio.html"
+		nameValue="start" value="1" checked="${mailCondition.start}" defaultValue="1" />
+	<m:insert id="start_assign" path="/component/radio.html"
+		nameValue="start" value="2" checked="${mailCondition.start}" />
+	<m:insert id="start_deny" path="/component/radio.html"
+		nameValue="start" value="3" checked="${mailCondition.start}" />
+
+	<m:insert id="process_all" path="/component/radio.html"
+		nameValue="process" value="1" checked="${mailCondition.process}" />
+	<m:insert id="process_assign" path="/component/radio.html"
+		nameValue="process" value="2" checked="${mailCondition.process}" />
+	<m:insert id="process_deny" path="/component/radio.html"
+		nameValue="process" value="3" checked="${mailCondition.process}" defaultValue="3" />  
+		
+	<m:insert id="end_all" path="/component/radio.html"
+		nameValue="end" value="1" checked="${mailCondition.end}" defaultValue="1" />
+	<m:insert id="end_assign" path="/component/radio.html"
+		nameValue="end" value="2" checked="${mailCondition.end}" />
+	<m:insert id="end_deny" path="/component/radio.html"
+		nameValue="end" value="3" checked="${mailCondition.end}" />  
+	
+	<!--
+	<m:write id="total" value="${projectReport.endCount}/${projectReport.totalCount}" />
+	<m:with id="graph">
+	<m:if test="${projectReport.totalCount > 0}">
+		<m:element name="img">
+			<m:attribute name="src" value="./image/green_bar.gif" />
+			<m:attribute name="width" value="${(projectReport.endCount/projectReport.totalCount)*200}" />
+			<m:attribute name="height" value="15" />
+			<m:attribute name="alt" value="${projectReport.endCount}"/>
+		</m:element>
+		<m:element name="img">
+			<m:attribute name="src" value="./image/red_bar.gif" />
+			<m:attribute name="width" value="${((projectReport.totalCount - projectReport.endCount)/projectReport.totalCount)*200}" />
+			<m:attribute name="height" value="15" />
+			<m:attribute name="alt" value="${projectReport.totalCount - projectReport.endCount}"/>
+		</m:element>
+	</m:if>
+	<m:if test="${projectReport.totalCount == 0}">
+		<m:element name="img">
+			<m:attribute name="src" value="./image/red_bar.gif" />
+			<m:attribute name="width" value="200" />
+			<m:attribute name="height" value="15" />
+			<m:attribute name="alt" value="${projectReport.totalCount - projectReport.endCount}"/>
+		</m:element>
+	</m:if>
+	
+	</m:with>
+	-->
+
+	<m:forEach id="typeList" items="${projectReport.typeProgress}" var="type" replace="false"/>
+	<m:write id="type_name" value="${type.name}" />
+	<m:write id="type_end" value="${type.end}" />
+	<m:write id="type_total" value="${type.total}" />
+	<m:with id="type_graph">
+		<m:element name="img">
+			<m:attribute name="src" value="./image/green_bar.gif" />
+			<m:attribute name="width" value="${type.progress*2}" />
+			<m:attribute name="height" value="15" />
+			<m:attribute name="alt" value="${projectReport.endCount}"/>
+		</m:element>
+		<m:element name="img">
+			<m:attribute name="src" value="./image/red_bar.gif" />
+			<m:attribute name="width" value="${(100-type.progress)*2}" />
+			<m:attribute name="height" value="15" />
+			<m:attribute name="alt" value="${type.total-type.end}"/>
+		</m:element>
+	</m:with>
+	<m:formatNumber id="type_progress" value="${type.progress}" pattern="##0.0"/>
+		
+	<m:forEach id="statusList" items="${projectReport.statusProgress}" var="status" replace="false"/>
+	<m:write id="status_name" value="${status.name}" />
+	<m:write id="status_total" value="${status.total}" />
+</m:mayaa>

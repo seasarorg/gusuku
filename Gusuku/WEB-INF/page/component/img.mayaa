@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org">
+	<m:doRender m:id="imgTag" >
+	<!-- イメージタグを出力　-->
+	<!-- srcが無い場合はaltをテキスト表示する　-->
+	<m:with>
+		<m:if test="${binding.src != null &amp;&amp; binding.src != ''}">
+			<m:element name="img">
+				<m:attribute name="src" value="./../image/${binding.src}"/>
+				<m:attribute name="alt" value="${binding.alt}"/>
+			</m:element>
+		</m:if>
+		<m:if test="${binding.src == null || binding.src == ''}">
+			<m:write value="${binding.alt}"/>
+		</m:if>
+	</m:with>
+	</m:doRender>
+
+</m:mayaa>

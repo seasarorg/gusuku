@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork"
+	extends="/base.html">
+	<m:beforeRender>
+	var list = resolutionHelper.getResolutionListWithScheme(model.headid);
+	</m:beforeRender>
+		
+    <m:doRender m:id="menuSlot" name="menu">
+    	<m:insert path="/admin/menu.html" name="menu"/>
+    </m:doRender>
+
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+    <m:write id="value_name" value="${resolutionHelper.getResolutionHead(model.headid).name}" />
+
+    <m:insert m:id="edit_headid" path="/component/hidden.html"
+		nameValue="headid" value="${model.headid}" />
+	<m:insert m:id="resolutionList" path="/component/select.html"
+		nameValue="resolutionid" list="${resolutionHelper.getResolutionListWithoutScheme(model.headid)}"
+		listKey="id" listValue="name" multiple="true" size="5" force="true"/>
+
+	<m:insert m:id="headid" path="/component/hidden.html"
+		nameValue="headid" value="${model.headid}" />
+	<m:forEach m:id="list" items="${list}" var="item" replace="false" />
+	<m:insert m:id="del" path="/component/checkbox.html"
+		nameValue="delid" value="${item.id}"/>
+	<m:write id="name" value="${item.resolution.name}"/>
+	
+	<m:with id="sort">
+		
+		<m:element name="td">
+		<m:if test="${list.size() > 1 &amp;&amp; item.sort &lt; list.size()}">
+			<m:insert path="/component/a.html"
+				href="resolution_scheme_down.html?id=${item.id}&amp;headid=${item.headid}" link="↓"/>
+		</m:if>
+		</m:element>
+		<m:element name="td">
+		<m:if test="${list.size() > 1 &amp;&amp; item.sort > 1}">
+			<m:insert path="/component/a.html"
+				href="resolution_scheme_up.html?id=${item.id}&amp;headid=${item.headid}" link="↑"/>
+		</m:if>
+		</m:element>
+
+	</m:with>
+</m:mayaa>

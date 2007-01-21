@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork">
+
+    <m:doRender m:id="menuBody" name="menu"/>
+    
+</m:mayaa>

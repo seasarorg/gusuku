@@ -1,0 +1,2168 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<clay-model clay-version="1.2.0">
+<database-model alias="" author="" begin-script="" end-script="" name="entity" remarks="" sql-dialect-id="jp.azzurri.clay.model.physical.dialect.HSQLDB_1_7_2_Dialect" version="1.0">
+<database-model-description></database-model-description>
+<schema-list>
+<schema alias="" name="DEFAULT_SCHEMA" remarks="">
+<schema-description></schema-description>
+<domain-list/>
+<table-list>
+<table alias="" name="ACCOUNT" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="453" y="-168"/>
+<column-list>
+<column alias="管理ID" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="メールアドレス" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="MAILADDR" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="パスワード" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="PASSWORD" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="名前" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="NAME" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="種別" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="KIND" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="削除フラグ" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="DELFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="登録日" auto-increment="false" column-size="0" decimal-digits="0" default-value="CURRENT_TIMESTAMP()" mandatory="true" name="RDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+<column alias="更新日" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="UDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_ACCOUNT" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_ACCOUNT_1" on-delete="" on-update="" referenced-key="PK_ACCOUNT_KIND" referenced-table="ACCOUNT_KIND" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="KIND" referenced-key-column-name="ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="GROUPBASE" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="-265" y="-110"/>
+<column-list>
+<column alias="グループID" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="グループ名" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="NAME" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="備考" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DESCRIPTION" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="削除フラグ" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="DELFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="登録日" auto-increment="false" column-size="0" decimal-digits="0" default-value="CURRENT_TIMESTAMP()" mandatory="true" name="RDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+<column alias="更新日" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="UDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_GROUPBASE" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list/>
+<index-list/>
+</table>
+<table alias="" name="ACCOUNT_GROUPBASE" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="40" y="-134"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="アカウントID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ACCOUNTID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="グループID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="GROUPBASEID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_ACCOUNT_GROUPBASE" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list>
+<unique-key alias="" name="UQ_ACCOUNT_GROUPBASE_1" remarks="">
+<unique-key-description></unique-key-description>
+<unique-key-column name="ACCOUNTID"/>
+<unique-key-column name="GROUPBASEID"/>
+</unique-key>
+</unique-key-list>
+<foreign-key-list>
+<foreign-key alias="" name="FK_ACCOUNT_GROUPBASE_1" on-delete="CASCADE" on-update="" referenced-key="PK_GROUPBASE" referenced-table="GROUPBASE" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="GROUPBASEID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_ACCOUNT_GROUPBASE_2" on-delete="CASCADE" on-update="" referenced-key="PK_ACCOUNT" referenced-table="ACCOUNT" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="ACCOUNTID" referenced-key-column-name="ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="PROJECT" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="-67" y="238"/>
+<column-list>
+<column alias="プロジェクトID" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="キー" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="KEY" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="カウンタ" auto-increment="false" column-size="0" decimal-digits="0" default-value="0" mandatory="true" name="COUNTER" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="ワークフローID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="WORKFLOWID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="カスタムフォームID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="FORMID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="タイプID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="TYPEID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="優先度ID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="PRIORITYID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="完了理由ID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="RESOLUTIONID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="プロジェクト名" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="NAME" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="リーダーID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="LEADERID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="開始日" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="SDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+<column alias="終了日" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="EDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+<column alias="本番機URL" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="URL" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="開発用URL" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DEVURL" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="通知用メールアドレス" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="MAILADDR" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="メール通知件名" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="SUBJECT" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="備考" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DESCRIPTION" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="終了フラグ" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="CLOSEFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="削除フラグ" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="DELFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="登録日" auto-increment="false" column-size="0" decimal-digits="0" default-value="CURRENT_TIMESTAMP()" mandatory="true" name="RDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+<column alias="更新日" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="UDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_PROJECT" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_PROJECT_1" on-delete="" on-update="" referenced-key="PK_ACCOUNT" referenced-table="ACCOUNT" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="LEADERID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_PROJECT_2" on-delete="" on-update="" referenced-key="PK_WORKFLOW" referenced-table="WORKFLOW" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="WORKFLOWID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_PROJECT_3" on-delete="" on-update="" referenced-key="PK_CUSTOM_FORM_HEAD" referenced-table="CUSTOM_FORM_HEAD" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="FORMID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_PROJECT_4" on-delete="" on-update="" referenced-key="PK_TYPE_HEAD" referenced-table="TYPE_HEAD" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="TYPEID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_PROJECT_5" on-delete="" on-update="" referenced-key="PK_RESOLUTION_HEAD" referenced-table="RESOLUTION_HEAD" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="RESOLUTIONID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_PROJECT_6" on-delete="" on-update="" referenced-key="PK_PRIORITY_HEAD" referenced-table="PRIORITY_HEAD" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="PRIORITYID" referenced-key-column-name="ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="PROJECT_GROUPBASE" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="-18" y="20"/>
+<column-list>
+<column alias="管理ID" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="プロジェクトID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="PROJECTID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="グループID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="GROUPBASEID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_PROJECT_GROUPBASE" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list>
+<unique-key alias="" name="UQ_PROJECT_GROUPBASE_1" remarks="">
+<unique-key-description></unique-key-description>
+<unique-key-column name="PROJECTID"/>
+<unique-key-column name="GROUPBASEID"/>
+</unique-key>
+</unique-key-list>
+<foreign-key-list>
+<foreign-key alias="" name="FK_PROJECT_GROUPBASE_1" on-delete="CASCADE" on-update="" referenced-key="PK_PROJECT" referenced-table="PROJECT" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="PROJECTID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_PROJECT_GROUPBASE_2" on-delete="CASCADE" on-update="" referenced-key="PK_GROUPBASE" referenced-table="GROUPBASE" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="GROUPBASEID" referenced-key-column-name="ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="PRIORITY" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="1025" y="9"/>
+<column-list>
+<column alias="優先度ID" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="優先度名" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="NAME" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="アイコン" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="ICON" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="備考" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DESCRIPTION" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="削除フラウ" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="DELFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="登録日" auto-increment="false" column-size="0" decimal-digits="0" default-value="CURRENT_TIMESTAMP()" mandatory="true" name="RDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+<column alias="更新日" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="UDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_PRIORITY" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list/>
+<index-list/>
+</table>
+<table alias="" name="TYPE" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="232" y="760"/>
+<column-list>
+<column alias="タイプID" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="タイプ名" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="NAME" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="アイコン" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="ICON" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="備考" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DESCRIPTION" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="削除フラグ" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="DELFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="登録日" auto-increment="false" column-size="0" decimal-digits="0" default-value="CURRENT_TIMESTAMP()" mandatory="true" name="RDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+<column alias="更新日" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="UDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_TYPE" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list/>
+<index-list/>
+</table>
+<table alias="" name="STATUS" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="1076" y="283"/>
+<column-list>
+<column alias="状態ID" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="状態名" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="NAME" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="アイコン" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="ICON" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="遷移名" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="TRANSITION" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="アサイン変更フラグ" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="ASSIGNFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="完了理由変更フラグ" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="RESOLUTIONFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="メール送信フラグ" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="MAILFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="RSS配信フラグ" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="RSSFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="備考" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DESCRIPTION" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="削除フラグ" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="DELFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="登録日" auto-increment="false" column-size="0" decimal-digits="0" default-value="CURRENT_TIMESTAMP()" mandatory="true" name="RDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+<column alias="更新日" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="UDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_STATUS" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list/>
+<index-list/>
+</table>
+<table alias="" name="RESOLUTION" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="414" y="718"/>
+<column-list>
+<column alias="完了理由ID" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="完了理由名" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="NAME" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="備考" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DESCRIPTION" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="削除フラグ" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="DELFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="登録日" auto-increment="false" column-size="0" decimal-digits="0" default-value="CURRENT_TIMESTAMP()" mandatory="true" name="RDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+<column alias="更新日" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="UDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_RESOLUTION" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list/>
+<index-list/>
+</table>
+<table alias="" name="WORKFLOW_STATUS" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="625" y="847"/>
+<column-list>
+<column alias="管理ID" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="ワークフローID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="WORKFLOWID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="状態" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="STATUSID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="開始フラグ" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="SFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="終了フラグ" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="EFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_WORKFLOW_STATUS" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_WORKFLOW_STATUS_1" on-delete="" on-update="" referenced-key="PK_WORKFLOW" referenced-table="WORKFLOW" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="WORKFLOWID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_WORKFLOW_STATUS_2" on-delete="CASCADE" on-update="" referenced-key="PK_STATUS" referenced-table="STATUS" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="STATUSID" referenced-key-column-name="ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="WORKFLOW" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="17" y="846"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="ワークフロー名" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="NAME" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="備考" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="DESCRIPTION" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="DELFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="CURRENT_TIMESTAMP()" mandatory="true" name="RDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="UDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_WORKFLOW" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list/>
+<index-list/>
+</table>
+<table alias="" name="REPORT" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="544" y="315"/>
+<column-list>
+<column alias="課題ID" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="プロジェクトID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="PROJECTID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="タイプID" auto-increment="false" column-size="0" decimal-digits="0" default-value="0" mandatory="true" name="TYPEID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="タイトル" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="TITLE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="キー" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="KEY" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="Message-ID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="MESSAGEID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="状態ID" auto-increment="false" column-size="0" decimal-digits="0" default-value="0" mandatory="true" name="STATUSID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="完了理由ID" auto-increment="false" column-size="0" decimal-digits="0" default-value="0" mandatory="false" name="RESOLUTIONID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="優先度ID" auto-increment="false" column-size="0" decimal-digits="0" default-value="0" mandatory="true" name="PRIORITYID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="報告者ID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="REPORTERID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="割当先ID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="ASSIGNEEID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="コンポーネントID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="COMPONENTID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="バージョンID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="VERSIONID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="環境" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="ENVIRONMENT" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="詳細" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="DETAIL" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="削除フラグ" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="DELFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="登録日" auto-increment="false" column-size="0" decimal-digits="0" default-value="CURRENT_TIMESTAMP()" mandatory="true" name="RDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+<column alias="更新日" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="UDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_REPORT" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_REPORT_7" on-delete="" on-update="" referenced-key="PK_ACCOUNT" referenced-table="ACCOUNT" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="REPORTERID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_REPORT_6" on-delete="" on-update="" referenced-key="PK_PROJECT" referenced-table="PROJECT" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="PROJECTID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_REPORT_4" on-delete="SET DEFAULT" on-update="" referenced-key="PK_TYPE" referenced-table="TYPE" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="TYPEID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_REPORT_3" on-delete="SET DEFAULT" on-update="" referenced-key="PK_STATUS" referenced-table="STATUS" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="STATUSID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_REPORT_2" on-delete="SET DEFAULT" on-update="" referenced-key="PK_PRIORITY" referenced-table="PRIORITY" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="PRIORITYID" referenced-key-column-name="ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="COMMENT" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="640" y="47"/>
+<column-list>
+<column alias="コメントID" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="REPORTID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="記入者" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="WRITERID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="コメント" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="COMMENT" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="FILENAME" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="Message-IDヘッダ" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="MESSAGEID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="削除フラグ" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="DELFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="登録日" auto-increment="false" column-size="0" decimal-digits="0" default-value="CURRENT_TIMESTAMP()" mandatory="true" name="RDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+<column alias="更新日" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="UDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+<variant precision-max="9" precision-min="1" precision-variable="%p" type-name-pattern="TIMESTAMP(%p)"/>
+<variant precision-max="9" precision-min="1" precision-variable="%p" type-name-pattern="TIMESTAMP(%p) WITH TIME ZONE"/>
+<variant precision-max="9" precision-min="1" precision-variable="%p" type-name-pattern="TIMESTAMP(%p) WITHOUT TIME ZONE"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_COMMENT" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_COMMENT_2" on-delete="" on-update="" referenced-key="PK_ACCOUNT" referenced-table="ACCOUNT" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="WRITERID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_COMMENT_1" on-delete="" on-update="" referenced-key="PK_REPORT" referenced-table="REPORT" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="REPORTID" referenced-key-column-name="ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="ACCOUNT_KIND" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="772" y="-139"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="NAME" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_ACCOUNT_KIND" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list/>
+<index-list/>
+</table>
+<table alias="" name="NEXTSTATUS" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="912" y="943"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="WORKFLOWSTATUSID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="NEXTSTATUSID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_NEXTSTATUS" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_NEXTSTATUS_1" on-delete="CASCADE" on-update="" referenced-key="PK_WORKFLOW_STATUS" referenced-table="WORKFLOW_STATUS" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="WORKFLOWSTATUSID" referenced-key-column-name="ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="STATUS_HISTORY" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="821" y="543"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="報告ID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="REPORTID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="状態ID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="STATUSID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="状態変更者ID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="CHANGERID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="変更日時" auto-increment="false" column-size="0" decimal-digits="0" default-value="CURRENT_TIMESTAMP()" mandatory="true" name="RDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_STATUS_HISTORY" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_STATUS_HISTORY_3" on-delete="" on-update="" referenced-key="PK_ACCOUNT" referenced-table="ACCOUNT" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="CHANGERID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_STATUS_HISTORY_2" on-delete="" on-update="" referenced-key="PK_REPORT" referenced-table="REPORT" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="REPORTID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_STATUS_HISTORY_1" on-delete="" on-update="" referenced-key="PK_STATUS" referenced-table="STATUS" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="STATUSID" referenced-key-column-name="ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="CUSTOM_VALUE_HEAD" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="498" y="1098"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="名前" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="NAME" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="備考" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DESCRIPTION" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="DELFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="登録日" auto-increment="false" column-size="0" decimal-digits="0" default-value="CURRENT_TIMESTAMP()" mandatory="true" name="RDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+<variant precision-max="9" precision-min="1" precision-variable="%p" type-name-pattern="TIMESTAMP(%p)"/>
+<variant precision-max="9" precision-min="1" precision-variable="%p" type-name-pattern="TIMESTAMP(%p) WITH TIME ZONE"/>
+<variant precision-max="9" precision-min="1" precision-variable="%p" type-name-pattern="TIMESTAMP(%p) WITHOUT TIME ZONE"/>
+</data-type>
+</column>
+<column alias="更新日" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="UDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_CUSTOM_VALUE_HEAD" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list/>
+<index-list/>
+</table>
+<table alias="" name="CUSTOM_VALUE_DETAIL" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="703" y="1178"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="バリューID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="VALUEHEADID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="ラベル" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="LABEL" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="値" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="VALUE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="表示順序" auto-increment="false" column-size="0" decimal-digits="0" default-value="0" mandatory="true" name="SORT" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_CUSTOM_VALUE_DETAIL" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_CUSTOM_VALUE_DETAIL_1" on-delete="" on-update="" referenced-key="PK_CUSTOM_VALUE_HEAD" referenced-table="CUSTOM_VALUE_HEAD" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="VALUEHEADID" referenced-key-column-name="ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="CUSTOM_FORM_DETAIL" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="220" y="1071"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="FORMHEADID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="カスタムバリューID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="VALUEID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="フォームタイプID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="TYPEID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="LABEL" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="デフォルト値" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DEFAULTVALUE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="値タイプ 1：文字列 2：数値 3：日付" auto-increment="false" column-size="0" decimal-digits="0" default-value="1" mandatory="true" name="VALUETYPE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+</data-type>
+</column>
+<column alias="必須フラグ" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="REQUIREFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="チェックタイプ 0:なし 1:長さ 2：期間 3：範囲" auto-increment="false" column-size="0" decimal-digits="0" default-value="0" mandatory="true" name="CHECKTYPE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+</data-type>
+</column>
+<column alias="長さチェック　下限" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="LENGTHLOW" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="長さチェック　上限" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="LENGTHHIGH" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="期間チェック　開始" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DATEFROM" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="91" literal-prefix="'" literal-suffix="'" name="DATE" selected-variant-pattern="DATE">
+<variant type-name-pattern="DATE"/>
+</data-type>
+</column>
+<column alias="期間チェック　終了" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DATETO" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="91" literal-prefix="'" literal-suffix="'" name="DATE" selected-variant-pattern="DATE">
+<variant type-name-pattern="DATE"/>
+</data-type>
+</column>
+<column alias="範囲チェック　下限" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="RANGELOW" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="範囲チェック　上限" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="RANGEHIGH" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="表示順序" auto-increment="false" column-size="0" decimal-digits="0" default-value="0" mandatory="true" name="SORT" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+</data-type>
+</column>
+<column alias="コメント" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="COMMENT" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="DELFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_CUSTOM_FORM_DETAIL" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_CUSTOM_FORM_DETAIL_2" on-delete="" on-update="" referenced-key="PK_CUSTOM_FORM_HEAD" referenced-table="CUSTOM_FORM_HEAD" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="FORMHEADID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_CUSTOM_FORM_DETAIL_1" on-delete="" on-update="" referenced-key="PK_FORM_TYPE" referenced-table="FORM_TYPE" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="TYPEID" referenced-key-column-name="ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="FORM_TYPE" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="-13" y="1191"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="NAME" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="TAGNAME" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DESCRIPTION" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_FORM_TYPE" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list/>
+<index-list/>
+</table>
+<table alias="" name="REPORT_DATA" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="507" y="987"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="REPORTID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="FORMID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="TEXTVALUE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="NUMERICVALUE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DATEVALUE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="91" literal-prefix="'" literal-suffix="'" name="DATE" selected-variant-pattern="DATE">
+<variant type-name-pattern="DATE"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_REPORT_DATA" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_REPORT_DATA_1" on-delete="" on-update="" referenced-key="PK_CUSTOM_FORM_DETAIL" referenced-table="CUSTOM_FORM_DETAIL" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="FORMID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_REPORT_DATA_2" on-delete="" on-update="" referenced-key="PK_REPORT" referenced-table="REPORT" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="REPORTID" referenced-key-column-name="ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="CUSTOM_FORM_HEAD" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="-94" y="1002"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="NAME" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DESCRIPTION" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="DELFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="CURRENT_TIMESTAMP()" mandatory="true" name="RDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="UDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+<variant precision-max="9" precision-min="1" precision-variable="%p" type-name-pattern="TIMESTAMP(%p)"/>
+<variant precision-max="9" precision-min="1" precision-variable="%p" type-name-pattern="TIMESTAMP(%p) WITH TIME ZONE"/>
+<variant precision-max="9" precision-min="1" precision-variable="%p" type-name-pattern="TIMESTAMP(%p) WITHOUT TIME ZONE"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_CUSTOM_FORM_HEAD" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list/>
+<index-list/>
+</table>
+<table alias="" name="SEARCH_CONDITION_BASIC" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="-295" y="436"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="CONDITIONHEADID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="PROJECTID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="TITLE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="TYPEID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="STATUSID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="PRIORITYID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="ASSIGNEEID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="ENVIRONMENT" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DETAIL" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DATEFROM" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="91" literal-prefix="'" literal-suffix="'" name="DATE" selected-variant-pattern="DATE">
+<variant type-name-pattern="DATE"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DATETO" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="91" literal-prefix="'" literal-suffix="'" name="DATE" selected-variant-pattern="DATE">
+<variant type-name-pattern="DATE"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_SEARCH_CONDITION_BASIC" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_SEARCH_CONDITION_BASIC_2" on-delete="" on-update="" referenced-key="PK_PROJECT" referenced-table="PROJECT" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="PROJECTID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_SEARCH_CONDITION_BASIC_1" on-delete="CASCADE" on-update="" referenced-key="PK_SEARCH_CONDITION_HEAD" referenced-table="SEARCH_CONDITION_HEAD" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="CONDITIONHEADID" referenced-key-column-name="ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="SEARCH_CONDITION_HEAD" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="-279" y="203"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ACCOUNTID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="NAME" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="VISIBLE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="SORT" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="10" mandatory="true" name="AMOUNT" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="CURRENT_TIMESTAMP()" mandatory="true" name="RDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_SEARCH_CONDITION_HEAD" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_SEARCH_CONDITION_HEAD_1" on-delete="" on-update="" referenced-key="PK_ACCOUNT" referenced-table="ACCOUNT" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="ACCOUNTID" referenced-key-column-name="ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="SEARCH_CONDITION_CUSTOM" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="-285" y="695"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="CONDITIONBASICID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="FORMID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="TEXTVALUE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="RANGELOW" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="RANGHIGH" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DATEFROM" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="91" literal-prefix="'" literal-suffix="'" name="DATE" selected-variant-pattern="DATE">
+<variant type-name-pattern="DATE"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DATETO" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="91" literal-prefix="'" literal-suffix="'" name="DATE" selected-variant-pattern="DATE">
+<variant type-name-pattern="DATE"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_SEARCH_CONDITION_CUSTOM" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_SEARCH_CONDITION_CUSTOM_1" on-delete="CASCADE" on-update="" referenced-key="PK_SEARCH_CONDITION_BASIC" referenced-table="SEARCH_CONDITION_BASIC" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="CONDITIONBASICID" referenced-key-column-name="ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="MAIL_CONDITION" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="243" y="116"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ACCOUNTID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="PROJECTID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="コメントに対するメール 1：全て受取り 2：自分に対するアサインのみ 3：受取らない" auto-increment="false" column-size="0" decimal-digits="0" default-value="1" mandatory="true" name="COMMENT" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+</data-type>
+</column>
+<column alias="開始状態に対するメール 1：全て受取り 2：自分に対するアサインのみ 3：受取らない" auto-increment="false" column-size="0" decimal-digits="0" default-value="1" mandatory="true" name="START" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+</data-type>
+</column>
+<column alias="経過状態に対するメール 1：全て受取り 2：自分に対するアサインのみ 3：受取らない" auto-increment="false" column-size="0" decimal-digits="0" default-value="1" mandatory="true" name="PROCESS" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+</data-type>
+</column>
+<column alias="終了状態に対するメール 1：全て受取り 2：自分に対するアサインのみ 3：受取らない" auto-increment="false" column-size="0" decimal-digits="0" default-value="1" mandatory="true" name="END" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_MAIL_CONDITION" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_MAIL_CONDITION_1" on-delete="" on-update="" referenced-key="PK_PROJECT" referenced-table="PROJECT" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="PROJECTID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_MAIL_CONDITION_2" on-delete="" on-update="" referenced-key="PK_ACCOUNT" referenced-table="ACCOUNT" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="ACCOUNTID" referenced-key-column-name="ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="SYSTEM_PROPERTY" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="938" y="1103"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="KEY" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="VALUE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_SYSTEM_PROPERTY" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list/>
+<index-list/>
+</table>
+<table alias="" name="TYPE_HEAD" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="67" y="549"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="NAME" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DESCRIPTION" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="DELFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="CURRENT_TIMESTAMP()" mandatory="true" name="RDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="UDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_TYPE_HEAD" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list/>
+<index-list/>
+</table>
+<table alias="" name="PRIORITY_HEAD" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="877" y="-123"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="NAME" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DESCRIPTION" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="DELFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="CURRENT_TIMESTAMP()" mandatory="true" name="RDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="UDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_PRIORITY_HEAD" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list/>
+<index-list/>
+</table>
+<table alias="" name="RESOLUTION_HEAD" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="245" y="501"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="NAME" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DESCRIPTION" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="DELFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="CURRENT_TIMESTAMP()" mandatory="true" name="RDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="UDATE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
+<variant type-name-pattern="TIMESTAMP"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_RESOLUTION_HEAD" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list/>
+<index-list/>
+</table>
+<table alias="" name="TYPE_SCHEME" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="120" y="665"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="HEADID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="TYPEID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="0" mandatory="true" name="SORT" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_TYPE_SCHEME" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_TYPE_SCHEME_2" on-delete="" on-update="" referenced-key="PK_TYPE_HEAD" referenced-table="TYPE_HEAD" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="HEADID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_TYPE_SCHEME_1" on-delete="" on-update="" referenced-key="PK_TYPE" referenced-table="TYPE" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="TYPEID" referenced-key-column-name="ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="PRIORITY_SCHEME" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="1060" y="-91"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="HEADID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="PRIORITYID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="0" mandatory="true" name="SORT" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_PRIORITY_SCHEME" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_PRIORITY_SCHEME_1" on-delete="" on-update="" referenced-key="PK_PRIORITY_HEAD" referenced-table="PRIORITY_HEAD" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="HEADID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_PRIORITY_SCHEME_2" on-delete="" on-update="" referenced-key="PK_PRIORITY" referenced-table="PRIORITY" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="PRIORITYID" referenced-key-column-name="ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="RESOLUTION_SCHEME" remarks="">
+<table-description></table-description>
+<table-figure-bounds height="-1" width="-1" x="309" y="613"/>
+<column-list>
+<column alias="" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="HEADID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="RESOLUTIONID" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="0" mandatory="true" name="SORT" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_RESOLUTION_SCHEME" remarks="">
+<primary-key-description></primary-key-description>
+<primary-key-column name="ID"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_RESOLUTION_SCHEME_1" on-delete="" on-update="" referenced-key="PK_RESOLUTION_HEAD" referenced-table="RESOLUTION_HEAD" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="HEADID" referenced-key-column-name="ID"/>
+</foreign-key>
+<foreign-key alias="" name="FK_RESOLUTION_SCHEME_2" on-delete="" on-update="" referenced-key="PK_RESOLUTION" referenced-table="RESOLUTION" referenced-table-schema="DEFAULT_SCHEMA" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="">
+<foreign-key-description></foreign-key-description>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="RESOLUTIONID" referenced-key-column-name="ID"/>
+</foreign-key>
+</foreign-key-list>
+<index-list/>
+</table>
+</table-list>
+</schema>
+</schema-list>
+</database-model>
+</clay-model>

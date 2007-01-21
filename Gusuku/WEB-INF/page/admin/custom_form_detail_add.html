@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="../css/default_style.css">
+<script type="text/javascript">
+	var normalColor = "transparent";
+	var hoverColor = "#EEEEEE";
+	function mout(obj) {
+		obj.style.backgroundColor = normalColor; 
+	}
+	function mover(obj) {
+		obj.style.backgroundColor = hoverColor;
+	}
+</script>
+<title></title>
+</head>
+<body>
+
+<div class="header">
+Gusuku ヘッダ
+</div>
+
+<div class="headermenu">
+ヘッダめにゅー1 | ヘッダめにゅー2 | ヘッダめにゅー3
+</div>
+
+<div class="container">
+<div id="contentSlot">
+	<div id="menuSlot">
+	<div class="sidemenu">
+		<div class="border">
+			<div class="menugroup">メニューカテゴリ</div>
+			<div class="menu">メニューコンテンツ1</div>
+			<div class="menu">メニューコンテンツ2</div>
+			<div class="menugroup">メニューカテゴリ</div>
+			<div class="menu">メニューコンテンツ1</div>
+			<div class="menu">メニューコンテンツ2</div>
+		</div>
+	</div>
+	</div>
+
+	<div class="content">
+		<div class="border">
+			<div class="label">カスタムフォーム</div>
+			<div class="adminhelp">
+			<table>
+				<tr>
+				<td><img src="./../image/help.gif"/></td>
+				<td>
+					■入力項目について
+					<table border="1" cellspacing="0" cellpadding="3">
+						<colgroup class="collabel"></colgroup>
+						<colgroup class="colitem"></colgroup>
+						<tr><td>ラベル</td><td>入力時の項目名として使用します</td></tr>
+						<tr><td>タイプ</td><td>入力時のフォームタイプとして使用します</td></tr>
+						<tr><td>カスタムバリュー</td><td>タイプが「セレクト」・「ラジオ」・「チェックボックス」の時に値候補として使用します</td></tr>
+						<tr><td>コメント</td><td>入力時の注釈として使用します</td></tr>
+						<tr><td>デフォルト値</td><td>入力時のデフォルト値として使用します</td></tr>
+						<tr><td>値タイプ</td><td>入力時のフォームタイプとして使用します</td></tr>
+						<tr><td>必須</td><td>入力時に必須入力のチェックを行います</td></tr>
+					</table>
+					<p/>
+					■入力チェックについて<br>
+					各チェックは値タイプに基づいて実行されます。
+					<table border="1" cellspacing="0" cellpadding="3">
+						<colgroup class="collabel"></colgroup>
+						<colgroup class="colitem"></colgroup>
+						<tr><td>文字列</td><td>長さチェック</td></tr>
+						<tr><td>数値</td><td>範囲チェック</td></tr>
+						<tr><td>日付</td><td>日付チェック</td></tr>
+					</table>
+				</td>
+				</tr>
+			</table>
+			</div>
+			<form action="custom_form_detail_done.html" method="post">
+				<input type="hidden" id="id"/>
+				<input type="hidden" id="token"/>
+				<input type="hidden" id="formheadid"/>
+				<fieldset>
+					<legend><span id="newlabel">新規登録</span></legend>
+				<span id="error"/>
+				<table border="0" cellpadding="3" cellspacing="0">
+				<tr>
+					<td>ラベル<span class="require">*</span></td><td><input type="text" name="" id="label"/></td>
+				</tr>
+				<tr>
+					<td>タイプ<span class="require">*</span></td><td><select id="form_type"><option>フォームタイプリスト</option></select></td>
+				</tr>
+				<tr>
+					<td>カスタムバリュー</td><td><select id="custom_value"><option>カスタムバリューリスト</option></select></td>
+				</tr>
+				<tr>
+					<td>コメント</td><td><input type="text" name="" id="comment"/></td>
+				</tr>
+				<tr>
+					<td>デフォルト値</td><td><input type="text" id="defaultvalue" /></td>
+				</tr>
+				<tr>
+					<td>値タイプ</td><td><input type="radio" name="type" id="value_string">文字列 <input type="radio" name="type" id="value_numeric">数値 <input type="radio" name="type" id="value_date">日付</td>
+				</tr>
+				<tr>
+					<td>必須</td><td><input type="checkbox" id="require"></td>
+				</tr>
+
+				<tr><td colspan="2"> 
+				<fieldset>
+				<table>
+				<tr>
+					<td>チェックなし</td><td><input type="radio" name="check" id="check_none"></td>
+				</tr>
+				<tr>
+					<td>長さチェック</td><td><input type="radio" name="check" id="check_length"><input type="text" size="3" id="length_low">文字以上<input type="text" size="3" id="length_high">文字以下</td>
+				</tr>
+				<tr>
+					<td>範囲チェック</td><td><input type="radio" name="check" id="check_range"><input type="text" size="3" id="range_low">以上<input type="text" size="3" id="range_high">以下</td>
+				</tr>
+				<tr>
+					<td>日付チェック</td><td><input type="radio" name="check" id="check_date"><input type="text" size="3" id="date_from"> ～ <input type="text" size="3" id="date_to"></td>
+				</tr>
+				</table>
+				</fieldset>
+				</td></tr>
+
+				<tr>
+					<td colspan="2" align="center"><input type="submit" value=" 登録 " class="submit" id="newbutton"/></td>
+				</tr>
+				</table>
+				</fieldset>
+			</form>
+			
+		</div>
+	</div>
+</div>
+</div>
+
+<div class="footer">
+フッタ
+</div>
+</body>
+</html>

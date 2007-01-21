@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org">
+	<m:doRender m:id="newbuttonTag" >
+	<m:element name="input">
+		<m:attribute name="type" value="submit" />
+		<m:attribute name="class" value="submit" />
+		<m:attribute name="name" value="${binding.nameValue}" />
+		<m:attribute name="value" value="${binding.value != null ? ' 更新 ':' 新規登録 '}" />
+	</m:element>
+	</m:doRender>
+
+</m:mayaa>

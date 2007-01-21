@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container 2.4//EN"
+	"http://www.seasar.org/dtd/components24.dtd">
+<components>
+
+	<include path="aop.dicon"/>
+	<include path="dxo.dicon"/>
+	<include path="jdbc.dicon"/>
+
+
+	<include path="dao.dicon"/>
+
+<!--
+	<include path="s2xwork.dicon" />
+-->	
+	<include path="s2xwork-tiger.dicon"/>
+
+</components>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork" extends="/base.html">
+	
+	<m:beforeRender>
+	var project = null;
+	var typeList = new Packages.java.util.ArrayList();
+	if(parameters.projectid !=null &amp;&amp; parameters.projectid[0] != ''){
+		project = projectHelper.getProject(parameters.projectid[0]);
+		typeList = typeHelper.getTypeListWithScheme(project.typeid);
+	}
+	
+	</m:beforeRender>
+    <m:doRender m:id="contentSlot" name="content"/>
+
+    <m:insert m:id="project" path="/component/select.html"
+        nameValue="projectid" list="${projectHelper.getEntryList(loginid)}"
+        selected="${parameters.projectid !=null ? parameters.projectid[0] : ''}" listKey="id"
+        listValue="name" headerKey="" headerValue="プロジェクトを選択して下さい" onChange="document.step1_2.projectid.value=document.step1_1.projectid.value;document.step1_2.submit();"/>
+
+    <m:insert m:id="type" path="/component/select.html"
+        nameValue="typeid" list="${typeList}"
+        selected="${parameters.typeid !=null ? parameters.typeid[0] : ''}" listKey="type"
+        listValue="type" headerKey="" headerValue="タイプを選択して下さい" extra="true"/>        
+</m:mayaa>

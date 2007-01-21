@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork" extends="/base.html">
+
+    <m:doRender m:id="menuSlot" name="menu">
+    	<m:insert path="/admin/menu.html" name="menu"/>
+    </m:doRender>
+
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+    <m:insert id="newlabel" path="/component/newlabel.html" value="${model.id}"/>
+    <m:insert id="newbutton" path="/component/newbutton.html" value="${model.id}"/>
+    
+	<m:insert m:id="id" path="/component/hidden.html"
+		nameValue="id" value="${model.id}" />
+	<m:insert m:id="formheadid" path="/component/hidden.html"
+		nameValue="formheadid" value="${model.formheadid}" />
+
+	<m:insert m:id="label" path="/component/textfield.html"
+		nameValue="label" value="${model.label}" />
+	<m:insert m:id="comment" path="/component/textfield.html"
+		nameValue="comment" value="${model.comment}" />
+	
+	<m:insert m:id="form_type" path="/component/select.html"
+        nameValue="typeid" list="${formTypeHelper.getFormTypeList()}"
+        selected="${model.typeid}" listKey="id"
+        listValue="name" headerKey="" headerValue="選択して下さい"/>
+
+	<m:insert m:id="defaultvalue" path="/component/textfield.html"
+		nameValue="defaultvalue" value="${model.defaultvalue}" />
+		
+	<m:insert m:id="custom_value" path="/component/select.html"
+        nameValue="valueid" list="${customValueHelper.getCustomValueHeadList()}"
+        selected="${model.valueid}" listKey="id"
+        listValue="name" headerKey="" headerValue="選択して下さい"/>
+
+	<m:insert m:id="value_string" path="/component/radio.html"
+		nameValue="valuetype" checked="${model.valuetype}" value="1" defaultValue="1"/>
+	<m:insert m:id="value_numeric" path="/component/radio.html"
+		nameValue="valuetype" checked="${model.valuetype}" value="2" />
+	<m:insert m:id="value_date" path="/component/radio.html"
+		nameValue="valuetype" checked="${model.valuetype}" value="3" />		
+		
+	<m:insert m:id="require" path="/component/checkbox.html"
+		nameValue="requireflag" checked="${model.requireflag}" value="true" />
+
+
+	<m:insert m:id="check_none" path="/component/radio.html"
+		nameValue="checktype" checked="${model.checktype}" value="0" defaultValue="0"/>
+
+	<m:insert m:id="check_length" path="/component/radio.html"
+		nameValue="checktype" checked="${model.checktype}" value="1" />
+	<m:insert m:id="length_low" path="/component/textfield.html"
+		nameValue="lengthlow" value="${model.lengthlow}" size="3"/>
+	<m:insert m:id="length_high" path="/component/textfield.html"
+		nameValue="lengthhigh" value="${model.lengthhigh}" size="3"/>
+		
+	<m:insert m:id="check_date" path="/component/radio.html"
+		nameValue="checktype" checked="${model.checktype}" value="2" />
+	<m:insert m:id="date_from" path="/component/datepicker.html"
+		nameValue="datefrom" value="${model.datefrom}"  size="8"/>
+	<m:insert m:id="date_to" path="/component/datepicker.html"
+		nameValue="dateto" value="${model.dateto}"  size="8"/>
+		
+	<m:insert m:id="check_range" path="/component/radio.html"
+		nameValue="checktype" checked="${model.checktype}" value="3" />
+	<m:insert m:id="range_low" path="/component/textfield.html"
+		nameValue="rangelow" value="${model.rangelow}"  size="5"/>
+	<m:insert m:id="range_high" path="/component/textfield.html"
+		nameValue="rangehigh" value="${model.rangehigh}"  size="5"/>
+
+</m:mayaa>

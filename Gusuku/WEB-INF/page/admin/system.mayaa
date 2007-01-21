@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork" extends="/base.html">
+
+    <m:doRender m:id="menuSlot" name="menu">
+    	<m:insert path="/admin/menu.html" name="menu"/>
+    </m:doRender>
+
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+	<m:insert m:id="dirid" path="/component/hidden.html"
+		nameValue="dirid" value="${parameters['dirid']!=null?parameters['dirid'][0]:''}" />
+	<m:insert id="dir" path="/component/textfield.html"
+				nameValue="dir" value="${parameters['dir']!=null?parameters['dir'][0]:''}" size="80"/>
+
+	<m:insert m:id="smtpid" path="/component/hidden.html"
+		nameValue="smtpid" value="${parameters['smtpid']!=null?parameters['smtpid'][0]:''}" />
+	<m:insert id="smtp" path="/component/textfield.html"
+				nameValue="smtp" value="${parameters['smtp']!=null?parameters['smtp'][0]:''}" size="30"/>
+
+	<m:insert m:id="smtpportid" path="/component/hidden.html"
+		nameValue="smtpportid" value="${parameters['smtpportid']!=null?parameters['smtpportid'][0]:''}" />
+	<m:insert id="smtpport" path="/component/textfield.html"
+				nameValue="smtpport" value="${parameters['smtpport']!=null?parameters['smtpport'][0]:''}" size="4"/>
+
+	<m:insert m:id="smtpuserid" path="/component/hidden.html"
+		nameValue="smtpuserid" value="${parameters['smtpuserid']!=null?parameters['smtpuserid'][0]:''}" />
+	<m:insert id="smtpuser" path="/component/textfield.html"
+				nameValue="smtpuser" value="${parameters['smtpuser']!=null?parameters['smtpuser'][0]:''}" size="30"/>
+
+	<m:insert m:id="smtppasswordid" path="/component/hidden.html"
+		nameValue="smtppasswordid" value="${parameters['smtppasswordid']!=null?parameters['smtppasswordid'][0]:''}" />
+	<m:insert id="smtppassword" path="/component/textfield.html"
+				nameValue="smtppassword" value="${parameters['smtppassword']!=null?parameters['smtppassword'][0]:''}" size="30"/>
+				
+	<m:insert m:id="fromid" path="/component/hidden.html"
+		nameValue="fromid" value="${parameters['fromid']!=null?parameters['fromid'][0]:''}" />
+	<m:insert id="from" path="/component/textfield.html"
+				nameValue="from" value="${parameters['from']!=null?parameters['from'][0]:''}" size="30"/>
+</m:mayaa>

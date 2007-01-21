@@ -1,0 +1,19 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.dtd">
+<validators>
+	<field name="title">
+		<field-validator type="requiredstring">
+			<message key="report.title.required"/>
+		</field-validator>
+	</field>
+	<field name="priorityid">
+		<field-validator type="requiredstring">
+			<message key="report.priorityid.required"/>
+		</field-validator>
+	</field>
+	<field name="detail">
+		<field-validator type="requiredstring">
+			<message key="report.detail.required"/>
+		</field-validator>
+	</field>
+</validators>

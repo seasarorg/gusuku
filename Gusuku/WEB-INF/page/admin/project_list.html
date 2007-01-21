@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="../css/default_style.css">
+<script type="text/javascript">
+	var normalColor = "transparent";
+	var hoverColor = "#EEEEEE";
+	function mout(obj) {
+		obj.style.backgroundColor = normalColor; 
+	}
+	function mover(obj) {
+		obj.style.backgroundColor = hoverColor;
+	}
+</script>
+<title></title>
+</head>
+<body>
+
+<div class="header">
+Gusuku ヘッダ
+</div>
+
+<div class="headermenu">
+ヘッダめにゅー1 | ヘッダめにゅー2 | ヘッダめにゅー3
+</div>
+
+<div class="container">
+	<div id="contentSlot">
+	<div id="menuSlot">
+	<div class="sidemenu">
+		<div class="border">
+			<div class="menugroup">メニューカテゴリ</div>
+			<div class="menu">メニューコンテンツ1</div>
+			<div class="menu">メニューコンテンツ2</div>
+			<div class="menugroup">メニューカテゴリ</div>
+			<div class="menu">メニューコンテンツ1</div>
+			<div class="menu">メニューコンテンツ2</div>
+		</div>
+	</div>
+	</div>
+
+	<div class="content">
+		<div class="border">
+			<div class="label">プロジェクト</div>
+			<div class="adminhelp">
+			<table>
+				<tr>
+				<td><img src="./../image/help.gif"/></td>
+				<td>Gusukuで管理するプロジェクトを登録します。<br>プロジェクトへユーザーを参加させるには、下記手順を参考にして下さい。
+				<ul>
+				<li>「アカウント管理＞グループ」 でグループを登録</li>
+				<li>「アカウント管理＞グループ一覧＞編集」 でユーザーを登録</li>
+				<li>「プロジェクト管理＞プロジェクト一覧＞編集」 でグループを追加</li>
+				</ul>
+				</td>
+				</tr>
+			</table>
+			</div>
+			<p><a href="project_edit.html">新規登録</a></p>
+			<form action="project_list.html" method="post">
+				<fieldset>
+					<legend>検索</legend>
+				<table>
+				<tr>
+					<td>プロジェクト名</td><td><input type="text" name="" id="search_name"/></td>
+				</tr>
+				<tr>
+					<td>KEY</td><td><input type="text" name="" size="8" id="search_key" /></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit" value=" 検索 " class="submit" /></td>
+				</tr>
+				</table>
+				</fieldset>
+			</form>
+			<p/>
+			<div class="label">プロジェクト一覧</div>
+			<form action="project_delete.html" method="post">
+			<table border="1" cellspacing="0" cellpadding="3">
+			<thead>
+			<tr><td></td><td>プロジェクト名</td><td>KEY</td><td>リーダー</td><td>期間</td><td>グループ</td></tr>
+			</thead>
+			<tbody>
+			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="list"><td><input type="checkbox" id="del"/></td><td><a href="" id="update_link">プロジェクト名</a></td><td><span id="key">NEW</span></td><td><span id="leader">リーダー</span></td><td><span id="date">2006/12/01 ～ 2006/12/31</span></td><td><span id="member_link">編集</span></td></tr>
+			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="remove"><td><input type="checkbox"/></td><td>あああああああああああ</td><td>あ</td><td>あ</td></tr>
+			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="remove"><td><input type="checkbox"/></td><td>あああああああああああ</td><td>あ</td><td>あ</td></tr>
+			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="remove"><td><input type="checkbox"/></td><td>あああああああああああ</td><td>あ</td><td>あ</td></tr>
+			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="remove"><td><input type="checkbox"/></td><td>あああああああああああ</td><td>あ</td><td>あ</td></tr>
+			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="remove"><td><input type="checkbox"/></td><td>あああああああああああ</td><td>あ</td><td>あ</td></tr>
+			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="remove"><td><input type="checkbox"/></td><td>あああああああああああ</td><td>あ</td><td>あ</td></tr>
+			</tbody>
+			</table>
+			<p>
+			<input type="submit" value=" 削除 " class="submit"/>
+			</p>
+			</form>
+		</div>
+	</div>
+	</div>
+</div>
+
+<div class="footer">
+フッタ
+</div>
+</body>
+</html>

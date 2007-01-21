@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+
+    <display-name>Gusuku</display-name>
+	<context-param>
+		<param-name>configPath</param-name>
+		<param-value>app.dicon</param-value>
+	</context-param>
+	<filter>
+		<filter-name>s2filter</filter-name>
+		<filter-class>
+			org.seasar.framework.container.filter.S2ContainerFilter
+		</filter-class>
+	</filter>
+<!--
+    <filter>
+        <filter-name>webwork</filter-name>
+        <filter-class>com.opensymphony.webwork.dispatcher.FilterDispatcher</filter-class>
+    </filter>
+-->
+    <filter>
+        <filter-name>webwork</filter-name>
+        <filter-class>org.seasar.gusuku.servlet.GusukuFilterDispatcher</filter-class>
+        <init-param>
+	        <param-name>ignorePath</param-name>
+	        <param-value>/js/src/widget/templates/.*.html</param-value>
+        </init-param>
+    </filter>
+
+	<filter-mapping>
+		<filter-name>s2filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+    <filter-mapping>
+        <filter-name>webwork</filter-name>
+        <url-pattern>*.html</url-pattern>
+    </filter-mapping>
+
+<!--
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+-->
+
+	<servlet>
+		<servlet-name>s2servlet</servlet-name>
+		<servlet-class>org.seasar.framework.container.servlet.S2ContainerServlet</servlet-class>
+		<init-param>
+			<param-name>configPath</param-name>
+			<param-value>app.dicon</param-value>
+		</init-param>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>MayaaServlet</servlet-name>
+		<servlet-class>org.seasar.mayaa.impl.MayaaServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+		<servlet>
+		<servlet-name>DownLoadServlet</servlet-name>
+		<servlet-class>org.seasar.gusuku.servlet.DownLoadServlet</servlet-class>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownLoadServlet</servlet-name>
+		<url-pattern>/download/*</url-pattern>
+	</servlet-mapping>
+<!--
+	<servlet-mapping>
+		<servlet-name>MayaaServlet</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+-->
+<!--
+	<servlet-mapping>
+		<servlet-name>MayaaServlet</servlet-name>
+		<url-pattern>*.css</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MayaaServlet</servlet-name>
+		<url-pattern>*.gif</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MayaaServlet</servlet-name>
+		<url-pattern>*.png</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MayaaServlet</servlet-name>
+		<url-pattern>*.js</url-pattern>
+	</servlet-mapping>
+-->
+	<!--servlet-mapping>
+		<servlet-name>s2servlet</servlet-name>
+		<url-pattern>/s2servlet</url-pattern>
+	</servlet-mapping-->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <!--
+        This typically isn't required, as the taglib is included in webwork.jar.
+        If you really need a taglib configuration within web.xml, copy webwork/src/java/META-INF/taglib.tld
+        to the WEB-INF directory as webwork.tld.
+     -->
+    <taglib>
+        <taglib-uri>webwork</taglib-uri>
+        <taglib-location>/WEB-INF/webwork.tld</taglib-location>
+    </taglib>
+</web-app>

@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="./css/default_style.css">
+<script type="text/javascript">
+	var normalColor = "transparent";
+	var hoverColor = "#EEEEEE";
+	function mout(obj) {
+		obj.style.backgroundColor = normalColor; 
+	}
+	function mover(obj) {
+		obj.style.backgroundColor = hoverColor;
+	}
+</script>
+<title></title>
+</head>
+<body>
+
+<div class="header">
+Gusuku ヘッダ
+</div>
+
+<div class="headermenu">
+<a href="main.html">ホーム</a> | <a href="entry_project.html">プロジェクト</a> | <a href="seach.html">検索</a> | <a href="report_type.html">新規登録</a> | <a href="./admin/project_list.html">管理</a>
+</div>
+
+<div class="container">
+	<div id="contentSlot">
+	<div class="sidemenu">
+		<div class="border">
+			<div class="label">詳細</div>
+			<table border="1" cellspacing="0" cellpadding="3">
+			<colgroup class="collabel"></colgroup>
+			<colgroup class="colitem"></colgroup>
+			<tr><td>プロジェクト</td><td><span id="project_name">サンプルプロジェクト</span></td></tr>
+			<tr><td>URL</td><td><span id="project_url">http://www.google.co.jp</span></td></tr>
+			<tr><td>URL(開発)</td><td><span id="project_devurl">http://www.google.co.jp</span></td></tr>
+			<tr><td>KEY</td><td><span id="report_key">TEST-1</span></td></tr>
+			<tr><td>タイプ</td><td><span id="report_type">バグ</span></td></tr>
+			<tr><td>優先度</td><td><span id="report_priority">高</span></td></tr>
+			<tr><td>状態</td><td><span id="report_status"></span></td></tr>
+			<tr><td>報告者</td><td><span id="report_reporter">duran</span></td></tr>
+			<tr><td>アサイン先</td><td><span id="report_assignee"></span></td></tr>
+			<tr><td>完了理由</td><td><span id="report_resolution"></span></td></tr>
+			</table>
+		</div>
+		<div class="border">
+			<div class="label">状態変更</div>
+			<div><table><tr id="workflow"><td>
+			<form action="change_status.html">
+			<input type="hidden" id="id"/>
+			<input type="hidden" id="token"/>
+			<input type="hidden" id="nextstatusid"/>
+			<table>
+			<tr><td>■</td><td><table><span id="component"/><tr><td align="right"><input type="submit" value=" 状態変更 " id="submit" class="submit"/></td></tr></table></td></tr>
+			</table>
+			</form>
+			
+			</td></tr></table></div>
+			<div class="label">状態変更履歴</div>
+			<div><table><tr id="workflow_history"><td><span id="history_status">状態</span></td><td><span id="history_changer">変更者名</span></td><td><span id="history_rdate">変更日</span></td></tr></table></div>
+		</div>
+		
+	</div>
+	<div class="content">
+		<div class="border">
+			<div class="label">内容</div>
+			<form action="report_step2.html" method="post">
+			<input type="hidden" id="id">
+			<table border="0" cellpadding="3">
+			<tr><td>
+			<table border="1" cellspacing="0" cellpadding="3">
+			<colgroup class="collabel"></colgroup>
+			<colgroup class="colitem"></colgroup>
+			<tr><td>件名</td><td><span id="report_title">バグが出ました</span></td></tr>
+			<tr><td>登録日</td><td><span id="report_rdate">2006/12/12</span></td></tr>
+			<tr><td>更新日</td><td><span id="report_udate">2006/12/12</span></td></tr>
+			<tr><td>環境</td><td><span id="report_environment">Windows2000</span></td></tr>
+			<span id="custom">
+			<span id="if"><tr><td id="customLabel"></td><td id="customForm"></td></tr></span>
+			</span>
+			<tr><td>詳細</td><td><span id="report_detail">登録ができません。</span></td></tr>
+			</table>
+			</td></tr>
+			<tr id="report_update"><td align="center">
+			<input type="submit" value=" 編集 " class="submit"></td></tr>
+			</table>
+			</form>
+		</div>
+		<div class="border">
+			<div class="label">コメント</div>
+			<table border="0"  cellspacing="0" cellpadding="3">
+			<tr id="commentList"><td>
+			<form action="comment_delete.html" method="post">
+			<input type="hidden" id="id">
+			<input type="hidden" id="comment_id">
+			<input type="hidden" id="token">
+			<table border="1" cellpadding="3" cellspacing="0">
+
+			<tr bgcolor="#E6E6E6"><td>記入者：<span id="comment_writer">duran</span></td>
+			<td>登録日：<span id="comment_rdate">2666/12/17</span></td>
+			<td>添付：<span id="comment_file">ファイル</span></td>
+			<td><input type="submit" value=" 削除 " id="comment_delete" class="submit" /></td>
+			</tr>
+
+			<tr><td colspan="4">
+			<span id="comment_comment">コメント</span>
+			</td></tr>
+			</table>
+			</form>
+			</td></tr>
+			</table>
+			<p/>
+			<form action="comment.html" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="id" id="id"/>
+			<input type="hidden" name="id" id="token"/>
+			<table cellpadding="3">
+			<tr><td>
+				<table border="1" cellspacing="0" cellpadding="3">
+				<tr>
+				<td class="collabel">コメント</td><td class="colitem"><textarea id="comment"></textarea></td>
+				</tr>
+				<tr>
+				<td class="collabel">添付</td><td class="colitem"><input type="file" id="attachfile"/></td>
+				</tr>
+			</table>
+			</td></tr>
+			<tr><td align="center">
+			<input type="submit" value=" 登録 " class="submit"/>
+			</td></tr>
+			</table>
+			</form>
+		</div>
+
+	</div>
+	</div>
+</div>
+
+<div class="footer">
+フッタ
+</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org">
+	<m:doRender m:id="fileTag" >
+	<m:with>
+		<m:element name="input">
+			<m:attribute name="type" value="file" />
+			<m:attribute name="name" value="${binding.nameValue}" />
+			<m:attribute name="size" value="${binding.size}" />
+		</m:element>
+	</m:with>
+	</m:doRender>
+
+</m:mayaa>

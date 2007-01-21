@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork"
+	extends="/base.html">
+	
+    <m:doRender m:id="menuSlot" name="menu">
+    	<m:insert path="/admin/menu.html" name="menu"/>
+    </m:doRender>
+
+    <m:doRender m:id="contentSlot" name="content"/>
+
+    <m:insert m:id="workflow_link" path="/component/a.html"
+    	href="flow_edit.html?id=" link="ワークフロー"/>    
+    <m:insert m:id="flow_link" path="/component/a.html"
+    	href="flow_edit.html?id=${model.id}" link="フロー"/>
+    
+    <m:insert m:id="id" path="/component/hidden.html"
+		nameValue="id" value="${model.id}" />
+    <m:insert m:id="wsid" path="/component/hidden.html"
+		nameValue="wsid" value="${model.wsid}" />
+		
+	<m:write id="currentStatus" value="${workflowStatusHelper.getWorkflowStatus(model.wsid).status.name}" />
+	
+   	<m:insert m:id="intervalList" path="/component/select.html"
+        nameValue="delid" list="${workflowStatusHelper.getNextList(model.wsid,model.id)}"
+        selected="" listKey="id" size="10"
+        listValue="status" headerKey="" headerValue="" extra="true" multiple="true"/>
+
+   	<m:insert m:id="statusList" path="/component/select.html"
+        nameValue="addworkflowstatusid" list="${workflowStatusHelper.getWithoutNextList(model.wsid,model.id)}"
+        selected="" listKey="id" size="10"
+        listValue="status" headerKey="" headerValue="" extra="true" multiple="true"/>
+      
+</m:mayaa>

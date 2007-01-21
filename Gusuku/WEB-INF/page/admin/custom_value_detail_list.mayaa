@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork"
+	extends="/base.html">
+	<m:beforeRender>
+	var list = customValueHelper.getValueList(model.valueheadid);
+	</m:beforeRender>
+		
+    <m:doRender m:id="menuSlot" name="menu">
+    	<m:insert path="/admin/menu.html" name="menu"/>
+    </m:doRender>
+
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+    <m:write id="value_name" value="${customValueHelper.getCustomValueHead(model.valueheadid).name}" />
+
+    <m:insert m:id="edit_headid" path="/component/hidden.html"
+		nameValue="valueheadid" value="${model.valueheadid}" />
+	<m:insert m:id="edit_value" path="/component/textfield.html"
+		nameValue="value" value="${model.value}" />
+	<m:insert m:id="edit_label" path="/component/textfield.html"
+		nameValue="label" value="${model.label}" />
+
+	<m:insert m:id="headid" path="/component/hidden.html"
+		nameValue="valueheadid" value="${model.valueheadid}" />
+	<m:forEach m:id="list" items="${list}" var="item" replace="false" />
+	<m:insert m:id="del" path="/component/checkbox.html"
+		nameValue="delid" value="${item.id}"/>
+	<m:write id="value" value="${item.value}"/>
+	<m:write id="option" value="${item.label}"/>
+	
+	<m:with id="sort">
+		
+		<m:element name="td">
+		<m:if test="${list.size() > 1 &amp;&amp; item.sort &lt; list.size()}">
+			<m:insert path="/component/a.html"
+				href="custom_value_detail_down.html?id=${item.id}&amp;valueheadid=${model.valueheadid}" link="↓"/>
+		</m:if>
+		</m:element>
+		<m:element name="td">
+		<m:if test="${list.size() > 1 &amp;&amp; item.sort > 1}">
+			<m:insert path="/component/a.html"
+				href="custom_value_detail_up.html?id=${item.id}&amp;valueheadid=${model.valueheadid}" link="↑"/>
+		</m:if>
+		</m:element>
+
+	</m:with>
+</m:mayaa>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org">
+
+	<m:beforeRender>
+	var value = binding.value;
+	if(value != null){
+		value = value.replace(/\//g,"-");
+	}
+	</m:beforeRender>
+	
+	<m:doRender m:id="datepickerTag" >
+
+	<m:with>
+		<m:element name="input">
+			<m:attribute name="dojoType" value="dropdowndatepicker" />
+			<m:attribute name="name" value="${binding.nameValue}" />
+			<m:attribute name="value" value="${value}" />
+			<m:attribute name="displayFormat" value="yyyy/MM/dd" />
+			<m:attribute name="saveFormat" value="yyyy/MM/dd" />
+		</m:element>
+	</m:with>
+	</m:doRender>
+
+</m:mayaa>

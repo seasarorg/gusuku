@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="./css/default_style.css">
+<script type="text/javascript">
+	var normalColor = "transparent";
+	var hoverColor = "#EEEEEE";
+	function mout(obj) {
+		obj.style.backgroundColor = normalColor; 
+	}
+	function mover(obj) {
+		obj.style.backgroundColor = hoverColor;
+	}
+</script>
+<title></title>
+</head>
+<body>
+
+<div class="header">
+Gusuku ヘッダ
+</div>
+
+<div class="headermenu">
+<a href="main.html">ホーム</a> | <a href="entry_project.html">プロジェクト</a> | <a href="seach.html">検索</a> | <a href="report_type.html">新規登録</a> | <a href="./admin/project_list.html">管理</a>
+</div>
+
+<div class="container">
+	<div id="contentSlot">
+	<div class="project_detail">
+		<div class="border">
+			<div class="label">プロジェクト詳細</div>
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr><td class="collabel">プロジェクト名</td><td class="colitem"><span id="name">サンプルプロジェクト</span></td></tr>
+			<tr><td class="collabel">KEY</td><td class="colitem"><span id="key">TEST</span></td></tr>
+			<tr><td class="collabel">URL</td><td class="colitem"><span id="url">http://www.google.co.jp</span></td></tr>
+			<tr><td class="collabel">URL(開発)</td><td class="colitem"><span id="devurl">http://www.google.co.jp</span></td></tr>
+			<tr><td class="collabel">リーダー</td><td class="colitem"><span id="leader">duran</span></td></tr>
+			</table>
+			<ul>
+			<li><span id="plist_link"><a href="">バグ一覧</a></span> <span id="padd_link"><a href="">登録</a></span></li>
+			<li id="typelist"><span id="type_link"><a href="">バグ一覧</a></span> <span id="add_link"><a href="">登録</a></span></li>
+			<li id="remove"><a href="">新機能一覧</a> <a href="">登録</a></li>
+			</ul>
+			<div class="label">メール設定</div>
+			<form action="mail_condition.html" method="post">
+			<input type="hidden" id="projectid" />
+			<input type="hidden" id="conditionid" />
+			<table cellpadding="3">
+			<tr><td>
+			<table border="1" cellspacing="0" cellpadding="3">
+			<tr><td class="collabel">コメント</td><td class="colitem"><input type="radio" name="comment" id="comment_all">全て</td><td class="colitem"><input type="radio" name="comment" id="comment_assign">自分への割当てのみ</td><td class="colitem"><input type="radio" name="comment" id="comment_deny">受取らない</td></tr>
+			<tr><td class="collabel">開始</td><td class="colitem"><input type="radio" name="start" id="start_all">全て</td><td class="colitem"><input type="radio" name="start" id="start_assign">自分への割当てのみ</td><td class="colitem"><input type="radio" name="start" id="start_deny">受取らない</td></tr>
+			<tr><td class="collabel">経過</td><td class="colitem"><input type="radio" name="process" id="process_all">全て</td><td class="colitem"><input type="radio" name="process" id="process_assign">自分への割当てのみ</td><td class="colitem"><input type="radio" name="process" id="process_deny">受取らない</td></tr>
+			<tr><td class="collabel">終了</td><td class="colitem"><input type="radio" name="end" id="end_all">全て</td><td class="colitem"><input type="radio" name="end" id="end_assign">自分への割当てのみ</td><td class="colitem"><input type="radio" name="end" id="end_deny">受取らない</td></tr>
+			</table>
+			</td></tr>
+			<tr><td align="center">
+				<input type="submit" value=" 設定 " class="submit" />
+			</td></tr>
+			</table>
+			</form>
+		</div>
+	</div>
+
+	<div class="project_report">
+		<div class="border">
+			<div class="label">プロジェクトレポート</div>
+			■タイプ別
+			<table border="1" cellpadding="3" cellspacing="0">
+				<colgroup class="collabel"></colgroup>
+				<tr id="typeList"><td><span id="type_name">全体</span></td><td>
+				<table border="0">
+					<tr>
+					<td><span id="type_end">2</span>/<span id="type_total">5</span></td>
+					<td width=200"><span id="type_graph">グラフ</span></td>
+					<td align="right" width="35"><span id="type_progress">20%</span>%</td>
+					</tr>
+				</table>
+				</td></tr>
+			</table>
+			<p/>
+			■状態別
+			<table border="1" cellpadding="3" cellspacing="0">
+			<colgroup class="collabel"></colgroup>
+			<colgroup class="colitem"></colgroup>
+			<tr id="statusList">
+			<td><span id="status_name">経過</span></td>
+			<td width="15" align="right"><span id="status_total">1</span></td>
+			</tr>
+			</table>
+		</div>
+	</div>
+	</div>
+</div>
+
+<div class="footer">
+フッタ
+</div>
+</body>
+</html>

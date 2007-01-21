@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork" extends="/base.html">
+	
+	<m:beforeRender>
+	var onload = "hideFoldings()";
+	</m:beforeRender>
+	
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+    <m:insert id="save_condition" path="/component/select.html"
+				nameValue="id" list="${searchConditionHelper.getSearchConditionHead(loginid)}" listKey="id" listValue="name"
+				selected="${parameters['id']!=null?parameters['id']:''}"/>
+
+<!--
+		<m:insert id="conditionid" path="/component/hidden.html"
+			nameValue="id" value="${parameters['id'] !=null ? parameters['id'][0] : ''}"/>
+-->
+		<m:forEach id="searchList" items="${projectHelper.getEntryList(loginid)}" var="project"/>
+		<m:write id="project_name" value="${project.name}" />
+		<m:echo id="script">
+			<m:attribute name="onClick" value="swapVisibility('project_${project.id}', this)"/>
+			<m:attribute name="class" value="foldingAnchor"/>
+		</m:echo>
+		
+		<m:insert id="projectid" path="/component/hidden.html"
+			nameValue="projectid" value="${project.id}"/>
+		<m:echo id="project">
+			<m:attribute name="id" value="project_${project.id}"/>
+		</m:echo>
+
+	    <m:insert m:id="type" path="/component/select.html"
+	        nameValue="basic_typeid_${project.id}" list="${typeHelper.getTypeListWithScheme(project.priorityid)}"
+	        selected="${parameters['basic_typeid_'+project.id] !=null ? parameters['basic_typeid_'+project.id] : ''}" listKey="type"
+	        listValue="type" multiple="true" size="5" extra="true"/>   
+
+	   	<m:insert m:id="title" path="/component/textfield.html"
+			nameValue="basic_title_${project.id}" value="${parameters['basic_title_'+project.id] !=null ? parameters['basic_title_'+project.id][0]:''}" />
+
+	    <m:insert m:id="priorityid" path="/component/select.html"
+	        nameValue="basic_priorityid_${project.id}" list="${priorityHelper.getPriorityListWithScheme(project.priorityid)}"
+	        selected="${parameters['basic_priorityid_'+project.id] !=null ? parameters['basic_priorityid_'+project.id] : ''}" listKey="priority"
+	        listValue="priority" multiple="true" size="5" extra="true"/>
+	           
+	    <m:insert m:id="statusid" path="/component/select.html"
+	        nameValue="basic_statusid_${project.id}" list="${workflowStatusHelper.getStatusList(project.workflowid)}"
+	        selected="${parameters['basic_statusid_'+project.id] !=null ? parameters['basic_statusid_'+project.id] : ''}" listKey="status"
+	        listValue="status" multiple="true" size="5" extra="true" />
+	        	        
+	    <m:insert m:id="assigneeid" path="/component/select.html"
+	        nameValue="basic_assigneeid_${project.id}" list="${accountHelper.getProjectAccountList(project.id)}"
+	        selected="${parameters['basic_assigneeid_'+project.id] != null ? parameters['basic_assigneeid_'+project.id] : ''}" listKey="id"
+	        listValue="name" multiple="true" size="5"/>
+
+		<m:insert m:id="environment" path="/component/textarea.html"
+			nameValue="basic_environment_${project.id}" value="${parameters['basic_environment_'+project.id] != null ? parameters['basic_environment_'+project.id][0] : ''}" />	
+
+		<m:forEach id="custom" items="${customFormHelper.getFormList(project.formid)}" var="form"/>
+
+		<m:with id="if">
+		<m:if test="${form.formType.tagname.equals('textfield')}">
+			<tr>
+			<td class="collabel"><m:write id="customLabel" value="${form.label}"/></td>
+			<td class="colitem">
+				<m:if test="${form.valuetype == 1}">
+					<m:insert id="customForm" path="/component/textfield.html"
+					nameValue="custom_${form.id}_${project.id}" value="${parameters['custom_'+form.id+'_'+project.id]!=null?parameters['custom_'+form.id+'_'+project.id][0]:''}" defaultValue="${form.defaultvalue}"/>
+				</m:if>
+				<m:if test="${form.valuetype == 2}">
+					<m:insert id="customForm" path="/component/textfield.html"
+					nameValue="custom_low_${form.id}_${project.id}" value="${parameters['custom_low_'+form.id+'_'+project.id]!=null?parameters['custom_low_'+form.id+'_'+project.id][0]:''}" defaultValue="${form.defaultvalue}" size="8"/>
+					以上<m:insert id="customForm" path="/component/textfield.html"
+					nameValue="custom_high_${form.id}_${project.id}" value="${parameters['custom_high_'+form.id+'_'+project.id]!=null?parameters['custom_high_'+form.id+'_'+project.id][0]:''}" defaultValue="${form.defaultvalue}" size="8"/>以下
+				</m:if>
+				<m:if test="${form.valuetype == 3}">
+					<m:insert id="customForm" path="/component/datepicker.html"
+					nameValue="custom_from_${form.id}_${project.id}" value="${parameters['custom_from_'+form.id+'_'+project.id]!=null?parameters['custom_from_'+form.id+'_'+project.id][0]:''}" defaultValue="${form.defaultvalue}" size="8"/>
+					 ～ <m:insert id="customForm" path="/component/datepicker.html"
+					nameValue="custom_to_${form.id}_${project.id}" value="${parameters['custom_to_'+form.id+'_'+project.id]!=null?parameters['custom_to_'+form.id+'_'+project.id][0]:''}" defaultValue="${form.defaultvalue}" size="8"/>
+				</m:if>
+			</td>
+			</tr>
+		</m:if>
+
+		<m:if test="${form.formType.tagname.equals('file')}">
+			<tr>
+			<td class="collabel"><m:write id="customLabel" value="${form.label}"/></td>
+			<td class="colitem"><m:insert id="customForm" path="/component/textfield.html"
+				nameValue="custom_${form.id}_${project.id}" value="${parameters['custom_'+form.id+'_'+project.id]!=null?parameters['custom_'+form.id+'_'+project.id][0]:''}"/></td>
+			</tr>
+		</m:if>
+
+		<m:if test="${form.formType.tagname.equals('select')}">
+			<tr>
+			<td class="collabel"><m:write value="${form.label}"/></td>
+			<td class="colitem"><m:insert id="customForm" path="/component/select.html"
+				nameValue="custom_${form.id}_${project.id}" list="${customValueHelper.getValueList(form.valueid)}" listKey="value" listValue="label"
+				selected="${parameters['custom_'+form.id+'_'+project.id]!=null?parameters['custom_'+form.id+'_'+project.id]:''}"
+				multiple="true" size="5"/></td>
+			</tr>
+		</m:if>
+
+		<m:if test="${form.formType.tagname.equals('textarea')}">
+			<tr>
+			<td class="collabel"><m:write value="${form.label}"/></td>
+			<td class="colitem"><m:insert id="customForm" path="/component/textarea.html"
+				nameValue="custom_${form.id}_${project.id}" value="${parameters['custom_'+form.id+'_'+project.id]!=null?parameters['custom_'+form.id+'_'+project.id][0]:''}"/></td>
+			</tr>
+		</m:if>
+
+		<m:if test="${form.formType.tagname.equals('radio')}">
+			<tr>
+			<td class="collabel"><m:write value="${form.label}"/></td>
+			<td class="colitem">
+			<m:forEach items="${customValueHelper.getValueList(form.valueid)}" var="value">
+				<m:insert path="/component/radio.html"
+					nameValue="custom_${form.id}_${project.id}" value="${value.value}" checked="${parameters['custom_'+form.id+'_'+project.id]!=null?parameters['custom_'+form.id+'_'+project.id][0]:''}" defaultValue="1"/>
+				<m:write value="${value.label}"/>　
+			</m:forEach></td>
+			</tr>
+		</m:if>
+
+		<m:if test="${form.formType.tagname.equals('checkbox')}">
+			<tr>
+			<td class="collabel"><m:write value="${form.label}"/></td>
+			<td class="colitem">
+			<m:forEach items="${customValueHelper.getValueList(form.valueid)}" var="value">
+				<m:insert path="/component/checkbox.html"
+					nameValue="custom_${form.id}_${project.id}" value="${value.value}" checked="${parameters['custom_'+form.id+'_'+project.id]}"/>
+				<m:write value="${value.label}"/>　
+			</m:forEach></td>
+			</tr>
+		</m:if>
+
+		</m:with>
+
+		<m:insert m:id="detail" path="/component/textarea.html"
+			nameValue="basic_detail_${project.id}" value="${parameters['basic_detail_'+project.id] != null ? parameters['basic_detail_'+project.id][0] : ''}" />
+
+		<m:insert id="datefrom" path="/component/datepicker.html"
+					nameValue="basic_datefrom_${project.id}" value="${parameters['basic_datefrom_'+project.id] != null ? parameters['basic_datefrom_'+project.id][0] : ''}" size="8"/>
+		<m:insert id="dateto" path="/component/datepicker.html"
+					nameValue="basic_dateto_${project.id}" value="${parameters['basic_dateto_'+project.id] != null ? parameters['basic_dateto_'+project.id][0] : ''}" size="8"/>
+		
+		<m:insert id="condition_name" path="/component/textfield.html"
+			nameValue="name" value="${parameters['name'] != null ? parameters['name'][0] : ''}" />
+			
+	<m:forEach m:id="resultList" items="${searchResult}" var="item" replace="false" />
+
+	<m:insert id="result_type" path="/component/img.html"
+		src="${item.type.icon}" alt="${item.type.name}"/>
+		
+	<m:insert id="result_title_link" path="/component/a.html"
+		href="report_detail.html?id=${item.id}" link="${item.title}" title="${item.detail}"/>
+	<m:write id="result_key" value="${item.key}"/>
+	<m:insert id="result_priority" path="/component/img.html"
+		src="${item.priority.icon}" alt="${item.priority.name}"/>
+	<m:insert id="result_status" path="/component/img.html"
+		src="${item.status.icon}" alt="${item.status.name}"/>
+
+</m:mayaa>

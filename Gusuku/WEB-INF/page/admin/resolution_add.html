@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="../css/default_style.css">
+<script type="text/javascript">
+	var normalColor = "transparent";
+	var hoverColor = "#EEEEEE";
+	function mout(obj) {
+		obj.style.backgroundColor = normalColor; 
+	}
+	function mover(obj) {
+		obj.style.backgroundColor = hoverColor;
+	}
+</script>
+<title></title>
+</head>
+<body>
+
+<div class="header">
+Gusuku ヘッダ
+</div>
+
+<div class="headermenu">
+ヘッダめにゅー1 | ヘッダめにゅー2 | ヘッダめにゅー3
+</div>
+
+<div class="container">
+<div id="contentSlot">
+	<div id="menuSlot">
+	<div class="sidemenu">
+		<div class="border">
+			<div class="menugroup">メニューカテゴリ</div>
+			<div class="menu">メニューコンテンツ1</div>
+			<div class="menu">メニューコンテンツ2</div>
+			<div class="menugroup">メニューカテゴリ</div>
+			<div class="menu">メニューコンテンツ1</div>
+			<div class="menu">メニューコンテンツ2</div>
+		</div>
+	</div>
+	</div>
+
+	<div class="content">
+		<div class="border">
+			<div class="label">完了理由</div>
+			<form action="resolution_done.html" method="post" enctype="multipart/form-data">
+				<input type="hidden" id="id"/>
+				<input type="hidden" id="token"/>
+				<fieldset>
+					<legend><span id="newlabel">新規登録</span></legend>
+				<span id="error"/>
+				<table border="0" cellpadding="3" cellspacing="0">
+				<tr>
+					<td>タイプ名<span class="require">*</span></td><td><input type="text" name="" id="name"/></td>
+				</tr>
+				<tr>
+					<td>備考</td><td><textarea name="" id="description"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center"><input type="submit" value=" 登録 " class="submit" id="newbutton"/></td>
+				</tr>
+				</table>
+				</fieldset>
+			</form>
+			
+		</div>
+	</div>
+</div>
+</div>
+
+<div class="footer">
+フッタ
+</div>
+</body>
+</html>
