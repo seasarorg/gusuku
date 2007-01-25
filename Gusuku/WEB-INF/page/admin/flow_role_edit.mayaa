@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork"
+	extends="/base.html">
+	<m:beforeRender>
+	var intervalList = workflowStatusHelper.getStatusListWithoutStartAndEnd(parameters.id[0]);
+	var start = workflowStatusHelper.getStartStatus(parameters.id[0]);
+	var end = workflowStatusHelper.getEndStatus(parameters.id[0]);
+	</m:beforeRender>
+    <m:doRender m:id="menuSlot" name="menu">
+    	<m:insert path="/admin/menu.html" name="menu"/>
+    </m:doRender>
+
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+    <m:write id="flow_name" value="${workflowHelper.getWorkflow(parameters.id[0]).name}" />
+    
+    <m:insert m:id="id" path="/component/hidden.html"
+		nameValue="id" value="${parameters.id[0]}" />
+
+	<m:write id="start" value="${start.status.name}"/>
+
+	<m:insert id="start_reporter" path="/component/checkbox.html"
+		nameValue="reporter_${start.id}" />
+	<m:insert id="start_assignee" path="/component/checkbox.html"
+		nameValue="assignee_${start.id}" />
+	<m:insert id="start_leader" path="/component/checkbox.html"
+		nameValue="leader_${start.id}" />
+		
+	<m:write id="end" value="${end.status.name}"/>
+	<m:insert id="end_reporter" path="/component/checkbox.html"
+		nameValue="reporter_${end.id}" />
+	<m:insert id="end_assignee" path="/component/checkbox.html"
+		nameValue="assignee_${end.id}" />
+	<m:insert id="end_leader" path="/component/checkbox.html"
+		nameValue="leader_${end.id}" />
+		
+
+	<m:echo id="interval_rows">
+		<m:attribute name="rowspan" value="${intervalList.size()}"/>
+	</m:echo>
+
+	<m:for init="${var i = 0}" test="${i &lt; intervalList.size()}" after="${i++}" id="intervalList" replace="false"/>
+
+	<m:if id="interval_row" test="${i == 0}"/>
+	
+	<m:write id="process" value="${intervalList.get(i).status.name}"/>
+	<m:insert id="process_reporter" path="/component/checkbox.html"
+		nameValue="reporter_${intervalList.get(i).id}" />
+	<m:insert id="process_assignee" path="/component/checkbox.html"
+		nameValue="assignee_${intervalList.get(i).id}" />
+	<m:insert id="process_leader" path="/component/checkbox.html"
+		nameValue="leader_${intervalList.get(i).id}" />
+
+      
+</m:mayaa>

@@ -689,6 +689,24 @@
 <variant type-name-pattern="BOOLEAN"/>
 </data-type>
 </column>
+<column alias="権限　報告者" auto-increment="false" column-size="0" decimal-digits="0" default-value="TRUE" mandatory="true" name="REPORTER" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="権限　アサイン先" auto-increment="false" column-size="0" decimal-digits="0" default-value="TRUE" mandatory="true" name="ASSIGNEE" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="権限　リーダー" auto-increment="false" column-size="0" decimal-digits="0" default-value="TRUE" mandatory="true" name="LEADER" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
 </column-list>
 <primary-key alias="" name="PK_WORKFLOW_STATUS" remarks="">
 <primary-key-description></primary-key-description>

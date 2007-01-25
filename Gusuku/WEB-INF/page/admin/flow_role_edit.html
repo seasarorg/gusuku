@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" type="text/css" href="../css/default_style.css">
+<script type="text/javascript">
+	var normalColor = "transparent";
+	var hoverColor = "#EEEEEE";
+	function mout(obj) {
+		obj.style.backgroundColor = normalColor; 
+	}
+	function mover(obj) {
+		obj.style.backgroundColor = hoverColor;
+	}
+</script>
+<title></title>
+</head>
+<body>
+
+<div class="header">
+Gusuku ヘッダ
+</div>
+
+<div class="headermenu">
+ヘッダめにゅー1 | ヘッダめにゅー2 | ヘッダめにゅー3
+</div>
+
+<div class="container">
+<div id="contentSlot">
+	<div id="menuSlot">
+	<div class="sidemenu">
+		<div class="border">
+			<div class="menugroup">メニューカテゴリ</div>
+			<div class="menu">メニューコンテンツ1</div>
+			<div class="menu">メニューコンテンツ2</div>
+			<div class="menugroup">メニューカテゴリ</div>
+			<div class="menu">メニューコンテンツ1</div>
+			<div class="menu">メニューコンテンツ2</div>
+		</div>
+	</div>
+	</div>
+
+	<div class="content">
+		<div class="border">
+			<div class="label"><span id="flow_name">ワークフロー名</span> 権限</div>
+			
+			<form action="flow_role_edit_done.html" method="post" name="form">
+				<input type="hidden" id="id"/>
+				<fieldset>
+					<legend>権限編集</legend>
+				<table border="0" cellspacing="0" cellpadding="3">
+				<tr><td>
+				<table border="1" cellspacing="0" cellpadding="3">
+				<tr>
+					<td>&nbsp;</td><td>ステータス名</td><td>報告者</td><td>アサイン先</td><td>リーダー</td>
+				</tr>
+				<tr>
+					<td>開始</td><td><span id="start">開始ステータス</span></td><td align="center"><input type="checkbox" id="start_reporter"></td><td align="center"><input type="checkbox" id="start_assignee"></td><td align="center"><input type="checkbox" id="start_leader"></td>
+				</tr>
+				<tr id="intervalList">
+					<div id="interval_row"><td id="interval_rows" rowspan="2">経過</td></div><td><span id="process">経過ステータス</span></td><td align="center"><input type="checkbox" id="process_reporter"></td><td align="center"><input type="checkbox" id="process_assignee"></td><td align="center"><input type="checkbox" id="process_leader"></td>
+				</tr>
+				<tr id="remove">
+					<td>経過ステータス</td><td align="center"><input type="checkbox"></td><td align="center"><input type="checkbox"></td><td align="center"><input type="checkbox"></td>
+				</tr>
+				<tr>
+					<td>終了</td><td><span id="end">終了ステータス</span></td><td align="center"><input type="checkbox" id="end_reporter"></td><td align="center"><input type="checkbox" id="end_assignee"></td><td align="center"><input type="checkbox" id="end_leader"></td>
+				</tr>
+				</table>
+				</td></tr>
+				<tr><td align="center"><input type="submit" value=" 更新 " class="submit"></td></tr>
+				</table>
+				</fieldset>
+			</form>
+			
+		</div>
+	</div>
+</div>
+</div>
+
+<div class="footer">
+フッタ
+</div>
+</body>
+</html>

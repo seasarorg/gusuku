@@ -19,4 +19,6 @@
 		href="workflow_edit.html?id=${item.id}" link="${item.name}" />
 	<m:insert id="flow_link" path="/component/a.html"
 		href="flow_edit.html?id=${item.id}" link="編集" />		
+	<m:insert id="role_link" path="/component/a.html"
+		href="flow_role_edit.html?id=${item.id}" link="編集" />
 </m:mayaa>
