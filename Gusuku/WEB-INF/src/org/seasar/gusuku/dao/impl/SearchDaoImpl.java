@@ -171,6 +171,8 @@ public class SearchDaoImpl extends AbstractDao implements SearchDao {
 		//TODO ソート順序をどうするか？
 		sql.append("ORDER BY REPORT.RDATE DESC ");
 		
+		
+		//ホーム表示用
 		if(searchConditionHead != null){
 			sql.append("LIMIT " + searchConditionHead.getAmount());
 		}

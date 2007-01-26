@@ -17,7 +17,9 @@ package org.seasar.gusuku.web.admin;
 
 import java.util.Map;
 
+import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.logic.SystemPropertyLogic;
+import org.seasar.gusuku.util.ParameterUtil;
 import org.seasar.gusuku.util.PropertyUtil;
 import org.seasar.gusuku.web.GusukuAction;
 import org.seasar.xwork.annotation.Param;
@@ -39,8 +41,16 @@ public class SystemPropertyAction extends GusukuAction implements
 		return SUCCESS;
 	}
 	
-	@XWorkAction(name = "system_done", result = @Result(type = "redirect", param = @Param(name = "location", value = "/admin/system.html")))
+	@XWorkAction(name = "system_done", result = {
+			@Result(type = "redirect", param = @Param(name = "location", value = "/admin/system.html")),
+			@Result(name = "input", type = "mayaa", param = @Param(name = "location", value = "/admin/system.html")) })
 	public String done(){
+		if(StringUtil.isEmpty(ParameterUtil.getParameterValue(parameters,"dir"))){
+			addFieldError("dir",getText("system.dir.required"));
+		}
+		if(hasFieldErrors()){
+			return INPUT;
+		}
 		systemPropertyLogic.update(parameters,false);
 		PropertyUtil.clear();
 		return SUCCESS;

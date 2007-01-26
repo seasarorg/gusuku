@@ -1,28 +1,46 @@
+/*
+ * Copyright 2004-2007 the Seasar Foundation and the Others.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+ * either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
 package org.seasar.gusuku.web.admin;
 
-import java.util.Map;
-
+import org.seasar.gusuku.dto.WorkflowRoleAdminDto;
 import org.seasar.gusuku.helper.WorkflowHelper;
 import org.seasar.gusuku.helper.WorkflowStatusHelper;
+import org.seasar.gusuku.logic.WorkflowAdminLogic;
 import org.seasar.gusuku.web.GusukuAction;
 import org.seasar.xwork.annotation.Param;
 import org.seasar.xwork.annotation.Result;
 import org.seasar.xwork.annotation.XWorkAction;
 
-import com.opensymphony.webwork.interceptor.ParameterAware;
+import com.opensymphony.xwork.ModelDriven;
 
-
-public class WorkflowRoleAdminAction extends GusukuAction implements
-		ParameterAware {
+public class WorkflowRoleAdminAction extends GusukuAction implements ModelDriven{
 	
 	private static final long serialVersionUID = 6439227479001882917L;
+	
+	private WorkflowAdminLogic workflowAdminLogic;
 	
 	private WorkflowHelper workflowHelper;
 	private WorkflowStatusHelper workflowStatusHelper;
 	
-
-	private Map parameters;
-
+	private WorkflowRoleAdminDto dto = new WorkflowRoleAdminDto();
+	
+	public Object getModel(){
+		return dto;
+	}
+	
 	@XWorkAction(name = "flow_role_edit", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/flow_role_edit.html")))
 	public String init(){
 		return SUCCESS;
@@ -30,18 +48,9 @@ public class WorkflowRoleAdminAction extends GusukuAction implements
 	
 	@XWorkAction(name = "flow_role_edit_done", result = @Result(type = "redirect", param = @Param(name = "location", value = "/admin/workflow_list.html")))
 	public String update(){
+		workflowAdminLogic.updateRole(dto);
 		return SUCCESS;
 	}
-	
-	public void setParameters(Map parameters) {
-		this.parameters = parameters;
-	}
-
-	
-	public Map getParameters() {
-		return parameters;
-	}
-
 	
 	public void setWorkflowHelper(WorkflowHelper workflowHelper) {
 		this.workflowHelper = workflowHelper;
@@ -60,6 +69,10 @@ public class WorkflowRoleAdminAction extends GusukuAction implements
 	
 	public WorkflowStatusHelper getWorkflowStatusHelper() {
 		return workflowStatusHelper;
+	}
+
+	public void setWorkflowAdminLogic(WorkflowAdminLogic workflowAdminLogic) {
+		this.workflowAdminLogic = workflowAdminLogic;
 	}
 
 }

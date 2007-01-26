@@ -20,6 +20,7 @@ import java.util.List;
 import org.seasar.dao.annotation.tiger.Arguments;
 import org.seasar.dao.annotation.tiger.Query;
 import org.seasar.dao.annotation.tiger.S2Dao;
+import org.seasar.dao.annotation.tiger.Sql;
 import org.seasar.gusuku.entity.WorkflowStatus;
 
 @S2Dao(bean=WorkflowStatus.class)
@@ -53,6 +54,18 @@ public interface WorkflowStatusDao {
 	@Query("WORKFLOW_STATUS.WORKFLOWID = /*workflowid*/ AND WORKFLOW_STATUS.STATUSID = /*statusid*/")
 	@Arguments({"workflowid","statusid"})
 	public WorkflowStatus findByWorkflowidAndStatusid(String workflowid,String statusid);
+	
+	@Sql("UPDATE WORKFLOW_STATUS SET WORKFLOW_STATUS.REPORTER = TRUE WHERE WORKFLOW_STATUS.ID IN /*reporter*/()")
+	public void updateReporterRole(String[] reporter);
+	
+	@Sql("UPDATE WORKFLOW_STATUS SET WORKFLOW_STATUS.ASSIGNEE = TRUE WHERE WORKFLOW_STATUS.ID IN /*assignee*/()")
+	public void updateAssigneeRole(String[] assignee);
+	
+	@Sql("UPDATE WORKFLOW_STATUS SET WORKFLOW_STATUS.LEADER = TRUE WHERE WORKFLOW_STATUS.ID IN /*leader*/()")
+	public void updateLeaderRole(String[] leader);
+	
+	@Sql("UPDATE WORKFLOW_STATUS SET WORKFLOW_STATUS.REPORTER = FALSE,WORKFLOW_STATUS.ASSIGNEE = FALSE ,WORKFLOW_STATUS.LEADER = FALSE WHERE WORKFLOW_STATUS.WORKFLOWID = /*workflowid*/")
+	public void updateRole(String workflowid);
 	
 }
 

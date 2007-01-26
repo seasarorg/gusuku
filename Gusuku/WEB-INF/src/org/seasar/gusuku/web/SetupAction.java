@@ -31,7 +31,6 @@ import org.seasar.xwork.annotation.XWorkAction;
 
 import com.opensymphony.webwork.interceptor.ParameterAware;
 
-
 public class SetupAction extends GusukuAction implements NonAuthenticateAction,
 		ParameterAware {
 
@@ -52,12 +51,34 @@ public class SetupAction extends GusukuAction implements NonAuthenticateAction,
 		}
 	}
 	
-	@XWorkAction(name = "setup_done", result = @Result(type = "redirect", param = @Param(name = "location", value = "/index.html")))
+	@XWorkAction(name = "setup_done", result = {
+			@Result(type = "redirect", param = @Param(name = "location", value = "/index.html")),
+			@Result(name = "input", type = "mayaa", param = @Param(name = "location", value = "/setup.html")) })
 	public String done(){
+		String mailaddr = ParameterUtil.getParameterValue(parameters,"mailaddr");
+		String password = ParameterUtil.getParameterValue(parameters,"password");
+		String name = ParameterUtil.getParameterValue(parameters,"name");
+		String dir = ParameterUtil.getParameterValue(parameters,"dir");
+		if(StringUtil.isEmpty(mailaddr)){
+			addFieldError("mailaddr",getText("setup.mailaddr.required"));
+		}
+		if(StringUtil.isEmpty(password)){
+			addFieldError("password",getText("setup.password.required"));
+		}
+		if(StringUtil.isEmpty(name)){
+			addFieldError("name",getText("setup.name.required"));
+		}
+		if(StringUtil.isEmpty(dir)){
+			addFieldError("dir",getText("setup.dir.required"));
+		}
+		
+		if(hasFieldErrors()){
+			return INPUT;
+		}
 		AccountAdminDto dto = new AccountAdminDto();
-		dto.setMailaddr(ParameterUtil.getParameterValue(parameters,"mailaddr"));
-		dto.setPassword(ParameterUtil.getParameterValue(parameters,"password"));
-		dto.setName(ParameterUtil.getParameterValue(parameters,"name"));
+		dto.setMailaddr(mailaddr);
+		dto.setPassword(password);
+		dto.setName(name);
 		dto.setKind("1");
 		accountAdminLogic.registration(dto);
 		systemPropertyLogic.update(parameters,true);

@@ -31,6 +31,9 @@ public class WorkflowStatus implements Serializable {
 	private long statusid;
 	private boolean sflag;
 	private boolean eflag;
+	private boolean reporter = true;
+	private boolean assignee = true;
+	private boolean leader = true;
 	
 	private Status status;
 
@@ -83,6 +86,30 @@ public class WorkflowStatus implements Serializable {
 	
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	public boolean isAssignee() {
+		return assignee;
+	}
+
+	public void setAssignee(boolean assignee) {
+		this.assignee = assignee;
+	}
+
+	public boolean isLeader() {
+		return leader;
+	}
+
+	public void setLeader(boolean leader) {
+		this.leader = leader;
+	}
+
+	public boolean isReporter() {
+		return reporter;
+	}
+
+	public void setReporter(boolean reporter) {
+		this.reporter = reporter;
 	}
 
 }

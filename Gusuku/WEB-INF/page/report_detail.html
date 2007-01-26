@@ -48,14 +48,20 @@ Gusuku ヘッダ
 		<div class="border">
 			<div class="label">状態変更</div>
 			<div><table><tr id="workflow"><td>
+
 			<form action="change_status.html">
 			<input type="hidden" id="id"/>
 			<input type="hidden" id="token"/>
 			<input type="hidden" id="nextstatusid"/>
 			<table>
-			<tr><td>■</td><td><table><span id="component"/><tr><td align="right"><input type="submit" value=" 状態変更 " id="submit" class="submit"/></td></tr></table></td></tr>
-			</table>
+			<tr id="action"><td>■</td><td>
+				<table>
+					<span id="component"/><tr><td align="right"><input type="submit" value=" 状態変更 " id="submit" class="submit"/></td></tr>
+				</table>
+			</td></tr>
 			</form>
+			</table>
+
 			
 			</td></tr></table></div>
 			<div class="label">状態変更履歴</div>

@@ -38,6 +38,7 @@ import org.seasar.gusuku.helper.ResolutionHelper;
 import org.seasar.gusuku.helper.StatusHelper;
 import org.seasar.gusuku.helper.StatusHistoryHelper;
 import org.seasar.gusuku.helper.TypeHelper;
+import org.seasar.gusuku.helper.WorkflowStatusHelper;
 import org.seasar.gusuku.logic.ReportLogic;
 import org.seasar.gusuku.util.ParameterUtil;
 import org.seasar.xwork.annotation.Param;
@@ -68,6 +69,7 @@ public class ReportAction extends GusukuAction implements ParameterAware{
 	private ResolutionHelper resolutionHelper;
 	private StatusHistoryHelper statusHistoryHelper;
 	private ReportDataHelper reportDataHelper;
+	private WorkflowStatusHelper workflowStatusHelper;
 	
 	private CustomFormHelper customFormHelper;
 	private CustomValueHelper customValueHelper;
@@ -440,6 +442,14 @@ public class ReportAction extends GusukuAction implements ParameterAware{
 	
 	public void setReportDataHelper(ReportDataHelper reportDataHelper) {
 		this.reportDataHelper = reportDataHelper;
+	}
+
+	public WorkflowStatusHelper getWorkflowStatusHelper() {
+		return workflowStatusHelper;
+	}
+
+	public void setWorkflowStatusHelper(WorkflowStatusHelper workflowStatusHelper) {
+		this.workflowStatusHelper = workflowStatusHelper;
 	}
 
 }

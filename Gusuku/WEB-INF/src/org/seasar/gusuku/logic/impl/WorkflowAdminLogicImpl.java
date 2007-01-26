@@ -23,6 +23,7 @@ import org.seasar.gusuku.dao.NextstatusDao;
 import org.seasar.gusuku.dao.WorkflowDao;
 import org.seasar.gusuku.dao.WorkflowStatusDao;
 import org.seasar.gusuku.dto.WorkflowAdminDto;
+import org.seasar.gusuku.dto.WorkflowRoleAdminDto;
 import org.seasar.gusuku.dxo.WorkflowDxo;
 import org.seasar.gusuku.entity.Nextstatus;
 import org.seasar.gusuku.entity.Workflow;
@@ -128,6 +129,23 @@ public class WorkflowAdminLogicImpl implements WorkflowAdminLogic {
 				nextstatusDao.deleteByWorkflowstatusidAndNextstatusid(workflowstatusid,delid);
 			}
 		}
+	}
+	
+	@Aspect("j2ee.requiredTx")
+	public void updateRole(WorkflowRoleAdminDto workflowRoleAdminDto) {
+		
+		workflowStatusDao.updateRole(workflowRoleAdminDto.getId());
+		
+		if(workflowRoleAdminDto.getReporter() != null && workflowRoleAdminDto.getReporter().length > 0){
+			workflowStatusDao.updateReporterRole(workflowRoleAdminDto.getReporter());
+		}
+		if(workflowRoleAdminDto.getAssignee() != null && workflowRoleAdminDto.getAssignee().length > 0){
+			workflowStatusDao.updateAssigneeRole(workflowRoleAdminDto.getAssignee());
+		}
+		if(workflowRoleAdminDto.getLeader() != null && workflowRoleAdminDto.getLeader().length > 0){
+			workflowStatusDao.updateLeaderRole(workflowRoleAdminDto.getLeader());
+		}
+		
 	}
 
 	public void setWorkflowDao(WorkflowDao workflowDao) {

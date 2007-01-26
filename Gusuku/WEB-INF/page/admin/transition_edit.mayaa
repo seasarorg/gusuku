@@ -8,11 +8,9 @@
     </m:doRender>
 
     <m:doRender m:id="contentSlot" name="content"/>
-
-    <m:insert m:id="workflow_link" path="/component/a.html"
-    	href="flow_edit.html?id=" link="ワークフロー"/>    
+ 
     <m:insert m:id="flow_link" path="/component/a.html"
-    	href="flow_edit.html?id=${model.id}" link="フロー"/>
+    	href="flow_edit.html?id=${model.id}" link="${workflowHelper.getWorkflow(model.id).name}"/>
     
     <m:insert m:id="id" path="/component/hidden.html"
 		nameValue="id" value="${model.id}" />

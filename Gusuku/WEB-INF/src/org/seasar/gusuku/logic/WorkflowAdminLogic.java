@@ -16,6 +16,7 @@
 package org.seasar.gusuku.logic;
 
 import org.seasar.gusuku.dto.WorkflowAdminDto;
+import org.seasar.gusuku.dto.WorkflowRoleAdminDto;
 
 
 public interface WorkflowAdminLogic {
@@ -34,4 +35,5 @@ public interface WorkflowAdminLogic {
 	
 	public void deleteTransition(String[] delids,String workflowstatusid);
 
+	public void updateRole(WorkflowRoleAdminDto workflowRoleAdminDto);
 }
