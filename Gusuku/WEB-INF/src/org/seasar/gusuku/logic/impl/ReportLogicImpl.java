@@ -234,7 +234,7 @@ public class ReportLogicImpl implements ReportLogic {
 					if(!StringUtil.isEmpty(from)){
 						mail.setFrom(from);
 					}
-					mail.setSubject("["+report.getKey()+"] コメントメール");
+					mail.setSubject("["+report.getKey()+"] コメントが登録されました " + report.getTitle());
 					Map params = new HashMap();
 					params.put("report",report);
 					params.put("comment",commentValue);
@@ -400,7 +400,7 @@ public class ReportLogicImpl implements ReportLogic {
 					}
 				}
 				mail.setFrom(PropertyUtil.getProperty(GusukuConstant.MAIL_FROM));
-				mail.setSubject("["+report.getKey()+"] ステータス変更メール");
+				mail.setSubject("["+report.getKey()+"] " + workflowStatus.getStatus().getSubject() + " "+report.getTitle());
 				//mail.setText(workflowStatus.getStatus().getName()+"へ変更");
 				Map params = new HashMap();
 				params.put("report",report);
