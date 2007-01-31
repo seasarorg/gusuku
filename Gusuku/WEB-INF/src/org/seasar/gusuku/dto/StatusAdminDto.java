@@ -32,6 +32,7 @@ public class StatusAdminDto implements Serializable {
 	private String resolutionflag;
 	private String mailflag;
 	private String rssflag;
+	private String subject;
 	private String description;
 	
 	public String getId() {
@@ -128,6 +129,14 @@ public class StatusAdminDto implements Serializable {
 
 	public void setNoiconflag(boolean noiconflag) {
 		this.noiconflag = noiconflag;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 	
 

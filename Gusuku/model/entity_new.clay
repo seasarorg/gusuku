@@ -573,6 +573,12 @@
 <variant type-name-pattern="BOOLEAN"/>
 </data-type>
 </column>
+<column alias="メール件名" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="SUBJECT" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
 <column alias="備考" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="DESCRIPTION" remarks="">
 <column-description></column-description>
 <data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">

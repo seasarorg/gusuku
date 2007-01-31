@@ -18,4 +18,9 @@
 			<message key="status.transition.required"/>
 		</field-validator>
 	</field>
+	<field name="subject">
+		<field-validator type="requiredstring">
+			<message key="status.subject.required"/>
+		</field-validator>
+	</field>
 </validators>

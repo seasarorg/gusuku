@@ -257,7 +257,7 @@ public class ReportLogicImpl implements ReportLogic {
 					addBcc(report,mail,mailCondition.getComment(),mailCondition.getAccount().getMailaddr(),mailCondition.getAccountid());
 				}
 				mail.setFrom(PropertyUtil.getProperty(GusukuConstant.MAIL_FROM));
-				mail.setSubject("["+report.getKey()+"] コメントメール");
+				mail.setSubject("["+report.getKey()+"] コメントが登録されました " + report.getTitle());
 				Map params = new HashMap();
 				params.put("report",report);
 				params.put("comment",commentValue);
@@ -372,7 +372,7 @@ public class ReportLogicImpl implements ReportLogic {
 					if(!StringUtil.isEmpty(from)){
 						mail.setFrom(from);
 					}
-					mail.setSubject("["+report.getKey()+"] ステータス変更メール");
+					mail.setSubject("["+report.getKey()+"] " + workflowStatus.getStatus().getSubject() + " "+report.getTitle());
 					Map params = new HashMap();
 					params.put("report",report);
 					params.put("next",workflowStatus.getStatus());

@@ -32,6 +32,7 @@ public class Status implements Serializable {
 	private boolean resolutionflag;
 	private boolean mailflag;
 	private boolean rssflag;
+	private String subject;
 	private String description;
 	private boolean delflag;
 	private Date rdate;
@@ -134,6 +135,14 @@ public class Status implements Serializable {
 
 	public void setRssflag(boolean rssflag) {
 		this.rssflag = rssflag;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 
 }

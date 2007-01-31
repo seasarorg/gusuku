@@ -44,6 +44,9 @@
 	<m:insert m:id="mail_off" path="/component/radio.html"
 		nameValue="mailflag" checked="${model.mailflag}" value="false" defaultValue="false"/>
 
+	<m:insert m:id="subject" path="/component/textfield.html"
+		nameValue="subject" value="${model.subject}" />
+		
 	<m:insert m:id="description" path="/component/textarea.html"
 		nameValue="description" value="${model.description}" />
 
