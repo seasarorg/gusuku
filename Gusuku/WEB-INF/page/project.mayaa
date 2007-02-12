@@ -14,6 +14,6 @@
     	href="${item.url}" link="${item.url}" target="_blank" />
     <m:insert id="devurl" path="/component/a.html"
     	href="${item.devurl}" link="${item.devurl}" target="_blank" />
-    <m:write id="leader" value="${item.leader.name}"/>
+    <m:write id="leader" value="${item.leader != null ? item.leader.name : ''}"/>
     
 </m:mayaa>
