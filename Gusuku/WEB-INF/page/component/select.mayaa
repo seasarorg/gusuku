@@ -14,7 +14,7 @@
 			<m:if test="${binding.headerValue != null &amp;&amp; binding.headerValue != ''}">
 				<m:element name="option">
 					<m:attribute name="value" value="${binding.headerKey}" />
-					<m:if test="${binding.selected == null || binding.selected.equals(binding.headerKey)}">
+					<m:if test="${binding.selected == null || binding.selected == (binding.headerKey)}">
 					<m:attribute name="selected" value="selected" />				
 					</m:if>
 					<m:write value="${binding.headerValue}" />
@@ -24,7 +24,7 @@
 				<m:element name="option">
 					
 					<m:forEach items="${binding.selected}" var="selected">
-					<m:if test="${selected != null &amp;&amp; selected.equals(item[binding.listKey])}">
+					<m:if test="${selected != null &amp;&amp; selected == (item[binding.listKey])}">
 					<m:attribute name="selected" value="selected" />				
 					</m:if>
 					<m:if test="${selected != null &amp;&amp; binding.extra != null &amp;&amp; selected.equals(item[binding.listKey].id)}">

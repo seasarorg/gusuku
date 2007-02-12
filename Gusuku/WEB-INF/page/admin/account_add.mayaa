@@ -20,7 +20,7 @@
 	<m:insert m:id="name" path="/component/textfield.html"
 		nameValue="name" value="${model.name}" />
 	<m:insert m:id="kind" path="/component/select.html"
-        nameValue="kind" list="${accountKindHelper.getList()}"
+        nameValue="kind" list="${kindList}"
         selected="${model.kind}" listKey="id"
         listValue="kindname" headerKey="" headerValue="選択して下さい"/>
 

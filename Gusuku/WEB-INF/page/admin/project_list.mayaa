@@ -19,6 +19,7 @@
 		nameValue="delid" value="${item.id}"/>
 	<m:write id="leader" value="${item.leader.name}"/>
 	<m:write id="key" value="${item.key}"/>
+	<m:write id="counter" value="${item.counter}"/>
 	<m:with id="date">
 		<m:formatDate value="${item.sdate}" pattern="yyyy/MM/dd" />
 		<m:if test="${item.sdate != null || item.edate != null}">

@@ -3,7 +3,7 @@
 	xmlns:ww="/webwork">
 
     <m:null id="remove" />
-<!--
+<!-- ヘルプを非表示にする時はこのコメントを外す
     <m:null xpath="div[@class='adminhelp']" />
     <m:null xpath="div[@class='help']" />
 -->

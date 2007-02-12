@@ -9,7 +9,7 @@
 
     <m:doRender m:id="contentSlot" name="content"/>
     
-    <m:write id="group_name" value="${groupbaseHelper.getGroupbase(model.id).name}" />
+    <m:write id="group_name" value="${groupbase.name}" />
     <m:insert m:id="id" path="/component/hidden.html"
 		nameValue="id" value="${model.id}" />
 		

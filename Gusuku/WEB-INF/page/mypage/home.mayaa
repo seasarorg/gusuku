@@ -2,11 +2,7 @@
 <m:mayaa xmlns:m="http://mayaa.seasar.org"
 	xmlns:ww="/webwork"
 	extends="/base.html">
-	
-	<m:beforeRender>
-	var list = searchConditionHelper.getSearchConditionHead(loginid);
-	</m:beforeRender>
-	
+
     <m:doRender m:id="menuSlot" name="menu">
     	<m:insert path="/mypage/menu.html" name="menu"/>
     </m:doRender>

@@ -2,9 +2,6 @@
 <m:mayaa xmlns:m="http://mayaa.seasar.org"
 	xmlns:ww="/webwork" extends="/base.html">
 	
-	<m:beforeRender>
-	var project = projectHelper.getProject(parameters.projectid[0]);
-	</m:beforeRender>
     <m:doRender m:id="contentSlot" name="content"/>
     
     <m:insert id="newlabel" path="/component/newlabel.html" value="${parameters.id}"/>
@@ -17,7 +14,7 @@
 		nameValue="projectid" value="${parameters.projectid[0]}" />
 		
     <m:with id="typeid">
-   		<m:if test="${parameters.id ==null}">
+   		<m:if test="${parameters.id ==null || parameters.id[0] == ''}">
 	    <m:insert path="/component/hidden.html"
 			nameValue="typeid" value="${parameters.typeid[0]}" />
 		</m:if>
@@ -25,16 +22,16 @@
 		
     <m:insert m:id="reporterid" path="/component/hidden.html"
 		nameValue="reporterid" value="${parameters.reporterid[0]}" />
-						    
+					    
     <m:write id="projectname" value="${project.name}" />
-    
+
     <m:with id="typename">
-    	<m:if test="${parameters.id ==null}">
-		    <m:write id="typename" value="${typeHelper.getType(parameters.typeid[0]).name}" />  
+    	<m:if test="${parameters.id == null || parameters.id[0] == ''}">
+		    <m:write id="typename" value="${typeHelper.getType(new java.lang.Long(parameters.typeid[0])).name}" />  
 	    </m:if>
-    	<m:if test="${parameters.id !=null}">
+    	<m:if test="${parameters.id != null &amp;&amp; parameters.id[0] != ''}">
 		    <m:insert m:id="type" path="/component/select.html"
-		        nameValue="typeid" list="${typeHelper.getTypeListWithScheme(projectHelper.getProject(parameters.projectid[0]).typeid)}"
+		        nameValue="typeid" list="${typeList}"
 		        selected="${parameters.typeid !=null ? parameters.typeid[0] : ''}" listKey="type"
 		        listValue="type" extra="true"/>
 	    </m:if>
@@ -44,19 +41,19 @@
 		nameValue="title" value="${parameters.title !=null ? parameters.title[0]:''}" />
 
     <m:insert m:id="priorityid" path="/component/select.html"
-        nameValue="priorityid" list="${priorityHelper.getPriorityListWithScheme(project.priorityid)}"
+        nameValue="priorityid" list="${priorityList}"
         selected="${parameters.priorityid !=null ? parameters.priorityid[0] : ''}" listKey="priority"
         listValue="priority" headerKey="" headerValue="優先度を選択して下さい" extra="true" />      
         
     <m:insert m:id="assigneeid" path="/component/select.html"
-        nameValue="assigneeid" list="${accountHelper.getProjectAccountList(parameters.projectid[0])}"
+        nameValue="assigneeid" list="${assigneeList}"
         selected="${parameters.assigneeid != null ? parameters.assigneeid[0] : ''}" listKey="id"
         listValue="name" headerKey="" headerValue="アサイン先を選択して下さい"/>
         
 	<m:insert m:id="environment" path="/component/textarea.html"
 		nameValue="environment" value="${parameters.environment != null ? parameters.environment[0] : ''}" />	
 
-	<m:forEach id="custom" items="${customFormHelper.getFormList(projectHelper.getProject(parameters.projectid[0]).formid)}" var="form"/>
+	<m:forEach id="custom" items="${customFormHelper.getFormList(projectHelper.getProject(new java.lang.Long(parameters.projectid[0])).formid)}" var="form"/>
 
 		<m:with id="if">
 		<m:if test="${form.formType.tagname.equals('textfield') &amp;&amp; form.valuetype == 3}">

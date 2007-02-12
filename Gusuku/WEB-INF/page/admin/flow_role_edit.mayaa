@@ -2,18 +2,14 @@
 <m:mayaa xmlns:m="http://mayaa.seasar.org"
 	xmlns:ww="/webwork"
 	extends="/base.html">
-	<m:beforeRender>
-	var intervalList = workflowStatusHelper.getStatusListWithoutStartAndEnd(model.id);
-	var start = workflowStatusHelper.getStartStatus(model.id);
-	var end = workflowStatusHelper.getEndStatus(model.id);
-	</m:beforeRender>
+
     <m:doRender m:id="menuSlot" name="menu">
     	<m:insert path="/admin/menu.html" name="menu"/>
     </m:doRender>
 
     <m:doRender m:id="contentSlot" name="content"/>
     
-    <m:write id="flow_name" value="${workflowHelper.getWorkflow(model.id).name}" />
+    <m:write id="flow_name" value="${workflow.name}" />
     
     <m:insert m:id="id" path="/component/hidden.html"
 		nameValue="id" value="${model.id}" />

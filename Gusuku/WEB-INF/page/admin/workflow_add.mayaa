@@ -17,12 +17,12 @@
 		nameValue="name" value="${model.name}" />
 
 	<m:insert m:id="start" path="/component/select.html"
-        nameValue="startstatusid" list="${statusHelper.getStatusList()}"
+        nameValue="startstatusid" list="${statusList}"
         selected="${model.startstatusid}" listKey="id"
         listValue="name" headerKey="" headerValue="選択して下さい"/>
 
 	<m:insert m:id="end" path="/component/select.html"
-        nameValue="endstatusid" list="${statusHelper.getStatusList()}"
+        nameValue="endstatusid" list="${statusList}"
         selected="${model.endstatusid}" listKey="id"
         listValue="name" headerKey="" headerValue="選択して下さい"/>
         

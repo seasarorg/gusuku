@@ -10,22 +10,22 @@
     <m:doRender m:id="contentSlot" name="content"/>
  
     <m:insert m:id="flow_link" path="/component/a.html"
-    	href="flow_edit.html?id=${model.id}" link="${workflowHelper.getWorkflow(model.id).name}"/>
+    	href="flow_edit.html?id=${model.id}" link="${workflow.name}"/>
     
     <m:insert m:id="id" path="/component/hidden.html"
 		nameValue="id" value="${model.id}" />
     <m:insert m:id="wsid" path="/component/hidden.html"
 		nameValue="wsid" value="${model.wsid}" />
 		
-	<m:write id="currentStatus" value="${workflowStatusHelper.getWorkflowStatus(model.wsid).status.name}" />
+	<m:write id="currentStatus" value="${current.name}" />
 	
    	<m:insert m:id="intervalList" path="/component/select.html"
-        nameValue="delid" list="${workflowStatusHelper.getNextList(model.wsid,model.id)}"
+        nameValue="delid" list="${nextList}"
         selected="" listKey="id" size="10"
         listValue="status" headerKey="" headerValue="" extra="true" multiple="true"/>
 
    	<m:insert m:id="statusList" path="/component/select.html"
-        nameValue="addworkflowstatusid" list="${workflowStatusHelper.getWithoutNextList(model.wsid,model.id)}"
+        nameValue="addworkflowstatusid" list="${nextEntryList}"
         selected="" listKey="id" size="10"
         listValue="status" headerKey="" headerValue="" extra="true" multiple="true"/>
       

@@ -3,17 +3,13 @@
 	xmlns:ww="/webwork"
 	extends="/base.html">
 	
-	<m:beforeRender>
-	var list = customFormHelper.getFormList(model.formheadid);
-	</m:beforeRender>
-	
     <m:doRender m:id="menuSlot" name="menu">
     	<m:insert path="/admin/menu.html" name="menu"/>
     </m:doRender>
 
     <m:doRender m:id="contentSlot" name="content"/>
     
-    <m:write id="form_name" value="${customFormHelper.getCustomFormHead(model.formheadid).name}" />
+    <m:write id="form_name" value="${customFormHead.name}" />
 
 	<m:insert id="add_link" path="/component/a.html"
 		href="custom_form_detail_edit.html?formheadid=${model.formheadid}" link="新規登録" />
@@ -40,13 +36,13 @@
 	<m:with id="sort">
 		
 		<m:element name="td">
-		<m:if test="${list.size() > 1 &amp;&amp; item.sort &lt; list.size()}">
+		<m:if test="${list.size() > 1 &amp;&amp; item.sort &lt; list.get(list.size()-1).sort}">
 			<m:insert path="/component/a.html"
 				href="custom_form_detail_down.html?id=${item.id}&amp;formheadid=${model.formheadid}" link="↓"/>
 		</m:if>
 		</m:element>
 		<m:element name="td">
-		<m:if test="${list.size() > 1 &amp;&amp; item.sort > 1}">
+		<m:if test="${list.size() > 1 &amp;&amp; item.sort > list.get(0).sort}">
 			<m:insert path="/component/a.html"
 				href="custom_form_detail_up.html?id=${item.id}&amp;formheadid=${model.formheadid}" link="↑"/>
 		</m:if>

@@ -13,6 +13,8 @@
     <m:insert id="project_devurl" path="/component/a.html"
     	href="${project.devurl}" link="${project.devurl}" target="_blank" />
 
+	<m:insert m:id="projectid" path="/component/hidden.html"
+		nameValue="projectid" value="${project.id}"/>
     <m:write id="report_key" value="${report.key}"/>
    	<m:insert id="report_type" path="/component/img.html"
 		src="${report.type.icon}" alt="${report.type.name}"/>
@@ -123,12 +125,12 @@
 			<m:attribute name="value" value="${item.status.transition}"/>
 		</m:echo>
 
-	<m:forEach id="workflow_history" items="${statusHistoryHelper.getStatusHistoryList(report.id)}" var="item" replace="false" />
+	<m:forEach id="workflow_history" items="${statusHistoryList}" var="item" replace="false" />
 		<m:write id="history_status" value="${item.status.name}"/>
 		<m:write id="history_changer" value="${item.changer.name}"/>
 		<m:formatDate id="history_rdate" value="${item.rdate}" pattern="yyyy/MM/dd hh:mm" />
 	
-	<m:forEach id="commentList" items="${commentHelper.getCommentList(parameters.id[0])}" var="item" replace="false"/>
+	<m:forEach id="commentList" items="${commentList}" var="item" replace="false"/>
 	<m:insert m:id="comment_id" path="/component/hidden.html"
 		nameValue="commentid" value="${item.id}"/>
 	<m:write id="comment_comment" value="${item.comment}" />

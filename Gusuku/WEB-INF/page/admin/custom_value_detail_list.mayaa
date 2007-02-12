@@ -2,9 +2,6 @@
 <m:mayaa xmlns:m="http://mayaa.seasar.org"
 	xmlns:ww="/webwork"
 	extends="/base.html">
-	<m:beforeRender>
-	var list = customValueHelper.getValueList(model.valueheadid);
-	</m:beforeRender>
 		
     <m:doRender m:id="menuSlot" name="menu">
     	<m:insert path="/admin/menu.html" name="menu"/>
@@ -12,7 +9,7 @@
 
     <m:doRender m:id="contentSlot" name="content"/>
     
-    <m:write id="value_name" value="${customValueHelper.getCustomValueHead(model.valueheadid).name}" />
+    <m:write id="value_name" value="${customValueHead.name}" />
 
     <m:insert m:id="edit_headid" path="/component/hidden.html"
 		nameValue="valueheadid" value="${model.valueheadid}" />

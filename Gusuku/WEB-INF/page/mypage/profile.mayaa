@@ -20,7 +20,7 @@
 	<m:insert m:id="name" path="/component/textfield.html"
 		nameValue="name" value="${model.name}" />
     
-    <m:forEach id="list" items="${groupbaseHelper.getJoinGroupList(loginid)}" var="group" replace="false"/>
+    <m:forEach id="list" items="${groupList}" var="group" replace="false"/>
 	<m:write id="group_name" value="${group.name}"/>
 
 </m:mayaa>

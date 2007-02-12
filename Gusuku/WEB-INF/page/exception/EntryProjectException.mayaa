@@ -9,10 +9,6 @@
 
     <m:doRender m:id="contentSlot" name="content"/>
     
-    <m:forEach id="list" items="${searchConditionHelper.getSearchConditionHead(loginid)}" var="condition" replace="false"/>
-    <m:insert id="del" path="/component/checkbox.html"
-    	nameValue="delids" value="${condition.id}" />
-	<m:insert id="search_link" path="/component/a.html"
-		href="search_load.html?id=${condition.id}" link="${condition.name}"/>
-
+    <m:write id="message" value="${exception.message}"/>
+    
 </m:mayaa>

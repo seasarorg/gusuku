@@ -6,12 +6,12 @@
     
     <m:write id="name" value="${project.name}"/>
     <m:write id="key" value="${project.key}"/>
-    <!--m:write id="url" value="${project.url}"/-->
+
     <m:insert id="url" path="/component/a.html"
     	href="${project.url}" link="${project.url}" target="_blank" />
     <m:insert id="devurl" path="/component/a.html"
     	href="${project.devurl}" link="${project.devurl}" target="_blank" />
-    <!--m:write id="devurl" value="${project.devurl}"/-->
+
     <m:write id="leader" value="${project.leader.name}"/>
     
     <m:insert id="plist_link" path="/component/a.html"
@@ -19,7 +19,7 @@
 	<m:insert id="padd_link" path="/component/a.html"
 		href="report_step1.html?projectid=${project.id}" link="追加" />
 		
-    <m:forEach id="typelist" items="${typeHelper.getTypeListWithScheme(project.typeid)}" var="item" replace="false"/>
+    <m:forEach id="typelist" items="${typeList}" var="item" replace="false"/>
     <m:insert id="type_link" path="/component/a.html"
 		href="report_list.html?projectid=${project.id}&amp;typeid=${item.type.id}" link="${item.type.name}一覧" />
     <m:insert id="add_link" path="/component/a.html"
@@ -58,46 +58,19 @@
 	<m:insert id="end_deny" path="/component/radio.html"
 		nameValue="end" value="3" checked="${mailCondition.end}" />  
 	
-	<!--
-	<m:write id="total" value="${projectReport.endCount}/${projectReport.totalCount}" />
-	<m:with id="graph">
-	<m:if test="${projectReport.totalCount > 0}">
-		<m:element name="img">
-			<m:attribute name="src" value="./image/green_bar.gif" />
-			<m:attribute name="width" value="${(projectReport.endCount/projectReport.totalCount)*200}" />
-			<m:attribute name="height" value="15" />
-			<m:attribute name="alt" value="${projectReport.endCount}"/>
-		</m:element>
-		<m:element name="img">
-			<m:attribute name="src" value="./image/red_bar.gif" />
-			<m:attribute name="width" value="${((projectReport.totalCount - projectReport.endCount)/projectReport.totalCount)*200}" />
-			<m:attribute name="height" value="15" />
-			<m:attribute name="alt" value="${projectReport.totalCount - projectReport.endCount}"/>
-		</m:element>
-	</m:if>
-	<m:if test="${projectReport.totalCount == 0}">
-		<m:element name="img">
-			<m:attribute name="src" value="./image/red_bar.gif" />
-			<m:attribute name="width" value="200" />
-			<m:attribute name="height" value="15" />
-			<m:attribute name="alt" value="${projectReport.totalCount - projectReport.endCount}"/>
-		</m:element>
-	</m:if>
-	
-	</m:with>
-	-->
-
 	<m:forEach id="typeList" items="${projectReport.typeProgress}" var="type" replace="false"/>
 	<m:write id="type_name" value="${type.name}" />
 	<m:write id="type_end" value="${type.end}" />
 	<m:write id="type_total" value="${type.total}" />
 	<m:with id="type_graph">
-		<m:element name="img">
-			<m:attribute name="src" value="./image/green_bar.gif" />
-			<m:attribute name="width" value="${type.progress*2}" />
-			<m:attribute name="height" value="15" />
-			<m:attribute name="alt" value="${projectReport.endCount}"/>
-		</m:element>
+		<m:if test="${type.progress > 0}">
+			<m:element name="img">
+				<m:attribute name="src" value="./image/green_bar.gif" />
+				<m:attribute name="width" value="${type.progress*2}" />
+				<m:attribute name="height" value="15" />
+				<m:attribute name="alt" value="${projectReport.endCount}"/>
+			</m:element>
+		</m:if>
 		<m:element name="img">
 			<m:attribute name="src" value="./image/red_bar.gif" />
 			<m:attribute name="width" value="${(100-type.progress)*2}" />

@@ -22,7 +22,7 @@
 		nameValue="comment" value="${model.comment}" />
 	
 	<m:insert m:id="form_type" path="/component/select.html"
-        nameValue="typeid" list="${formTypeHelper.getFormTypeList()}"
+        nameValue="typeid" list="${formTypeList}"
         selected="${model.typeid}" listKey="id"
         listValue="name" headerKey="" headerValue="選択して下さい"/>
 
@@ -30,7 +30,7 @@
 		nameValue="defaultvalue" value="${model.defaultvalue}" />
 		
 	<m:insert m:id="custom_value" path="/component/select.html"
-        nameValue="valueid" list="${customValueHelper.getCustomValueHeadList()}"
+        nameValue="valueid" list="${CustomValueHeadList}"
         selected="${model.valueid}" listKey="id"
         listValue="name" headerKey="" headerValue="選択して下さい"/>
 

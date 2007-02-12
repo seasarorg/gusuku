@@ -23,8 +23,8 @@
 			<m:attribute name="class" value="foldingAnchor"/>
 		</m:echo>
 		
-		<m:insert id="projectid" path="/component/hidden.html"
-			nameValue="projectid" value="${project.id}"/>
+		<m:insert id="projectid" path="/component/checkbox.html"
+			nameValue="projectid" checked="${parameters['projectid']}" value="${project.id}"/>
 		<m:echo id="project">
 			<m:attribute name="id" value="project_${project.id}"/>
 		</m:echo>

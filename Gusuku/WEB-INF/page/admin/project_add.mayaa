@@ -19,47 +19,37 @@
 		nameValue="key" value="${model.key}" size="8"/>
 
 	<m:insert m:id="workflow" path="/component/select.html"
-        nameValue="workflowid" list="${workflowHelper.getWorkflowList()}"
+        nameValue="workflowid" list="${workflowList}"
         selected="${model.workflowid}" listKey="id"
         listValue="name" />
 	<m:insert m:id="type" path="/component/select.html"
-        nameValue="typeid" list="${typeHelper.getTypeHeadList()}"
+        nameValue="typeid" list="${typeList}"
         selected="${model.typeid}" listKey="id"
         listValue="name" />
 	<m:insert m:id="priority" path="/component/select.html"
-        nameValue="priorityid" list="${priorityHelper.getPriorityHeadList()}"
+        nameValue="priorityid" list="${priorityList}"
         selected="${model.priorityid}" listKey="id"
         listValue="name" />
 	<m:insert m:id="resolution" path="/component/select.html"
-        nameValue="resolutionid" list="${resolutionHelper.getResolutionHeadList()}"
+        nameValue="resolutionid" list="${resolutionList}"
         selected="${model.resolutionid}" listKey="id"
         listValue="name" />
 
 	<m:insert m:id="custom_form" path="/component/select.html"
-        nameValue="formid" list="${customFormHelper.getCustomFormHeadList()}"
+        nameValue="formid" list="${customformList}"
         selected="${model.formid}" listKey="id"
         listValue="name" headerKey="" headerValue="選択して下さい"/>
 	<m:insert m:id="leader" path="/component/select.html"
-        nameValue="leaderid" list="${accountHelper.getAccountList()}"
+        nameValue="leaderid" list="${leaderList}"
         selected="${model.leaderid}" listKey="id"
         listValue="name" headerKey="" headerValue="選択して下さい"/>
 
 	<m:insert m:id="start_year" path="/component/datepicker.html"
 		nameValue="sdate" value="${model.sdate}" />
-<!--
-	<m:insert m:id="start_month" path="/component/textfield.html"
-		nameValue="start_month" value="${model.smonth}" size="2" />
-	<m:insert m:id="start_day" path="/component/textfield.html"
-		nameValue="start_day" value="${model.sday}" size="2" />
--->
+
 	<m:insert m:id="end_year" path="/component/datepicker.html"
 		nameValue="edate" value="${model.edate}" />
-<!--
-	<m:insert m:id="end_month" path="/component/textfield.html"
-		nameValue="end_month" value="${model.emonth}" size="2" />
-	<m:insert m:id="end_day" path="/component/textfield.html"
-		nameValue="end_day" value="${model.eday}" size="2" />
--->
+
 		
 	<m:insert m:id="url" path="/component/textfield.html"
 		nameValue="url" value="${model.url}" />
