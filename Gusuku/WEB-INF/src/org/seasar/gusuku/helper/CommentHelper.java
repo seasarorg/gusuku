@@ -34,7 +34,7 @@ public class CommentHelper {
 	 * @param reportid 対象となる報告ID
 	 * @return コメント一覧
 	 */
-	public List<Comment> getCommentList(String reportid) {
+	public List<Comment> getCommentList(Long reportid) {
 		return commentDao.findByReportid(reportid);
 	}
 
@@ -47,7 +47,7 @@ public class CommentHelper {
 	 * @param cid コメントID
 	 * @return コメント
 	 */
-	public Comment getComment(String cid) {
+	public Comment getComment(Long cid) {
 		return commentDao.findById(cid);
 	}
 

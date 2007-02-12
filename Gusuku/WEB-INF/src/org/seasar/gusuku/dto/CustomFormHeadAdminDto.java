@@ -20,7 +20,7 @@ import java.io.Serializable;
 public class CustomFormHeadAdminDto implements Serializable {
 
 	private static final long serialVersionUID = 2369025166344865609L;
-	private String id;
+	private Long id;
 	private String name;
 	private String description;
 	public String getDescription() {
@@ -29,10 +29,10 @@ public class CustomFormHeadAdminDto implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {

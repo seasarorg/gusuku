@@ -40,14 +40,14 @@ public class ReportHelper {
 	 * @param accountid アカウントID
 	 * @return 報告データ
 	 */
-	public Report getReport(String id,String accountid){
+	public Report getReport(Long id,Long accountid){
 		//対象の報告が自分の属するプロジェクトかどうか調べる
 		
 		Report report =reportDao.findById(id);
 		if(report == null){
-			throw new EntityNotFoundException(id);
+			throw new EntityNotFoundException(id + "");
 		}
-		Project project = projectDao.findByIdAndAccountid(Long.toString(report.getProjectid()),accountid);
+		Project project = projectDao.findByIdAndAccountid(report.getProjectid(),accountid);
 		if(project == null){
 			throw new EntryProjectException(Long.toString(report.getProjectid()));
 		}
@@ -59,8 +59,12 @@ public class ReportHelper {
 	 * @param id 対象ユーザーID
 	 * @return 報告一覧
 	 */
-	public List<Report> getAssignList(String id){
+	public List<Report> getAssignList(Long id){
 		return reportDao.findByAssigneeid(id);
+	}
+	
+	public List<Report> getAssginListByProjectid(Long id,Long projectid){
+		return reportDao.findByAssigneeidAndProjectid(id,projectid);
 	}
 	
 	/**
@@ -68,16 +72,17 @@ public class ReportHelper {
 	 * @param id ユーザーID
 	 * @return 報告一覧
 	 */
-	public List<Report> getOpenList(String id){
+	/*TODO 
+	public List<Report> getOpenList(Long id){
 		return reportDao.findByAssigneeidAndStatusid(id,"1");
-	}
+	}*/
 
 	/**
 	 * 指定したユーザーID（報告者）に従う報告一覧を取得する
 	 * @param id ユーザーID
 	 * @return 報告一覧
 	 */
-	public List<Report> getReportList(String id){
+	public List<Report> getReportList(Long id){
 		return reportDao.findByReporterid(id);
 	}
 
@@ -87,7 +92,7 @@ public class ReportHelper {
 	 * @param typeid タイプID
 	 * @return 報告一覧
 	 */
-	public List<Report> getProjectTypeReportList(String projectid,String typeid,String workflowid){
+	public List<Report> getProjectTypeReportList(Long projectid,Long typeid,Long workflowid){
 		return reportDao.findByProjectidAndTypeid(projectid,typeid,workflowid);
 	}
 	
@@ -97,7 +102,7 @@ public class ReportHelper {
 	 * @param statusid ステータスID
 	 * @return 件数
 	 */
-	public int getStatusCount(String projectid,String statusid){
+	public int getStatusCount(Long projectid,Long statusid){
 		return reportDao.countByProjectidAndStatusid(projectid,statusid);
 	}
 	
@@ -108,7 +113,7 @@ public class ReportHelper {
 	 * @param statusid 終了ステータス
 	 * @return 件数
 	 */
-	public int getTypeCount(String projectid,String typeid,String statusid){
+	public int getTypeCount(Long projectid,Long typeid,Long statusid){
 		return reportDao.countByProjectidAndTypeidAndStatusid(projectid,typeid,statusid);
 	}
 	

@@ -44,7 +44,7 @@ public class StatusAdminLogicImpl implements StatusAdminLogic {
 		if(statusAdminDto.isNoiconflag()){
 			status.setIcon("");
 		}
-		if (StringUtil.isEmpty(statusAdminDto.getId())) {
+		if (statusAdminDto.getId() == null) {
 			statusDao.insert(status);
 		} else {
 			status.setUdate(new Date());
@@ -73,9 +73,9 @@ public class StatusAdminLogicImpl implements StatusAdminLogic {
 
 	}
 
-	public void delete(String[] ids) {
-		if(ids != null && ids.length > 0){
-			statusDao.updateDelflag(ids);
+	public void delete(Long[] delids) {
+		if(delids != null && delids.length > 0){
+			statusDao.updateDelflag(delids);
 		}
 	}
 

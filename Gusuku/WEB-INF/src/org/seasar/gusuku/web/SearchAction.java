@@ -75,7 +75,7 @@ public class SearchAction extends GusukuAction implements ParameterAware {
 	//@XWorkAction(name = "search_load", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/search.html")))
 	@XWorkAction(name = "search_load", result = @Result(type = "chain", param = @Param(name = "actionName", value = "search_list")))
 	public String load(){
-		String id = ParameterUtil.getParameterValue(parameters,"id");
+		Long id = ParameterUtil.getParameterLongValue(parameters,"id");
 		searchLogic.load(parameters,id);
 		return SUCCESS;
 	}

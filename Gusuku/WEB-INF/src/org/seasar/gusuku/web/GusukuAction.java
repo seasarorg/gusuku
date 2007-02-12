@@ -35,8 +35,8 @@ public class GusukuAction extends ActionSupport {
 	 * ログインしているユーザーのIDを取得する
 	 * @return ログインユーザーID
 	 */
-	public String getLoginid() {
-		return Long.toString(sessionManager.getAccount().getId());
+	public Long getLoginid() {
+		return sessionManager.getAccount().getId();
 	}
 
 	/**

@@ -46,11 +46,11 @@ public class ProjectHelper {
 	 * @param accountid アカウントID
 	 * @return プロジェクト
 	 */
-	public Project getProject(String id,String accountid){
+	public Project getProject(Long id,Long accountid){
 		//参加プロジェクトかどうかのチェック
 		Project project = projectDao.findByIdAndAccountid(id,accountid);
 		if(project == null){
-			throw new EntryProjectException(id);
+			throw new EntryProjectException(id + "");
 		}
 		return project;
 	}
@@ -60,10 +60,10 @@ public class ProjectHelper {
 	 * @param id 対象プロジェクトID
 	 * @return プロジェクト
 	 */
-	public Project getProject(String id){
+	public Project getProject(Long id){
 		Project project = projectDao.findById(id);
 		if(project == null){
-			throw new EntityNotFoundException(id);
+			throw new EntityNotFoundException(id + "");
 		}
 		return project;
 	}
@@ -73,7 +73,7 @@ public class ProjectHelper {
 	 * @param userid 対象ユーザーID
 	 * @return プロジェクト一覧
 	 */
-	public List<Project> getEntryList(String userid) {
+	public List<Project> getEntryList(Long userid) {
 		return projectDao.findEntryList(userid);
 	}
 	
@@ -81,7 +81,7 @@ public class ProjectHelper {
 		this.projectDao = projectDao;
 	}
 
-	public List getProjectList(ProjectAdminDto dto) {
+	public List<Project> getProjectList(ProjectAdminDto dto) {
 		return projectDao.findByDto(dto);
 	}	
 }

@@ -15,8 +15,10 @@
  */
 package org.seasar.gusuku.web.mypage;
 
+import java.util.List;
 import java.util.Map;
 
+import org.seasar.gusuku.entity.SearchConditionHead;
 import org.seasar.gusuku.helper.SearchConditionHelper;
 import org.seasar.gusuku.logic.SearchLogic;
 import org.seasar.gusuku.web.GusukuAction;
@@ -30,12 +32,14 @@ public class HomeAction extends GusukuAction {
 	private SearchConditionHelper searchConditionHelper;
 	private SearchLogic searchLogic;
 	
-	private String[] visible;
+	private List<SearchConditionHead> list;
+	private Long[] visible;
 	private Map amount;
-	private String id;
+	private Long id;
 	
 	@XWorkAction(name = "portlet", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/mypage/home.html")))
 	public String init(){
+		list = searchConditionHelper.getSearchConditionHead(getLoginid());
 		return SUCCESS;
 	}
 	
@@ -57,10 +61,6 @@ public class HomeAction extends GusukuAction {
 		return SUCCESS;
 	}
 
-	public SearchConditionHelper getSearchConditionHelper() {
-		return searchConditionHelper;
-	}
-
 	public void setSearchConditionHelper(SearchConditionHelper searchConditionHelper) {
 		this.searchConditionHelper = searchConditionHelper;
 	}
@@ -69,11 +69,11 @@ public class HomeAction extends GusukuAction {
 		this.amount = amount;
 	}
 
-	public String[] getVisible() {
+	public Long[] getVisible() {
 		return visible;
 	}
 
-	public void setVisible(String[] visible) {
+	public void setVisible(Long[] visible) {
 		this.visible = visible;
 	}
 
@@ -85,12 +85,17 @@ public class HomeAction extends GusukuAction {
 		this.searchLogic = searchLogic;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
+	}
+
+	
+	public List<SearchConditionHead> getList() {
+		return list;
 	}
 
 }

@@ -35,7 +35,7 @@ public class GroupbaseHelper {
 	 * @param id グループID
 	 * @return
 	 */
-	public Groupbase getGroupbase(String id){
+	public Groupbase getGroupbase(Long id){
 		return groupbaseDao.findById(id);
 	}
 	
@@ -61,7 +61,7 @@ public class GroupbaseHelper {
 	 * @param projectid 対象プロジェクトID
 	 * @return グループ一覧
 	 */
-	public List<Groupbase> getGroupList(String projectid) {
+	public List<Groupbase> getGroupList(Long projectid) {
 		return groupbaseDao.findByProjectid(projectid);
 	}
 
@@ -70,7 +70,7 @@ public class GroupbaseHelper {
 	 * @param projectid 対象プロジェクトID
 	 * @return グループ一覧
 	 */
-	public List<Groupbase> getWithoutsGroupList(String projectid) {
+	public List<Groupbase> getWithoutsGroupList(Long projectid) {
 		return groupbaseDao.findByWithoutProjectid(projectid);
 	}
 	
@@ -79,7 +79,7 @@ public class GroupbaseHelper {
 	 * @param accountid 対象アカウントID
 	 * @return グループ一覧
 	 */
-	public List<Groupbase> getJoinGroupList(String accountid){
+	public List<Groupbase> getJoinGroupList(Long accountid){
 		return groupbaseDao.findByAccountid(accountid);
 	}
 

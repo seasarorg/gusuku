@@ -20,10 +20,10 @@ import java.io.Serializable;
 public class CustomFormDetailAdminDto implements Serializable {
 
 	private static final long serialVersionUID = 6319400848769707739L;
-	private String id;
-	private String formheadid;
-	private String valueid;
-	private String typeid;
+	private Long id;
+	private Long formheadid;
+	private Long valueid;
+	private Long typeid;
 	private String label;
 	private String comment;
 	private String defaultvalue;
@@ -50,16 +50,16 @@ public class CustomFormDetailAdminDto implements Serializable {
 	public void setDateto(String dateto) {
 		this.dateto = dateto;
 	}
-	public String getFormheadid() {
+	public Long getFormheadid() {
 		return formheadid;
 	}
-	public void setFormheadid(String formheadid) {
+	public void setFormheadid(Long formheadid) {
 		this.formheadid = formheadid;
 	}
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getLabel() {
@@ -86,16 +86,16 @@ public class CustomFormDetailAdminDto implements Serializable {
 	public void setSort(String sort) {
 		this.sort = sort;
 	}
-	public String getTypeid() {
+	public Long getTypeid() {
 		return typeid;
 	}
-	public void setTypeid(String typeid) {
+	public void setTypeid(Long typeid) {
 		this.typeid = typeid;
 	}
-	public String getValueid() {
+	public Long getValueid() {
 		return valueid;
 	}
-	public void setValueid(String valueid) {
+	public void setValueid(Long valueid) {
 		this.valueid = valueid;
 	}
 	

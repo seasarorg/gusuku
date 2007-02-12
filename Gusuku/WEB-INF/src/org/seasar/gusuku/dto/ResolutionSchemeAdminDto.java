@@ -21,33 +21,33 @@ import java.io.Serializable;
 public class ResolutionSchemeAdminDto implements Serializable {
 
 	private static final long serialVersionUID = -5543261592619495450L;
-	private String id;
-	private String headid;
-	private String[] resolutionid;
+	private Long id;
+	private Long headid;
+	private Long[] resolutionid;
 	
-	public String getHeadid() {
+	public Long getHeadid() {
 		return headid;
 	}
 	
-	public void setHeadid(String headid) {
+	public void setHeadid(Long headid) {
 		this.headid = headid;
 	}
 	
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
 	
-	public String[] getResolutionid() {
+	public Long[] getResolutionid() {
 		return resolutionid;
 	}
 
 	
-	public void setResolutionid(String[] resolutionid) {
+	public void setResolutionid(Long[] resolutionid) {
 		this.resolutionid = resolutionid;
 	}
 	

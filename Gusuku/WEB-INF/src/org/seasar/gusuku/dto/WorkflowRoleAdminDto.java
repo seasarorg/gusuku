@@ -21,33 +21,33 @@ public class WorkflowRoleAdminDto implements Serializable {
 
 	private static final long serialVersionUID = 334089935688049137L;
 
-	private String id;
-	private String[] reporter;
-	private String[] assignee;
-	private String[] leader;
+	private Long id;
+	private Long[] reporter;
+	private Long[] assignee;
+	private Long[] leader;
 	
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public void setAssignee(String[] assignee) {
+	public void setAssignee(Long[] assignee) {
 		this.assignee = assignee;
 	}
-	public void setLeader(String[] leader) {
+	public void setLeader(Long[] leader) {
 		this.leader = leader;
 	}
-	public void setReporter(String[] reporter) {
+	public void setReporter(Long[] reporter) {
 		this.reporter = reporter;
 	}
-	public String[] getAssignee() {
+	public Long[] getAssignee() {
 		return assignee;
 	}
-	public String[] getLeader() {
+	public Long[] getLeader() {
 		return leader;
 	}
-	public String[] getReporter() {
+	public Long[] getReporter() {
 		return reporter;
 	}
 	

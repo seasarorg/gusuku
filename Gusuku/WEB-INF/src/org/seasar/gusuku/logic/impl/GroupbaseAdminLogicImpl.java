@@ -17,7 +17,6 @@ package org.seasar.gusuku.logic.impl;
 
 import java.util.Date;
 
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dao.AccountGroupbaseDao;
 import org.seasar.gusuku.dao.GroupbaseDao;
 import org.seasar.gusuku.dto.GroupbaseAdminDto;
@@ -35,7 +34,7 @@ public class GroupbaseAdminLogicImpl implements GroupbaseAdminLogic {
 	public void registration(GroupbaseAdminDto groupbaseAdminDto) {
 		Groupbase groupbase = groupbaseDxo.convert(groupbaseAdminDto);
 		
-		if(StringUtil.isEmpty(groupbaseAdminDto.getId())){
+		if(groupbaseAdminDto.getId() == null){
 			groupbaseDao.insert(groupbase);
 		}else{
 			groupbase.setUdate(new Date());
@@ -44,8 +43,8 @@ public class GroupbaseAdminLogicImpl implements GroupbaseAdminLogic {
 
 	}
 
-	public void delete(String[] ids) {
-		groupbaseDao.updateDelflag(ids);
+	public void delete(Long[] delids) {
+		groupbaseDao.updateDelflag(delids);
 	}
 
 	public GroupbaseAdminDto getGroupbase(GroupbaseAdminDto groupbaseAdminDto) {
@@ -61,23 +60,23 @@ public class GroupbaseAdminLogicImpl implements GroupbaseAdminLogic {
 		this.groupbaseDxo = groupbaseDxo;
 	}
 
-	public void memberAdd(String groupid,String[] ids) {
-		if(ids != null && ids.length > 0){
-			for (String id : ids) {
+	public void memberAdd(Long groupid,Long[] delids) {
+		if(delids != null && delids.length > 0){
+			for (Long delid : delids) {
 				AccountGroupbase accountGroupbase = new AccountGroupbase();
-				accountGroupbase.setAccountid(Long.parseLong(id));
-				accountGroupbase.setGroupbaseid(Long.parseLong(groupid));
+				accountGroupbase.setAccountid(delid);
+				accountGroupbase.setGroupbaseid(groupid);
 				accountGroupbaseDao.insert(accountGroupbase);
 			}
 		}
 	}
 
-	public void memberRemove(String groupid,String[] ids) {
-		if(ids != null && ids.length > 0){
-			for (String id : ids) {
+	public void memberRemove(Long groupid,Long[] delids) {
+		if(delids != null && delids.length > 0){
+			for (Long delid : delids) {
 				AccountGroupbase accountGroupbase = new AccountGroupbase();
-				accountGroupbase.setAccountid(Long.parseLong(id));
-				accountGroupbase.setGroupbaseid(Long.parseLong(groupid));
+				accountGroupbase.setAccountid(delid);
+				accountGroupbase.setGroupbaseid(groupid);
 				accountGroupbaseDao.delete(accountGroupbase);
 			}
 		}

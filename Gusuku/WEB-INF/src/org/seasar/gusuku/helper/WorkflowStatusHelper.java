@@ -34,7 +34,7 @@ public class WorkflowStatusHelper {
 	 * @param id ワークフローステータスID
 	 * @return ワークフローステータス
 	 */
-	public WorkflowStatus getWorkflowStatus(String id){
+	public WorkflowStatus getWorkflowStatus(Long id){
 		return workflowStatusDao.findById(id);
 	}
 
@@ -43,7 +43,7 @@ public class WorkflowStatusHelper {
 	 * @param workflowid ワークフローID
 	 * @return ワークフローステータス
 	 */
-	public WorkflowStatus getStartStatus(String workflowid) {
+	public WorkflowStatus getStartStatus(Long workflowid) {
 		return workflowStatusDao.findStartStatusById(workflowid);
 	}
 
@@ -52,7 +52,7 @@ public class WorkflowStatusHelper {
 	 * @param workflowid ワークフローID
 	 * @return ワークフローステータス
 	 */
-	public WorkflowStatus getEndStatus(String workflowid) {
+	public WorkflowStatus getEndStatus(Long workflowid) {
 		return workflowStatusDao.findEndStatusById(workflowid);
 	}
 	
@@ -61,7 +61,7 @@ public class WorkflowStatusHelper {
 	 * @param workflowid ワークフローID
 	 * @return ワークフローステータス一覧
 	 */
-	public List<WorkflowStatus> getStatusListWithoutStartAndEnd(String workflowid){
+	public List<WorkflowStatus> getStatusListWithoutStartAndEnd(Long workflowid){
 		return workflowStatusDao.findByWorkflowidWithoutStartAndEnd(workflowid);
 	}
 
@@ -70,7 +70,7 @@ public class WorkflowStatusHelper {
 	 * @param workflowid ワークフローID
 	 * @return ワークフローステータス一覧
 	 */
-	public List<WorkflowStatus> getStatusList(String workflowid){
+	public List<WorkflowStatus> getStatusList(Long workflowid){
 		return workflowStatusDao.findByWorkflowid(workflowid);
 	}
 	/**
@@ -79,7 +79,7 @@ public class WorkflowStatusHelper {
 	 * @param workflowid ワークフローID
 	 * @return ワークフローステータス一覧
 	 */
-	public List<WorkflowStatus> getNextList(String workflowstatusid,String workflowid){
+	public List<WorkflowStatus> getNextList(Long workflowstatusid,Long workflowid){
 		return workflowStatusDao.findByNextstatus(workflowstatusid,workflowid);
 	}
 	
@@ -89,7 +89,7 @@ public class WorkflowStatusHelper {
 	 * @param workflowid ワークフローID
 	 * @return ワークフローステータス一覧
 	 */
-	public List<WorkflowStatus> getWithoutNextList(String workflowstatusid,String workflowid){
+	public List<WorkflowStatus> getWithoutNextList(Long workflowstatusid,Long workflowid){
 		return workflowStatusDao.findByWithoutNextstatus(workflowstatusid,workflowid);
 	}
 	

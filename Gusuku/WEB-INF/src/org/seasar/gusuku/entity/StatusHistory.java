@@ -27,10 +27,10 @@ import org.seasar.dao.annotation.tiger.Relation;
 public class StatusHistory implements Serializable {
 
 	private static final long serialVersionUID = 2791111042703441943L;
-	private long id;
-	private long reportid;
-	private long statusid;
-	private long changerid;
+	private Long id;
+	private Long reportid;
+	private Long statusid;
+	private Long changerid;
 	private Date rdate;
 	
 	private Report report;
@@ -39,20 +39,20 @@ public class StatusHistory implements Serializable {
 	
 	private Account changer;
 	
-	public long getChangerid() {
+	public Long getChangerid() {
 		return changerid;
 	}
 	
-	public void setChangerid(long changerid) {
+	public void setChangerid(Long changerid) {
 		this.changerid = changerid;
 	}
 	
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -64,19 +64,19 @@ public class StatusHistory implements Serializable {
 		this.rdate = rdate;
 	}
 	
-	public long getReportid() {
+	public Long getReportid() {
 		return reportid;
 	}
 	
-	public void setReportid(long reportid) {
+	public void setReportid(Long reportid) {
 		this.reportid = reportid;
 	}
 	
-	public long getStatusid() {
+	public Long getStatusid() {
 		return statusid;
 	}
 	
-	public void setStatusid(long statusid) {
+	public void setStatusid(Long statusid) {
 		this.statusid = statusid;
 	}
 

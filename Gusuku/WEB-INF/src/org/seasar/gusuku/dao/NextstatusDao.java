@@ -30,9 +30,9 @@ public interface NextstatusDao {
 	public void delete(Nextstatus nextstatus);
 	
 	@Query("WORKFLOWSTATUSID = /*workflowstatusid*/")
-	public List<Nextstatus> findByWorkflowstatusid(String workflowstatusid);
+	public List<Nextstatus> findByWorkflowstatusid(Long workflowstatusid);
 
 	@Arguments({"workflowstatusid","nextstatusid"})
-	public void deleteByWorkflowstatusidAndNextstatusid(String workflowstatusid,String nextstatusid);
+	public void deleteByWorkflowstatusidAndNextstatusid(Long workflowstatusid,Long nextstatusid);
 
 }

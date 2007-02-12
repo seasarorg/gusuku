@@ -47,8 +47,9 @@ public class ProjectAction extends GusukuAction {
 	private ReportHelper reportHelper;
 
 	private List<Project> entryList;
+	private List<TypeScheme> typeList;
 
-	private String id;
+	private Long id;
 
 	private Project project;
 	private MailCondition mailCondition;
@@ -79,24 +80,26 @@ public class ProjectAction extends GusukuAction {
 
 		project = projectHelper.getProject(id,getLoginid());
 		
+		typeList = typeHelper.getTypeListWithScheme(project.getTypeid());
+		
 		//レポート作成
 		//状態別
 		List<Progress> statusProgress = new ArrayList<Progress>();
 		
 		//開始
 		int totalCount = 0;
-		WorkflowStatus startStatus = workflowStatusHelper.getStartStatus(Long.toString(project.getWorkflowid()));
-		int startCount = reportHelper.getStatusCount(Long.toString(project.getId()),Long.toString(startStatus.getStatusid()));
+		WorkflowStatus startStatus = workflowStatusHelper.getStartStatus(project.getWorkflowid());
+		int startCount = reportHelper.getStatusCount(project.getId(),startStatus.getStatusid());
 		
 		Progress startProgress = new Progress();
 		startProgress.setName(startStatus.getStatus().getName());
 		startProgress.setTotal(startCount);
 		statusProgress.add(startProgress);
 		//経過
-		List<WorkflowStatus> processStatus = workflowStatusHelper.getStatusListWithoutStartAndEnd(Long.toString(project.getWorkflowid()));
+		List<WorkflowStatus> processStatus = workflowStatusHelper.getStatusListWithoutStartAndEnd(project.getWorkflowid());
 		for(Iterator ite=processStatus.iterator();ite.hasNext();){
 			WorkflowStatus workflowStatus = (WorkflowStatus)ite.next();
-			int count = reportHelper.getStatusCount(Long.toString(project.getId()),Long.toString(workflowStatus.getStatusid()));
+			int count = reportHelper.getStatusCount(project.getId(),workflowStatus.getStatusid());
 
 			totalCount += count;
 			Progress progress = new Progress();
@@ -105,8 +108,8 @@ public class ProjectAction extends GusukuAction {
 			statusProgress.add(progress);
 		}
 		//終了
-		WorkflowStatus endStatus = workflowStatusHelper.getEndStatus(Long.toString(project.getWorkflowid()));
-		int endCount = reportHelper.getStatusCount(Long.toString(project.getId()),Long.toString(endStatus.getStatusid()));
+		WorkflowStatus endStatus = workflowStatusHelper.getEndStatus(project.getWorkflowid());
+		int endCount = reportHelper.getStatusCount(project.getId(),endStatus.getStatusid());
 		
 		Progress endProgress = new Progress();
 		endProgress.setName(endStatus.getStatus().getName());
@@ -121,12 +124,12 @@ public class ProjectAction extends GusukuAction {
 		totalProgress.setEnd(endCount);
 		
 		//タイプ別
-		List<TypeScheme> typeList = typeHelper.getTypeListWithScheme(Long.toString(project.getTypeid()));
+		List<TypeScheme> typeList = typeHelper.getTypeListWithScheme(project.getTypeid());
 		List<Progress> typeProgress = new ArrayList<Progress>();
 		typeProgress.add(totalProgress);
 		for(TypeScheme typeScheme : typeList){
-			int count = reportHelper.getTypeCount(Long.toString(project.getId()),Long.toString(typeScheme.getTypeid()),null);
-			int end =  reportHelper.getTypeCount(Long.toString(project.getId()),Long.toString(typeScheme.getTypeid()),Long.toString(endStatus.getStatusid()));
+			int count = reportHelper.getTypeCount(project.getId(),typeScheme.getTypeid(),null);
+			int end =  reportHelper.getTypeCount(project.getId(),typeScheme.getTypeid(),endStatus.getStatusid());
 			Progress progress = new Progress();
 			progress.setName(typeScheme.getType().getName());
 			progress.setTotal(count);
@@ -143,10 +146,10 @@ public class ProjectAction extends GusukuAction {
 
 		if(mailCondition == null){
 			mailCondition = new MailCondition();
-			mailCondition.setComment(1);
-			mailCondition.setStart(1);
-			mailCondition.setProcess(3);
-			mailCondition.setEnd(1);
+			mailCondition.setComment(1l);
+			mailCondition.setStart(1l);
+			mailCondition.setProcess(3l);
+			mailCondition.setEnd(1l);
 		}
 		return SUCCESS;
 	}
@@ -163,7 +166,7 @@ public class ProjectAction extends GusukuAction {
 		return project;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -227,7 +230,6 @@ public class ProjectAction extends GusukuAction {
 		private String name;
 		private int end;
 		private int total;
-		private float progress;
 		
 		public int getEnd() {
 			return end;
@@ -247,9 +249,7 @@ public class ProjectAction extends GusukuAction {
 			}
 			return (float)end / (float)total * 100;
 		}
-		public void setProgress(float progress) {
-			this.progress = progress;
-		}
+
 		public int getTotal() {
 			return total;
 		}
@@ -268,6 +268,11 @@ public class ProjectAction extends GusukuAction {
 	
 	public ProjectReport getProjectReport() {
 		return projectReport;
+	}
+
+	
+	public List<TypeScheme> getTypeList() {
+		return typeList;
 	}
 
 }

@@ -15,7 +15,6 @@
  */
 package org.seasar.gusuku.logic.impl;
 
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dao.CustomValueHeadDao;
 import org.seasar.gusuku.dto.CustomValueHeadAdminDto;
 import org.seasar.gusuku.dxo.CustomValueHeadDxo;
@@ -27,9 +26,9 @@ public class CustomValueHeadAdminLogicImpl implements CustomValueHeadAdminLogic{
 	private CustomValueHeadDao customValueHeadDao;
 	private CustomValueHeadDxo customValueHeadDxo;
 	
-	public void delete(String[] ids) {
-		if(ids != null && ids.length >0){
-			customValueHeadDao.updateDelflag(ids);
+	public void delete(Long[] delids) {
+		if(delids != null && delids.length >0){
+			customValueHeadDao.updateDelflag(delids);
 		}
 	}
 
@@ -40,7 +39,7 @@ public class CustomValueHeadAdminLogicImpl implements CustomValueHeadAdminLogic{
 	public void registration(CustomValueHeadAdminDto customValueHeadAdminDto) {
 		CustomValueHead customValueHead = customValueHeadDxo.convert(customValueHeadAdminDto);
 		
-		if(StringUtil.isEmpty(customValueHeadAdminDto.getId())){
+		if(customValueHeadAdminDto.getId() == null){
 			customValueHeadDao.insert(customValueHead);
 		}else{
 			customValueHeadDao.update(customValueHead);

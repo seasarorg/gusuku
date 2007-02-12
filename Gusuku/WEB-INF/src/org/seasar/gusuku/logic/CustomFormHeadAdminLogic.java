@@ -21,7 +21,7 @@ public interface CustomFormHeadAdminLogic {
 	
 	public void registration(CustomFormHeadAdminDto customFormHeadAdminDto);
 	
-	public void delete(String[] ids);
+	public void delete(Long[] delids);
 	
 	public CustomFormHeadAdminDto getCustomFormHead(CustomFormHeadAdminDto customFormHeadAdminDto);
 

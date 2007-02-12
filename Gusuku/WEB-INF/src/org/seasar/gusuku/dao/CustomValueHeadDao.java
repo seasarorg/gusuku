@@ -32,12 +32,12 @@ public interface CustomValueHeadDao {
 	public void update(CustomValueHead customValueHead);
 	public void delete(CustomValueHead customValueHead);
 
-	public void updateDelflag(String[] ids);
+	public void updateDelflag(Long[] delids);
 	
 	public List<CustomValueHead> findByDto(CustomValueHeadAdminDto customValueHeadAdminDto);
 	
 	@Query("ID = /*id*/ AND DELFLAG = FALSE")
-	public CustomValueHead findById(String id);
+	public CustomValueHead findById(Long id);
 	
 	@Query("DELFLAG = FALSE ORDER BY ID")
 	public List<CustomValueHead> findAll();

@@ -21,17 +21,17 @@ import java.io.Serializable;
 public class WorkflowAdminDto implements Serializable {
 
 	private static final long serialVersionUID = 4638881964193244556L;
-	private String id;
+	private Long id;
 	private String name;
 	private String description;
 	
-	private String startstatusid;
-	private String endstatusid;
+	private Long startstatusid;
+	private Long endstatusid;
 	
-	private String addstatusid;
-	private String addworkflowstatusid;
+	private Long addstatusid;
+	private Long addworkflowstatusid;
 	
-	private String wsid;
+	private Long wsid;
 	
 	public String getDescription() {
 		return description;
@@ -41,19 +41,19 @@ public class WorkflowAdminDto implements Serializable {
 		this.description = description;
 	}
 	
-	public String getEndstatusid() {
+	public Long getEndstatusid() {
 		return endstatusid;
 	}
 	
-	public void setEndstatusid(String endstatusid) {
+	public void setEndstatusid(Long endstatusid) {
 		this.endstatusid = endstatusid;
 	}
 	
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -68,41 +68,41 @@ public class WorkflowAdminDto implements Serializable {
 		this.name = name;
 	}
 	
-	public String getStartstatusid() {
+	public Long getStartstatusid() {
 		return startstatusid;
 	}
 	
-	public void setStartstatusid(String startstatusid) {
+	public void setStartstatusid(Long startstatusid) {
 		this.startstatusid = startstatusid;
 	}
 
 	
-	public String getAddstatusid() {
+	public Long getAddstatusid() {
 		return addstatusid;
 	}
 
 	
-	public void setAddstatusid(String addstatusid) {
+	public void setAddstatusid(Long addstatusid) {
 		this.addstatusid = addstatusid;
 	}
 
 	
-	public String getWsid() {
+	public Long getWsid() {
 		return wsid;
 	}
 
 	
-	public void setWsid(String wsid) {
+	public void setWsid(Long wsid) {
 		this.wsid = wsid;
 	}
 
 
-	public String getAddworkflowstatusid() {
+	public Long getAddworkflowstatusid() {
 		return addworkflowstatusid;
 	}
 
 	
-	public void setAddworkflowstatusid(String addworkflowstatusid) {
+	public void setAddworkflowstatusid(Long addworkflowstatusid) {
 		this.addworkflowstatusid = addworkflowstatusid;
 	}
 	

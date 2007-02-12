@@ -17,7 +17,6 @@ package org.seasar.gusuku.logic.impl;
 
 import java.util.Date;
 
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dao.ResolutionHeadDao;
 import org.seasar.gusuku.dto.ResolutionHeadAdminDto;
 import org.seasar.gusuku.dxo.ResolutionHeadDxo;
@@ -32,7 +31,7 @@ public class ResolutionHeadAdminLogicImpl implements ResolutionHeadAdminLogic {
 	public void registration(ResolutionHeadAdminDto resolutionHeadAdminDto) {
 		ResolutionHead resolutionHead = resolutionHeadDxo.convert(resolutionHeadAdminDto);
 		
-		if(StringUtil.isEmpty(resolutionHeadAdminDto.getId())){
+		if(resolutionHeadAdminDto.getId() == null){
 			resolutionHeadDao.insert(resolutionHead);
 		}else{
 			resolutionHead.setUdate(new Date());
@@ -40,7 +39,7 @@ public class ResolutionHeadAdminLogicImpl implements ResolutionHeadAdminLogic {
 		}
 	}
 
-	public void delete(String[] delids) {
+	public void delete(Long[] delids) {
 		if (delids != null && delids.length > 0) {
 			resolutionHeadDao.updateDelflag(delids);
 		}

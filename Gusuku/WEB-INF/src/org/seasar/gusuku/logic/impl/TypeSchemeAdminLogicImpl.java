@@ -15,8 +15,9 @@
  */
 package org.seasar.gusuku.logic.impl;
 
+import java.util.List;
+
 import org.seasar.framework.container.annotation.tiger.Aspect;
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dao.TypeSchemeDao;
 import org.seasar.gusuku.dto.TypeSchemeAdminDto;
 import org.seasar.gusuku.entity.TypeScheme;
@@ -28,9 +29,9 @@ public class TypeSchemeAdminLogicImpl implements TypeSchemeAdminLogic {
 
 	@Aspect("j2ee.requiredTx")
 	public void registration(TypeSchemeAdminDto typeSchemeAdminDto) {
-		String headid = typeSchemeAdminDto.getHeadid();
-		String[] typeids = typeSchemeAdminDto.getTypeid();
-		if (!StringUtil.isEmpty(headid) && typeids != null
+		Long headid = typeSchemeAdminDto.getHeadid();
+		Long[] typeids = typeSchemeAdminDto.getTypeid();
+		if (headid != null && typeids != null
 				&& typeids.length > 0) {
 			
 			TypeScheme org = typeSchemeDao.findMaxSort(headid);
@@ -39,10 +40,10 @@ public class TypeSchemeAdminLogicImpl implements TypeSchemeAdminLogic {
 			if(org != null){
 				maxSort = org.getSort() + 1;
 			}
-			for (String typeid : typeids) {
+			for (Long typeid : typeids) {
 				TypeScheme typeScheme = new TypeScheme();
-				typeScheme.setHeadid(Long.parseLong(headid));
-				typeScheme.setTypeid(Long.parseLong(typeid));
+				typeScheme.setHeadid(headid);
+				typeScheme.setTypeid(typeid);
 				typeScheme.setSort(maxSort++);
 				typeSchemeDao.insert(typeScheme);
 			}
@@ -51,12 +52,24 @@ public class TypeSchemeAdminLogicImpl implements TypeSchemeAdminLogic {
 	}
 
 	@Aspect("j2ee.requiredTx")
-	public void delete(String[] delids) {
+	public void delete(Long[] delids,Long headid) {
 		if (delids != null && delids.length > 0) {
-			for (String delid : delids) {
+			for (Long delid : delids) {
 				TypeScheme typeScheme = new TypeScheme();
-				typeScheme.setId(Long.parseLong(delid));
+				typeScheme.setId(delid);
 				typeSchemeDao.delete(typeScheme);
+			}
+			
+			//ソート順序再設定
+			List<TypeScheme> list = typeSchemeDao.findWithSchemeByHeadid(headid);
+			int sort = 1;
+			for(TypeScheme typeScheme: list){
+				if(typeScheme.getSort() != sort){
+					typeScheme.setSort(sort++);
+					typeSchemeDao.update(typeScheme);
+				}else{
+					sort++;
+				}
 			}
 		}
 

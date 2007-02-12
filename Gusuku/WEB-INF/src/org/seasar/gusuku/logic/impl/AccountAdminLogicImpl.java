@@ -33,9 +33,9 @@ public class AccountAdminLogicImpl implements AccountAdminLogic {
 	public void setAccountDao(AccountDao accountDao) {
 		this.accountDao = accountDao;
 	}
-	public void delete(String[] ids) {
-		if(ids != null && ids.length > 0){
-			accountDao.updateDelflag(ids);
+	public void delete(Long[] delids) {
+		if(delids != null && delids.length > 0){
+			accountDao.updateDelflag(delids);
 		}
 	}
 
@@ -43,7 +43,7 @@ public class AccountAdminLogicImpl implements AccountAdminLogic {
 
 		Account account = accountDxo.convert(accountAdminDto);
 		
-		if(StringUtil.isEmpty(accountAdminDto.getId())){
+		if(accountAdminDto.getId()== null){
 			accountDao.insert(account);
 		}else{
 			account.setUdate(new Date());
@@ -58,7 +58,7 @@ public class AccountAdminLogicImpl implements AccountAdminLogic {
 		return accountDxo.convertAdminDto(account);
 	}
 	
-	public AccountDto getAccount(String accountid){
+	public AccountDto getAccount(Long accountid){
 		Account account = accountDao.findById(accountid);
 		return accountDxo.convertDto(account);
 	}

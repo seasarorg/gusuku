@@ -21,8 +21,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.seasar.gusuku.entity.Project;
 import org.seasar.gusuku.entity.Report;
 import org.seasar.gusuku.entity.SearchConditionHead;
+import org.seasar.gusuku.helper.ProjectHelper;
 import org.seasar.gusuku.helper.ReportHelper;
 import org.seasar.gusuku.helper.SearchConditionHelper;
 import org.seasar.gusuku.logic.SearchLogic;
@@ -39,12 +41,15 @@ public class HomeAction extends GusukuAction {
 	
 	private static final long serialVersionUID = -7204303464714451026L;
 	private ReportHelper reportHelper;
+	private ProjectHelper projectHelper;
 	private SearchConditionHelper searchConditionHelper;
 	private SearchLogic searchLogic;
 	private List<SearchConditionInformation> homeList;
-	private List<Report> assignList;
 	private List<Report> openList;
 	private List<Report> reportList;
+	
+	private List<Project> entryList;
+	private Map<Long,List> assignListMap = new HashMap();
 	
 	/**
 	 * ホーム
@@ -54,7 +59,11 @@ public class HomeAction extends GusukuAction {
 	public String home(){
 
 		//自分へのアサインリストを取得
-		assignList = reportHelper.getAssignList(getLoginid());
+		entryList = projectHelper.getEntryList(getLoginid());
+		for(Project project:entryList){
+			List<Report> assignList = reportHelper.getAssginListByProjectid(getLoginid(),project.getId());
+			assignListMap.put(project.getId(),assignList);
+		}
 		
 		//ホーム設定の条件に従って取得
 		List<SearchConditionHead> conditionList = searchConditionHelper.getVisibleSearchCondition(getLoginid());
@@ -63,7 +72,7 @@ public class HomeAction extends GusukuAction {
 		for(Iterator ite= conditionList.iterator();ite.hasNext();){
 			SearchConditionHead searchConditionHead = (SearchConditionHead)ite.next();
 			Map<String,String[]> parameters = new HashMap<String,String[]>();
-			searchLogic.load(parameters,Long.toString(searchConditionHead.getId()));
+			searchLogic.load(parameters,searchConditionHead.getId());
 			
 			
 			List result = searchLogic.search(searchConditionHead,parameters,getLoginid());
@@ -75,10 +84,6 @@ public class HomeAction extends GusukuAction {
 		}
 		
 		return SUCCESS;
-	}
-	
-	public List<Report> getAssignList() {
-		return assignList;
 	}
 
 	public List<Report> getOpenList() {
@@ -128,6 +133,21 @@ public class HomeAction extends GusukuAction {
 	
 	public List getHomeList() {
 		return homeList;
+	}
+
+	
+	public Map<Long, List> getAssignListMap() {
+		return assignListMap;
+	}
+
+	
+	public List<Project> getEntryList() {
+		return entryList;
+	}
+
+	
+	public void setProjectHelper(ProjectHelper projectHelper) {
+		this.projectHelper = projectHelper;
 	}
 	
 }

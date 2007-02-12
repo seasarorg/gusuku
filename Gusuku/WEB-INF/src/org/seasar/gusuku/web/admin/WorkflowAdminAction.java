@@ -17,10 +17,10 @@ package org.seasar.gusuku.web.admin;
 
 import java.util.List;
 
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dto.WorkflowAdminDto;
+import org.seasar.gusuku.entity.Status;
 import org.seasar.gusuku.entity.Workflow;
-import org.seasar.gusuku.helper.NextstatusHelper;
+import org.seasar.gusuku.entity.WorkflowStatus;
 import org.seasar.gusuku.helper.StatusHelper;
 import org.seasar.gusuku.helper.WorkflowHelper;
 import org.seasar.gusuku.helper.WorkflowStatusHelper;
@@ -32,13 +32,14 @@ import org.seasar.xwork.annotation.XWorkAction;
 
 import com.opensymphony.webwork.util.TokenHelper;
 import com.opensymphony.xwork.ModelDriven;
+import com.opensymphony.xwork.Preparable;
 
 /**
  * ワークフロー管理
  * @author duran
  *
  */
-public class WorkflowAdminAction extends GusukuAction implements ModelDriven {
+public class WorkflowAdminAction extends GusukuAction implements ModelDriven,Preparable {
 
 	private static final long serialVersionUID = 5402723495850746817L;
 
@@ -49,11 +50,31 @@ public class WorkflowAdminAction extends GusukuAction implements ModelDriven {
 	private WorkflowHelper workflowHelper;
 	private StatusHelper statusHelper;
 	private WorkflowStatusHelper workflowStatusHelper;
-	private NextstatusHelper nextstatusHelper;
 	
 	private List<Workflow> list;
 	
-	private String[] delid;
+	private List intervalList;
+	private List entryList;
+	private WorkflowStatus start;
+	private WorkflowStatus end;
+	private Status current;
+	private List<WorkflowStatus> nextList;
+	private List<WorkflowStatus> nextEntryList;
+	
+	private List<Status> statusList;
+	
+	private Workflow workflow;
+	
+	private Long[] delid;
+	
+	public void prepare(){
+	}
+	public void prepareInit(){
+		statusList = statusHelper.getStatusList();
+	}
+	public void prepareDone(){
+		statusList = statusHelper.getStatusList();
+	}
 	
 	/**
 	 * ワークフロー一覧
@@ -71,7 +92,7 @@ public class WorkflowAdminAction extends GusukuAction implements ModelDriven {
 	 */
 	@XWorkAction(name = "workflow_edit", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/workflow_add.html")))
 	public String init() {
-		if (!StringUtil.isEmpty(dto.getId())) {
+		if (dto.getId() != null) {
 			dto = workflowAdminLogic.getWorkflow(dto);
 		}
 		return SUCCESS;
@@ -107,6 +128,11 @@ public class WorkflowAdminAction extends GusukuAction implements ModelDriven {
 	 */
 	@XWorkAction(name = "flow_edit", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/flow_edit.html")))
 	public String flow() {
+		workflow = workflowHelper.getWorkflow(dto.getId());
+		start = workflowStatusHelper.getStartStatus(dto.getId());
+		end = workflowStatusHelper.getEndStatus(dto.getId());
+		intervalList = workflowStatusHelper.getStatusListWithoutStartAndEnd(dto.getId());
+		entryList = statusHelper.getStatusListWithoutWorkflowid(dto.getId());
 		return SUCCESS;
 	}
 	
@@ -143,6 +169,10 @@ public class WorkflowAdminAction extends GusukuAction implements ModelDriven {
 	 */
 	@XWorkAction(name = "transition_edit", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/transition_edit.html")))
 	public String transition() {
+		workflow = workflowHelper.getWorkflow(dto.getId());
+		current = workflowStatusHelper.getWorkflowStatus(dto.getWsid()).getStatus();
+		nextList = workflowStatusHelper.getNextList(dto.getWsid(),dto.getId());
+		nextEntryList = workflowStatusHelper.getWithoutNextList(dto.getWsid(),dto.getId());
 		return SUCCESS;
 	}
 	
@@ -183,13 +213,8 @@ public class WorkflowAdminAction extends GusukuAction implements ModelDriven {
 	}
 
 	
-	public void setDelid(String[] delid) {
+	public void setDelid(Long[] delid) {
 		this.delid = delid;
-	}
-
-	
-	public WorkflowHelper getWorkflowHelper() {
-		return workflowHelper;
 	}
 
 	
@@ -198,18 +223,8 @@ public class WorkflowAdminAction extends GusukuAction implements ModelDriven {
 	}
 
 	
-	public StatusHelper getStatusHelper() {
-		return statusHelper;
-	}
-
-	
 	public void setStatusHelper(StatusHelper statusHelper) {
 		this.statusHelper = statusHelper;
-	}
-
-	
-	public WorkflowStatusHelper getWorkflowStatusHelper() {
-		return workflowStatusHelper;
 	}
 
 	
@@ -217,19 +232,44 @@ public class WorkflowAdminAction extends GusukuAction implements ModelDriven {
 		this.workflowStatusHelper = workflowStatusHelper;
 	}
 
-	
-	public NextstatusHelper getNextstatusHelper() {
-		return nextstatusHelper;
-	}
-
-	
-	public void setNextstatusHelper(NextstatusHelper nextstatusHelper) {
-		this.nextstatusHelper = nextstatusHelper;
-	}
-
-	
 	public List<Workflow> getList() {
 		return list;
+	}
+	
+	public List<Status> getStatusList() {
+		return statusList;
+	}
+	
+	public Workflow getWorkflow() {
+		return workflow;
+	}
+	
+	public WorkflowStatus getEnd() {
+		return end;
+	}
+	
+	public List getEntryList() {
+		return entryList;
+	}
+	
+	public List getIntervalList() {
+		return intervalList;
+	}
+	
+	public WorkflowStatus getStart() {
+		return start;
+	}
+	
+	public Status getCurrent() {
+		return current;
+	}
+	
+	public List<WorkflowStatus> getNextEntryList() {
+		return nextEntryList;
+	}
+	
+	public List<WorkflowStatus> getNextList() {
+		return nextList;
 	}
 
 }

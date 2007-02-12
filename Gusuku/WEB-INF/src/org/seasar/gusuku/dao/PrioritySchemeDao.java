@@ -30,19 +30,20 @@ public interface PrioritySchemeDao {
 	public void delete(PriorityScheme priorityScheme);
 	
 	@Query("HEADID = /*headid*/ ORDER BY SORT")
-	public List<PriorityScheme> findWithSchemeByHeadid(String headid);
+	public List<PriorityScheme> findWithSchemeByHeadid(Long headid);
 	
 	@Query("SORT = (SELECT MAX(SORT) FROM PRIORITY_SCHEME WHERE HEADID = /*headid*/) AND HEADID = /*headid*/")
-	public PriorityScheme findMaxSort(String headid);
+	public PriorityScheme findMaxSort(Long headid);
 	
 	@Query("PRIORITY_SCHEME.ID = /*id*/")
-	public PriorityScheme findById(String id);
+	public PriorityScheme findById(Long id);
 	
 	@Query("HEADID = /*headid*/ AND SORT > (SELECT SORT FROM PRIORITY_SCHEME WHERE PRIORITY_SCHEME.ID = /*id*/) ORDER BY SORT LIMIT 1")
 	@Arguments({"id","headid"})
-	public PriorityScheme findAfterById(String id, String headid);
+	public PriorityScheme findAfterById(Long id, Long headid);
 
-	@Query("HEADID = /*headid*/ AND SORT < (SELECT SORT FROM PRIORITY_SCHEME WHERE PRIORITY_SCHEME.ID = /*id*/) ORDER BY SORT LIMIT 1")
+	@Query("HEADID = /*headid*/ AND SORT < (SELECT SORT FROM PRIORITY_SCHEME WHERE PRIORITY_SCHEME.ID = /*id*/) ORDER BY SORT DESC LIMIT 1")
 	@Arguments({"id","headid"})
-	public PriorityScheme findBeforeById(String id, String headid);
+	public PriorityScheme findBeforeById(Long id, Long headid);
+	
 }

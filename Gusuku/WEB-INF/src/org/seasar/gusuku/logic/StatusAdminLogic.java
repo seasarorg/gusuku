@@ -21,7 +21,7 @@ public interface StatusAdminLogic {
 
 	public void registration(StatusAdminDto statusAdminDto);
 	
-	public void delete(String[] ids);
+	public void delete(Long[] delids);
 	
 	public StatusAdminDto getStatus(StatusAdminDto statusAdminDto);
 }

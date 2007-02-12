@@ -36,9 +36,9 @@ public interface WorkflowDao {
 	public List<Workflow> findAll();
 
 	@Query("ID = /*id*/ AND DELFLAG = FALSE")
-	public Workflow findById(String id);
+	public Workflow findById(Long id);
 	
-	public void updateDelflag(String[] ids);
+	public void updateDelflag(Long[] delids);
 	
 	
 	public List<Workflow> findByDto(WorkflowAdminDto dto);

@@ -33,7 +33,7 @@ public class ReportDataHelper {
 	 * @param formid フォームID
 	 * @return 報告データ
 	 */
-	public ReportData getReportData(String reportid,String formid){
+	public ReportData getReportData(Long reportid,Long formid){
 		return reportDataDao.findByReportidAndFormid(reportid,formid);
 	}
 	
@@ -42,7 +42,7 @@ public class ReportDataHelper {
 	 * @param id 報告データID
 	 * @return 報告データ
 	 */
-	public ReportData getReportData(String id){
+	public ReportData getReportData(Long id){
 		return reportDataDao.findById(id);
 	}
 

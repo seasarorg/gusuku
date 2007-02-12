@@ -26,24 +26,24 @@ import org.seasar.dao.annotation.tiger.Relation;
 public class ResolutionScheme implements Serializable {
 
 	private static final long serialVersionUID = 8860416059271714701L;
-	private long id;
-	private long headid;
-	private long resolutionid;
+	private Long id;
+	private Long headid;
+	private Long resolutionid;
 	private int sort;
 	
 	private Resolution resolution;
 	
-	public long getHeadid() {
+	public Long getHeadid() {
 		return headid;
 	}
-	public void setHeadid(long headid) {
+	public void setHeadid(Long headid) {
 		this.headid = headid;
 	}
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public int getSort() {
@@ -52,10 +52,10 @@ public class ResolutionScheme implements Serializable {
 	public void setSort(int sort) {
 		this.sort = sort;
 	}
-	public long getResolutionid() {
+	public Long getResolutionid() {
 		return resolutionid;
 	}
-	public void setResolutionid(long resolutionid) {
+	public void setResolutionid(Long resolutionid) {
 		this.resolutionid = resolutionid;
 	}
 	

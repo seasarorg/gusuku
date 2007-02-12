@@ -38,7 +38,7 @@ public interface TypeHeadDao {
 	public List<TypeHead> findAll();
 	
 	@Query("ID = /*id*/ AND DELFLAG = FALSE")
-	public TypeHead findById(String id);
+	public TypeHead findById(Long id);
 
-	public void updateDelflag(String[] ids);
+	public void updateDelflag(Long[] delids);
 }

@@ -17,9 +17,15 @@ package org.seasar.gusuku.web.admin;
 
 import java.util.List;
 
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dto.ProjectAdminDto;
+import org.seasar.gusuku.entity.Account;
+import org.seasar.gusuku.entity.CustomFormHead;
 import org.seasar.gusuku.entity.Groupbase;
+import org.seasar.gusuku.entity.PriorityHead;
+import org.seasar.gusuku.entity.Project;
+import org.seasar.gusuku.entity.ResolutionHead;
+import org.seasar.gusuku.entity.TypeHead;
+import org.seasar.gusuku.entity.Workflow;
 import org.seasar.gusuku.helper.AccountHelper;
 import org.seasar.gusuku.helper.CustomFormHelper;
 import org.seasar.gusuku.helper.GroupbaseHelper;
@@ -36,13 +42,14 @@ import org.seasar.xwork.annotation.XWorkAction;
 
 import com.opensymphony.webwork.util.TokenHelper;
 import com.opensymphony.xwork.ModelDriven;
+import com.opensymphony.xwork.Preparable;
 
 /**
  * プロジェクト管理
  * @author duran
  *
  */
-public class ProjectAdminAction extends GusukuAction implements ModelDriven {
+public class ProjectAdminAction extends GusukuAction implements ModelDriven,Preparable {
 
 	private static final long serialVersionUID = 1532329301918514343L;
 	private ProjectAdminLogic projectAdminLogic;
@@ -55,26 +62,52 @@ public class ProjectAdminAction extends GusukuAction implements ModelDriven {
 	private ResolutionHelper resolutionHelper;
 	private PriorityHelper priorityHelper;
 	
-	private List list;
+	private List<Project> list;
 	
+	private List<Workflow> workflowList;
+	private List<TypeHead> typeList;
+	private List<PriorityHead> priorityList;
+	private List<ResolutionHead> resolutionList;
+	private List<CustomFormHead> customformList;
+	private List<Account> leaderList;
 	private List<Groupbase> memberList;
 	private List<Groupbase> groupList;
 	
-	private String[] delid;
-	private String[] addid;
-	private String[] removeid;
+	private Project project;
+	
+	private Long[] delid;
+	private Long[] addid;
+	private Long[] removeid;
 	
 	private ProjectAdminDto dto = new ProjectAdminDto();
-
+	
+	public void prepare(){
+	}
+	public void prepareInit(){
+		initList();
+	}
+	public void prepareDone(){
+		initList();
+	}
+	
+	private void initList(){
+		workflowList = workflowHelper.getWorkflowList();
+		typeList = typeHelper.getTypeHeadList();
+		priorityList = priorityHelper.getPriorityHeadList();
+		resolutionList = resolutionHelper.getResolutionHeadList();
+		customformList = customFormHelper.getCustomFormHeadList();
+		leaderList = accountHelper.getAccountList();
+	}
 	/**
 	 * プロジェクト入力
 	 * @return
 	 */
 	@XWorkAction(name = "project_edit", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/project_add.html")))
 	public String init() {
-		if (!StringUtil.isEmpty(dto.getId())) {
+		if (dto.getId() != null) {
 			dto = projectAdminLogic.getProject(dto);
 		}
+		
 		return SUCCESS;
 	}
 	
@@ -96,6 +129,7 @@ public class ProjectAdminAction extends GusukuAction implements ModelDriven {
 			@Result(type = "redirect", param = @Param(name = "location", value = "/admin/project_list.html")),
 			@Result(name = "input", type = "mayaa", param = @Param(name = "location", value = "/admin/project_add.html")) })
 	public String done(){
+		
 		if(TokenHelper.validToken()){
 			projectAdminLogic.registration(dto);
 		}
@@ -120,6 +154,7 @@ public class ProjectAdminAction extends GusukuAction implements ModelDriven {
 	public String project() {
 		memberList = groupbaseHelper.getGroupList(dto.getId());
 		groupList = groupbaseHelper.getWithoutsGroupList(dto.getId());
+		project = projectHelper.getProject(dto.getId());
 		return SUCCESS;
 	}
 	
@@ -150,7 +185,7 @@ public class ProjectAdminAction extends GusukuAction implements ModelDriven {
 		return SUCCESS;
 	}
 
-	public List getList() {
+	public List<Project> getList() {
 		return list;
 	}
 
@@ -166,7 +201,7 @@ public class ProjectAdminAction extends GusukuAction implements ModelDriven {
 		this.projectAdminLogic = projectAdminLogic;
 	}
 
-	public void setDelid(String[] delid) {
+	public void setDelid(Long[] delid) {
 		this.delid = delid;
 	}
 
@@ -178,7 +213,7 @@ public class ProjectAdminAction extends GusukuAction implements ModelDriven {
 		return memberList;
 	}
 
-	public void setAddid(String[] addid) {
+	public void setAddid(Long[] addid) {
 		this.addid = addid;
 	}
 
@@ -186,13 +221,8 @@ public class ProjectAdminAction extends GusukuAction implements ModelDriven {
 		this.groupbaseHelper = groupbaseHelper;
 	}
 
-	public void setRemoveid(String[] removeid) {
+	public void setRemoveid(Long[] removeid) {
 		this.removeid = removeid;
-	}
-
-	
-	public WorkflowHelper getWorkflowHelper() {
-		return workflowHelper;
 	}
 
 	
@@ -200,22 +230,8 @@ public class ProjectAdminAction extends GusukuAction implements ModelDriven {
 		this.workflowHelper = workflowHelper;
 	}
 
-	public CustomFormHelper getCustomFormHelper() {
-		return customFormHelper;
-	}
-
 	public void setCustomFormHelper(CustomFormHelper customFormHelper) {
 		this.customFormHelper = customFormHelper;
-	}
-
-	
-	public AccountHelper getAccountHelper() {
-		return accountHelper;
-	}
-
-	
-	public ProjectHelper getProjectHelper() {
-		return projectHelper;
 	}
 
 	
@@ -224,18 +240,8 @@ public class ProjectAdminAction extends GusukuAction implements ModelDriven {
 	}
 
 	
-	public TypeHelper getTypeHelper() {
-		return typeHelper;
-	}
-
-	
 	public void setTypeHelper(TypeHelper typeHelper) {
 		this.typeHelper = typeHelper;
-	}
-
-	
-	public PriorityHelper getPriorityHelper() {
-		return priorityHelper;
 	}
 
 	
@@ -244,13 +250,36 @@ public class ProjectAdminAction extends GusukuAction implements ModelDriven {
 	}
 
 	
-	public ResolutionHelper getResolutionHelper() {
-		return resolutionHelper;
-	}
-
-	
 	public void setResolutionHelper(ResolutionHelper resolutionHelper) {
 		this.resolutionHelper = resolutionHelper;
+	}
+	
+	public List<CustomFormHead> getCustomformList() {
+		return customformList;
+	}
+	
+	public List<Account> getLeaderList() {
+		return leaderList;
+	}
+	
+	public List<PriorityHead> getPriorityList() {
+		return priorityList;
+	}
+	
+	public List<ResolutionHead> getResolutionList() {
+		return resolutionList;
+	}
+	
+	public List<TypeHead> getTypeList() {
+		return typeList;
+	}
+	
+	public List<Workflow> getWorkflowList() {
+		return workflowList;
+	}
+	
+	public Project getProject() {
+		return project;
 	}
 
 }

@@ -26,14 +26,15 @@ public class MailConditionLogicImpl implements MailConditionLogic {
 	private MailConditionDao mailConditionDao;
 	private MailConditionDxo mailConditionDxo;
 	
-	public void registration(MailConditionDto mailConditionDto, String accountid) {
+	public void registration(MailConditionDto mailConditionDto, Long accountid) {
 		MailCondition mailCondition = mailConditionDxo.convert(mailConditionDto);
 		
-		if(mailConditionDto.getId().equals("0")){
-			mailCondition.setAccountid(Long.parseLong(accountid));
+		//TODO
+		if(mailConditionDto.getId() == null){
+			mailCondition.setAccountid(accountid);
 			mailConditionDao.insert(mailCondition);
 		}else{
-			mailCondition.setAccountid(Long.parseLong(accountid));
+			mailCondition.setAccountid(accountid);
 			mailConditionDao.update(mailCondition);
 		}
 

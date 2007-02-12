@@ -27,7 +27,7 @@ public interface SearchLogic {
 	 * @param parameters
 	 * @param accountid
 	 */
-	public void saveCondition(Map<String,String[]> parameters,String accountid);
+	public void saveCondition(Map<String,String[]> parameters,Long accountid);
 	
 	/**
 	 * 条件に従って検索を行います
@@ -35,19 +35,19 @@ public interface SearchLogic {
 	 * @param accountid
 	 * @return
 	 */
-	public List search(SearchConditionHead searchConditionHead,Map<String,String[]> parameters,String accountid);
+	public List search(SearchConditionHead searchConditionHead,Map<String,String[]> parameters,Long accountid);
 	
 	/**
 	 * 
 	 *
 	 */
-	public void load(Map<String,String[]> parameters,String conditionid);
+	public void load(Map<String,String[]> parameters,Long conditionid);
 	
 	/**
 	 * 検索条件を削除します
 	 * @param ids 削除対象ID
 	 */
-	public void delete(String[] ids);
+	public void delete(Long accountid,Long[] delids);
 
 	/**
 	 * 検索条件を更新します<br>
@@ -55,10 +55,10 @@ public interface SearchLogic {
 	 * @param visible 表示設定を行うIDの配列
 	 * @param amount 表示件数のマップ ID:件数
 	 */
-	public void update(String[] visible, Map amount);
+	public void update(Long[] visible, Map amount);
 	
 	
-	public void sortUp(String id,String accountid);
-	public void sortDown(String id,String accountid);
+	public void sortUp(Long id,Long accountid);
+	public void sortDown(Long id,Long accountid);
 
 }

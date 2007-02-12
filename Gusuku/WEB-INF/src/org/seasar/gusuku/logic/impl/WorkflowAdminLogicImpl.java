@@ -18,7 +18,6 @@ package org.seasar.gusuku.logic.impl;
 import java.util.Date;
 
 import org.seasar.framework.container.annotation.tiger.Aspect;
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dao.NextstatusDao;
 import org.seasar.gusuku.dao.WorkflowDao;
 import org.seasar.gusuku.dao.WorkflowStatusDao;
@@ -42,18 +41,18 @@ public class WorkflowAdminLogicImpl implements WorkflowAdminLogic {
 	public void registration(WorkflowAdminDto workflowAdminDto) {
 		Workflow workflow = workflowDxo.convert(workflowAdminDto);
 
-		if (StringUtil.isEmpty(workflowAdminDto.getId())) {
+		if (workflowAdminDto.getId() == null) {
 			workflowDao.insert(workflow);
 			WorkflowStatus start = new WorkflowStatus();
 			start.setWorkflowid(workflow.getId());
 			start.setSflag(true);
-			start.setStatusid(Long.parseLong(workflowAdminDto
-					.getStartstatusid()));
+			start.setStatusid(workflowAdminDto
+					.getStartstatusid());
 			workflowStatusDao.insert(start);
 			WorkflowStatus end = new WorkflowStatus();
 			end.setWorkflowid(workflow.getId());
 			end.setEflag(true);
-			end.setStatusid(Long.parseLong(workflowAdminDto.getEndstatusid()));
+			end.setStatusid(workflowAdminDto.getEndstatusid());
 			workflowStatusDao.insert(end);
 		} else {
 			workflow.setUdate(new Date());
@@ -61,18 +60,18 @@ public class WorkflowAdminLogicImpl implements WorkflowAdminLogic {
 
 			WorkflowStatus start = workflowStatusDao
 					.findStartStatusById(workflowAdminDto.getId());
-			start.setStatusid(Long.parseLong(workflowAdminDto
-					.getStartstatusid()));
+			start.setStatusid(workflowAdminDto
+					.getStartstatusid());
 			workflowStatusDao.update(start);
 			WorkflowStatus end = workflowStatusDao
 					.findEndStatusById(workflowAdminDto.getId());
-			end.setStatusid(Long.parseLong(workflowAdminDto.getEndstatusid()));
+			end.setStatusid(workflowAdminDto.getEndstatusid());
 			workflowStatusDao.update(end);
 
 		}
 	}
 
-	public void delete(String[] deleteids) {
+	public void delete(Long[] deleteids) {
 		if (deleteids != null && deleteids.length > 0) {
 			workflowDao.updateDelflag(deleteids);
 		}
@@ -87,45 +86,45 @@ public class WorkflowAdminLogicImpl implements WorkflowAdminLogic {
 				.getId());
 		WorkflowStatus end = workflowStatusDao.findEndStatusById(dto.getId());
 
-		dto.setStartstatusid(Long.toString(start.getStatusid()));
-		dto.setEndstatusid(Long.toString(end.getStatusid()));
+		dto.setStartstatusid(start.getStatusid());
+		dto.setEndstatusid(end.getStatusid());
 		return dto;
 	}
 
 	public void addStatus(WorkflowAdminDto workflowAdminDto) {
-		if (!StringUtil.isEmpty(workflowAdminDto.getAddstatusid())) {
+		if (workflowAdminDto.getAddstatusid() != null) {
 			WorkflowStatus workflowStatus = new WorkflowStatus();
-			workflowStatus.setStatusid(Long.parseLong(workflowAdminDto
-					.getAddstatusid()));
-			workflowStatus.setWorkflowid(Long.parseLong(workflowAdminDto
-					.getId()));
+			workflowStatus.setStatusid(workflowAdminDto
+					.getAddstatusid());
+			workflowStatus.setWorkflowid(workflowAdminDto
+					.getId());
 			workflowStatusDao.insert(workflowStatus);
 		}
 	}
 	
 
-	public void deleteStatus(String delid) {
-		if(!StringUtil.isEmpty(delid)){
+	public void deleteStatus(Long delid) {
+		if(delid != null){
 			WorkflowStatus workflowStatus = new WorkflowStatus();
-			workflowStatus.setId(Long.parseLong(delid));
+			workflowStatus.setId(delid);
 			workflowStatusDao.delete(workflowStatus);
 		}
 		
 	}
 
 	public void addTransition(WorkflowAdminDto workflowAdminDto) {
-		if(!StringUtil.isEmpty(workflowAdminDto.getAddworkflowstatusid())){
+		if(workflowAdminDto.getAddworkflowstatusid() != null){
 		Nextstatus nextstatus = new Nextstatus();
-			nextstatus.setWorkflowstatusid(Long.parseLong(workflowAdminDto.getWsid()));
-			nextstatus.setNextstatusid(Long.parseLong(workflowAdminDto
-					.getAddworkflowstatusid()));
+			nextstatus.setWorkflowstatusid(workflowAdminDto.getWsid());
+			nextstatus.setNextstatusid(workflowAdminDto
+					.getAddworkflowstatusid());
 			nextstatusDao.insert(nextstatus);
 		}
 	}
 	
-	public void deleteTransition(String[] delids,String workflowstatusid) {
+	public void deleteTransition(Long[] delids,Long workflowstatusid) {
 		if (delids != null && delids.length > 0) {
-			for (String delid : delids) {
+			for (Long delid : delids) {
 				nextstatusDao.deleteByWorkflowstatusidAndNextstatusid(workflowstatusid,delid);
 			}
 		}

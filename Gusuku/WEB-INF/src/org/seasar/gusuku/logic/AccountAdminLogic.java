@@ -22,11 +22,11 @@ public interface AccountAdminLogic {
 
 	public void registration(AccountAdminDto accountAdminDto);
 	
-	public void delete(String[] ids);
+	public void delete(Long[] delids);
 	
 	public AccountAdminDto getAccount(AccountAdminDto accountAdminDto);
 	
-	public AccountDto getAccount(String accountid);
+	public AccountDto getAccount(Long accountid);
 
 	public void update(AccountDto dto);
 }

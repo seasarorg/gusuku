@@ -58,7 +58,7 @@ public class PriorityHelper {
 	 * @param headid
 	 * @return
 	 */
-	public List<Priority> getPriorityListWithoutScheme(String headid){
+	public List<Priority> getPriorityListWithoutScheme(Long headid){
 		return priorityDao.findWithoutSchemeByHeadid(headid);
 	}
 	/**
@@ -66,11 +66,11 @@ public class PriorityHelper {
 	 * @param headid
 	 * @return
 	 */
-	public List<PriorityScheme> getPriorityListWithScheme(String headid){
+	public List<PriorityScheme> getPriorityListWithScheme(Long headid){
 		return prioritySchemeDao.findWithSchemeByHeadid(headid);
 	}
 	
-	public PriorityHead getPriorityHead(String id){
+	public PriorityHead getPriorityHead(Long id){
 		return priorityHeadDao.findById(id);
 	}
 	

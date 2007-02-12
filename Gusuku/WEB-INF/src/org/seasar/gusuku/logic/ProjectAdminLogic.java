@@ -21,12 +21,12 @@ public interface ProjectAdminLogic {
 	
 	public void registration(ProjectAdminDto projectAdminDto);
 	
-	public void delete(String[] ids);
+	public void delete(Long[] delids);
 	
 	public ProjectAdminDto getProject(ProjectAdminDto projectAdminDto);
 
-	public void memberAdd(String id, String[] addid);
+	public void memberAdd(Long id, Long[] addid);
 
-	public void memberRemove(String id, String[] removeid);
+	public void memberRemove(Long id, Long[] removeid);
 
 }

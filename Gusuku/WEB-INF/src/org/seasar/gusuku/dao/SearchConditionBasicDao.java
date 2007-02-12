@@ -29,5 +29,5 @@ public interface SearchConditionBasicDao {
 	public void delete(SearchConditionBasic searchConditionBasic);
 	
 	@Query("CONDITIONHEADID = /*conditionheadid*/ ORDER BY PROJECTID")
-	public List<SearchConditionBasic> findByConditionheadid(String conditionheadid);
+	public List<SearchConditionBasic> findByConditionheadid(Long conditionheadid);
 }

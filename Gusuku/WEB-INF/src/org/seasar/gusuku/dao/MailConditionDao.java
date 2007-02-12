@@ -31,8 +31,8 @@ public interface MailConditionDao {
 	
 	@Query("ACCOUNTID = /*accountid*/ AND PROJECTID = /*projectid*/")
 	@Arguments({"accountid","projectid"})
-	public MailCondition findByAccountidAndProjectid(String accountid, String projectid);
+	public MailCondition findByAccountidAndProjectid(Long accountid, Long projectid);
 	
-	public List<MailCondition> findMailList(String projectid);
+	public List<MailCondition> findMailList(Long projectid);
 
 }

@@ -12,7 +12,7 @@
 		</field-validator>
 	</field>
 	<field name="workflowid">
-		<field-validator type="requiredstring">
+		<field-validator type="required">
 			<message key="project.workflowid.required"/>
 		</field-validator>
 	</field>

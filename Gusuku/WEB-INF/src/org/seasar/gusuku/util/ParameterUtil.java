@@ -48,10 +48,28 @@ public class ParameterUtil {
 	 * @param parameter　Parameter
 	 * @return String[]
 	 */
-	public static String[] getParameterArrayValue(Map parameters,String parameter){
+	public static String[] getParameterStringArrayValue(Map parameters,String parameter){
 		return (String[]) parameters.get(parameter);
 	}
-
+	/**
+	 * Mapから値(Long[])を取得する ParameterAware用
+	 * @param parameters Map
+	 * @param parameter　Parameter
+	 * @return Long[]
+	 */
+	public static Long[] getParameterLongArrayValue(Map parameters,String parameter){
+		//TODO 型変換
+		String[] projectids = (String[]) parameters.get(parameter);
+		if(projectids == null){
+			return null;
+		}
+		Long[] ids = new Long[projectids.length];
+		for(int i = 0 ;i<projectids.length ; i++){
+			ids[i] = new Long(projectids[i]);
+		}
+		return ids;
+	}
+	
 	/**
 	 * Mapから値(Date)を取得する ParameterAware用
 	 * @param parameters Map
@@ -75,10 +93,10 @@ public class ParameterUtil {
 	}
 
 	/**
-	 * Mapから値(String)を取得する ParameterAware用
+	 * Mapから値(File)を取得する ParameterAware用
 	 * @param parameters Map
 	 * @param parameter　Parameter
-	 * @return String
+	 * @return File
 	 */
 	public static File getParameterFileValue(Map parameters,String parameter) {
 		File[] value = (File[]) parameters.get(parameter);
@@ -94,6 +112,14 @@ public class ParameterUtil {
 	public static void putParameterValue(Map<String,String[]> parameters,String key,String[] value){
 		parameters.put(key,value);
 	}
+	public static void putParameterValue(Map<String,String[]> parameters,String key,Long[] value){
+		//TODO
+		String[] s = new String[value.length];
+		for(int i=0;i<value.length;i++){
+			s[i] = Long.toString(value[i]);
+		}
+		parameters.put(key,s);
+	}
 	public static void putParameterValue(Map<String,String[]> parameters,String key,Date value){
 		if(value != null){
 			SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
@@ -101,8 +127,10 @@ public class ParameterUtil {
 		}
 	}
 	
-	public static void putParameterValue(Map<String,String[]> parameters,String key,long value){
-		parameters.put(key,new String[]{Long.toString(value)});
+	public static void putParameterValue(Map<String,String[]> parameters,String key,Long value){
+		if(value != null){
+			parameters.put(key,new String[]{value.toString()});
+		}
 	}
 	
 	public static String[] splitValue(String value){
@@ -117,5 +145,13 @@ public class ParameterUtil {
 		
 		return (String[])result.toArray(new String[0]);
 		
+	}
+
+	public static Long getParameterLongValue(Map parameters, String parameter) {
+		String[] value = (String[]) parameters.get(parameter);
+		if(value == null || StringUtil.isEmpty(value[0])){
+			return null;
+		}
+		return new Long(value[0]);
 	}
 }

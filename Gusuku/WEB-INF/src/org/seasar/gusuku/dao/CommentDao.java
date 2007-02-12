@@ -39,7 +39,7 @@ public interface CommentDao {
 	 * @return
 	 */
 	@Query("Comment.REPORTID = /*reportid*/ AND Comment.DELFLAG = FALSE ORDER BY Comment.RDATE")
-	public List<Comment> findByReportid(String reportid);
+	public List<Comment> findByReportid(Long reportid);
 
 	/**
 	 * 指定したIDにひもづくCommentを取得します
@@ -47,7 +47,7 @@ public interface CommentDao {
 	 * @return
 	 */
 	@Query("Comment.ID = /*cid*/")
-	public Comment findById(String cid);
+	public Comment findById(Long cid);
 	
 	/**
 	 * 指定したコメントの親コメント（登録日時が若い）を取得する
@@ -57,8 +57,8 @@ public interface CommentDao {
 	 */
 	@Query("Comment.REPORTID = /*reportid*/ AND Comment.RDATE < (SELECT RDATE FROM COMMENT WHERE ID = /*commentid*/) ORDER BY Comment.RDATE DESC LIMIT 1")
 	@Arguments({"reportid","commentid"})
-	public Comment findParentComment(String reportid, String commentid);
+	public Comment findParentComment(Long reportid, Long commentid);
 	
 	@Sql("UPDATE COMMENT SET DELFLAG = TRUE WHERE ID = /*id*/")
-	public void updateDelflag(String id);
+	public void updateDelflag(Long id);
 }

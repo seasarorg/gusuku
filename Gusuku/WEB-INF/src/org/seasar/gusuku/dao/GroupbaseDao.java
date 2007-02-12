@@ -35,15 +35,15 @@ public interface GroupbaseDao {
 	@Query("DELFLAG = FALSE ORDER BY ID")
 	public List<Groupbase> findAll();
 
-	public void updateDelflag(String[] ids);
+	public void updateDelflag(Long[] delids);
 	
 	@Query("ID = /*id*/ AND DELFLAG = FALSE")
-	public Groupbase findById(String id);
+	public Groupbase findById(Long id);
 	
 	public List<Groupbase> findByDto(GroupbaseAdminDto groupbaseAdminDto);
 	
-	public List<Groupbase> findByProjectid(String projectid);
-	public List<Groupbase> findByWithoutProjectid(String projectid);
+	public List<Groupbase> findByProjectid(Long projectid);
+	public List<Groupbase> findByWithoutProjectid(Long projectid);
 	
-	public List<Groupbase> findByAccountid(String accountid);
+	public List<Groupbase> findByAccountid(Long accountid);
 }

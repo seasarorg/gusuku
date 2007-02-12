@@ -32,15 +32,15 @@ public interface ReportDataDao {
 	
 	@Query("REPORTID = /*reportid*/ AND FORMID = /*formid*/")
 	@Arguments({"reportid","formid"})
-	public ReportData findByReportidAndFormid(String reportid,String formid);
+	public ReportData findByReportidAndFormid(Long reportid,Long formid);
 	
 	@Query("REPORTID = /*reportid*/")
-	public List<ReportData> findByReportid(String reportid);
+	public List<ReportData> findByReportid(Long reportid);
 	
 	@Query("ID = /*id*/")
-	public ReportData findById(String id);
+	public ReportData findById(Long id);
 	
 	@Sql("DELETE FROM REPORT_DATA WHERE REPORTID = /*id*/")
-	public void deleteByReportid(String id);
+	public void deleteByReportid(Long id);
 	
 }

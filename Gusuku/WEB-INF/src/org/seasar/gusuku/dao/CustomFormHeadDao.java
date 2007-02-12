@@ -32,12 +32,12 @@ public interface CustomFormHeadDao {
 	public void update(CustomFormHead customFormHead);
 	public void delete(CustomFormHead customFormHead);
 	
-	public void updateDelflag(String[] ids);
+	public void updateDelflag(Long[] delids);
 	
 	public List<CustomFormHead> findByDto(CustomFormHeadAdminDto customFormHeadAdminDto);
 	
 	@Query("ID = /*id*/ AND DELFLAG = FALSE")
-	public CustomFormHead findById(String id);
+	public CustomFormHead findById(Long id);
 
 	@Query("DELFLAG = FALSE ORDER BY ID")
 	public List<CustomFormHead> findAll();

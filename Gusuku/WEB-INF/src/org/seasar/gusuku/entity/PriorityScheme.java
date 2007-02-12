@@ -26,24 +26,24 @@ import org.seasar.dao.annotation.tiger.Relation;
 public class PriorityScheme implements Serializable {
 
 	private static final long serialVersionUID = 5444931372313679177L;
-	private long id;
-	private long headid;
-	private long priorityid;
+	private Long id;
+	private Long headid;
+	private Long priorityid;
 	private int sort;
 	
 	private Priority priority;
 	
-	public long getHeadid() {
+	public Long getHeadid() {
 		return headid;
 	}
-	public void setHeadid(long headid) {
+	public void setHeadid(Long headid) {
 		this.headid = headid;
 	}
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public int getSort() {
@@ -52,10 +52,10 @@ public class PriorityScheme implements Serializable {
 	public void setSort(int sort) {
 		this.sort = sort;
 	}
-	public long getPriorityid() {
+	public Long getPriorityid() {
 		return priorityid;
 	}
-	public void setPriorityid(long priorityid) {
+	public void setPriorityid(Long priorityid) {
 		this.priorityid = priorityid;
 	}
 	

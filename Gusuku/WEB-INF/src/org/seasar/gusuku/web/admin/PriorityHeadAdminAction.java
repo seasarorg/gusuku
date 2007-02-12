@@ -17,7 +17,6 @@ package org.seasar.gusuku.web.admin;
 
 import java.util.List;
 
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dto.PriorityHeadAdminDto;
 import org.seasar.gusuku.entity.PriorityHead;
 import org.seasar.gusuku.helper.PriorityHelper;
@@ -40,11 +39,11 @@ public class PriorityHeadAdminAction extends GusukuAction implements ModelDriven
 	
 	private List<PriorityHead> list;
 	
-	private String[] delid;
+	private Long[] delid;
 
 	@XWorkAction(name = "priority_head_edit", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/priority_head_add.html")))
 	public String init(){
-		if(!StringUtil.isEmpty(dto.getId())){
+		if(dto.getId() != null){
 			dto = priorityAdminLogic.getPriorityHeadAdminDto(dto);
 		}
 		return SUCCESS;
@@ -72,7 +71,7 @@ public class PriorityHeadAdminAction extends GusukuAction implements ModelDriven
 		return SUCCESS;
 	}
 
-	public void setDelid(String[] delid) {
+	public void setDelid(Long[] delid) {
 		this.delid = delid;
 	}
 	

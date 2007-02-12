@@ -30,19 +30,19 @@ public interface ResolutionSchemeDao {
 	public void delete(ResolutionScheme resolutionScheme);
 	
 	@Query("HEADID = /*headid*/ ORDER BY SORT")
-	public List<ResolutionScheme> findWithSchemeByHeadid(String headid);
+	public List<ResolutionScheme> findWithSchemeByHeadid(Long headid);
 	
 	@Query("SORT = (SELECT MAX(SORT) FROM RESOLUTION_SCHEME WHERE HEADID = /*headid*/) AND HEADID = /*headid*/")
-	public ResolutionScheme findMaxSort(String headid);
+	public ResolutionScheme findMaxSort(Long headid);
 	
 	@Query("RESOLUTION_SCHEME.ID = /*id*/")
-	public ResolutionScheme findById(String id);
+	public ResolutionScheme findById(Long id);
 	
 	@Query("HEADID = /*headid*/ AND SORT > (SELECT SORT FROM RESOLUTION_SCHEME WHERE RESOLUTION_SCHEME.ID = /*id*/) ORDER BY SORT LIMIT 1")
 	@Arguments({"id","headid"})
-	public ResolutionScheme findAfterById(String id, String headid);
+	public ResolutionScheme findAfterById(Long id, Long headid);
 
-	@Query("HEADID = /*headid*/ AND SORT < (SELECT SORT FROM RESOLUTION_SCHEME WHERE RESOLUTION_SCHEME.ID = /*id*/) ORDER BY SORT LIMIT 1")
+	@Query("HEADID = /*headid*/ AND SORT < (SELECT SORT FROM RESOLUTION_SCHEME WHERE RESOLUTION_SCHEME.ID = /*id*/) ORDER BY SORT DESC LIMIT 1")
 	@Arguments({"id","headid"})
-	public ResolutionScheme findBeforeById(String id, String headid);
+	public ResolutionScheme findBeforeById(Long id, Long headid);
 }

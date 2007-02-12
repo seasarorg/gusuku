@@ -21,7 +21,7 @@ public interface TypeAdminLogic {
 	
 	public void registration(TypeAdminDto typedminDto);
 	
-	public void delete(String[] delids);
+	public void delete(Long[] delids);
 	
 	public TypeAdminDto getTypeAdminDto(TypeAdminDto typeAdminDto);
 

@@ -43,7 +43,7 @@ public class PriorityAdminLogicImpl implements PriorityAdminLogic {
 		if(priorityAdminDto.isNoiconflag()){
 			priority.setIcon("");
 		}
-		if(StringUtil.isEmpty(priorityAdminDto.getId())){
+		if(priorityAdminDto.getId() == null){
 			priorityDao.insert(priority);
 		}else{
 			priority.setUdate(new Date());
@@ -71,7 +71,7 @@ public class PriorityAdminLogicImpl implements PriorityAdminLogic {
 		}
 	}
 
-	public void delete(String[] delids) {
+	public void delete(Long[] delids) {
 		if (delids != null && delids.length > 0) {
 			priorityDao.updateDelflag(delids);
 		}

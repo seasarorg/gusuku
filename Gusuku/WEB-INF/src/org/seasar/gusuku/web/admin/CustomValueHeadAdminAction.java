@@ -17,7 +17,6 @@ package org.seasar.gusuku.web.admin;
 
 import java.util.List;
 
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dto.CustomValueHeadAdminDto;
 import org.seasar.gusuku.entity.CustomValueHead;
 import org.seasar.gusuku.helper.CustomValueHelper;
@@ -45,7 +44,7 @@ public class CustomValueHeadAdminAction extends GusukuAction implements ModelDri
 	
 	private List<CustomValueHead> list;
 	
-	private String[] delid;
+	private Long[] delid;
 
 	/**
 	 * カスタムバリュー一覧
@@ -63,7 +62,7 @@ public class CustomValueHeadAdminAction extends GusukuAction implements ModelDri
 	 */
 	@XWorkAction(name = "custom_value_edit", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/custom_value_add.html")))
 	public String init() {
-		if (!StringUtil.isEmpty(dto.getId())) {
+		if (dto.getId() != null) {
 			dto = customValueHeadAdminLogic.getCustomValueHead(dto);
 		}
 		return SUCCESS;
@@ -110,7 +109,7 @@ public class CustomValueHeadAdminAction extends GusukuAction implements ModelDri
 		this.customValueHeadAdminLogic = customValueHeadAdminLogic;
 	}
 
-	public void setDelid(String[] delid) {
+	public void setDelid(Long[] delid) {
 		this.delid = delid;
 	}
 

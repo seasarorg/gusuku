@@ -15,6 +15,7 @@
  */
 package org.seasar.gusuku.web.admin;
 
+import java.io.File;
 import java.util.Map;
 
 import org.seasar.framework.util.StringUtil;
@@ -45,8 +46,14 @@ public class SystemPropertyAction extends GusukuAction implements
 			@Result(type = "redirect", param = @Param(name = "location", value = "/admin/system.html")),
 			@Result(name = "input", type = "mayaa", param = @Param(name = "location", value = "/admin/system.html")) })
 	public String done(){
-		if(StringUtil.isEmpty(ParameterUtil.getParameterValue(parameters,"dir"))){
+		String dir = ParameterUtil.getParameterValue(parameters,"dir");
+		if(StringUtil.isEmpty(dir)){
 			addFieldError("dir",getText("system.dir.required"));
+		}else{
+			File real = new File(dir);
+			if(!real.exists()){
+				addFieldError("dir",getText("system.dir.exists"));
+			}
 		}
 		if(hasFieldErrors()){
 			return INPUT;

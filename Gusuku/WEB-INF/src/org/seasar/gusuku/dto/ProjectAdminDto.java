@@ -20,15 +20,15 @@ import java.io.Serializable;
 public class ProjectAdminDto implements Serializable {
 	
 	private static final long serialVersionUID = 5825922484284305575L;
-	private String id;
+	private Long id;
 	private String name;
 	private String key;
-	private String workflowid;
-	private String typeid;
-	private String priorityid;
-	private String resolutionid;
-	private String formid;
-	private String leaderid;
+	private Long workflowid;
+	private Long typeid;
+	private Long priorityid;
+	private Long resolutionid;
+	private Long formid;
+	private Long leaderid;
 	private String url;
 	private String devurl;
 	private String mailaddr;
@@ -50,10 +50,10 @@ public class ProjectAdminDto implements Serializable {
 	public void setEdate(String edate) {
 		this.edate = edate;
 	}
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getKey() {
@@ -66,10 +66,10 @@ public class ProjectAdminDto implements Serializable {
 	public void setKey(String key) {
 		this.key = key;
 	}
-	public String getLeaderid() {
+	public Long getLeaderid() {
 		return leaderid;
 	}
-	public void setLeaderid(String leaderid) {
+	public void setLeaderid(Long leaderid) {
 		this.leaderid = leaderid;
 	}
 	public String getName() {
@@ -95,17 +95,17 @@ public class ProjectAdminDto implements Serializable {
 		this.url = url;
 	}
 	
-	public String getWorkflowid() {
+	public Long getWorkflowid() {
 		return workflowid;
 	}
 	
-	public void setWorkflowid(String workflowid) {
+	public void setWorkflowid(Long workflowid) {
 		this.workflowid = workflowid;
 	}
-	public String getFormid() {
+	public Long getFormid() {
 		return formid;
 	}
-	public void setFormid(String formid) {
+	public void setFormid(Long formid) {
 		this.formid = formid;
 	}
 	public String getCloseflag() {
@@ -129,19 +129,19 @@ public class ProjectAdminDto implements Serializable {
 		this.mailaddr = mailaddr;
 	}
 	
-	public String getPriorityid() {
+	public Long getPriorityid() {
 		return priorityid;
 	}
 	
-	public void setPriorityid(String priorityid) {
+	public void setPriorityid(Long priorityid) {
 		this.priorityid = priorityid;
 	}
 	
-	public String getResolutionid() {
+	public Long getResolutionid() {
 		return resolutionid;
 	}
 	
-	public void setResolutionid(String resolutionid) {
+	public void setResolutionid(Long resolutionid) {
 		this.resolutionid = resolutionid;
 	}
 	
@@ -153,11 +153,11 @@ public class ProjectAdminDto implements Serializable {
 		this.subject = subject;
 	}
 	
-	public String getTypeid() {
+	public Long getTypeid() {
 		return typeid;
 	}
 	
-	public void setTypeid(String typeid) {
+	public void setTypeid(Long typeid) {
 		this.typeid = typeid;
 	}
 	

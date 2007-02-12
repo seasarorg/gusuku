@@ -38,7 +38,7 @@ public class CustomFormHelper {
 	 * @param formheadid 対象となるカスタムフォームID
 	 * @return フォーム一覧
 	 */
-	public List<CustomFormDetail> getFormList(String formheadid){
+	public List<CustomFormDetail> getFormList(Long formheadid){
 		return customFormDetailDao.findByFormheadid(formheadid);
 	}
 	
@@ -64,7 +64,7 @@ public class CustomFormHelper {
 	 * @param formheadid カスタムフォームID
 	 * @return
 	 */
-	public CustomFormHead getCustomFormHead(String formheadid){
+	public CustomFormHead getCustomFormHead(Long formheadid){
 		return customFormHeadDao.findById(formheadid);
 	}
 

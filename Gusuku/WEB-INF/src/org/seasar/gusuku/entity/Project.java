@@ -25,16 +25,16 @@ import org.seasar.dao.annotation.tiger.Relation;
 public class Project implements Serializable {
 	
 	private static final long serialVersionUID = -1902238916067714889L;
-	private long id;
+	private Long id;
 	private String key;
 	private long counter;
 	private String name;
-	private long leaderid;
-	private long workflowid;
-	private long typeid;
-	private long priorityid;
-	private long resolutionid;
-	private long formid;
+	private Long leaderid;
+	private Long workflowid;
+	private Long typeid;
+	private Long priorityid;
+	private Long resolutionid;
+	private Long formid;
 	private Date sdate;
 	private Date edate;
 	private String url;
@@ -82,10 +82,10 @@ public class Project implements Serializable {
 	}
 	
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getKey() {
@@ -106,10 +106,10 @@ public class Project implements Serializable {
 	public void setRdate(Date rdate) {
 		this.rdate = rdate;
 	}
-	public long getLeaderid() {
+	public Long getLeaderid() {
 		return leaderid;
 	}
-	public void setLeaderid(long leaderid) {
+	public void setLeaderid(Long leaderid) {
 		this.leaderid = leaderid;
 	}
 	public Date getSdate() {
@@ -131,17 +131,17 @@ public class Project implements Serializable {
 		this.url = url;
 	}
 	
-	public long getWorkflowid() {
+	public Long getWorkflowid() {
 		return workflowid;
 	}
 	
-	public void setWorkflowid(long workflowid) {
+	public void setWorkflowid(Long workflowid) {
 		this.workflowid = workflowid;
 	}
-	public long getFormid() {
+	public Long getFormid() {
 		return formid;
 	}
-	public void setFormid(long formid) {
+	public void setFormid(Long formid) {
 		this.formid = formid;
 	}
 	public String getDevurl() {
@@ -169,27 +169,27 @@ public class Project implements Serializable {
 		this.subject = subject;
 	}
 	
-	public long getPriorityid() {
+	public Long getPriorityid() {
 		return priorityid;
 	}
 	
-	public void setPriorityid(long priorityid) {
+	public void setPriorityid(Long priorityid) {
 		this.priorityid = priorityid;
 	}
 	
-	public long getResolutionid() {
+	public Long getResolutionid() {
 		return resolutionid;
 	}
 	
-	public void setResolutionid(long resolutionid) {
+	public void setResolutionid(Long resolutionid) {
 		this.resolutionid = resolutionid;
 	}
 	
-	public long getTypeid() {
+	public Long getTypeid() {
 		return typeid;
 	}
 	
-	public void setTypeid(long typeid) {
+	public void setTypeid(Long typeid) {
 		this.typeid = typeid;
 	}
 	

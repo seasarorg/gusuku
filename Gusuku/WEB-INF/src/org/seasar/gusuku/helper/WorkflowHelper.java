@@ -43,7 +43,7 @@ public class WorkflowHelper {
 	 * @param id ワークフローID
 	 * @return
 	 */
-	public Workflow getWorkflow(String id){
+	public Workflow getWorkflow(Long id){
 		return workflowDao.findById(id);
 	}
 

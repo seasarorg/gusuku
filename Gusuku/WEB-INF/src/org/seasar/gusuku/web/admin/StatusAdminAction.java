@@ -17,7 +17,6 @@ package org.seasar.gusuku.web.admin;
 
 import java.util.List;
 
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dto.StatusAdminDto;
 import org.seasar.gusuku.entity.Status;
 import org.seasar.gusuku.helper.StatusHelper;
@@ -45,7 +44,7 @@ public class StatusAdminAction extends GusukuAction implements ModelDriven {
 	private StatusHelper statusHelper;
 
 	private List<Status> list;
-	private String[] delid;
+	private Long[] delid;
 
 	/**
 	 * ステータス一覧
@@ -63,7 +62,7 @@ public class StatusAdminAction extends GusukuAction implements ModelDriven {
 	 */
 	@XWorkAction(name = "status_edit", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/status_add.html")))
 	public String init() {
-		if (!StringUtil.isEmpty(dto.getId())) {
+		if (dto.getId() != null) {
 			dto = statusAdminLogic.getStatus(dto);
 		}
 		return SUCCESS;
@@ -105,7 +104,7 @@ public class StatusAdminAction extends GusukuAction implements ModelDriven {
 		this.statusHelper = statusHelper;
 	}
 
-	public void setDelid(String[] delid) {
+	public void setDelid(Long[] delid) {
 		this.delid = delid;
 	}
 

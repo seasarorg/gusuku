@@ -39,13 +39,13 @@ public interface StatusDao {
 	public List<Status> findAll();
 
 	@Query("ID = /*id*/ AND DELFLAG = FALSE")
-	public Status findById(String id);
+	public Status findById(Long id);
 
-	public void updateDelflag(String[] ids);
+	public void updateDelflag(Long[] delids);
 	
-	public List<Status> findByWithoutWorkflowid(String workflowid);
+	public List<Status> findByWithoutWorkflowid(Long workflowid);
 	
 	@Arguments({"workflowid","statusid"})
-	public List<Status> findNextstatusByWorkflowidAndStatusid(String workflowid,String statusid);
+	public List<Status> findNextstatusByWorkflowidAndStatusid(Long workflowid,Long statusid);
 
 }

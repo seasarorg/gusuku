@@ -25,8 +25,8 @@ import org.seasar.dao.annotation.tiger.IdType;
 public class CustomValueDetail implements Serializable {
 	
 	private static final long serialVersionUID = 8725457969332935263L;
-	private long id;
-	private long valueheadid;
+	private Long id;
+	private Long valueheadid;
 	private String label;
 	private String value;
 	private int sort;
@@ -38,17 +38,17 @@ public class CustomValueDetail implements Serializable {
 		this.sort = sort;
 	}
 
-	public long getValueheadid() {
+	public Long getValueheadid() {
 		return valueheadid;
 	}
-	public void setValueheadid(long valueheadid) {
+	public void setValueheadid(Long valueheadid) {
 		this.valueheadid = valueheadid;
 	}
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getValue() {

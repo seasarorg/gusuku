@@ -26,69 +26,69 @@ import org.seasar.dao.annotation.tiger.Relation;
 public class MailCondition implements Serializable {
 
 	private static final long serialVersionUID = 3245283947952275147L;
-	private long id;
-	private long accountid;
-	private long projectid;
-	private Integer comment;
-	private Integer start;
-	private Integer process;
-	private Integer end;
+	private Long id;
+	private Long accountid;
+	private Long projectid;
+	private Long comment;
+	private Long start;
+	private Long process;
+	private Long end;
 	
 	private Account account;
 	
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
-	public long getAccountid() {
+	public Long getAccountid() {
 		return accountid;
 	}
 	
-	public void setAccountid(long accountid) {
+	public void setAccountid(Long accountid) {
 		this.accountid = accountid;
 	}
 	
-	public Integer getComment() {
+	public Long getComment() {
 		return comment;
 	}
 	
-	public void setComment(Integer comment) {
+	public void setComment(Long comment) {
 		this.comment = comment;
 	}
 	
-	public Integer getEnd() {
+	public Long getEnd() {
 		return end;
 	}
 	
-	public void setEnd(Integer end) {
+	public void setEnd(Long end) {
 		this.end = end;
 	}
 	
-	public Integer getProcess() {
+	public Long getProcess() {
 		return process;
 	}
 	
-	public void setProcess(Integer process) {
+	public void setProcess(Long process) {
 		this.process = process;
 	}
 	
-	public long getProjectid() {
+	public Long getProjectid() {
 		return projectid;
 	}
 	
-	public void setProjectid(long projectid) {
+	public void setProjectid(Long projectid) {
 		this.projectid = projectid;
 	}
 	
-	public Integer getStart() {
+	public Long getStart() {
 		return start;
 	}
 	
-	public void setStart(Integer start) {
+	public void setStart(Long start) {
 		this.start = start;
 	}
 	

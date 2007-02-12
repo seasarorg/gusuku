@@ -17,15 +17,21 @@ package org.seasar.gusuku.web;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dto.ReportDto;
+import org.seasar.gusuku.entity.Account;
+import org.seasar.gusuku.entity.Comment;
 import org.seasar.gusuku.entity.CustomFormDetail;
+import org.seasar.gusuku.entity.PriorityScheme;
 import org.seasar.gusuku.entity.Project;
 import org.seasar.gusuku.entity.Report;
+import org.seasar.gusuku.entity.StatusHistory;
+import org.seasar.gusuku.entity.TypeScheme;
 import org.seasar.gusuku.helper.AccountHelper;
 import org.seasar.gusuku.helper.CommentHelper;
 import org.seasar.gusuku.helper.CustomFormHelper;
@@ -47,13 +53,14 @@ import org.seasar.xwork.annotation.XWorkAction;
 
 import com.opensymphony.webwork.interceptor.ParameterAware;
 import com.opensymphony.webwork.util.TokenHelper;
+import com.opensymphony.xwork.Preparable;
 
 /**
  * 報告
  * @author duran
  *
  */
-public class ReportAction extends GusukuAction implements ParameterAware{
+public class ReportAction extends GusukuAction implements ParameterAware,Preparable{
 
 	private static final long serialVersionUID = 2438154368323465925L;
 
@@ -76,11 +83,40 @@ public class ReportAction extends GusukuAction implements ParameterAware{
 
 	private Project project;
 	private Report report;
+	
+	private List<Report> reportList;
+	private List<TypeScheme> typeList = new ArrayList<TypeScheme>();
+	private List<Project> projectEntryList;
+	private List<Account> assigneeList;
+	private List<PriorityScheme> priorityList;
+	
+	private List<Comment> commentList;
+	private List<StatusHistory> statusHistoryList;
 
 	private Map parameters;
 
 	public void setParameters(Map parameters) {
 		this.parameters = parameters;
+	}
+	
+	public void prepare(){
+	}
+	
+	public void prepareStep2(){
+		projectEntryList = projectHelper.getEntryList(getLoginid());
+		project = projectHelper.getProject(ParameterUtil.getParameterLongValue(parameters,"projectid"));
+		typeList = typeHelper.getTypeListWithScheme(project.getTypeid());
+		priorityList = priorityHelper.getPriorityListWithScheme(project.getPriorityid());
+		assigneeList = accountHelper.getProjectAccountList(project.getId());
+	}
+	public void prepareRegistration(){
+		project = projectHelper.getProject(ParameterUtil.getParameterLongValue(parameters,"projectid"));
+		Long reportid = ParameterUtil.getParameterLongValue(parameters,"id");
+		if(reportid != null){
+			typeList = typeHelper.getTypeListWithScheme(project.getTypeid());
+		}
+		priorityList = priorityHelper.getPriorityListWithScheme(project.getPriorityid());
+		assigneeList = accountHelper.getProjectAccountList(project.getId());
 	}
 
 	/**
@@ -89,6 +125,12 @@ public class ReportAction extends GusukuAction implements ParameterAware{
 	 */
 	@XWorkAction(name = "report_step1", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/report_step1.html")))
 	public String step1() {
+		Long projectid = ParameterUtil.getParameterLongValue(parameters,"projectid");
+		if(projectid != null){
+			project = projectHelper.getProject(projectid);
+			typeList = typeHelper.getTypeListWithScheme(project.getTypeid());
+		}
+		projectEntryList = projectHelper.getEntryList(getLoginid());
 		return SUCCESS;
 	}
 
@@ -100,25 +142,25 @@ public class ReportAction extends GusukuAction implements ParameterAware{
 			@Result(type = "mayaa", param = @Param(name = "location", value = "/report_step2.html")),
 			@Result(name = "input", type = "mayaa", param = @Param(name = "location", value = "/report_step1.html")) })
 	public String step2() {
-		String reportid = ParameterUtil.getParameterValue(parameters,"id");
-		if(StringUtil.isEmpty(reportid)){
+		Long reportid = ParameterUtil.getParameterLongValue(parameters,"id");
+		if(reportid == null){
 			//新規登録
-			String projectid = ParameterUtil.getParameterValue(parameters,"projectid");
-			if(StringUtil.isEmpty(projectid)){
+			Long projectid = ParameterUtil.getParameterLongValue(parameters,"projectid");
+			if(projectid == null){
 				addFieldError("projectid",getText("required.select",new String[]{getText("project")}));
 			}
-			String typeid = ParameterUtil.getParameterValue(parameters,"typeid");
-			if(StringUtil.isEmpty(typeid)){
+			Long typeid = ParameterUtil.getParameterLongValue(parameters,"typeid");
+			if(typeid == null){
 				addFieldError("typeid",getText("required.select",new String[]{getText("type")}));
 			}
 			
 			if(hasFieldErrors()){
 				return INPUT;
 			}
+
 		}else{
 			//変更
 			reportLogic.load(parameters,reportid);
-			
 		}
 		return SUCCESS;
 	}
@@ -136,8 +178,8 @@ public class ReportAction extends GusukuAction implements ParameterAware{
 		if(StringUtil.isEmpty(title)){
 			addFieldError("title",getText("required.input",new String[]{getText("title")}));
 		}
-		String priorityid = ParameterUtil.getParameterValue(parameters,"priorityid");
-		if(StringUtil.isEmpty(priorityid)){
+		Long priorityid = ParameterUtil.getParameterLongValue(parameters,"priorityid");
+		if(priorityid == null){
 			addFieldError("priorityid",getText("required.select",new String[]{getText("priority")}));
 		}
 		
@@ -151,17 +193,17 @@ public class ReportAction extends GusukuAction implements ParameterAware{
 		dto.setTitle(title);
 		dto.setPriorityid(priorityid);
 		dto.setDetail(detail);
-		dto.setAssigneeid(ParameterUtil.getParameterValue(parameters,"assigneeid"));
+		dto.setAssigneeid(ParameterUtil.getParameterLongValue(parameters,"assigneeid"));
 		dto.setEnvironment(ParameterUtil.getParameterValue(parameters,"environment"));
-		dto.setTypeid(ParameterUtil.getParameterValue(parameters,"typeid"));
-		String projectid = ParameterUtil.getParameterValue(parameters,"projectid");
+		dto.setTypeid(ParameterUtil.getParameterLongValue(parameters,"typeid"));
+		Long projectid = ParameterUtil.getParameterLongValue(parameters,"projectid");
 		dto.setProjectid(projectid);
 		
-		dto.setId(ParameterUtil.getParameterValue(parameters,"id"));
+		dto.setId(ParameterUtil.getParameterLongValue(parameters,"id"));
 
 		//カスタムフォーム入力チェック
 		//カスタムフォーム情報取得
-		List<CustomFormDetail> formList = customFormHelper.getFormList(Long.toString(projectHelper.getProject(projectid,getLoginid()).getFormid()));
+		List<CustomFormDetail> formList = customFormHelper.getFormList(projectHelper.getProject(projectid,getLoginid()).getFormid());
 		for(CustomFormDetail form : formList){
 			//必須チェック
 			String formName = "custom"+form.getId();
@@ -263,9 +305,14 @@ public class ReportAction extends GusukuAction implements ParameterAware{
 	 */
 	@XWorkAction(name = "report_detail", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/report_detail.html")))
 	public String detail() {
-		report = reportHelper.getReport(ParameterUtil.getParameterValue(parameters,"id"),getLoginid());
+		Long reportid = ParameterUtil.getParameterLongValue(parameters,"id");
+		report = reportHelper.getReport(reportid,getLoginid());
 		project = projectHelper
-				.getProject(Long.toString(report.getProjectid()),getLoginid());
+				.getProject(report.getProjectid(),getLoginid());
+		
+		//List<CustomFormDetail> formList = customFormHelper.getFormList(project.getFormid());
+		commentList = commentHelper.getCommentList(reportid);
+		statusHistoryList = statusHistoryHelper.getStatusHistoryList(reportid);
 		return SUCCESS;
 	}
 
@@ -301,9 +348,9 @@ public class ReportAction extends GusukuAction implements ParameterAware{
 	public String changeStatus() {
 		if(TokenHelper.validToken()){
 			ReportDto dto = new ReportDto();
-			String id = ParameterUtil.getParameterValue(parameters,"id");
-			String nextstatusid = ParameterUtil.getParameterValue(parameters,"nextstatusid");
-			String assigneeid = ParameterUtil.getParameterValue(parameters,"assigneeid");
+			Long id = ParameterUtil.getParameterLongValue(parameters,"id");
+			Long nextstatusid = ParameterUtil.getParameterLongValue(parameters,"nextstatusid");
+			Long assigneeid = ParameterUtil.getParameterLongValue(parameters,"assigneeid");
 			dto.setId(id);
 			dto.setNextstatusid(nextstatusid);
 			dto.setAssigneeid(assigneeid);
@@ -318,6 +365,10 @@ public class ReportAction extends GusukuAction implements ParameterAware{
 	 */
 	@XWorkAction(name = "report_list", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/report_list.html")))
 	public String list(){
+		Long projectid = ParameterUtil.getParameterLongValue(parameters,"projectid");
+		Long typeid = ParameterUtil.getParameterLongValue(parameters,"typeid");
+		project = projectHelper.getProject(projectid);
+		reportList = reportHelper.getProjectTypeReportList(projectid,typeid,project.getWorkflowid());
 		return SUCCESS;
 	}
 	
@@ -450,6 +501,41 @@ public class ReportAction extends GusukuAction implements ParameterAware{
 
 	public void setWorkflowStatusHelper(WorkflowStatusHelper workflowStatusHelper) {
 		this.workflowStatusHelper = workflowStatusHelper;
+	}
+
+	
+	public List<Report> getReportList() {
+		return reportList;
+	}
+
+	
+	public List<TypeScheme> getTypeList() {
+		return typeList;
+	}
+
+	
+	public List<Project> getProjectEntryList() {
+		return projectEntryList;
+	}
+
+	
+	public List<Comment> getCommentList() {
+		return commentList;
+	}
+
+	
+	public List<StatusHistory> getStatusHistoryList() {
+		return statusHistoryList;
+	}
+
+	
+	public List<Account> getAssigneeList() {
+		return assigneeList;
+	}
+
+	
+	public List<PriorityScheme> getPriorityList() {
+		return priorityList;
 	}
 
 }

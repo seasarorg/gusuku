@@ -17,7 +17,6 @@ package org.seasar.gusuku.web.admin;
 
 import java.util.List;
 
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dto.CustomFormHeadAdminDto;
 import org.seasar.gusuku.entity.CustomFormHead;
 import org.seasar.gusuku.helper.CustomFormHelper;
@@ -45,7 +44,7 @@ public class CustomFormHeadAdminAction extends GusukuAction implements ModelDriv
 	
 	private List<CustomFormHead> list;
 	
-	private String[] delid;
+	private Long[] delid;
 
 	/**
 	 * カスタムフォーム一覧
@@ -63,7 +62,7 @@ public class CustomFormHeadAdminAction extends GusukuAction implements ModelDriv
 	 */
 	@XWorkAction(name = "custom_form_edit", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/custom_form_add.html")))
 	public String init() {
-		if (!StringUtil.isEmpty(dto.getId())) {
+		if (dto.getId() != null) {
 			dto = customFormHeadAdminLogic.getCustomFormHead(dto);
 		}
 		return SUCCESS;
@@ -110,7 +109,7 @@ public class CustomFormHeadAdminAction extends GusukuAction implements ModelDriv
 		this.customFormHeadAdminLogic = customFormHeadAdminLogic;
 	}
 
-	public void setDelid(String[] delid) {
+	public void setDelid(Long[] delid) {
 		this.delid = delid;
 	}
 

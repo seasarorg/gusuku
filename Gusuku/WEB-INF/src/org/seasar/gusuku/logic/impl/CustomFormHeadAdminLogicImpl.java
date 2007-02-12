@@ -17,7 +17,6 @@ package org.seasar.gusuku.logic.impl;
 
 import java.util.Date;
 
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dao.CustomFormHeadDao;
 import org.seasar.gusuku.dto.CustomFormHeadAdminDto;
 import org.seasar.gusuku.dxo.CustomFormHeadDxo;
@@ -29,9 +28,9 @@ public class CustomFormHeadAdminLogicImpl implements CustomFormHeadAdminLogic{
 	private CustomFormHeadDao customFormHeadDao;
 	private CustomFormHeadDxo customFormHeadDxo;
 	
-	public void delete(String[] ids) {
-		if(ids != null && ids.length >0){
-			customFormHeadDao.updateDelflag(ids);
+	public void delete(Long[] delids) {
+		if(delids != null && delids.length >0){
+			customFormHeadDao.updateDelflag(delids);
 		}
 	}
 
@@ -42,7 +41,7 @@ public class CustomFormHeadAdminLogicImpl implements CustomFormHeadAdminLogic{
 	public void registration(CustomFormHeadAdminDto customFormHeadAdminDto) {
 		CustomFormHead customFormHead = customFormHeadDxo.convert(customFormHeadAdminDto);
 		
-		if(StringUtil.isEmpty(customFormHeadAdminDto.getId())){
+		if(customFormHeadAdminDto.getId() == null){
 			customFormHeadDao.insert(customFormHead);
 		}else{
 			customFormHead.setUdate(new Date());

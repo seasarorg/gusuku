@@ -49,12 +49,12 @@ public class SearchLogicImpl implements SearchLogic {
 	private CustomFormDetailDao customFormDetailDao;
 	
 	@Aspect("j2ee.requiredTx")
-	public void saveCondition(Map<String,String[]> parameters, String accountid) {
+	public void saveCondition(Map<String,String[]> parameters, Long accountid) {
 		
 		String id = ParameterUtil.getParameterValue(parameters,"id");
 		String name = ParameterUtil.getParameterValue(parameters,"name");
 		
-		String[] projectids = ParameterUtil.getParameterArrayValue(parameters,"projectid");
+		Long[] projectids = ParameterUtil.getParameterLongArrayValue(parameters,"projectid");
 		
 		SearchConditionHead maxSortHead= searchConditionHeadDao.findMaxSort(accountid);
 		int sortMax = 1;
@@ -63,7 +63,7 @@ public class SearchLogicImpl implements SearchLogic {
 		}
 		//ヘッダ保存
 		SearchConditionHead searchConditionHead = new SearchConditionHead();
-		searchConditionHead.setAccountid(Long.parseLong(accountid));
+		searchConditionHead.setAccountid(accountid);
 		searchConditionHead.setName(name);
 		searchConditionHead.setSort(sortMax);
 		//TODO デフォルト値をどうする？
@@ -71,14 +71,14 @@ public class SearchLogicImpl implements SearchLogic {
 		searchConditionHead.setVisible(true);
 		searchConditionHeadDao.insert(searchConditionHead);
 		
-		for(String projectid:projectids){
+		for(Long projectid:projectids){
 			SearchConditionBasic searchConditionBasic = getBasicCondition(parameters,projectid);
 			Project project = projectDao.findById(projectid);
-			List<CustomFormDetail> customFormList = customFormDetailDao.findByFormheadid(Long.toString(project.getFormid()));
+			List<CustomFormDetail> customFormList = customFormDetailDao.findByFormheadid(project.getFormid());
 			List<SearchConditionCustom> conditionCustomList = new ArrayList<SearchConditionCustom>();
 			for(CustomFormDetail customFormDetail:customFormList){
 				SearchConditionCustom searchConditionCustom =getCustomCondition(parameters,customFormDetail,projectid);
-				if(searchConditionCustom.getFormid() > 0){
+				if(searchConditionCustom.getFormid() != null){
 					conditionCustomList.add(searchConditionCustom);
 				}
 			}
@@ -119,22 +119,22 @@ public class SearchLogicImpl implements SearchLogic {
 	}
 	
 
-	public List search(SearchConditionHead searchConditionHead,Map<String,String[]> parameters,String accountid) {
+	public List search(SearchConditionHead searchConditionHead,Map<String,String[]> parameters,Long accountid) {
 
-		String[] projectids = ParameterUtil.getParameterArrayValue(parameters,"projectid");
+		Long[] projectids = ParameterUtil.getParameterLongArrayValue(parameters,"projectid");
 		List<SearchConditionBasic> searchConditionBasicList = new ArrayList<SearchConditionBasic>();
 		if(projectids != null){
-			for(String projectid : projectids){
+			for(Long projectid : projectids){
 				Project project = projectDao.findByIdAndAccountid(projectid,accountid);
 				//過去に所属していたプロジェクトｊに関わるものを除く
 				if(project != null){
 					SearchConditionBasic searchConditionBasic = getBasicCondition(parameters,projectid);
-					List<CustomFormDetail> customFormList = customFormDetailDao.findByFormheadid(Long.toString(project.getFormid()));
+					List<CustomFormDetail> customFormList = customFormDetailDao.findByFormheadid(project.getFormid());
 					List<SearchConditionCustom> conditionCustomList = new ArrayList<SearchConditionCustom>();
 					for(Iterator ite = customFormList.iterator();ite.hasNext();){
 						CustomFormDetail customFormDetail = (CustomFormDetail)ite.next();
 						SearchConditionCustom searchConditionCustom =getCustomCondition(parameters,customFormDetail,projectid);
-						if(searchConditionCustom.getFormid() > 0){
+						if(searchConditionCustom.getFormid() != null){
 							conditionCustomList.add(searchConditionCustom);
 						}
 					}
@@ -148,7 +148,7 @@ public class SearchLogicImpl implements SearchLogic {
 	}
 	
 	
-	private SearchConditionBasic getBasicCondition(Map<String,String[]> parameters,String projectid){
+	private SearchConditionBasic getBasicCondition(Map<String,String[]> parameters,Long projectid){
 		SearchConditionBasic searchConditionBasic = new SearchConditionBasic();
 		//String id =  ParameterUtil.getParameterValue(parameters,"basic_id_"+projectid);
 		String title = ParameterUtil.getParameterValue(parameters,"basic_title_"+projectid);
@@ -161,7 +161,7 @@ public class SearchLogicImpl implements SearchLogic {
 		Date datefrom = ParameterUtil.getParameterDateValue(parameters,"basic_datefrom_"+projectid);
 		Date dateto = ParameterUtil.getParameterDateValue(parameters,"basic_dateto_"+projectid);
 		//searchConditionBasic.setId(Long.parseLong(id));
-		searchConditionBasic.setProjectid(Long.parseLong(projectid));
+		searchConditionBasic.setProjectid(projectid);
 		searchConditionBasic.setTitle(title);
 		searchConditionBasic.setTypeid(typeid);
 		searchConditionBasic.setStatusid(statusid);
@@ -175,7 +175,7 @@ public class SearchLogicImpl implements SearchLogic {
 		return searchConditionBasic;
 	}
 	
-	private SearchConditionCustom getCustomCondition(Map<String,String[]> parameters,CustomFormDetail customFormDetail,String projectid){
+	private SearchConditionCustom getCustomCondition(Map<String,String[]> parameters,CustomFormDetail customFormDetail,Long projectid){
 		SearchConditionCustom searchConditionCustom = new SearchConditionCustom();
 		
 		//String id = ParameterUtil.getParameterValue(parameters,"custom_id_"+customFormDetail.getId()+"_"+projectid);
@@ -249,21 +249,31 @@ public class SearchLogicImpl implements SearchLogic {
 	}
 
 
-	public void delete(String[] ids) {
-		if(ids != null && ids.length > 0){
-			for(String id : ids){
+	public void delete(Long accountid,Long[] delids) {
+		if(delids != null && delids.length > 0){
+			for(Long delid : delids){
 				SearchConditionHead searchConditionHead = new SearchConditionHead();
-				searchConditionHead.setId(Long.parseLong(id));
+				searchConditionHead.setId(delid);
 				searchConditionHeadDao.delete(searchConditionHead);
+			}
+			List<SearchConditionHead> list = searchConditionHeadDao.findByAccountid(accountid);
+			int sort = 1;
+			for(SearchConditionHead searchConditionHead : list){
+				if(searchConditionHead.getSort() != sort){
+					searchConditionHead.setSort(sort++);
+					searchConditionHeadDao.update(searchConditionHead);
+				}else{
+					sort++;
+				}
 			}
 		}
 		
 	}
 
 
-	public void update(String[] visible, Map amount) {
+	public void update(Long[] visible, Map amount) {
 		
-		Map<String,SearchConditionHead> cache = new HashMap<String,SearchConditionHead>();
+		Map<Long,SearchConditionHead> cache = new HashMap<Long,SearchConditionHead>();
 
 		//表示件数を取得
 		if(amount != null && amount.size() > 0){
@@ -276,11 +286,11 @@ public class SearchLogicImpl implements SearchLogic {
 					searchConditionHead.setAmount(Integer.parseInt(tmp));
 					searchConditionHead.setVisible(false);
 				}else{
-					searchConditionHead = searchConditionHeadDao.findById(id);
+					searchConditionHead = searchConditionHeadDao.findById(Long.parseLong(id));
 					String tmp = ((String[])amount.get(id))[0];
 					searchConditionHead.setAmount(Integer.parseInt(tmp));
 					searchConditionHead.setVisible(false);
-					cache.put(id,searchConditionHead);
+					cache.put(Long.parseLong(id),searchConditionHead);
 				}
 			}
 		}
@@ -288,7 +298,7 @@ public class SearchLogicImpl implements SearchLogic {
 		//キーを取得
 		if(visible != null && visible.length > 0){
 			for(int i=0;i<visible.length;i++){
-				String id = visible[i];
+				Long id = visible[i];
 				SearchConditionHead searchConditionHead = null;
 				if(cache.containsKey(id)){
 					searchConditionHead = (SearchConditionHead)cache.get(id);
@@ -310,7 +320,7 @@ public class SearchLogicImpl implements SearchLogic {
 	}
 	
 	@Aspect("j2ee.requiredTx")
-	public void sortUp(String id,String accountid){
+	public void sortUp(Long id,Long accountid){
 		//↑
 		//対象となる行を取得
 		SearchConditionHead target = searchConditionHeadDao.findById(id);
@@ -326,7 +336,7 @@ public class SearchLogicImpl implements SearchLogic {
 	}
 	
 	@Aspect("j2ee.requiredTx")
-	public void sortDown(String id,String accountid){
+	public void sortDown(Long id,Long accountid){
 		//↑
 		//対象となる行を取得
 		SearchConditionHead target = searchConditionHeadDao.findById(id);
@@ -341,35 +351,35 @@ public class SearchLogicImpl implements SearchLogic {
 		searchConditionHeadDao.update(after);
 	}
 	
-	public void load(Map<String,String[]> parameters,String conditionid){
+	public void load(Map<String,String[]> parameters,Long conditionid){
 		
-		if(!StringUtil.isEmpty(conditionid)){
+		if(conditionid != null){
 			SearchConditionHead searchConditionHead = searchConditionHeadDao.findById(conditionid);
-			String accountid = Long.toString(searchConditionHead.getAccountid());
+			Long accountid = searchConditionHead.getAccountid();
 			ParameterUtil.putParameterValue(parameters,"id",searchConditionHead.getId());
 			ParameterUtil.putParameterValue(parameters,"name",searchConditionHead.getName());
 
-			List searchConditionBasicList = searchConditionBasicDao.findByConditionheadid(Long.toString(searchConditionHead.getId()));
+			List searchConditionBasicList = searchConditionBasicDao.findByConditionheadid(searchConditionHead.getId());
 			
-			List<String> projectidList = new ArrayList<String>();
+			List<Long> projectidList = new ArrayList<Long>();
 			for(Iterator ite_basic = searchConditionBasicList.iterator() ;ite_basic.hasNext();){
 				SearchConditionBasic searchConditionBasic = (SearchConditionBasic)ite_basic.next();
-				String projectid = Long.toString(searchConditionBasic.getProjectid());
+				Long projectid = searchConditionBasic.getProjectid();
 				Project project = projectDao.findByIdAndAccountid(projectid,accountid);
 				//過去に所属していたプロジェクトｊに関わるものを除く
 				if(project != null){
 					projectidList.add(projectid);
 					ParameterUtil.putParameterValue(parameters,"basic_id_"+projectid,searchConditionBasic.getId());
-					ParameterUtil.putParameterValue(parameters,"basic_typeid_"+projectid,ParameterUtil.splitValue(searchConditionBasic.getTypeid()));
-					ParameterUtil.putParameterValue(parameters,"basic_statusid_"+projectid,ParameterUtil.splitValue(searchConditionBasic.getStatusid()));
-					ParameterUtil.putParameterValue(parameters,"basic_priorityid_"+projectid,ParameterUtil.splitValue(searchConditionBasic.getPriorityid()));
-					ParameterUtil.putParameterValue(parameters,"basic_assigneeid_"+projectid,ParameterUtil.splitValue(searchConditionBasic.getAssigneeid()));
+					ParameterUtil.putParameterValue(parameters,"basic_typeid_"+projectid,searchConditionBasic.getTypeid());
+					ParameterUtil.putParameterValue(parameters,"basic_statusid_"+projectid,searchConditionBasic.getStatusid());
+					ParameterUtil.putParameterValue(parameters,"basic_priorityid_"+projectid,searchConditionBasic.getPriorityid());
+					ParameterUtil.putParameterValue(parameters,"basic_assigneeid_"+projectid,searchConditionBasic.getAssigneeid());
 					ParameterUtil.putParameterValue(parameters,"basic_title_"+projectid,searchConditionBasic.getTitle());
 					ParameterUtil.putParameterValue(parameters,"basic_environment_"+projectid,searchConditionBasic.getEnvironment());
 					ParameterUtil.putParameterValue(parameters,"basic_datefrom_"+projectid,searchConditionBasic.getDatefrom());
 					ParameterUtil.putParameterValue(parameters,"basic_dateto_"+projectid,searchConditionBasic.getDateto());
 					ParameterUtil.putParameterValue(parameters,"basic_detail_"+projectid,searchConditionBasic.getDetail());
-					List searchConditionCustomList = searchConditionCustomDao.findByConditionbasicid(Long.toString(searchConditionBasic.getId()));
+					List searchConditionCustomList = searchConditionCustomDao.findByConditionbasicid(searchConditionBasic.getId());
 	
 					for(Iterator ite_custom = searchConditionCustomList.iterator();ite_custom.hasNext();){
 						SearchConditionCustom searchConditionCustom = (SearchConditionCustom) ite_custom.next();
@@ -396,7 +406,7 @@ public class SearchLogicImpl implements SearchLogic {
 				}
 			}
 			
-			ParameterUtil.putParameterValue(parameters,"projectid",(String[])projectidList.toArray(new String[0]));
+			ParameterUtil.putParameterValue(parameters,"projectid",(Long[])projectidList.toArray(new Long[0]));
 		}
 	}
 

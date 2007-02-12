@@ -21,11 +21,11 @@ public interface CustomFormDetailAdminLogic {
 	
 	public void registration(CustomFormDetailAdminDto customFormDetailAdminDto);
 	
-	public void delete(String[] ids);
+	public void delete(Long formheadid,Long[] delids);
 	
 	public CustomFormDetailAdminDto getCustomFormDetail(CustomFormDetailAdminDto customFormDetailAdminDto);
 
-	public void sortUp(String id, String formheadid);
-	public void sortDown(String id, String formheadid);
+	public void sortUp(Long id, Long formheadid);
+	public void sortDown(Long id, Long formheadid);
 
 }

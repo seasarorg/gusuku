@@ -38,7 +38,7 @@ public interface PriorityHeadDao {
 	public List<PriorityHead> findAll();
 	
 	@Query("ID = /*id*/ AND DELFLAG = FALSE")
-	public PriorityHead findById(String id);
+	public PriorityHead findById(Long id);
 
-	public void updateDelflag(String[] ids);
+	public void updateDelflag(Long[] delids);
 }

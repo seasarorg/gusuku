@@ -22,7 +22,7 @@ public class MailConditionHelper {
 	
 	private MailConditionDao mailConditionDao;
 	
-	public MailCondition getMailCondition(String accountid,String projectid){
+	public MailCondition getMailCondition(Long accountid,Long projectid){
 		return mailConditionDao.findByAccountidAndProjectid(accountid,projectid);
 	}
 

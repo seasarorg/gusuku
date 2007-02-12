@@ -15,8 +15,9 @@
  */
 package org.seasar.gusuku.logic.impl;
 
+import java.util.List;
+
 import org.seasar.framework.container.annotation.tiger.Aspect;
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dao.CustomFormDetailDao;
 import org.seasar.gusuku.dto.CustomFormDetailAdminDto;
 import org.seasar.gusuku.dxo.CustomFormDetailDxo;
@@ -28,9 +29,20 @@ public class CustomFormDetailAdminLogicImpl implements CustomFormDetailAdminLogi
 	private CustomFormDetailDao customFormDetailDao;
 	private CustomFormDetailDxo customFormDetailDxo;
 	
-	public void delete(String[] ids) {
-		if(ids != null && ids.length >0){
-			customFormDetailDao.updateDelflag(ids);
+	public void delete(Long formheadid,Long[] delids) {
+		if(delids != null && delids.length >0){
+			customFormDetailDao.updateDelflag(delids);
+			
+			List<CustomFormDetail> list = customFormDetailDao.findByFormheadid(formheadid);
+			int sort = 1;
+			for(CustomFormDetail customFormDetail : list){
+				if(customFormDetail.getSort() != sort){
+					customFormDetail.setSort(sort++);
+					customFormDetailDao.update(customFormDetail);
+				}else{
+					sort++;
+				}
+			}
 		}
 	}
 
@@ -41,7 +53,7 @@ public class CustomFormDetailAdminLogicImpl implements CustomFormDetailAdminLogi
 	public void registration(CustomFormDetailAdminDto customFormDetailAdminDto) {
 		CustomFormDetail customFormDetail = customFormDetailDxo.convert(customFormDetailAdminDto);
 		
-		if(StringUtil.isEmpty(customFormDetailAdminDto.getId())){
+		if(customFormDetailAdminDto.getId() == null){
 			CustomFormDetail org = customFormDetailDao.findMaxSort(customFormDetailAdminDto.getFormheadid());
 			int sortMax = 1;
 			if(org != null){
@@ -64,7 +76,7 @@ public class CustomFormDetailAdminLogicImpl implements CustomFormDetailAdminLogi
 	}
 
 	@Aspect("j2ee.requiredTx")
-	public void sortDown(String id, String formheadid) {
+	public void sortDown(Long id, Long formheadid) {
 		
 		CustomFormDetail target = customFormDetailDao.findById(id);
 		CustomFormDetail after = customFormDetailDao.findAfterById(id,formheadid);
@@ -79,7 +91,7 @@ public class CustomFormDetailAdminLogicImpl implements CustomFormDetailAdminLogi
 	}
 
 	@Aspect("j2ee.requiredTx")
-	public void sortUp(String id, String formheadid) {
+	public void sortUp(Long id, Long formheadid) {
 		CustomFormDetail target = customFormDetailDao.findById(id);
 		CustomFormDetail before = customFormDetailDao.findBeforeById(id,formheadid);
 		

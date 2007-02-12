@@ -39,11 +39,11 @@ public interface ResolutionDao {
 	
 
 	@Query("ID = /*id*/ AND DELFLAG = FALSE")
-	public Resolution findById(String id);
+	public Resolution findById(Long id);
 	
-	public void updateDelflag(String[] ids);
+	public void updateDelflag(Long[] delids);
 	
 	@Query("ID NOT IN (SELECT RESOLUTIONID FROM RESOLUTION_SCHEME WHERE HEADID= /*headid*/) AND DELFLAG = FALSE ORDER BY ID")
-	public List<Resolution> findWithoutSchemeByHeadid(String headid);
+	public List<Resolution> findWithoutSchemeByHeadid(Long headid);
 	
 }

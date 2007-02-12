@@ -19,6 +19,6 @@ import org.seasar.gusuku.dto.MailConditionDto;
 
 public interface MailConditionLogic {
 	
-	public void registration(MailConditionDto mailConditionDto,String accountid);
+	public void registration(MailConditionDto mailConditionDto,Long accountid);
 
 }

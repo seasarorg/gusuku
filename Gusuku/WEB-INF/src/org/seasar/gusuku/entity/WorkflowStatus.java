@@ -26,9 +26,9 @@ import org.seasar.dao.annotation.tiger.Relation;
 public class WorkflowStatus implements Serializable {
 	
 	private static final long serialVersionUID = 5377622489326421232L;
-	private long id;
-	private long workflowid;
-	private long statusid;
+	private Long id;
+	private Long workflowid;
+	private Long statusid;
 	private boolean sflag;
 	private boolean eflag;
 	private boolean reporter = true;
@@ -46,11 +46,11 @@ public class WorkflowStatus implements Serializable {
 	}
 
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -62,19 +62,19 @@ public class WorkflowStatus implements Serializable {
 		this.sflag = sflag;
 	}
 
-	public long getStatusid() {
+	public Long getStatusid() {
 		return statusid;
 	}
 
-	public void setStatusid(long statusid) {
+	public void setStatusid(Long statusid) {
 		this.statusid = statusid;
 	}
 
-	public long getWorkflowid() {
+	public Long getWorkflowid() {
 		return workflowid;
 	}
 
-	public void setWorkflowid(long workflowid) {
+	public void setWorkflowid(Long workflowid) {
 		this.workflowid = workflowid;
 	}
 

@@ -20,8 +20,8 @@ import java.io.Serializable;
 public class MailConditionDto implements Serializable{
 	
 	private static final long serialVersionUID = -1810158339821870031L;
-	private String id;
-	private String projectid;
+	private Long id;
+	private Long projectid;
 	private String comment;
 	private String start;
 	private String process;
@@ -32,10 +32,10 @@ public class MailConditionDto implements Serializable{
 	public void setEnd(String end) {
 		this.end = end;
 	}
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getProcess() {
@@ -44,10 +44,10 @@ public class MailConditionDto implements Serializable{
 	public void setProcess(String process) {
 		this.process = process;
 	}
-	public String getProjectid() {
+	public Long getProjectid() {
 		return projectid;
 	}
-	public void setProjectid(String projectid) {
+	public void setProjectid(Long projectid) {
 		this.projectid = projectid;
 	}
 	public String getStart() {

@@ -43,7 +43,7 @@ public class StatusHelper {
 	 * @param workflowid ワークフローID
 	 * @return ステータス一覧
 	 */
-	public List<Status> getStatusListWithoutWorkflowid(String workflowid){
+	public List<Status> getStatusListWithoutWorkflowid(Long workflowid){
 		return statusDao.findByWithoutWorkflowid(workflowid);
 	}
 	
@@ -53,7 +53,7 @@ public class StatusHelper {
 	 * @param statusid ステータスID
 	 * @return ステータス一覧
 	 */
-	public List<Status> getNextstatus(String workflowid,String statusid){
+	public List<Status> getNextstatus(Long workflowid,Long statusid){
 		return statusDao.findNextstatusByWorkflowidAndStatusid(workflowid,statusid);
 	}
 	

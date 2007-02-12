@@ -21,7 +21,7 @@ public interface CustomValueHeadAdminLogic {
 	
 	public void registration(CustomValueHeadAdminDto customValueHeadAdminDto);
 	
-	public void delete(String[] ids);
+	public void delete(Long[] delids);
 	
 	public CustomValueHeadAdminDto getCustomValueHead(CustomValueHeadAdminDto customValueHeadAdminDto);
 

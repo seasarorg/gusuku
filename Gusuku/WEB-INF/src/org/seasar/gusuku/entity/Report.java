@@ -25,19 +25,19 @@ import org.seasar.dao.annotation.tiger.Relation;
 public class Report implements Serializable {
 
 	private static final long serialVersionUID = 329744497123036297L;
-	private long id;
-	private long projectid;
-	private long typeid;
+	private Long id;
+	private Long projectid;
+	private Long typeid;
 	private String title;
 	private String key;
 	private String messageid;
-	private long statusid;
-	private long resolutionid;
-	private long priorityid;
-	private long reporterid;
-	private long assigneeid;
-	private long componentid;
-	private long versionid;
+	private Long statusid;
+	private Long resolutionid;
+	private Long priorityid;
+	private Long reporterid;
+	private Long assigneeid;
+	private Long componentid;
+	private Long versionid;
 	private String environment;
 	private String detail;
 	private boolean delflag;
@@ -58,10 +58,10 @@ public class Report implements Serializable {
 	
 	private Project project;
 	
-	public long getAssigneeid() {
+	public Long getAssigneeid() {
 		return assigneeid;
 	}
-	public void setAssigneeid(long assigneeid) {
+	public void setAssigneeid(Long assigneeid) {
 		this.assigneeid = assigneeid;
 	}
 	public boolean isDelflag() {
@@ -84,22 +84,22 @@ public class Report implements Serializable {
 	}
 	
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public long getPriorityid() {
+	public Long getPriorityid() {
 		return priorityid;
 	}
-	public void setPriorityid(long priorityid) {
+	public void setPriorityid(Long priorityid) {
 		this.priorityid = priorityid;
 	}
-	public long getProjectid() {
+	public Long getProjectid() {
 		return projectid;
 	}
-	public void setProjectid(long projectid) {
+	public void setProjectid(Long projectid) {
 		this.projectid = projectid;
 	}
 	public Date getRdate() {
@@ -108,22 +108,22 @@ public class Report implements Serializable {
 	public void setRdate(Date rdate) {
 		this.rdate = rdate;
 	}
-	public long getReporterid() {
+	public Long getReporterid() {
 		return reporterid;
 	}
-	public void setReporterid(long reporterid) {
+	public void setReporterid(Long reporterid) {
 		this.reporterid = reporterid;
 	}
-	public long getResolutionid() {
+	public Long getResolutionid() {
 		return resolutionid;
 	}
-	public void setResolutionid(long resolutionid) {
+	public void setResolutionid(Long resolutionid) {
 		this.resolutionid = resolutionid;
 	}
-	public long getStatusid() {
+	public Long getStatusid() {
 		return statusid;
 	}
-	public void setStatusid(long statusid) {
+	public void setStatusid(Long statusid) {
 		this.statusid = statusid;
 	}
 	public String getTitle() {
@@ -132,10 +132,10 @@ public class Report implements Serializable {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public long getTypeid() {
+	public Long getTypeid() {
 		return typeid;
 	}
-	public void setTypeid(long typeid) {
+	public void setTypeid(Long typeid) {
 		this.typeid = typeid;
 	}
 	public Date getUdate() {
@@ -213,19 +213,19 @@ public class Report implements Serializable {
 		this.messageid = messageid;
 	}
 	
-	public long getComponentid() {
+	public Long getComponentid() {
 		return componentid;
 	}
 	
-	public void setComponentid(long componentid) {
+	public void setComponentid(Long componentid) {
 		this.componentid = componentid;
 	}
 	
-	public long getVersionid() {
+	public Long getVersionid() {
 		return versionid;
 	}
 	
-	public void setVersionid(long versionid) {
+	public void setVersionid(Long versionid) {
 		this.versionid = versionid;
 	}
 	

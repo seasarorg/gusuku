@@ -22,7 +22,7 @@ public interface TypeSchemeAdminLogic {
 	
 	public void registration(TypeSchemeAdminDto typeSchemeAdminDto);
 	
-	public void delete(String[] delids);
+	public void delete(Long[] delids,Long headid);
 	
 	public void sortUp(TypeSchemeAdminDto typeSchemeAdminDto);
 	

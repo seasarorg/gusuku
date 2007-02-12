@@ -7,7 +7,7 @@
 		</field-validator>
 	</field>
 	<field name="typeid">
-		<field-validator type="requiredstring">
+		<field-validator type="required">
 			<message key="customformdetail.typeid.required"/>
 		</field-validator>
 	</field>

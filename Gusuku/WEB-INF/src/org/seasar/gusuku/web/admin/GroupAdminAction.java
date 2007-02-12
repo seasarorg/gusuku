@@ -17,7 +17,6 @@ package org.seasar.gusuku.web.admin;
 
 import java.util.List;
 
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dto.GroupbaseAdminDto;
 import org.seasar.gusuku.entity.Account;
 import org.seasar.gusuku.entity.Groupbase;
@@ -48,9 +47,11 @@ public class GroupAdminAction extends GusukuAction implements ModelDriven{
 	private List<Account> accountList;
 	private List<Account> memberList;
 	
-	private String[] delid;
-	private String[] addid;
-	private String[] removeid;
+	private Long[] delid;
+	private Long[] addid;
+	private Long[] removeid;
+	
+	private Groupbase groupbase;
 	
 	private GroupbaseAdminDto dto = new GroupbaseAdminDto();
 	
@@ -70,7 +71,7 @@ public class GroupAdminAction extends GusukuAction implements ModelDriven{
 	 */
 	@XWorkAction(name = "group_edit", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/group_add.html")))
 	public String init(){
-		if (!StringUtil.isEmpty(dto.getId())) {
+		if (dto.getId() != null) {
 			dto = groupbaseAdminLogic.getGroupbase(dto);
 		}
 		return SUCCESS;
@@ -110,6 +111,7 @@ public class GroupAdminAction extends GusukuAction implements ModelDriven{
 	public String group() {
 		memberList = accountHelper.getGroupmemberList(dto.getId());
 		accountList = accountHelper.getWithoutsGroupmemberList(dto.getId());
+		groupbase = groupbaseHelper.getGroupbase(dto.getId());
 		return SUCCESS;
 	}
 	
@@ -155,7 +157,7 @@ public class GroupAdminAction extends GusukuAction implements ModelDriven{
 		this.groupbaseAdminLogic = groupbaseAdminLogic;
 	}
 
-	public void setDelid(String[] delid) {
+	public void setDelid(Long[] delid) {
 		this.delid = delid;
 	}
 
@@ -171,17 +173,17 @@ public class GroupAdminAction extends GusukuAction implements ModelDriven{
 		this.accountHelper = accountHelper;
 	}
 
-	public void setAddid(String[] addid) {
+	public void setAddid(Long[] addid) {
 		this.addid = addid;
 	}
 
-	public void setRemoveid(String[] removeid) {
+	public void setRemoveid(Long[] removeid) {
 		this.removeid = removeid;
 	}
 
 	
-	public GroupbaseHelper getGroupbaseHelper() {
-		return groupbaseHelper;
+	public Groupbase getGroupbase() {
+		return groupbase;
 	}
 
 }

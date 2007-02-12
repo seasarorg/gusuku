@@ -31,7 +31,7 @@ public interface SearchConditionCustomDao {
 	public void updateBatch(SearchConditionCustom[] searchConditionCustoms);
 	
 	@Query("CONDITIONBASICID = /*conditionbasicid*/")
-	public List<SearchConditionCustom> findByConditionbasicid(String conditionbasicid);
+	public List<SearchConditionCustom> findByConditionbasicid(Long conditionbasicid);
 	
 	
 }

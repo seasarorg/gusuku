@@ -23,17 +23,17 @@ public interface WorkflowAdminLogic {
 	
 	public void registration(WorkflowAdminDto workflowAdminDto);
 	
-	public void delete(String[] deleteids);
+	public void delete(Long[] deleteids);
 	
 	public WorkflowAdminDto getWorkflow(WorkflowAdminDto workflowAdminDto);
 	
 	public void addStatus(WorkflowAdminDto workflowAdminDto);
 	
-	public void deleteStatus(String delid);
+	public void deleteStatus(Long delid);
 
 	public void addTransition(WorkflowAdminDto workflowAdminDto);
 	
-	public void deleteTransition(String[] delids,String workflowstatusid);
+	public void deleteTransition(Long[] delids,Long workflowstatusid);
 
 	public void updateRole(WorkflowRoleAdminDto workflowRoleAdminDto);
 }

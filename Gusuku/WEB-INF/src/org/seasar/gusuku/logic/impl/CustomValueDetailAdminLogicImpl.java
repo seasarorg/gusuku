@@ -15,8 +15,9 @@
  */
 package org.seasar.gusuku.logic.impl;
 
+import java.util.List;
+
 import org.seasar.framework.container.annotation.tiger.Aspect;
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dao.CustomValueDetailDao;
 import org.seasar.gusuku.dto.CustomValueDetailAdminDto;
 import org.seasar.gusuku.dxo.CustomValueDetailDxo;
@@ -28,11 +29,23 @@ public class CustomValueDetailAdminLogicImpl implements CustomValueDetailAdminLo
 	private CustomValueDetailDao customValueDetailDao;
 	private CustomValueDetailDxo customValueDetailDxo;
 	
-	public void delete(String[] ids) {
-		if(ids != null && ids.length >0){
+	@Aspect("j2ee.requiredTx")
+	public void delete(Long[] delids,Long valueheadid) {
+		if(delids != null && delids.length >0){
 			//TODO 物理削除へ変更
-			for(String id : ids){
-				customValueDetailDao.deleteById(id);
+			for(Long delid : delids){
+				customValueDetailDao.deleteById(delid);
+			}
+			
+			List<CustomValueDetail> list = customValueDetailDao.findByValueheadid(valueheadid);
+			int sort = 1;
+			for(CustomValueDetail customValueDetail : list){
+				if(customValueDetail.getSort() != sort){
+					customValueDetail.setSort(sort);
+					customValueDetailDao.update(customValueDetail);
+				}else{
+					sort++;
+				}
 			}
 		}
 	}
@@ -40,7 +53,7 @@ public class CustomValueDetailAdminLogicImpl implements CustomValueDetailAdminLo
 	public void registration(CustomValueDetailAdminDto customValueDetailAdminDto) {
 		CustomValueDetail customValueDetail = customValueDetailDxo.convert(customValueDetailAdminDto);
 		
-		if(StringUtil.isEmpty(customValueDetailAdminDto.getId())){
+		if(customValueDetailAdminDto.getId() == null){
 			CustomValueDetail org = customValueDetailDao.findMaxSort(customValueDetail.getValueheadid());
 			int maxSort = 1;
 			if(org != null){
@@ -55,7 +68,7 @@ public class CustomValueDetailAdminLogicImpl implements CustomValueDetailAdminLo
 	}
 
 	@Aspect("j2ee.requiredTx")
-	public void sortDown(String id, String valueheadid) {
+	public void sortDown(Long id, Long valueheadid) {
 		
 		CustomValueDetail target = customValueDetailDao.findById(id);
 		CustomValueDetail after = customValueDetailDao.findAfterById(id,valueheadid);
@@ -70,7 +83,7 @@ public class CustomValueDetailAdminLogicImpl implements CustomValueDetailAdminLo
 	}
 
 	@Aspect("j2ee.requiredTx")
-	public void sortUp(String id, String valueheadid) {
+	public void sortUp(Long id, Long valueheadid) {
 		CustomValueDetail target = customValueDetailDao.findById(id);
 		CustomValueDetail before = customValueDetailDao.findBeforeById(id,valueheadid);
 		

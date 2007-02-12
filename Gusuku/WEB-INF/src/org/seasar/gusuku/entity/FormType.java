@@ -25,7 +25,7 @@ import org.seasar.dao.annotation.tiger.IdType;
 public class FormType implements Serializable {
 	
 	private static final long serialVersionUID = -5937459241090895540L;
-	private long id;
+	private Long id;
 	private String name;
 	private String tagname;
 	private String description;
@@ -37,10 +37,10 @@ public class FormType implements Serializable {
 	}
 	
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {

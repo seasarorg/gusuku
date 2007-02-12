@@ -45,7 +45,7 @@ public class AccountHelper {
 	 * @param projectid 対象プロジェクトID
 	 * @return アカウント一覧
 	 */
-	public List<Account> getProjectAccountList(String projectid) {
+	public List<Account> getProjectAccountList(Long projectid) {
 		return accountDao.findByProjectid(projectid);
 	}
 
@@ -55,7 +55,7 @@ public class AccountHelper {
 	 * @param groupid 対象グループID
 	 * @return アカウント一覧
 	 */
-	public List<Account> getGroupmemberList(String groupid) {
+	public List<Account> getGroupmemberList(Long groupid) {
 		return accountDao.findByGroupid(groupid);
 	}
 
@@ -65,11 +65,11 @@ public class AccountHelper {
 	 * @param groupid 対象グループID
 	 * @return アカウント一覧
 	 */
-	public List<Account> getWithoutsGroupmemberList(String groupid) {
+	public List<Account> getWithoutsGroupmemberList(Long groupid) {
 		return accountDao.findByWithoutGroupid(groupid);
 	}
 	
-	public boolean isExistMailaddr(String accountid,String mailaddr){
+	public boolean isExistMailaddr(Long accountid,String mailaddr){
 		Account account = accountDao.findByMailaddr(accountid,mailaddr);
 		if(account == null){
 			return false;
@@ -86,7 +86,7 @@ public class AccountHelper {
 		this.accountDao = accountDao;
 	}
 
-	public List getAccountList(AccountAdminDto dto) {
+	public List<Account> getAccountList(AccountAdminDto dto) {
 		return accountDao.findByDto(dto);
 	}
 }

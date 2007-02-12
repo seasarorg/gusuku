@@ -15,7 +15,11 @@
  */
 package org.seasar.gusuku.web.admin;
 
+import java.util.List;
+
 import org.seasar.gusuku.dto.WorkflowRoleAdminDto;
+import org.seasar.gusuku.entity.Workflow;
+import org.seasar.gusuku.entity.WorkflowStatus;
 import org.seasar.gusuku.helper.WorkflowHelper;
 import org.seasar.gusuku.helper.WorkflowStatusHelper;
 import org.seasar.gusuku.logic.WorkflowAdminLogic;
@@ -35,6 +39,12 @@ public class WorkflowRoleAdminAction extends GusukuAction implements ModelDriven
 	private WorkflowHelper workflowHelper;
 	private WorkflowStatusHelper workflowStatusHelper;
 	
+	private List intervalList;
+	private WorkflowStatus start;
+	private WorkflowStatus end;
+	
+	private Workflow workflow;
+	
 	private WorkflowRoleAdminDto dto = new WorkflowRoleAdminDto();
 	
 	public Object getModel(){
@@ -43,6 +53,10 @@ public class WorkflowRoleAdminAction extends GusukuAction implements ModelDriven
 	
 	@XWorkAction(name = "flow_role_edit", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/flow_role_edit.html")))
 	public String init(){
+		workflow = workflowHelper.getWorkflow(dto.getId());
+		intervalList = workflowStatusHelper.getStatusListWithoutStartAndEnd(dto.getId());
+		start = workflowStatusHelper.getStartStatus(dto.getId());
+		end = workflowStatusHelper.getEndStatus(dto.getId());
 		return SUCCESS;
 	}
 	
@@ -62,17 +76,28 @@ public class WorkflowRoleAdminAction extends GusukuAction implements ModelDriven
 	}
 
 	
-	public WorkflowHelper getWorkflowHelper() {
-		return workflowHelper;
+	public void setWorkflowAdminLogic(WorkflowAdminLogic workflowAdminLogic) {
+		this.workflowAdminLogic = workflowAdminLogic;
 	}
 
 	
-	public WorkflowStatusHelper getWorkflowStatusHelper() {
-		return workflowStatusHelper;
+	public WorkflowStatus getEnd() {
+		return end;
 	}
 
-	public void setWorkflowAdminLogic(WorkflowAdminLogic workflowAdminLogic) {
-		this.workflowAdminLogic = workflowAdminLogic;
+	
+	public List getIntervalList() {
+		return intervalList;
+	}
+
+	
+	public WorkflowStatus getStart() {
+		return start;
+	}
+
+	
+	public Workflow getWorkflow() {
+		return workflow;
 	}
 
 }

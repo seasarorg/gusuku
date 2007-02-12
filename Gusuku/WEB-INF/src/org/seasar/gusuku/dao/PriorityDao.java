@@ -37,11 +37,11 @@ public interface PriorityDao {
 	@Query("DELFLAG = FALSE ORDER BY ID")
 	public List<Priority> findAll();
 
-	public void updateDelflag(String[] ids);
+	public void updateDelflag(Long[] delids);
 	
 	@Query("ID = /*id*/ AND DELFLAG = FALSE")
-	public Priority findById(String id);
+	public Priority findById(Long id);
 
 	@Query("ID NOT IN (SELECT PRIORITYID FROM PRIORITY_SCHEME WHERE HEADID= /*headid*/) AND DELFLAG = FALSE ORDER BY ID")
-	public List<Priority> findWithoutSchemeByHeadid(String headid);
+	public List<Priority> findWithoutSchemeByHeadid(Long headid);
 }

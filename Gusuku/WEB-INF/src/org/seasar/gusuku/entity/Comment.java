@@ -25,9 +25,9 @@ import org.seasar.dao.annotation.tiger.Relation;
 public class Comment implements Serializable {
 
 	private static final long serialVersionUID = 8924512994954099458L;
-	private long id;
-	private long reportid;
-	private long writerid;
+	private Long id;
+	private Long reportid;
+	private Long writerid;
 	private String comment;
 	private String filename;
 	private String messageid;
@@ -54,11 +54,11 @@ public class Comment implements Serializable {
 	}
 	
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -78,21 +78,21 @@ public class Comment implements Serializable {
 		this.udate = udate;
 	}
 	
-	public long getWriterid() {
+	public Long getWriterid() {
 		return writerid;
 	}
 	
-	public void setWriterid(long writerid) {
+	public void setWriterid(Long writerid) {
 		this.writerid = writerid;
 	}
 
 	
-	public long getReportid() {
+	public Long getReportid() {
 		return reportid;
 	}
 
 	
-	public void setReportid(long reportid) {
+	public void setReportid(Long reportid) {
 		this.reportid = reportid;
 	}
 

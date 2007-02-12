@@ -15,6 +15,7 @@
  */
 package org.seasar.gusuku.web;
 
+import java.io.File;
 import java.util.Map;
 
 import org.seasar.framework.util.StringUtil;
@@ -70,6 +71,11 @@ public class SetupAction extends GusukuAction implements NonAuthenticateAction,
 		}
 		if(StringUtil.isEmpty(dir)){
 			addFieldError("dir",getText("setup.dir.required"));
+		}else{
+			File real = new File(dir);
+			if(!real.exists()){
+				addFieldError("dir",getText("setup.dir.exists"));
+			}
 		}
 		
 		if(hasFieldErrors()){

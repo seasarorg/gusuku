@@ -36,12 +36,12 @@ public interface ProjectDao {
 	public List<Project> findByDto(ProjectAdminDto dto);
 	
 	@Query("Project.ID = /*id*/ AND Project.DELFLAG = FALSE")
-	public Project findById(String id);
+	public Project findById(Long id);
 
 	@Query("Project.ID = /*id*/ AND Project.DELFLAG = FALSE FOR UPDATE")
-	public Project findByIdForUpdate(String projectid);
+	public Project findByIdForUpdate(Long projectid);
 	
-	public void updateDelflag(String[] delids);
+	public void updateDelflag(Long[] delids);
 	
 	@Query("Project.DELFLAG = FALSE ORDER BY ID")
 	public List<Project> findAll();
@@ -51,7 +51,7 @@ public interface ProjectDao {
 	 * @param accountid
 	 * @return
 	 */
-	public List<Project> findEntryList(String accountid);
+	public List<Project> findEntryList(Long accountid);
 	
 	/**
 	 * プロジェクトIDを指定し、指定したユーザーが参加しているプロジェクトを取得<br>
@@ -61,6 +61,6 @@ public interface ProjectDao {
 	 * @return
 	 */
 	@Arguments({"id","accountid"})
-	public Project findByIdAndAccountid(String id, String accountid);
+	public Project findByIdAndAccountid(Long id, Long accountid);
 
 }

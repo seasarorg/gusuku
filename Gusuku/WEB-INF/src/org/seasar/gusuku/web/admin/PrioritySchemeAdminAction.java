@@ -15,7 +15,12 @@
  */
 package org.seasar.gusuku.web.admin;
 
+import java.util.List;
+
 import org.seasar.gusuku.dto.PrioritySchemeAdminDto;
+import org.seasar.gusuku.entity.Priority;
+import org.seasar.gusuku.entity.PriorityHead;
+import org.seasar.gusuku.entity.PriorityScheme;
 import org.seasar.gusuku.helper.PriorityHelper;
 import org.seasar.gusuku.logic.PrioritySchemeAdminLogic;
 import org.seasar.gusuku.web.GusukuAction;
@@ -33,10 +38,18 @@ public class PrioritySchemeAdminAction extends GusukuAction implements ModelDriv
 	private PrioritySchemeAdminLogic prioritySchemeAdminLogic;
 	private PriorityHelper priorityHelper;
 	
-	private String[] delid;
+	private List<PriorityScheme> list;
+	private List<Priority> entryList;
+	
+	private PriorityHead priorityHead;
+	
+	private Long[] delid;
 	
 	@XWorkAction(name = "priority_scheme_list", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/priority_scheme_list.html")))
 	public String list(){
+		list = priorityHelper.getPriorityListWithScheme(dto.getHeadid());
+		entryList = priorityHelper.getPriorityListWithoutScheme(dto.getHeadid());
+		priorityHead = priorityHelper.getPriorityHead(dto.getHeadid());
 		return SUCCESS;
 	}
 	
@@ -48,7 +61,7 @@ public class PrioritySchemeAdminAction extends GusukuAction implements ModelDriv
 	
 	@XWorkAction(name = "priority_scheme_delete", result = @Result(type = "redirect", param = @Param(name = "location", value = "/admin/priority_scheme_list.html?headid=${model.headid}")))
 	public String deldone(){
-		prioritySchemeAdminLogic.delete(delid);
+		prioritySchemeAdminLogic.delete(delid,dto.getHeadid());
 		return SUCCESS;
 	}
 
@@ -69,22 +82,32 @@ public class PrioritySchemeAdminAction extends GusukuAction implements ModelDriv
 	}
 
 	
-	public PriorityHelper getPriorityHelper() {
-		return priorityHelper;
-	}
-
-	
 	public void setPriorityHelper(PriorityHelper priorityHelper) {
 		this.priorityHelper = priorityHelper;
 	}
 
 	
-	public void setDelid(String[] delid) {
+	public void setDelid(Long[] delid) {
 		this.delid = delid;
 	}
 
 	
 	public void setPrioritySchemeAdminLogic(PrioritySchemeAdminLogic prioritySchemeAdminLogic) {
 		this.prioritySchemeAdminLogic = prioritySchemeAdminLogic;
+	}
+
+	
+	public List<PriorityScheme> getList() {
+		return list;
+	}
+
+	
+	public List<Priority> getEntryList() {
+		return entryList;
+	}
+
+	
+	public PriorityHead getPriorityHead() {
+		return priorityHead;
 	}
 }

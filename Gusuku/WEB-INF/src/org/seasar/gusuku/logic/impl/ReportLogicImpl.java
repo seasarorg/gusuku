@@ -35,7 +35,6 @@ import org.seasar.gusuku.dao.ProjectDao;
 import org.seasar.gusuku.dao.ReportDao;
 import org.seasar.gusuku.dao.ReportDataDao;
 import org.seasar.gusuku.dao.StatusHistoryDao;
-import org.seasar.gusuku.dao.TypeDao;
 import org.seasar.gusuku.dao.WorkflowStatusDao;
 import org.seasar.gusuku.dto.ReportDto;
 import org.seasar.gusuku.dxo.ReportDxo;
@@ -47,7 +46,6 @@ import org.seasar.gusuku.entity.Project;
 import org.seasar.gusuku.entity.Report;
 import org.seasar.gusuku.entity.ReportData;
 import org.seasar.gusuku.entity.StatusHistory;
-import org.seasar.gusuku.entity.Type;
 import org.seasar.gusuku.entity.WorkflowStatus;
 import org.seasar.gusuku.logic.ReportLogic;
 import org.seasar.gusuku.service.MailService;
@@ -63,7 +61,6 @@ public class ReportLogicImpl implements ReportLogic {
 	private ReportDao reportDao;
 	private ReportDataDao reportDataDao;
 	private ProjectDao projectDao;
-	private TypeDao typeDao;
 	private CustomFormDetailDao customFormDetailDao;
 	private StatusHistoryDao statusHistoryDao;
 	private WorkflowStatusDao workflowStatusDao;
@@ -75,17 +72,16 @@ public class ReportLogicImpl implements ReportLogic {
 	private MailService mailService;
 	
 	@Aspect("j2ee.requiredTx")
-	public void registration(ReportDto reportDto,Map parameters,String reporterid) {
+	public void registration(ReportDto reportDto,Map parameters,Long reporterid) {
 		
 		reportDto.setReporterid(reporterid);
 		
 		Report report = reportDxo.convert(reportDto);
 		
-		boolean update = !StringUtil.isEmpty(reportDto.getId());
+		boolean update = reportDto.getId() != null;
 		
 		
 		Project project = projectDao.findByIdForUpdate(reportDto.getProjectid());
-		Type type = typeDao.findById(reportDto.getTypeid());
 		
 		if(!update){
 			//KEY値生成
@@ -98,7 +94,7 @@ public class ReportLogicImpl implements ReportLogic {
 			report.setKey(project.getKey()+"-" + project.getCounter());
 			report.setMessageid("");
 			//ワークフローの初期状態をセット
-			WorkflowStatus workflowStatus =workflowStatusDao.findStartStatusById(Long.toString(project.getWorkflowid()));
+			WorkflowStatus workflowStatus =workflowStatusDao.findStartStatusById(project.getWorkflowid());
 			report.setStatusid(workflowStatus.getStatusid());
 
 			reportDao.insert(report);
@@ -116,10 +112,10 @@ public class ReportLogicImpl implements ReportLogic {
 			reportDataDao.deleteByReportid(reportDto.getId());
 		}
 
-		report = reportDao.findById(Long.toString(report.getId()));
+		report = reportDao.findById(report.getId());
 		
 		//カスタムフィールド値を保存
-		List<CustomFormDetail> formList = customFormDetailDao.findByFormheadid(Long.toString(project.getFormid()));
+		List<CustomFormDetail> formList = customFormDetailDao.findByFormheadid(project.getFormid());
 		for(Iterator ite = formList.iterator();ite.hasNext();){
 			CustomFormDetail form = (CustomFormDetail)ite.next();
 			String formName = "custom"+form.getId();
@@ -181,13 +177,13 @@ public class ReportLogicImpl implements ReportLogic {
 	
 	@Aspect("j2ee.requiredTx")
 	public void addComment(Map parameters,Account writer) {
-		String id = ParameterUtil.getParameterValue(parameters,"id");
+		Long id = ParameterUtil.getParameterLongValue(parameters,"id");
 		String commentValue = ParameterUtil.getParameterValue(parameters,"comment");
 		File file =  ParameterUtil.getParameterFileValue(parameters,"comment_file");
 		if (!StringUtil.isEmpty(commentValue.trim())) {
 								
 			Comment comment = new Comment();
-			comment.setReportid(Long.parseLong(id));
+			comment.setReportid(id);
 			comment.setWriterid(writer.getId());
 			comment.setComment(commentValue);
 			
@@ -205,13 +201,13 @@ public class ReportLogicImpl implements ReportLogic {
 			
 			Report report = reportDao.findById(id);
 			
-			List<MailCondition> pickList = mailConditionDao.findMailList(Long.toString(report.getProjectid()));
+			List<MailCondition> pickList = mailConditionDao.findMailList(report.getProjectid());
 			List<Mail> sendList = new ArrayList<Mail>();
 			
 			
 			//親コメントを取得
 			
-			Comment parentComment = commentDao.findParentComment(id,Long.toString(comment.getId()));
+			Comment parentComment = commentDao.findParentComment(id,comment.getId());
 			String references = "";
 			if(parentComment != null){
 				references = parentComment.getMessageid();
@@ -289,22 +285,22 @@ public class ReportLogicImpl implements ReportLogic {
 	
 
 	public void deleteComment(Map parameters) {
-		String id = ParameterUtil.getParameterValue(parameters,"commentid");
+		Long id = ParameterUtil.getParameterLongValue(parameters,"commentid");
 		
-		if(!StringUtil.isEmpty(id)){
+		if(id != null){
 			commentDao.updateDelflag(id);
 		}
 	}
 
 	@Aspect("j2ee.requiredTx")
-	public void changeStatus(ReportDto reportDto,String changerid) {
+	public void changeStatus(ReportDto reportDto,Long changerid) {
 		Report report = reportDao.findById(reportDto.getId());
-		report.setStatusid(Long.parseLong(reportDto.getNextstatusid()));
-		if(!StringUtil.isEmpty(reportDto.getAssigneeid())){
-			report.setAssigneeid(Long.parseLong(reportDto.getAssigneeid()));
+		report.setStatusid(reportDto.getNextstatusid());
+		if(reportDto.getAssigneeid() != null){
+			report.setAssigneeid(reportDto.getAssigneeid());
 		}
-		if(!StringUtil.isEmpty(reportDto.getResolutionid())){
-			report.setResolutionid(Long.parseLong(reportDto.getResolutionid()));
+		if(reportDto.getResolutionid() != null){
+			report.setResolutionid(reportDto.getResolutionid());
 		}
 		reportDao.update(report);
 		
@@ -312,7 +308,7 @@ public class ReportLogicImpl implements ReportLogic {
 		sendMail(report);
 	}
 	
-	public void load(Map parameters,String reportid){
+	public void load(Map parameters,Long reportid){
 		//基本情報取得
 		Report report = reportDao.findById(reportid);
 		ParameterUtil.putParameterValue(parameters,"title",report.getTitle());
@@ -343,10 +339,10 @@ public class ReportLogicImpl implements ReportLogic {
 		
 	}
 	
-	private void updateStatusHistory(Report report,String changerid){
+	private void updateStatusHistory(Report report,Long changerid){
 		//状態履歴登録
 		StatusHistory statusHistory = new StatusHistory();
-		statusHistory.setChangerid(Long.parseLong(changerid));
+		statusHistory.setChangerid(changerid);
 		statusHistory.setStatusid(report.getStatusid());
 		statusHistory.setReportid(report.getId());
 		statusHistoryDao.insert(statusHistory);
@@ -354,13 +350,13 @@ public class ReportLogicImpl implements ReportLogic {
 	
 	private void sendMail(Report report){
 		//Status status = statusDao.findById(Long.toString(report.getStatusid()));
-		WorkflowStatus workflowStatus = workflowStatusDao.findByWorkflowidAndStatusid(Long.toString(report.getProject().getWorkflowid()),Long.toString(report.getStatusid()));
+		WorkflowStatus workflowStatus = workflowStatusDao.findByWorkflowidAndStatusid(report.getProject().getWorkflowid(),report.getStatusid());
 		
 		if(workflowStatus.getStatus().isMailflag()){
 			//メール送信
 			//このステータスが開始・経過・終了なのかを判断する必要アリ
 			
-			List<MailCondition> pickList = mailConditionDao.findMailList(Long.toString(report.getProjectid()));
+			List<MailCondition> pickList = mailConditionDao.findMailList(report.getProjectid());
 			List<Mail> sendList = new ArrayList<Mail>();
 			
 			String mailaddr = report.getProject().getMailaddr();
@@ -425,7 +421,7 @@ public class ReportLogicImpl implements ReportLogic {
 		}
 	}
 
-	private void addMailList(Report report, List<Mail> sendList, Integer  mailCondition, Mail mail,long accountid) {
+	private void addMailList(Report report, List<Mail> sendList, Long  mailCondition, Mail mail,Long accountid) {
 		if (mailCondition != null) {
 
 			// 設定済
@@ -451,7 +447,7 @@ public class ReportLogicImpl implements ReportLogic {
 		}
 	}
 	
-	private void addBcc(Report report,Mail mail,Integer mailCondition,String mailaddr,long accountid){
+	private void addBcc(Report report,Mail mail,Long mailCondition,String mailaddr,Long accountid){
 
 			if (mailCondition != null) {
 				// 設定済
@@ -521,14 +517,5 @@ public class ReportLogicImpl implements ReportLogic {
 	public void setMailConditionDao(MailConditionDao mailConditionDao) {
 		this.mailConditionDao = mailConditionDao;
 	}
-
-	
-	public void setTypeDao(TypeDao typeDao) {
-		this.typeDao = typeDao;
-	}
-	
-	
-	
-	
 
 }

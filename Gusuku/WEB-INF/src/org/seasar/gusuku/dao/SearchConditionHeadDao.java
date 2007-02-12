@@ -30,25 +30,25 @@ public interface SearchConditionHeadDao {
 	public void delete(SearchConditionHead searchConditionHead);
 	
 	@Query("ID = /*id*/")
-	public SearchConditionHead findById(String id);
+	public SearchConditionHead findById(Long id);
 	
 	@Query("ACCOUNTID = /*accountid*/ ORDER BY SORT")
-	public List<SearchConditionHead> findByAccountid(String accountid);
+	public List<SearchConditionHead> findByAccountid(Long accountid);
 	
 	@Query("SORT = (SELECT MAX(SORT) FROM SEARCH_CONDITION_HEAD WHERE ACCOUNTID = /*accountid*/)")
-	public SearchConditionHead findMaxSort(String accountid);
+	public SearchConditionHead findMaxSort(Long accountid);
 	
 	public void updateBatch(SearchConditionHead[] updateList);
 	
 	@Query("ACCOUNTID = /*accountid*/ AND SORT < (SELECT SORT FROM SEARCH_CONDITION_HEAD WHERE ID = /*id*/) ORDER BY SORT DESC LIMIT 1")
 	@Arguments({"id","accountid"})
-	public SearchConditionHead findBeforeById(String id,String accountid);
+	public SearchConditionHead findBeforeById(Long id,Long accountid);
 	
 	@Query("ACCOUNTID = /*accountid*/ AND SORT > (SELECT SORT FROM SEARCH_CONDITION_HEAD WHERE ID = /*id*/) ORDER BY SORT LIMIT 1")
 	@Arguments({"id","accountid"})
-	public SearchConditionHead findAfterById(String id,String accountid);
+	public SearchConditionHead findAfterById(Long id,Long accountid);
 	
 	@Query("ACCOUNTID = /*accountid*/ AND VISIBLE = TRUE ORDER BY SORT")
-	public List<SearchConditionHead> findVisibleByAccountid(String accountid);
+	public List<SearchConditionHead> findVisibleByAccountid(Long accountid);
 
 }

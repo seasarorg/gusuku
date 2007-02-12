@@ -15,7 +15,12 @@
  */
 package org.seasar.gusuku.web.admin;
 
+import java.util.List;
+
 import org.seasar.gusuku.dto.TypeSchemeAdminDto;
+import org.seasar.gusuku.entity.Type;
+import org.seasar.gusuku.entity.TypeHead;
+import org.seasar.gusuku.entity.TypeScheme;
 import org.seasar.gusuku.helper.TypeHelper;
 import org.seasar.gusuku.logic.TypeSchemeAdminLogic;
 import org.seasar.gusuku.web.GusukuAction;
@@ -33,10 +38,18 @@ public class TypeSchemeAdminAction extends GusukuAction implements ModelDriven{
 	private TypeSchemeAdminLogic typeSchemeAdminLogic;
 	private TypeHelper typeHelper;
 	
-	private String[] delid;
+	private List<TypeScheme> list;
+	private List<Type> entryList;
+	
+	private TypeHead typeHead;
+	
+	private Long[] delid;
 	
 	@XWorkAction(name = "type_scheme_list", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/type_scheme_list.html")))
 	public String list(){
+		list = typeHelper.getTypeListWithScheme(dto.getHeadid());
+		entryList = typeHelper.getTypeListWithoutScheme(dto.getHeadid());
+		typeHead = typeHelper.getTypeHead(dto.getHeadid());
 		return SUCCESS;
 	}
 	
@@ -48,7 +61,7 @@ public class TypeSchemeAdminAction extends GusukuAction implements ModelDriven{
 	
 	@XWorkAction(name = "type_scheme_delete", result = @Result(type = "redirect", param = @Param(name = "location", value = "/admin/type_scheme_list.html?headid=${model.headid}")))
 	public String deldone(){
-		typeSchemeAdminLogic.delete(delid);
+		typeSchemeAdminLogic.delete(delid,dto.getHeadid());
 		return SUCCESS;
 	}
 
@@ -69,22 +82,32 @@ public class TypeSchemeAdminAction extends GusukuAction implements ModelDriven{
 	}
 
 	
-	public TypeHelper getTypeHelper() {
-		return typeHelper;
-	}
-
-	
 	public void setTypeHelper(TypeHelper typeHelper) {
 		this.typeHelper = typeHelper;
 	}
 
 	
-	public void setDelid(String[] delid) {
+	public void setDelid(Long[] delid) {
 		this.delid = delid;
 	}
 
 	
 	public void setTypeSchemeAdminLogic(TypeSchemeAdminLogic typeSchemeAdminLogic) {
 		this.typeSchemeAdminLogic = typeSchemeAdminLogic;
+	}
+
+	
+	public List<Type> getEntryList() {
+		return entryList;
+	}
+
+	
+	public List<TypeScheme> getList() {
+		return list;
+	}
+
+	
+	public TypeHead getTypeHead() {
+		return typeHead;
 	}
 }

@@ -21,9 +21,9 @@ public interface CustomValueDetailAdminLogic {
 	
 	public void registration(CustomValueDetailAdminDto customValueDetailAdminDto);
 	
-	public void delete(String[] ids);
+	public void delete(Long[] delids,Long valueheadid);
 	
-	public void sortUp(String id, String valueheadid);
-	public void sortDown(String id, String valueheadid);
+	public void sortUp(Long id, Long valueheadid);
+	public void sortDown(Long id, Long valueheadid);
 	
 }

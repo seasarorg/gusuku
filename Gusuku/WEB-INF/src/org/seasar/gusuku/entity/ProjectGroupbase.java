@@ -26,28 +26,28 @@ public class ProjectGroupbase implements Serializable {
 
 	private static final long serialVersionUID = 8345610059429531841L;
 
-	private long id;
-	private long projectid;
-	private long groupbaseid;
+	private Long id;
+	private Long projectid;
+	private Long groupbaseid;
 	
-	public long getGroupbaseid() {
+	public Long getGroupbaseid() {
 		return groupbaseid;
 	}
-	public void setGroupbaseid(long groupbaseid) {
+	public void setGroupbaseid(Long groupbaseid) {
 		this.groupbaseid = groupbaseid;
 	}
 	
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public long getProjectid() {
+	public Long getProjectid() {
 		return projectid;
 	}
-	public void setProjectid(long projectid) {
+	public void setProjectid(Long projectid) {
 		this.projectid = projectid;
 	}
 	

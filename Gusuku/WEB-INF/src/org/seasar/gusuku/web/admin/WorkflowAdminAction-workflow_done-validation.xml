@@ -7,12 +7,12 @@
 		</field-validator>
 	</field>
 	<field name="startstatusid">
-		<field-validator type="requiredstring">
+		<field-validator type="required">
 			<message key="workflow.startstatusid.required"/>
 		</field-validator>
 	</field>
 	<field name="endstatusid">
-		<field-validator type="requiredstring">
+		<field-validator type="required">
 			<message key="workflow.endstatusid.required"/>
 		</field-validator>
 	</field>

@@ -17,7 +17,6 @@ package org.seasar.gusuku.logic.impl;
 
 import java.util.Date;
 
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dao.PriorityHeadDao;
 import org.seasar.gusuku.dto.PriorityHeadAdminDto;
 import org.seasar.gusuku.dxo.PriorityHeadDxo;
@@ -32,7 +31,7 @@ public class PriorityHeadAdminLogicImpl implements PriorityHeadAdminLogic {
 	public void registration(PriorityHeadAdminDto priorityHeadAdminDto) {
 		PriorityHead priorityHead = priorityHeadDxo.convert(priorityHeadAdminDto);
 		
-		if(StringUtil.isEmpty(priorityHeadAdminDto.getId())){
+		if(priorityHeadAdminDto.getId() == null){
 			priorityHeadDao.insert(priorityHead);
 		}else{
 			priorityHead.setUdate(new Date());
@@ -40,7 +39,7 @@ public class PriorityHeadAdminLogicImpl implements PriorityHeadAdminLogic {
 		}
 	}
 
-	public void delete(String[] delids) {
+	public void delete(Long[] delids) {
 		if (delids != null && delids.length > 0) {
 			priorityHeadDao.updateDelflag(delids);
 		}

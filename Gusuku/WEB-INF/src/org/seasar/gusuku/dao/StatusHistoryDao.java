@@ -29,6 +29,6 @@ public interface StatusHistoryDao {
 	public void delete(StatusHistory statusHistory);
 	
 	@Query("STATUS_HISTORY.REPORTID = /*reportid*/ ORDER BY STATUS_HISTORY.RDATE")
-	public List<StatusHistory> findByReportid(String reportid);
+	public List<StatusHistory> findByReportid(Long reportid);
 
 }

@@ -46,7 +46,7 @@ public interface AccountDao {
 	 * @return
 	 */
 	@Query("Account.ID = /*id*/ AND Account.DELFLAG = FALSE")
-	public Account findById(String id);
+	public Account findById(Long id);
 	
 	/**
 	 * 指定したID以外で、指定したMAILADDRを持つAccountを取得します
@@ -56,13 +56,13 @@ public interface AccountDao {
 	 */
 	@Query(" Account.MAILADDR = /*mailaddr*/ /*IF accountid != null && accountid != ''*/AND Account.ID != /*accountid*/ /*END*/" )
 	@Arguments({"accountid","mailaddr"})
-	public Account findByMailaddr(String accountid,String mailaddr);
+	public Account findByMailaddr(Long accountid,String mailaddr);
 	
 	/**
 	 * 削除フラグを更新します
 	 * @param delids
 	 */
-	public void updateDelflag(String[] delids);
+	public void updateDelflag(Long[] delids);
 	
 	/**
 	 * 全てのAccountリストを取得します
@@ -76,21 +76,21 @@ public interface AccountDao {
 	 * @param projectid
 	 * @return
 	 */
-	public List<Account> findByProjectid(String projectid);
+	public List<Account> findByProjectid(Long projectid);
 	
 	/**
 	 * 指定したグループに所属するAccountリストを取得します
 	 * @param groupid
 	 * @return
 	 */
-	public List<Account> findByGroupid(String groupid);
+	public List<Account> findByGroupid(Long groupid);
 	
 	/**
 	 * 指定したグループに所属しないAccountリストを取得します
 	 * @param groupid
 	 * @return
 	 */
-	public List<Account> findByWithoutGroupid(String groupid);
+	public List<Account> findByWithoutGroupid(Long groupid);
 	
 	/**
 	 * 指定したメールアドレスとパスワードにひもづくAccountを取得します

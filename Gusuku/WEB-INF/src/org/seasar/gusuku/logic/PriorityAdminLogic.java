@@ -21,7 +21,7 @@ public interface PriorityAdminLogic {
 	
 	public void registration(PriorityAdminDto prioritydminDto);
 	
-	public void delete(String[] delids);
+	public void delete(Long[] delids);
 	
 	public PriorityAdminDto getPriorityAdminDto(PriorityAdminDto priorityAdminDto);
 

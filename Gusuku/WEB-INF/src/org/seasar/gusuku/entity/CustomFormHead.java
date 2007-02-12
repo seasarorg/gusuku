@@ -27,7 +27,7 @@ public class CustomFormHead implements Serializable {
 
 	private static final long serialVersionUID = 5283333573557332750L;
 
-	private long id;
+	private Long id;
 	private String name;
 	private String description;
 	private boolean delflag;
@@ -47,10 +47,10 @@ public class CustomFormHead implements Serializable {
 		this.description = description;
 	}
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {

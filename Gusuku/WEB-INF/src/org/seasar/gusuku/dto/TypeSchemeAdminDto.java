@@ -21,33 +21,33 @@ import java.io.Serializable;
 public class TypeSchemeAdminDto implements Serializable {
 
 	private static final long serialVersionUID = 3532324322218877902L;
-	private String id;
-	private String headid;
-	private String[] typeid;
+	private Long id;
+	private Long headid;
+	private Long[] typeid;
 	
-	public String getHeadid() {
+	public Long getHeadid() {
 		return headid;
 	}
 	
-	public void setHeadid(String headid) {
+	public void setHeadid(Long headid) {
 		this.headid = headid;
 	}
 	
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
 	
-	public String[] getTypeid() {
+	public Long[] getTypeid() {
 		return typeid;
 	}
 
 	
-	public void setTypeid(String[] typeid) {
+	public void setTypeid(Long[] typeid) {
 		this.typeid = typeid;
 	}
 	

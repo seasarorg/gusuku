@@ -30,19 +30,19 @@ public interface TypeSchemeDao {
 	public void delete(TypeScheme typeScheme);
 	
 	@Query("HEADID = /*headid*/ ORDER BY SORT")
-	public List<TypeScheme> findWithSchemeByHeadid(String headid);
+	public List<TypeScheme> findWithSchemeByHeadid(Long headid);
 	
 	@Query("SORT = (SELECT MAX(SORT) FROM TYPE_SCHEME WHERE HEADID = /*headid*/) AND HEADID = /*headid*/")
-	public TypeScheme findMaxSort(String headid);
+	public TypeScheme findMaxSort(Long headid);
 	
 	@Query("TYPE_SCHEME.ID = /*id*/")
-	public TypeScheme findById(String id);
+	public TypeScheme findById(Long id);
 	
 	@Query("HEADID = /*headid*/ AND SORT > (SELECT SORT FROM TYPE_SCHEME WHERE TYPE_SCHEME.ID = /*id*/) ORDER BY SORT LIMIT 1")
 	@Arguments({"id","headid"})
-	public TypeScheme findAfterById(String id, String headid);
+	public TypeScheme findAfterById(Long id, Long headid);
 
-	@Query("HEADID = /*headid*/ AND SORT < (SELECT SORT FROM TYPE_SCHEME WHERE TYPE_SCHEME.ID = /*id*/) ORDER BY SORT LIMIT 1")
+	@Query("HEADID = /*headid*/ AND SORT < (SELECT SORT FROM TYPE_SCHEME WHERE TYPE_SCHEME.ID = /*id*/) ORDER BY SORT DESC LIMIT 1")
 	@Arguments({"id","headid"})
-	public TypeScheme findBeforeById(String id, String headid);
+	public TypeScheme findBeforeById(Long id, Long headid);
 }

@@ -20,38 +20,38 @@ import java.io.Serializable;
 public class ReportDto implements Serializable {
 
 	private static final long serialVersionUID = 6847280322093586073L;
-	private String id;
-	private String projectid;
+	private Long id;
+	private Long projectid;
 	private String projectname;
 	
-	private String formid;
-	private String typeid;
+	private Long formid;
+	private Long typeid;
 	private String typename;
 	
 	private String title;
-	private String priorityid;
-	private String assigneeid;
-	private String reporterid;
-	private String resolutionid;
-	private String statusid;
-	private String componentid;
-	private String versionid;
+	private Long priorityid;
+	private Long assigneeid;
+	private Long reporterid;
+	private Long resolutionid;
+	private Long statusid;
+	private Long componentid;
+	private Long versionid;
 	private String environment;
 	private String detail;
 	
 	private String comment;
-	private String nextstatusid;
+	private Long nextstatusid;
 	
-	public String getProjectid() {
+	public Long getProjectid() {
 		return projectid;
 	}
-	public void setProjectid(String projectid) {
+	public void setProjectid(Long projectid) {
 		this.projectid = projectid;
 	}
-	public String getTypeid() {
+	public Long getTypeid() {
 		return typeid;
 	}
-	public void setTypeid(String typeid) {
+	public void setTypeid(Long typeid) {
 		this.typeid = typeid;
 	}
 	public String getProjectname() {
@@ -66,10 +66,10 @@ public class ReportDto implements Serializable {
 	public void setTypename(String typename) {
 		this.typename = typename;
 	}
-	public String getAssigneeid() {
+	public Long getAssigneeid() {
 		return assigneeid;
 	}
-	public void setAssigneeid(String assigneeid) {
+	public void setAssigneeid(Long assigneeid) {
 		this.assigneeid = assigneeid;
 	}
 	public String getDetail() {
@@ -84,10 +84,10 @@ public class ReportDto implements Serializable {
 	public void setEnvironment(String environment) {
 		this.environment = environment;
 	}
-	public String getPriorityid() {
+	public Long getPriorityid() {
 		return priorityid;
 	}
-	public void setPriorityid(String priorityid) {
+	public void setPriorityid(Long priorityid) {
 		this.priorityid = priorityid;
 	}
 	public String getTitle() {
@@ -96,30 +96,30 @@ public class ReportDto implements Serializable {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getReporterid() {
+	public Long getReporterid() {
 		return reporterid;
 	}
-	public void setReporterid(String reporterid) {
+	public void setReporterid(Long reporterid) {
 		this.reporterid = reporterid;
 	}
-	public String getResolutionid() {
+	public Long getResolutionid() {
 		return resolutionid;
 	}
-	public void setResolutionid(String resolutionid) {
+	public void setResolutionid(Long resolutionid) {
 		this.resolutionid = resolutionid;
 	}
-	public String getStatusid() {
+	public Long getStatusid() {
 		return statusid;
 	}
-	public void setStatusid(String statusid) {
+	public void setStatusid(Long statusid) {
 		this.statusid = statusid;
 	}
 	
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -131,33 +131,33 @@ public class ReportDto implements Serializable {
 		this.comment = comment;
 	}
 	
-	public String getNextstatusid() {
+	public Long getNextstatusid() {
 		return nextstatusid;
 	}
 	
-	public void setNextstatusid(String nextstatusid) {
+	public void setNextstatusid(Long nextstatusid) {
 		this.nextstatusid = nextstatusid;
 	}
-	public String getFormid() {
+	public Long getFormid() {
 		return formid;
 	}
-	public void setFormid(String formid) {
+	public void setFormid(Long formid) {
 		this.formid = formid;
 	}
 	
-	public String getComponentid() {
+	public Long getComponentid() {
 		return componentid;
 	}
 	
-	public void setComponentid(String componentid) {
+	public void setComponentid(Long componentid) {
 		this.componentid = componentid;
 	}
 	
-	public String getVersionid() {
+	public Long getVersionid() {
 		return versionid;
 	}
 	
-	public void setVersionid(String versionid) {
+	public void setVersionid(Long versionid) {
 		this.versionid = versionid;
 	}
 

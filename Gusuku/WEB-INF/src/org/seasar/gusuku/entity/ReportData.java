@@ -27,9 +27,9 @@ import org.seasar.dao.annotation.tiger.Relation;
 public class ReportData implements Serializable {
 	
 	private static final long serialVersionUID = 1252543865335335821L;
-	private long id;
-	private long reportid;
-	private long formid;
+	private Long id;
+	private Long reportid;
+	private Long formid;
 	private String textvalue;
 	private Long numericvalue;
 	private Date datevalue;
@@ -44,20 +44,20 @@ public class ReportData implements Serializable {
 		this.datevalue = datevalue;
 	}
 	
-	public long getFormid() {
+	public Long getFormid() {
 		return formid;
 	}
 	
-	public void setFormid(long formid) {
+	public void setFormid(Long formid) {
 		this.formid = formid;
 	}
 	
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	
@@ -69,11 +69,11 @@ public class ReportData implements Serializable {
 		this.numericvalue = numericvalue;
 	}
 	
-	public long getReportid() {
+	public Long getReportid() {
 		return reportid;
 	}
 	
-	public void setReportid(long reportid) {
+	public void setReportid(Long reportid) {
 		this.reportid = reportid;
 	}
 	

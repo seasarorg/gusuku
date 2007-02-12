@@ -21,7 +21,7 @@ public interface PrioritySchemeAdminLogic {
 
 	public void registration(PrioritySchemeAdminDto prioritySchemeAdminDto);
 
-	public void delete(String[] delids);
+	public void delete(Long[] delids,Long headid);
 
 	public void sortUp(PrioritySchemeAdminDto prioritySchemeAdminDto);
 

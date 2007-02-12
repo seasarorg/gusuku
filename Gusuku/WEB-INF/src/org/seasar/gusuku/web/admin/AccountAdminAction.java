@@ -19,6 +19,8 @@ import java.util.List;
 
 import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dto.AccountAdminDto;
+import org.seasar.gusuku.entity.Account;
+import org.seasar.gusuku.entity.AccountKind;
 import org.seasar.gusuku.helper.AccountHelper;
 import org.seasar.gusuku.helper.AccountKindHelper;
 import org.seasar.gusuku.logic.AccountAdminLogic;
@@ -29,13 +31,14 @@ import org.seasar.xwork.annotation.XWorkAction;
 
 import com.opensymphony.webwork.util.TokenHelper;
 import com.opensymphony.xwork.ModelDriven;
+import com.opensymphony.xwork.Preparable;
 
 /**
  * ユーザー管理
  * @author duran
  *
  */
-public class AccountAdminAction extends GusukuAction implements ModelDriven {
+public class AccountAdminAction extends GusukuAction implements ModelDriven,Preparable {
 
 	private static final long serialVersionUID = -8360123046340756747L;
 	private AccountAdminLogic accountAdminLogic;
@@ -44,9 +47,26 @@ public class AccountAdminAction extends GusukuAction implements ModelDriven {
 
 	private AccountAdminDto dto = new AccountAdminDto();
 
-	private List list;
+	private List<Account> list;
+	private List<AccountKind> kindList;
 
-	private String[] delid;
+	private Long[] delid;
+	
+	public void prepare(){
+	}
+	
+	public void prepareList(){
+		initList();
+	}
+	public void prepareInit(){
+		initList();
+	}
+	public void prepareDone(){
+		initList();
+	}
+	private void initList(){
+		kindList = accountKindHelper.getList();
+	}
 
 	/**
 	 * ユーザー一覧
@@ -64,7 +84,7 @@ public class AccountAdminAction extends GusukuAction implements ModelDriven {
 	 */
 	@XWorkAction(name = "account_edit", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/account_add.html")))
 	public String init() {
-		if (!StringUtil.isEmpty(dto.getId())) {
+		if (dto.getId() != null) {
 			dto = accountAdminLogic.getAccount(dto);
 		}
 		return SUCCESS;
@@ -118,7 +138,7 @@ public class AccountAdminAction extends GusukuAction implements ModelDriven {
 		return dto;
 	}
 
-	public void setDelid(String[] delid) {
+	public void setDelid(Long[] delid) {
 		this.delid = delid;
 	}
 
@@ -131,12 +151,13 @@ public class AccountAdminAction extends GusukuAction implements ModelDriven {
 	}
 
 	
-	public AccountKindHelper getAccountKindHelper() {
-		return accountKindHelper;
-	}
-
 	public void setAccountHelper(AccountHelper accountHelper) {
 		this.accountHelper = accountHelper;
+	}
+
+	
+	public List<AccountKind> getKindList() {
+		return kindList;
 	}
 
 }

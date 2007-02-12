@@ -27,26 +27,26 @@ public class SearchConditionHead implements Serializable {
 
 	private static final long serialVersionUID = -6313929764721870176L;
 	
-	private long id;
-	private long accountid;
+	private Long id;
+	private Long accountid;
 	private String name;
 	private boolean visible;
 	private int sort;
 	private int amount;
 	private Date rdate;
 	
-	public long getAccountid() {
+	public Long getAccountid() {
 		return accountid;
 	}
-	public void setAccountid(long accountid) {
+	public void setAccountid(Long accountid) {
 		this.accountid = accountid;
 	}
 	
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {

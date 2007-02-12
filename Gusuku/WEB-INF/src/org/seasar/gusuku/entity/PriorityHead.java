@@ -26,7 +26,7 @@ import org.seasar.dao.annotation.tiger.IdType;
 public class PriorityHead implements Serializable {
 	
 	private static final long serialVersionUID = 2687520645669608234L;
-	private long id;
+	private Long id;
 	private String name;
 	private String description;
 	private Date rdate;
@@ -40,10 +40,10 @@ public class PriorityHead implements Serializable {
 	}
 	
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {

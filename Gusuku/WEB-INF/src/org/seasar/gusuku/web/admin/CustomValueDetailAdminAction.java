@@ -15,7 +15,11 @@
  */
 package org.seasar.gusuku.web.admin;
 
+import java.util.List;
+
 import org.seasar.gusuku.dto.CustomValueDetailAdminDto;
+import org.seasar.gusuku.entity.CustomValueDetail;
+import org.seasar.gusuku.entity.CustomValueHead;
 import org.seasar.gusuku.helper.CustomValueHelper;
 import org.seasar.gusuku.logic.CustomValueDetailAdminLogic;
 import org.seasar.gusuku.web.GusukuAction;
@@ -25,6 +29,7 @@ import org.seasar.xwork.annotation.XWorkAction;
 
 import com.opensymphony.webwork.util.TokenHelper;
 import com.opensymphony.xwork.ModelDriven;
+import com.opensymphony.xwork.Preparable;
 
 /**
  * カスタムバリュー詳細
@@ -32,7 +37,7 @@ import com.opensymphony.xwork.ModelDriven;
  *
  */
 public class CustomValueDetailAdminAction extends GusukuAction implements
-		ModelDriven {
+		ModelDriven,Preparable {
 
 	private static final long serialVersionUID = -3748386991488460481L;
 	private CustomValueDetailAdminLogic customValueDetailAdminLogic;
@@ -40,7 +45,21 @@ public class CustomValueDetailAdminAction extends GusukuAction implements
 	
 	private CustomValueHelper customValueHelper;
 	
-	private String[] delid;
+	private List<CustomValueDetail> list;
+	private CustomValueHead customValueHead;
+	
+	private Long[] delid;
+	
+	public void prepare(){
+	}
+	public void prepareList(){
+		list = customValueHelper.getValueList(dto.getValueheadid());
+		customValueHead = customValueHelper.getCustomValueHead(dto.getValueheadid());
+	}
+	public void prepareDone(){
+		list = customValueHelper.getValueList(dto.getValueheadid());
+		customValueHead = customValueHelper.getCustomValueHead(dto.getValueheadid());
+	}
 
 	/**
 	 * 詳細一覧
@@ -71,7 +90,7 @@ public class CustomValueDetailAdminAction extends GusukuAction implements
 	 */
 	@XWorkAction(name = "custom_value_detail_delete", result = @Result(type = "redirect", param = @Param(name = "location", value = "/admin/custom_value_detail_list.html?valueheadid=${model.valueheadid}")))
 	public String deldone() {
-		customValueDetailAdminLogic.delete(delid);
+		customValueDetailAdminLogic.delete(delid,dto.getValueheadid());
 		return SUCCESS;
 	}
 	
@@ -90,10 +109,6 @@ public class CustomValueDetailAdminAction extends GusukuAction implements
 		return dto;
 	}
 
-	public CustomValueHelper getCustomValueHelper() {
-		return customValueHelper;
-	}
-
 	public void setCustomValueHelper(CustomValueHelper customValueHelper) {
 		this.customValueHelper = customValueHelper;
 	}
@@ -103,8 +118,18 @@ public class CustomValueDetailAdminAction extends GusukuAction implements
 		this.customValueDetailAdminLogic = customValueDetailAdminLogic;
 	}
 
-	public void setDelid(String[] delid) {
+	public void setDelid(Long[] delid) {
 		this.delid = delid;
+	}
+
+	
+	public CustomValueHead getCustomValueHead() {
+		return customValueHead;
+	}
+
+	
+	public List<CustomValueDetail> getList() {
+		return list;
 	}
 
 }

@@ -15,7 +15,12 @@
  */
 package org.seasar.gusuku.web.admin;
 
+import java.util.List;
+
 import org.seasar.gusuku.dto.ResolutionSchemeAdminDto;
+import org.seasar.gusuku.entity.Resolution;
+import org.seasar.gusuku.entity.ResolutionHead;
+import org.seasar.gusuku.entity.ResolutionScheme;
 import org.seasar.gusuku.helper.ResolutionHelper;
 import org.seasar.gusuku.logic.ResolutionSchemeAdminLogic;
 import org.seasar.gusuku.web.GusukuAction;
@@ -33,10 +38,18 @@ public class ResolutionSchemeAdminAction extends GusukuAction implements ModelDr
 	private ResolutionSchemeAdminLogic resolutionSchemeAdminLogic;
 	private ResolutionHelper resolutionHelper;
 	
-	private String[] delid;
+	private List<ResolutionScheme> list;
+	private List<Resolution> entryList;
+	
+	private ResolutionHead resolutionHead;
+	
+	private Long[] delid;
 	
 	@XWorkAction(name = "resolution_scheme_list", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/resolution_scheme_list.html")))
 	public String list(){
+		list = resolutionHelper.getResolutionListWithScheme(dto.getHeadid());
+		entryList = resolutionHelper.getResolutionListWithoutScheme(dto.getHeadid());
+		resolutionHead = resolutionHelper.getResolutionHead(dto.getHeadid());
 		return SUCCESS;
 	}
 	
@@ -48,7 +61,7 @@ public class ResolutionSchemeAdminAction extends GusukuAction implements ModelDr
 	
 	@XWorkAction(name = "resolution_scheme_delete", result = @Result(type = "redirect", param = @Param(name = "location", value = "/admin/resolution_scheme_list.html?headid=${model.headid}")))
 	public String deldone(){
-		resolutionSchemeAdminLogic.delete(delid);
+		resolutionSchemeAdminLogic.delete(delid,dto.getHeadid());
 		return SUCCESS;
 	}
 
@@ -69,22 +82,32 @@ public class ResolutionSchemeAdminAction extends GusukuAction implements ModelDr
 	}
 
 	
-	public ResolutionHelper getResolutionHelper() {
-		return resolutionHelper;
-	}
-
-	
 	public void setResolutionHelper(ResolutionHelper resolutionHelper) {
 		this.resolutionHelper = resolutionHelper;
 	}
 
 	
-	public void setDelid(String[] delid) {
+	public void setDelid(Long[] delid) {
 		this.delid = delid;
 	}
 
 	
 	public void setResolutionSchemeAdminLogic(ResolutionSchemeAdminLogic resolutionSchemeAdminLogic) {
 		this.resolutionSchemeAdminLogic = resolutionSchemeAdminLogic;
+	}
+
+	
+	public List<Resolution> getEntryList() {
+		return entryList;
+	}
+
+	
+	public List<ResolutionScheme> getList() {
+		return list;
+	}
+
+	
+	public ResolutionHead getResolutionHead() {
+		return resolutionHead;
 	}
 }

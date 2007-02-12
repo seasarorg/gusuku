@@ -17,7 +17,6 @@ package org.seasar.gusuku.logic.impl;
 
 import java.util.Date;
 
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dao.ResolutionDao;
 import org.seasar.gusuku.dto.ResolutionAdminDto;
 import org.seasar.gusuku.dxo.ResolutionDxo;
@@ -32,7 +31,7 @@ public class ResolutionAdminLogicImpl implements ResolutionAdminLogic {
 	public void registration(ResolutionAdminDto resolutionAdminDto) {
 		Resolution resolution = resolutionDxo.convert(resolutionAdminDto);
 		
-		if(StringUtil.isEmpty(resolutionAdminDto.getId())){
+		if(resolutionAdminDto.getId() == null){
 			resolutionDao.insert(resolution);
 		}else{
 			resolution.setUdate(new Date());
@@ -40,7 +39,7 @@ public class ResolutionAdminLogicImpl implements ResolutionAdminLogic {
 		}
 	}
 
-	public void delete(String[] delids) {
+	public void delete(Long[] delids) {
 		if (delids != null && delids.length > 0) {
 			resolutionDao.updateDelflag(delids);
 		}

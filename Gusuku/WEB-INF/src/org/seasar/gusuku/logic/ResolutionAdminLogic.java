@@ -21,7 +21,7 @@ public interface ResolutionAdminLogic {
 	
 	public void registration(ResolutionAdminDto resolutiondminDto);
 	
-	public void delete(String[] delids);
+	public void delete(Long[] delids);
 	
 	public ResolutionAdminDto getResolutionAdminDto(ResolutionAdminDto resolutionAdminDto);
 

@@ -26,14 +26,14 @@ import org.seasar.dao.annotation.tiger.IdType;
 public class AccountKind implements Serializable {
 
 	private static final long serialVersionUID = 5809193770201910376L;
-	private int id;
+	private Long id;
 	private String kindname;
 	
 	@Id(IdType.IDENTITY)
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	

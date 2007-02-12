@@ -39,12 +39,11 @@ public interface ReportDao {
 	 * @param assigneeid
 	 * @return
 	 */
-	@Query("Report.ASSIGNEEID = /*assigneeid*/ AND Report.DELFLAG = FALSE ORDER BY Report.ID")
-	public List<Report> findByAssigneeid(String assigneeid);
+	public List<Report> findByAssigneeid(Long assigneeid);
 	
 	@Query("Report.ASSIGNEEID = /*assigneeid*/ AND Report.STATUSID = /*statusid*/ AND Report.DELFLAG = FALSE ORDER BY Report.ID")
 	@Arguments({"assigneeid","statusid"})
-	public List<Report> findByAssigneeidAndStatusid(String assigneeid, String statusid);
+	public List<Report> findByAssigneeidAndStatusid(Long assigneeid, Long statusid);
 	
 	/**
 	 * 指定したユーザーが報告したレポートリストを取得します
@@ -52,20 +51,23 @@ public interface ReportDao {
 	 * @return
 	 */
 	@Query("Report.REPORTERID = /*reporterid*/ AND Report.DELFLAG = FALSE ORDER BY Report.ID")
-	public List<Report> findByReporterid(String reporterid);
+	public List<Report> findByReporterid(Long reporterid);
 
 	@Query("Report.ID = /*id*/ AND Report.DELFLAG = FALSE ORDER BY Report.ID")
-	public Report findById(String id);
+	public Report findById(Long id);
 
-	@Query("Report.PROJECTID = /*projectid*/ /*IF typeid != null */AND Report.TYPEID = /*typeid*/ /*END*/AND Report.DELFLAG = FALSE AND Report.STATUSID != (SELECT STATUSID FROM WORKFLOW_STATUS WHERE WORKFLOWID = /*workflowid*/ AND EFLAG = TRUE) ORDER BY Report.ID")
+	@Query("Report.PROJECTID = /*projectid*/ /*IF typeid != null */AND Report.TYPEID = /*typeid*/ /*END*/AND Report.DELFLAG = FALSE AND Report.STATUSID NOT IN (SELECT STATUSID FROM WORKFLOW_STATUS WHERE WORKFLOWID = /*workflowid*/ AND EFLAG = TRUE) ORDER BY Report.ID")
 	@Arguments({"projectid","typeid","workflowid"})
-	public List<Report> findByProjectidAndTypeid(String projectid, String typeid,String workflowid);
+	public List<Report> findByProjectidAndTypeid(Long projectid, Long typeid,Long workflowid);
 	
 	@Arguments({"projectid","statusid"})
-	public int countByProjectidAndStatusid(String projectid,String statusid);
+	public int countByProjectidAndStatusid(Long projectid,Long statusid);
 	
 	@Arguments({"projectid","typeid","statusid"})
-	public int countByProjectidAndTypeidAndStatusid(String projectid, String typeid,String statusid);
+	public int countByProjectidAndTypeidAndStatusid(Long projectid, Long typeid,Long statusid);
+	
+	@Arguments({"assigneeid","projectid"})
+	public List<Report> findByAssigneeidAndProjectid(Long id, Long projectid);
 
 
 }

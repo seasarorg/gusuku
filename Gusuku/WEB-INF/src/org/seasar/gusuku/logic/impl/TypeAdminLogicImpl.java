@@ -43,7 +43,7 @@ public class TypeAdminLogicImpl implements TypeAdminLogic {
 			type.setIcon(""); 
 		}
 		
-		if(StringUtil.isEmpty(typeAdminDto.getId())){
+		if(typeAdminDto.getId() == null){
 			typeDao.insert(type);
 		}else{
 			type.setUdate(new Date());
@@ -70,7 +70,7 @@ public class TypeAdminLogicImpl implements TypeAdminLogic {
 		}
 	}
 
-	public void delete(String[] delids) {
+	public void delete(Long[] delids) {
 		if (delids != null && delids.length > 0) {
 			typeDao.updateDelflag(delids);
 		}

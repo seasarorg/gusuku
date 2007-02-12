@@ -27,10 +27,10 @@ import org.seasar.dao.annotation.tiger.Relation;
 public class CustomFormDetail implements Serializable {
 
 	private static final long serialVersionUID = -8866719784007789658L;
-	private long id;
-	private long formheadid;
+	private Long id;
+	private Long formheadid;
 	private Long valueid;
-	private long typeid;
+	private Long typeid;
 	private String label;
 	private String defaultvalue;
 	private int valuetype;
@@ -70,10 +70,10 @@ public class CustomFormDetail implements Serializable {
 	}
 	
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getLabel() {
@@ -106,10 +106,10 @@ public class CustomFormDetail implements Serializable {
 	public void setSort(int sort) {
 		this.sort = sort;
 	}
-	public long getTypeid() {
+	public Long getTypeid() {
 		return typeid;
 	}
-	public void setTypeid(long typeid) {
+	public void setTypeid(Long typeid) {
 		this.typeid = typeid;
 	}
 	public Long getValueid() {

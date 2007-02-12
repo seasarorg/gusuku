@@ -38,7 +38,7 @@ public interface ResolutionHeadDao {
 	public List<ResolutionHead> findAll();
 	
 	@Query("ID = /*id*/ AND DELFLAG = FALSE")
-	public ResolutionHead findById(String id);
+	public ResolutionHead findById(Long id);
 
-	public void updateDelflag(String[] ids);
+	public void updateDelflag(Long[] delids);
 }

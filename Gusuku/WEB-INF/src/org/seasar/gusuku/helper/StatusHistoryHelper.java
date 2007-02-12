@@ -34,7 +34,7 @@ public class StatusHistoryHelper {
 	 * @param reportid 報告ID
 	 * @return ステータス履歴一覧
 	 */
-	public List<StatusHistory> getStatusHistoryList(String reportid) {
+	public List<StatusHistory> getStatusHistoryList(Long reportid) {
 		return statusHistoryDao.findByReportid(reportid);
 	}
 

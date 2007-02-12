@@ -23,32 +23,32 @@ import org.seasar.dao.annotation.tiger.IdType;
 public class Nextstatus implements Serializable {
 
 	private static final long serialVersionUID = 8107437760136364303L;
-	private long id;
-	private long workflowstatusid;
-	private long nextstatusid;
+	private Long id;
+	private Long workflowstatusid;
+	private Long nextstatusid;
 
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public long getNextstatusid() {
+	public Long getNextstatusid() {
 		return nextstatusid;
 	}
 
-	public void setNextstatusid(long nextstatusid) {
+	public void setNextstatusid(Long nextstatusid) {
 		this.nextstatusid = nextstatusid;
 	}
 
-	public long getWorkflowstatusid() {
+	public Long getWorkflowstatusid() {
 		return workflowstatusid;
 	}
 
-	public void setWorkflowstatusid(long workflowstatusid) {
+	public void setWorkflowstatusid(Long workflowstatusid) {
 		this.workflowstatusid = workflowstatusid;
 	}
 

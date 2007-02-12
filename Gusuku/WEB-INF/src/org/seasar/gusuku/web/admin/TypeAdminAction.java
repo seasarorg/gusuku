@@ -17,7 +17,6 @@ package org.seasar.gusuku.web.admin;
 
 import java.util.List;
 
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dto.TypeAdminDto;
 import org.seasar.gusuku.entity.Type;
 import org.seasar.gusuku.helper.TypeHelper;
@@ -40,11 +39,11 @@ public class TypeAdminAction extends GusukuAction implements ModelDriven{
 	
 	private List<Type> list;
 	
-	private String[] delid;
+	private Long[] delid;
 
 	@XWorkAction(name = "type_edit", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/type_add.html")))
 	public String init(){
-		if(!StringUtil.isEmpty(dto.getId())){
+		if(dto.getId() != null){
 			dto = typeAdminLogic.getTypeAdminDto(dto);
 		}
 		return SUCCESS;
@@ -72,7 +71,7 @@ public class TypeAdminAction extends GusukuAction implements ModelDriven{
 		return SUCCESS;
 	}
 
-	public void setDelid(String[] delid) {
+	public void setDelid(Long[] delid) {
 		this.delid = delid;
 	}
 	

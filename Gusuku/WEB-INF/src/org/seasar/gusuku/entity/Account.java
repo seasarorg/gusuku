@@ -26,7 +26,7 @@ import org.seasar.dao.annotation.tiger.Relation;
 public class Account implements Serializable {
 
 	private static final long serialVersionUID = 7358624794127027130L;
-	private long id;
+	private Long id;
 	private String mailaddr;
 	private String password;
 	private String name;
@@ -55,11 +55,11 @@ public class Account implements Serializable {
 	}
 
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -21,7 +21,7 @@ public interface ResolutionSchemeAdminLogic {
 
 	public void registration(ResolutionSchemeAdminDto resolutionSchemeAdminDto);
 
-	public void delete(String[] delids);
+	public void delete(Long[] delids,Long headid);
 
 	public void sortUp(ResolutionSchemeAdminDto resolutionSchemeAdminDto);
 

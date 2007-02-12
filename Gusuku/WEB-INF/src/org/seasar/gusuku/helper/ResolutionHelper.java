@@ -58,7 +58,7 @@ public class ResolutionHelper {
 	 * @param headid
 	 * @return
 	 */
-	public List<Resolution> getResolutionListWithoutScheme(String headid){
+	public List<Resolution> getResolutionListWithoutScheme(Long headid){
 		return resolutionDao.findWithoutSchemeByHeadid(headid);
 	}
 	/**
@@ -66,11 +66,11 @@ public class ResolutionHelper {
 	 * @param headid
 	 * @return
 	 */
-	public List<ResolutionScheme> getResolutionListWithScheme(String headid){
+	public List<ResolutionScheme> getResolutionListWithScheme(Long headid){
 		return resolutionSchemeDao.findWithSchemeByHeadid(headid);
 	}
 	
-	public ResolutionHead getResolutionHead(String id){
+	public ResolutionHead getResolutionHead(Long id){
 		return resolutionHeadDao.findById(id);
 	}
 	

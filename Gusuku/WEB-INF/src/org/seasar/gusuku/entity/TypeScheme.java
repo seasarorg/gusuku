@@ -26,24 +26,24 @@ import org.seasar.dao.annotation.tiger.Relation;
 public class TypeScheme implements Serializable {
 
 	private static final long serialVersionUID = 8884506793138686133L;
-	private long id;
-	private long headid;
-	private long typeid;
+	private Long id;
+	private Long headid;
+	private Long typeid;
 	private int sort;
 	
 	private Type type;
 	
-	public long getHeadid() {
+	public Long getHeadid() {
 		return headid;
 	}
-	public void setHeadid(long headid) {
+	public void setHeadid(Long headid) {
 		this.headid = headid;
 	}
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public int getSort() {
@@ -52,10 +52,10 @@ public class TypeScheme implements Serializable {
 	public void setSort(int sort) {
 		this.sort = sort;
 	}
-	public long getTypeid() {
+	public Long getTypeid() {
 		return typeid;
 	}
-	public void setTypeid(long typeid) {
+	public void setTypeid(Long typeid) {
 		this.typeid = typeid;
 	}
 	

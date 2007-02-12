@@ -15,8 +15,13 @@
  */
 package org.seasar.gusuku.web.admin;
 
-import org.seasar.framework.util.StringUtil;
+import java.util.List;
+
 import org.seasar.gusuku.dto.CustomFormDetailAdminDto;
+import org.seasar.gusuku.entity.CustomFormDetail;
+import org.seasar.gusuku.entity.CustomFormHead;
+import org.seasar.gusuku.entity.CustomValueHead;
+import org.seasar.gusuku.entity.FormType;
 import org.seasar.gusuku.helper.CustomFormHelper;
 import org.seasar.gusuku.helper.CustomValueHelper;
 import org.seasar.gusuku.helper.FormTypeHelper;
@@ -28,13 +33,14 @@ import org.seasar.xwork.annotation.XWorkAction;
 
 import com.opensymphony.webwork.util.TokenHelper;
 import com.opensymphony.xwork.ModelDriven;
+import com.opensymphony.xwork.Preparable;
 
 /**
  * カスタムフォーム詳細
  * @author duran
  *
  */
-public class CustomFormDetailAdminAction extends GusukuAction implements ModelDriven{
+public class CustomFormDetailAdminAction extends GusukuAction implements ModelDriven,Preparable{
 
 	private static final long serialVersionUID = -3004552876672844928L;
 	private CustomFormDetailAdminDto dto = new CustomFormDetailAdminDto();
@@ -44,14 +50,35 @@ public class CustomFormDetailAdminAction extends GusukuAction implements ModelDr
 	private CustomValueHelper customValueHelper;
 	private FormTypeHelper formTypeHelper;
 	
-	private String[] delid;
+	private List<CustomFormDetail> list;
+	private CustomFormHead customFormHead;
+	
+	private List<FormType> formTypeList;
+	private List<CustomValueHead> CustomValueHeadList;
+	
+	private Long[] delid;
+	
+	public void prepare(){
+		
+	}
+	
+	public void prepareInit(){
+		formTypeList = formTypeHelper.getFormTypeList();
+		CustomValueHeadList = customValueHelper.getCustomValueHeadList();
+	}
 
+	public void prepareDone(){
+		formTypeList = formTypeHelper.getFormTypeList();
+		CustomValueHeadList = customValueHelper.getCustomValueHeadList();
+	}
 	/**
 	 * 詳細一覧
 	 * @return
 	 */
 	@XWorkAction(name = "custom_form_detail_list", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/custom_form_detail_list.html")))
 	public String list() {
+		list = customFormHelper.getFormList(dto.getFormheadid());
+		customFormHead = customFormHelper.getCustomFormHead(dto.getFormheadid());
 		return SUCCESS;
 	}
 
@@ -61,7 +88,7 @@ public class CustomFormDetailAdminAction extends GusukuAction implements ModelDr
 	 */
 	@XWorkAction(name = "custom_form_detail_edit", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/custom_form_detail_add.html")))
 	public String init() {
-		if (!StringUtil.isEmpty(dto.getId())) {
+		if (dto.getId() != null) {
 			dto = customFormDetailAdminLogic.getCustomFormDetail(dto);
 		}
 		return SUCCESS;
@@ -87,7 +114,7 @@ public class CustomFormDetailAdminAction extends GusukuAction implements ModelDr
 	 */
 	@XWorkAction(name = "custom_form_detail_delete", result = @Result(type = "redirect", param = @Param(name = "location", value = "/admin/custom_form_detail_list.html?formheadid=${model.formheadid}")))
 	public String deldone() {
-		customFormDetailAdminLogic.delete(delid);
+		customFormDetailAdminLogic.delete(dto.getFormheadid(),delid);
 		return SUCCESS;
 	}
 	
@@ -106,10 +133,6 @@ public class CustomFormDetailAdminAction extends GusukuAction implements ModelDr
 		return dto;
 	}
 
-	public CustomFormHelper getCustomFormHelper() {
-		return customFormHelper;
-	}
-
 	public void setCustomFormHelper(CustomFormHelper customFormHelper) {
 		this.customFormHelper = customFormHelper;
 	}
@@ -119,24 +142,36 @@ public class CustomFormDetailAdminAction extends GusukuAction implements ModelDr
 		this.customFormDetailAdminLogic = customFormDetailAdminLogic;
 	}
 
-	public void setDelid(String[] delid) {
+	public void setDelid(Long[] delid) {
 		this.delid = delid;
-	}
-
-	public FormTypeHelper getFormTypeHelper() {
-		return formTypeHelper;
 	}
 
 	public void setFormTypeHelper(FormTypeHelper formTypeHelper) {
 		this.formTypeHelper = formTypeHelper;
 	}
 
-	public CustomValueHelper getCustomValueHelper() {
-		return customValueHelper;
-	}
-
 	public void setCustomValueHelper(CustomValueHelper customValueHelper) {
 		this.customValueHelper = customValueHelper;
+	}
+
+	
+	public CustomFormHead getCustomFormHead() {
+		return customFormHead;
+	}
+
+	
+	public List<CustomFormDetail> getList() {
+		return list;
+	}
+
+	
+	public List<CustomValueHead> getCustomValueHeadList() {
+		return CustomValueHeadList;
+	}
+
+	
+	public List<FormType> getFormTypeList() {
+		return formTypeList;
 	}
 
 }

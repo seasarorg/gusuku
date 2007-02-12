@@ -24,7 +24,7 @@ import org.seasar.dao.annotation.tiger.IdType;
 public class Workflow implements Serializable {
 
 	private static final long serialVersionUID = 3473691020806224918L;
-	private long id;
+	private Long id;
 	private String name;
 	private String description;
 	private boolean delflag;
@@ -48,11 +48,11 @@ public class Workflow implements Serializable {
 	}
 
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

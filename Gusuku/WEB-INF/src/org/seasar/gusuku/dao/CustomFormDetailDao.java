@@ -30,21 +30,21 @@ public interface CustomFormDetailDao {
 	public void delete(CustomFormDetail customFormDetail);
 	
 	@Query("CUSTOM_FORM_DETAIL.FORMHEADID = /*formheadid*/ AND CUSTOM_FORM_DETAIL.DELFLAG = FALSE ORDER BY CUSTOM_FORM_DETAIL.SORT")
-	public List<CustomFormDetail> findByFormheadid(String formheadid);
+	public List<CustomFormDetail> findByFormheadid(Long formheadid);
 	
-	public void updateDelflag(String[] ids);
+	public void updateDelflag(Long[] delids);
 	
 	@Query("CUSTOM_FORM_DETAIL.ID = /*id*/ AND CUSTOM_FORM_DETAIL.DELFLAG = FALSE")
-	public CustomFormDetail findById(String id);
+	public CustomFormDetail findById(Long id);
 	
-	@Query("FORMHEADID = /*formheadid*/ AND SORT > (SELECT SORT FROM CUSTOM_FORM_DETAIL WHERE CUSTOM_FORM_DETAIL.ID = /*id*/) ORDER BY SORT LIMIT 1")
+	@Query("FORMHEADID = /*formheadid*/ AND SORT > (SELECT SORT FROM CUSTOM_FORM_DETAIL WHERE CUSTOM_FORM_DETAIL.ID = /*id*/) AND CUSTOM_FORM_DETAIL.DELFLAG = FALSE ORDER BY SORT LIMIT 1")
 	@Arguments({"id","formheadid"})
-	public CustomFormDetail findAfterById(String id,String formheadid);
+	public CustomFormDetail findAfterById(Long id,Long formheadid);
 	
-	@Query("FORMHEADID = /*formheadid*/ AND SORT < (SELECT SORT FROM CUSTOM_FORM_DETAIL WHERE CUSTOM_FORM_DETAIL.ID = /*id*/) ORDER BY SORT DESC LIMIT 1")
+	@Query("FORMHEADID = /*formheadid*/ AND SORT < (SELECT SORT FROM CUSTOM_FORM_DETAIL WHERE CUSTOM_FORM_DETAIL.ID = /*id*/) AND CUSTOM_FORM_DETAIL.DELFLAG = FALSE ORDER BY SORT DESC LIMIT 1")
 	@Arguments({"id","formheadid"})
-	public CustomFormDetail findBeforeById(String id,String formheadid);
+	public CustomFormDetail findBeforeById(Long id,Long formheadid);
 	
 	@Query("SORT = (SELECT MAX(SORT) FROM CUSTOM_FORM_DETAIL WHERE CUSTOM_FORM_DETAIL.FORMHEADID = /*formheadid*/)")
-	public CustomFormDetail findMaxSort(String formheadid);
+	public CustomFormDetail findMaxSort(Long formheadid);
 }

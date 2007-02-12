@@ -15,8 +15,11 @@
  */
 package org.seasar.gusuku.web.mypage;
 
+import java.util.List;
+
 import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dto.AccountDto;
+import org.seasar.gusuku.entity.Groupbase;
 import org.seasar.gusuku.helper.AccountHelper;
 import org.seasar.gusuku.helper.GroupbaseHelper;
 import org.seasar.gusuku.logic.AccountAdminLogic;
@@ -26,8 +29,9 @@ import org.seasar.xwork.annotation.Result;
 import org.seasar.xwork.annotation.XWorkAction;
 
 import com.opensymphony.xwork.ModelDriven;
+import com.opensymphony.xwork.Preparable;
 
-public class ProfileAction extends GusukuAction implements ModelDriven {
+public class ProfileAction extends GusukuAction implements ModelDriven,Preparable {
 
 	private static final long serialVersionUID = -6722614301913866754L;
 	private GroupbaseHelper groupbaseHelper;
@@ -35,6 +39,18 @@ public class ProfileAction extends GusukuAction implements ModelDriven {
 	private AccountAdminLogic accountAdminLogic;
 	
 	private AccountDto dto = new AccountDto();
+	
+	private List<Groupbase> groupList;
+	
+	public void prepare(){
+	}
+	
+	public void prepareInit(){
+		groupList = groupbaseHelper.getJoinGroupList(getLoginid());
+	}
+	public void prepareUpdate(){
+		groupList = groupbaseHelper.getJoinGroupList(getLoginid());
+	}
 	
 	@XWorkAction(name = "profile", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/mypage/profile.html")))
 	public String init(){
@@ -76,10 +92,6 @@ public class ProfileAction extends GusukuAction implements ModelDriven {
 		return dto;
 	}
 
-	public GroupbaseHelper getGroupbaseHelper() {
-		return groupbaseHelper;
-	}
-
 	public void setGroupbaseHelper(GroupbaseHelper groupbaseHelper) {
 		this.groupbaseHelper = groupbaseHelper;
 	}
@@ -90,6 +102,11 @@ public class ProfileAction extends GusukuAction implements ModelDriven {
 
 	public void setAccountHelper(AccountHelper accountHelper) {
 		this.accountHelper = accountHelper;
+	}
+
+	
+	public List getGroupList() {
+		return groupList;
 	}
 
 }

@@ -20,15 +20,15 @@ import java.io.Serializable;
 public class CustomValueDetailAdminDto implements Serializable {
 
 	private static final long serialVersionUID = -3796621453880050054L;
-	private String id;
-	private String valueheadid;
+	private Long id;
+	private Long valueheadid;
 	private String label;
 	private String value;
 	
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getValue() {
@@ -37,10 +37,10 @@ public class CustomValueDetailAdminDto implements Serializable {
 	public void setValue(String value) {
 		this.value = value;
 	}
-	public String getValueheadid() {
+	public Long getValueheadid() {
 		return valueheadid;
 	}
-	public void setValueheadid(String valueheadid) {
+	public void setValueheadid(Long valueheadid) {
 		this.valueheadid = valueheadid;
 	}
 	

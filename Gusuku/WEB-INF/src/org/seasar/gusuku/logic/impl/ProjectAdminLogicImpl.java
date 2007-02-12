@@ -15,7 +15,6 @@
  */
 package org.seasar.gusuku.logic.impl;
 
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dao.ProjectDao;
 import org.seasar.gusuku.dao.ProjectGroupbaseDao;
 import org.seasar.gusuku.dto.ProjectAdminDto;
@@ -33,7 +32,7 @@ public class ProjectAdminLogicImpl implements ProjectAdminLogic {
 	public void registration(ProjectAdminDto projectAdminDto) {
 		Project project = projectDxo.convert(projectAdminDto);
 		
-		if(StringUtil.isEmpty(projectAdminDto.getId())){
+		if(projectAdminDto.getId() == null){
 			projectDao.insert(project);
 		}else{
 			projectDao.update(project);
@@ -41,29 +40,29 @@ public class ProjectAdminLogicImpl implements ProjectAdminLogic {
 
 	}
 
-	public void memberAdd(String projectid, String[] ids) {
-		if(ids != null && ids.length > 0){
-			for (String id : ids) {
+	public void memberAdd(Long projectid, Long[] delids) {
+		if(delids != null && delids.length > 0){
+			for (Long delid : delids) {
 				ProjectGroupbase projectGroupbase = new ProjectGroupbase();
-				projectGroupbase.setProjectid(Long.parseLong(projectid));
-				projectGroupbase.setGroupbaseid(Long.parseLong(id));
+				projectGroupbase.setProjectid(projectid);
+				projectGroupbase.setGroupbaseid(delid);
 				projectGroupbaseDao.insert(projectGroupbase);
 			}
 		}
 	}
 
-	public void memberRemove(String projectid, String[] ids) {
-		if(ids != null && ids.length > 0){
-			for (String id : ids) {
+	public void memberRemove(Long projectid, Long[] delids) {
+		if(delids != null && delids.length > 0){
+			for (Long delid : delids) {
 				ProjectGroupbase projectGroupbase = new ProjectGroupbase();
-				projectGroupbase.setProjectid(Long.parseLong(projectid));
-				projectGroupbase.setGroupbaseid(Long.parseLong(id));
+				projectGroupbase.setProjectid(projectid);
+				projectGroupbase.setGroupbaseid(delid);
 				projectGroupbaseDao.delete(projectGroupbase);
 			}
 		}
 	}
 
-	public void delete(String[] ids) {
+	public void delete(Long[] ids) {
 		if(ids != null && ids.length > 0){
 			projectDao.updateDelflag(ids);
 		}

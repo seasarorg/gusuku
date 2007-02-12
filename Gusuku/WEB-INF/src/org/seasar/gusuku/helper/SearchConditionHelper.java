@@ -40,7 +40,7 @@ public class SearchConditionHelper {
 	 * @param id
 	 * @return
 	 */
-	public SearchConditionHead getSearchCondition(String id){
+	public SearchConditionHead getSearchCondition(Long id){
 		return searchConditionHeadDao.findById(id);
 	}
 	
@@ -49,7 +49,7 @@ public class SearchConditionHelper {
 	 * @param accountid
 	 * @return
 	 */
-	public List<SearchConditionHead> getSearchConditionHead(String accountid){
+	public List<SearchConditionHead> getSearchConditionHead(Long accountid){
 		return searchConditionHeadDao.findByAccountid(accountid);
 	}
 	
@@ -58,7 +58,7 @@ public class SearchConditionHelper {
 	 * @param conditionheadid
 	 * @return
 	 */
-	public List<SearchConditionBasic> getSearchConditionBasic(String conditionheadid){
+	public List<SearchConditionBasic> getSearchConditionBasic(Long conditionheadid){
 		return searchConditionBasicDao.findByConditionheadid(conditionheadid);
 	}
 	
@@ -67,11 +67,11 @@ public class SearchConditionHelper {
 	 * @param conditionbasicid
 	 * @return
 	 */
-	public List<SearchConditionCustom> getSearchConditionCustom(String conditionbasicid){
+	public List<SearchConditionCustom> getSearchConditionCustom(Long conditionbasicid){
 		return searchConditionCustomDao.findByConditionbasicid(conditionbasicid);
 	}
 	
-	public List<SearchConditionHead> getVisibleSearchCondition(String accountid){
+	public List<SearchConditionHead> getVisibleSearchCondition(Long accountid){
 		return searchConditionHeadDao.findVisibleByAccountid(accountid);
 	}
 	

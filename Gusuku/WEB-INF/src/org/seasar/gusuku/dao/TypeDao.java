@@ -38,11 +38,11 @@ public interface TypeDao {
 	public List<Type> findAll();
 
 	@Query("ID = /*id*/ AND DELFLAG = FALSE")
-	public Type findById(String id);
+	public Type findById(Long id);
 	
-	public void updateDelflag(String[] ids);
+	public void updateDelflag(Long[] delids);
 	
 	@Query("ID NOT IN (SELECT TYPEID FROM TYPE_SCHEME WHERE HEADID= /*headid*/) AND DELFLAG = FALSE ORDER BY ID")
-	public List<Type> findWithoutSchemeByHeadid(String headid);
+	public List<Type> findWithoutSchemeByHeadid(Long headid);
 	
 }

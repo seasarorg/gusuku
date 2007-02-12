@@ -25,15 +25,15 @@ import org.seasar.dao.annotation.tiger.IdType;
 public class SystemProperty implements Serializable {
 
 	private static final long serialVersionUID = 553292323236199612L;
-	private long id;
+	private Long id;
 	private String key;
 	private String value;
 	
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getKey() {

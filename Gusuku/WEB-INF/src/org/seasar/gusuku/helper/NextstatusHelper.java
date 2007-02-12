@@ -34,7 +34,7 @@ public class NextstatusHelper {
 	 * @param workflowid 対象ワークフローID
 	 * @return 次の状態
 	 */
-	public List<Nextstatus> getNextstatusList(String workflowid){
+	public List<Nextstatus> getNextstatusList(Long workflowid){
 		return nextstatusDao.findByWorkflowstatusid(workflowid);
 	}
 

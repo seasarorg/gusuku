@@ -27,9 +27,9 @@ import org.seasar.dao.annotation.tiger.Relation;
 public class SearchConditionCustom implements Serializable {
 
 	private static final long serialVersionUID = 2466430570205806736L;
-	private long id;
-	private long conditionbasicid;
-	private long formid;
+	private Long id;
+	private Long conditionbasicid;
+	private Long formid;
 	private String textvalue;
 	private Long rangelow;
 	private Long rangehigh;
@@ -40,10 +40,10 @@ public class SearchConditionCustom implements Serializable {
 	
 	private CustomFormDetail customFormDetail;
 	
-	public long getConditionbasicid() {
+	public Long getConditionbasicid() {
 		return conditionbasicid;
 	}
-	public void setConditionbasicid(long conditionbasicid) {
+	public void setConditionbasicid(Long conditionbasicid) {
 		this.conditionbasicid = conditionbasicid;
 	}
 	public Date getDatefrom() {
@@ -58,18 +58,18 @@ public class SearchConditionCustom implements Serializable {
 	public void setDateto(Date dateto) {
 		this.dateto = dateto;
 	}
-	public long getFormid() {
+	public Long getFormid() {
 		return formid;
 	}
-	public void setFormid(long formid) {
+	public void setFormid(Long formid) {
 		this.formid = formid;
 	}
 	
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public Long getRangehigh() {

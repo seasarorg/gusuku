@@ -15,8 +15,9 @@
  */
 package org.seasar.gusuku.logic.impl;
 
+import java.util.List;
+
 import org.seasar.framework.container.annotation.tiger.Aspect;
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dao.PrioritySchemeDao;
 import org.seasar.gusuku.dto.PrioritySchemeAdminDto;
 import org.seasar.gusuku.entity.PriorityScheme;
@@ -28,9 +29,9 @@ public class PrioritySchemeAdminLogicImpl implements PrioritySchemeAdminLogic {
 
 	@Aspect("j2ee.requiredTx")
 	public void registration(PrioritySchemeAdminDto prioritySchemeAdminDto) {
-		String headid = prioritySchemeAdminDto.getHeadid();
-		String[] priorityids = prioritySchemeAdminDto.getPriorityid();
-		if (!StringUtil.isEmpty(headid) && priorityids != null
+		Long headid = prioritySchemeAdminDto.getHeadid();
+		Long[] priorityids = prioritySchemeAdminDto.getPriorityid();
+		if (headid != null && priorityids != null
 				&& priorityids.length > 0) {
 			
 			PriorityScheme org = prioritySchemeDao.findMaxSort(headid);
@@ -39,10 +40,10 @@ public class PrioritySchemeAdminLogicImpl implements PrioritySchemeAdminLogic {
 			if(org != null){
 				maxSort = org.getSort() + 1;
 			}
-			for (String priorityid : priorityids) {
+			for (Long priorityid : priorityids) {
 				PriorityScheme priorityScheme = new PriorityScheme();
-				priorityScheme.setHeadid(Long.parseLong(headid));
-				priorityScheme.setPriorityid(Long.parseLong(priorityid));
+				priorityScheme.setHeadid(headid);
+				priorityScheme.setPriorityid(priorityid);
 				priorityScheme.setSort(maxSort++);
 				prioritySchemeDao.insert(priorityScheme);
 			}
@@ -51,12 +52,23 @@ public class PrioritySchemeAdminLogicImpl implements PrioritySchemeAdminLogic {
 	}
 
 	@Aspect("j2ee.requiredTx")
-	public void delete(String[] delids) {
+	public void delete(Long[] delids,Long headid) {
 		if (delids != null && delids.length > 0) {
-			for (String delid : delids) {
+			for (Long delid : delids) {
 				PriorityScheme priorityScheme = new PriorityScheme();
-				priorityScheme.setId(Long.parseLong(delid));
+				priorityScheme.setId(delid);
 				prioritySchemeDao.delete(priorityScheme);
+			}
+			//ソート順序再設定
+			List<PriorityScheme> list = prioritySchemeDao.findWithSchemeByHeadid(headid);
+			int sort = 1;
+			for(PriorityScheme priorityScheme : list){
+				if(priorityScheme.getSort() != sort){
+					priorityScheme.setSort(sort++);
+					prioritySchemeDao.update(priorityScheme);
+				}else{
+					sort++;
+				}
 			}
 		}
 

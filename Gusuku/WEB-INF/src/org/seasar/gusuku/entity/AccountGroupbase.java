@@ -25,28 +25,28 @@ import org.seasar.dao.annotation.tiger.IdType;
 public class AccountGroupbase implements Serializable {
 	
 	private static final long serialVersionUID = 3965447422333170804L;
-	private long id;
-	private long accountid;
-	private long groupbaseid;
+	private Long id;
+	private Long accountid;
+	private Long groupbaseid;
 	
-	public long getAccountid() {
+	public Long getAccountid() {
 		return accountid;
 	}
-	public void setAccountid(long accountid) {
+	public void setAccountid(Long accountid) {
 		this.accountid = accountid;
 	}
-	public long getGroupbaseid() {
+	public Long getGroupbaseid() {
 		return groupbaseid;
 	}
-	public void setGroupbaseid(long groupbaseid) {
+	public void setGroupbaseid(Long groupbaseid) {
 		this.groupbaseid = groupbaseid;
 	}
 
 	@Id(IdType.IDENTITY)
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	

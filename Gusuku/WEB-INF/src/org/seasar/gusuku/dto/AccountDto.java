@@ -21,7 +21,7 @@ public class AccountDto implements Serializable {
 
 	private static final long serialVersionUID = 5031320318543025745L;
 
-	private String id;
+	private Long id;
 
 	private String mailaddr;
 
@@ -55,11 +55,11 @@ public class AccountDto implements Serializable {
 		this.password = password;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

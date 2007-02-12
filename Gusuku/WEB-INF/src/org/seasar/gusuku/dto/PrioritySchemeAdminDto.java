@@ -21,33 +21,33 @@ import java.io.Serializable;
 public class PrioritySchemeAdminDto implements Serializable {
 
 	private static final long serialVersionUID = -2275609835149466895L;
-	private String id;
-	private String headid;
-	private String[] priorityid;
+	private Long id;
+	private Long headid;
+	private Long[] priorityid;
 	
-	public String getHeadid() {
+	public Long getHeadid() {
 		return headid;
 	}
 	
-	public void setHeadid(String headid) {
+	public void setHeadid(Long headid) {
 		this.headid = headid;
 	}
 	
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
 	
-	public String[] getPriorityid() {
+	public Long[] getPriorityid() {
 		return priorityid;
 	}
 
 	
-	public void setPriorityid(String[] priorityid) {
+	public void setPriorityid(Long[] priorityid) {
 		this.priorityid = priorityid;
 	}
 	

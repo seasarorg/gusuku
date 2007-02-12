@@ -15,8 +15,9 @@
  */
 package org.seasar.gusuku.logic.impl;
 
+import java.util.List;
+
 import org.seasar.framework.container.annotation.tiger.Aspect;
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dao.ResolutionSchemeDao;
 import org.seasar.gusuku.dto.ResolutionSchemeAdminDto;
 import org.seasar.gusuku.entity.ResolutionScheme;
@@ -28,9 +29,9 @@ public class ResolutionSchemeAdminLogicImpl implements ResolutionSchemeAdminLogi
 
 	@Aspect("j2ee.requiredTx")
 	public void registration(ResolutionSchemeAdminDto resolutionSchemeAdminDto) {
-		String headid = resolutionSchemeAdminDto.getHeadid();
-		String[] resolutionids = resolutionSchemeAdminDto.getResolutionid();
-		if (!StringUtil.isEmpty(headid) && resolutionids != null
+		Long headid = resolutionSchemeAdminDto.getHeadid();
+		Long[] resolutionids = resolutionSchemeAdminDto.getResolutionid();
+		if (headid != null && resolutionids != null
 				&& resolutionids.length > 0) {
 			
 			ResolutionScheme org = resolutionSchemeDao.findMaxSort(headid);
@@ -39,10 +40,10 @@ public class ResolutionSchemeAdminLogicImpl implements ResolutionSchemeAdminLogi
 			if(org != null){
 				maxSort = org.getSort() + 1;
 			}
-			for (String resolutionid : resolutionids) {
+			for (Long resolutionid : resolutionids) {
 				ResolutionScheme resolutionScheme = new ResolutionScheme();
-				resolutionScheme.setHeadid(Long.parseLong(headid));
-				resolutionScheme.setResolutionid(Long.parseLong(resolutionid));
+				resolutionScheme.setHeadid(headid);
+				resolutionScheme.setResolutionid(resolutionid);
 				resolutionScheme.setSort(maxSort++);
 				resolutionSchemeDao.insert(resolutionScheme);
 			}
@@ -51,12 +52,24 @@ public class ResolutionSchemeAdminLogicImpl implements ResolutionSchemeAdminLogi
 	}
 
 	@Aspect("j2ee.requiredTx")
-	public void delete(String[] delids) {
+	public void delete(Long[] delids,Long headid) {
 		if (delids != null && delids.length > 0) {
-			for (String delid : delids) {
+			for (Long delid : delids) {
 				ResolutionScheme resolutionScheme = new ResolutionScheme();
-				resolutionScheme.setId(Long.parseLong(delid));
+				resolutionScheme.setId(delid);
 				resolutionSchemeDao.delete(resolutionScheme);
+			}
+			
+			//ソート順序再設定
+			List<ResolutionScheme> list = resolutionSchemeDao.findWithSchemeByHeadid(headid);
+			int sort = 1;
+			for(ResolutionScheme resolutionScheme : list){
+				if(resolutionScheme.getSort() != sort){
+					resolutionScheme.setSort(sort++);
+					resolutionSchemeDao.update(resolutionScheme);
+				}else{
+					sort++;
+				}
 			}
 		}
 

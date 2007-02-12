@@ -58,7 +58,7 @@ public class TypeHelper {
 	 * @param headid
 	 * @return
 	 */
-	public List<Type> getTypeListWithoutScheme(String headid){
+	public List<Type> getTypeListWithoutScheme(Long headid){
 		return typeDao.findWithoutSchemeByHeadid(headid);
 	}
 	/**
@@ -66,7 +66,7 @@ public class TypeHelper {
 	 * @param headid
 	 * @return
 	 */
-	public List<TypeScheme> getTypeListWithScheme(String headid){
+	public List<TypeScheme> getTypeListWithScheme(Long headid){
 		return typeSchemeDao.findWithSchemeByHeadid(headid);
 	}
 
@@ -75,7 +75,7 @@ public class TypeHelper {
 	 * @param id タイプID
 	 * @return タイプ
 	 */
-	public Type getType(String id){
+	public Type getType(Long id){
 		return typeDao.findById(id);
 	}
 	
@@ -84,7 +84,7 @@ public class TypeHelper {
 	 * @param id
 	 * @return
 	 */
-	public TypeHead getTypeHead(String id){
+	public TypeHead getTypeHead(Long id){
 		return typeHeadDao.findById(id);
 	}
 	

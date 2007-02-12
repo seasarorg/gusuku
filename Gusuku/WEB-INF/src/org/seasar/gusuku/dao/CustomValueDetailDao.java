@@ -20,6 +20,7 @@ import java.util.List;
 import org.seasar.dao.annotation.tiger.Arguments;
 import org.seasar.dao.annotation.tiger.Query;
 import org.seasar.dao.annotation.tiger.S2Dao;
+import org.seasar.dao.annotation.tiger.Sql;
 import org.seasar.gusuku.entity.CustomValueDetail;
 
 @S2Dao(bean=CustomValueDetail.class)
@@ -35,13 +36,13 @@ public interface CustomValueDetailDao {
 	 * @return
 	 */
 	@Query("VALUEHEADID = /*valueheadid*/ ORDER BY SORT")
-	public List<CustomValueDetail> findByValueheadid(String valueheadid);
+	public List<CustomValueDetail> findByValueheadid(Long valueheadid);
 	
 	/**
 	 * 削除フラグを更新します
 	 * @param ids
 	 */
-	public void updateDelflag(String[] ids);
+	public void updateDelflag(Long[] delids);
 	
 	/**
 	 * 指定したIDにひもづくCustomValueDetailを取得します
@@ -49,7 +50,7 @@ public interface CustomValueDetailDao {
 	 * @return
 	 */
 	@Query("ID = /*id*/ ")
-	public CustomValueDetail findById(String id);
+	public CustomValueDetail findById(Long id);
 	
 	/**
 	 * 指定したvalueheadidの中で指定したidの一つ後ろのCustomValueDetailを取得します
@@ -59,7 +60,7 @@ public interface CustomValueDetailDao {
 	 */
 	@Query("VALUEHEADID = /*valueheadid*/ AND SORT > (SELECT SORT FROM CUSTOM_VALUE_DETAIL WHERE CUSTOM_VALUE_DETAIL.ID = /*id*/) ORDER BY SORT LIMIT 1")
 	@Arguments({"id","valueheadid"})
-	public CustomValueDetail findAfterById(String id, String valueheadid);
+	public CustomValueDetail findAfterById(Long id, Long valueheadid);
 
 	/**
 	 * 指定したvalueheadidの中で指定したidの一つ前のCustomValueDetailを取得します
@@ -69,7 +70,7 @@ public interface CustomValueDetailDao {
 	 */
 	@Query("VALUEHEADID = /*valueheadid*/ AND SORT < (SELECT SORT FROM CUSTOM_VALUE_DETAIL WHERE CUSTOM_VALUE_DETAIL.ID = /*id*/) ORDER BY SORT DESC LIMIT 1")
 	@Arguments({"id","valueheadid"})
-	public CustomValueDetail findBeforeById(String id, String valueheadid);
+	public CustomValueDetail findBeforeById(Long id, Long valueheadid);
 	
 	/**
 	 * 指定したvalueheadidの中でのsortの最大値を取得します
@@ -77,9 +78,9 @@ public interface CustomValueDetailDao {
 	 * @return
 	 */
 	@Query("SORT = (SELECT MAX(SORT) FROM CUSTOM_VALUE_DETAIL WHERE CUSTOM_VALUE_DETAIL.VALUEHEADID = /*valueheadid*/)")
-	public CustomValueDetail findMaxSort(long valueheadid);
+	public CustomValueDetail findMaxSort(Long valueheadid);
 	
-	@Query("DELETE FROM CUSTOM_VALUE_DETAIL WHERE ID = /*id*/")
-	public void deleteById(String id);
+	@Sql("DELETE FROM CUSTOM_VALUE_DETAIL WHERE ID = /*id*/")
+	public void deleteById(Long id);
 	
 }

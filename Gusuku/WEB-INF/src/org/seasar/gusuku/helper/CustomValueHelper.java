@@ -39,7 +39,7 @@ public class CustomValueHelper {
 	 * @param valueheadid カスタムバリューID
 	 * @return 値一覧
 	 */
-	public List<CustomValueDetail> getValueList(String valueheadid) {
+	public List<CustomValueDetail> getValueList(Long valueheadid) {
 		return customValueDetailDao.findByValueheadid(valueheadid);
 	}
 
@@ -66,7 +66,7 @@ public class CustomValueHelper {
 	 * @param valueheadid カスタムバリューID
 	 * @return
 	 */
-	public CustomValueHead getCustomValueHead(String valueheadid){
+	public CustomValueHead getCustomValueHead(Long valueheadid){
 		return customValueHeadDao.findById(valueheadid);
 	}
 

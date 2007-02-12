@@ -22,13 +22,13 @@ import org.seasar.gusuku.entity.Account;
 
 public interface ReportLogic {
 
-	public void registration(ReportDto reportDto,Map parameters,String reporterid);
+	public void registration(ReportDto reportDto,Map parameters,Long reporterid);
 	
 	public void addComment(Map parameters,Account writer);
 	
 	public void deleteComment(Map parameters);
 	
-	public void changeStatus(ReportDto reportDto,String changerid);
+	public void changeStatus(ReportDto reportDto,Long changerid);
 	
-	public void load(Map parameters,String reportid);
+	public void load(Map parameters,Long reportid);
 }

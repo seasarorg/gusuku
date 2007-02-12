@@ -21,10 +21,10 @@ public interface GroupbaseAdminLogic {
 
 	public void registration(GroupbaseAdminDto groupbaseAdminDto);
 	
-	public void memberAdd(String groupid,String[] ids);
-	public void memberRemove(String groupid,String[] ids);
+	public void memberAdd(Long groupid,Long[] delids);
+	public void memberRemove(Long groupid,Long[] delids);
 	
-	public void delete(String[] ids);
+	public void delete(Long[] delids);
 	
 	public GroupbaseAdminDto getGroupbase(GroupbaseAdminDto groupbaseAdminDto);
 }

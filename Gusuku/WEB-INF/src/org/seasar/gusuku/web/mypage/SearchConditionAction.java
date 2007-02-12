@@ -15,6 +15,9 @@
  */
 package org.seasar.gusuku.web.mypage;
 
+import java.util.List;
+
+import org.seasar.gusuku.entity.SearchConditionHead;
 import org.seasar.gusuku.helper.SearchConditionHelper;
 import org.seasar.gusuku.logic.SearchLogic;
 import org.seasar.gusuku.web.GusukuAction;
@@ -26,37 +29,41 @@ public class SearchConditionAction extends GusukuAction {
 
 	private static final long serialVersionUID = 5227360435378086925L;
 	private SearchLogic searchLogic;
-	private String[] delids;
+	private Long[] delids;
 	
+	private List<SearchConditionHead> list;
 	private SearchConditionHelper searchConditionHelper;
 	
 	@XWorkAction(name = "condition", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/mypage/condition.html")))
 	public String init(){
+		list = searchConditionHelper.getSearchConditionHead(getLoginid());
 		return SUCCESS;
 	}
 	
 	@XWorkAction(name = "condition_delete", result = @Result(type = "redirect", param = @Param(name = "location", value = "/mypage/condition.html")))
 	public String delete(){
-		searchLogic.delete(delids);
+		searchLogic.delete(getLoginid(),delids);
 		return SUCCESS;
 	}
-
-	public String[] getDelids() {
+/*
+	public Long[] getDelids() {
 		return delids;
 	}
-
-	public void setDelids(String[] delids) {
+*/
+	public void setDelids(Long[] delids) {
 		this.delids = delids;
 	}
 
 	public void setSearchLogic(SearchLogic searchLogic) {
 		this.searchLogic = searchLogic;
 	}
-	public SearchConditionHelper getSearchConditionHelper() {
-		return searchConditionHelper;
-	}
 	public void setSearchConditionHelper(SearchConditionHelper searchConditionHelper) {
 		this.searchConditionHelper = searchConditionHelper;
+	}
+
+	
+	public List<SearchConditionHead> getList() {
+		return list;
 	}
 
 }

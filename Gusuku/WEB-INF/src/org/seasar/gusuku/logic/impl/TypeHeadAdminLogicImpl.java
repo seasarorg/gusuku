@@ -17,7 +17,6 @@ package org.seasar.gusuku.logic.impl;
 
 import java.util.Date;
 
-import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dao.TypeHeadDao;
 import org.seasar.gusuku.dto.TypeHeadAdminDto;
 import org.seasar.gusuku.dxo.TypeHeadDxo;
@@ -32,7 +31,7 @@ public class TypeHeadAdminLogicImpl implements TypeHeadAdminLogic {
 	public void registration(TypeHeadAdminDto typeHeadAdminDto) {
 		TypeHead typeHead = typeHeadDxo.convert(typeHeadAdminDto);
 		
-		if(StringUtil.isEmpty(typeHeadAdminDto.getId())){
+		if(typeHeadAdminDto.getId() == null){
 			typeHeadDao.insert(typeHead);
 		}else{
 			typeHead.setUdate(new Date());
@@ -40,7 +39,7 @@ public class TypeHeadAdminLogicImpl implements TypeHeadAdminLogic {
 		}
 	}
 
-	public void delete(String[] delids) {
+	public void delete(Long[] delids) {
 		if (delids != null && delids.length > 0) {
 			typeHeadDao.updateDelflag(delids);
 		}

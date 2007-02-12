@@ -8,11 +8,46 @@
       <result-type class="org.seasar.mayaa.webwork.MayaaResult"
         name="mayaa" />
     </result-types>
+             
     <interceptors>
     	<interceptor name="Authenticate" class="org.seasar.gusuku.interceptor.AuthenticateInterceptor"/>
+    	<interceptor-stack name="gusukuStack">
+                <interceptor-ref name="exception"/>
+<!--
+                <interceptor-ref name="alias"/>
+-->
+                <interceptor-ref name="model-driven"/>
+                <interceptor-ref name="params"/>
+                <interceptor-ref name="servlet-config"/>
+                <interceptor-ref name="prepare">
+                	<param name="alwaysInvokePrepare">false</param>
+                </interceptor-ref>
+                <!--
+                <interceptor-ref name="i18n"/>
+                -->
+                <interceptor-ref name="chain"/>
+                <!--
+                <interceptor-ref name="model-driven"/>
+                -->
+                <interceptor-ref name="fileUpload"/>
+<!--
+                <interceptor-ref name="static-params"/>
+-->
+
+				<interceptor-ref name="params"/>
+				<!--
+                <interceptor-ref name="conversionError"/>
+                -->
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+                <interceptor-ref name="workflow">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+            </interceptor-stack>
     	<interceptor-stack name="normalStack">
     		<interceptor-ref name="Authenticate"/>
-    		<interceptor-ref name="defaultStack"/>
+    		<interceptor-ref name="gusukuStack"/>
     	</interceptor-stack>
     </interceptors>
 
