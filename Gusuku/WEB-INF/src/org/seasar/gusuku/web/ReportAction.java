@@ -351,9 +351,15 @@ public class ReportAction extends GusukuAction implements ParameterAware,Prepara
 			Long id = ParameterUtil.getParameterLongValue(parameters,"id");
 			Long nextstatusid = ParameterUtil.getParameterLongValue(parameters,"nextstatusid");
 			Long assigneeid = ParameterUtil.getParameterLongValue(parameters,"assigneeid");
+			Long resolutionid = ParameterUtil.getParameterLongValue(parameters,"resolutionid");
 			dto.setId(id);
 			dto.setNextstatusid(nextstatusid);
-			dto.setAssigneeid(assigneeid);
+			if(assigneeid != null){
+				dto.setAssigneeid(assigneeid);
+			}
+			if(resolutionid != null){
+				dto.setResolutionid(resolutionid);
+			}
 			reportLogic.changeStatus(dto,getLoginid());
 		}
 		return SUCCESS;
