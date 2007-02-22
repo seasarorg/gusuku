@@ -19,8 +19,10 @@
    	<m:insert id="report_type" path="/component/img.html"
 		src="${report.type.icon}" alt="${report.type.name}"/>
 	<m:write id="report_title" value="${report.title}"/>
-	<m:formatDate id="report_rdate" value="${report.rdate}" pattern="yyyy/MM/dd hh:mm" />
-	<m:formatDate id="report_udate" value="${report.udate}" pattern="yyyy/MM/dd hh:mm" />
+	<m:formatDate id="report_rdate" value="${report.rdate}" pattern="yyyy/MM/dd HH:mm" />
+	<m:formatDate id="report_udate" value="${report.udate}" pattern="yyyy/MM/dd HH:mm" />
+	<m:write id="report_component" value="${report.component.name}"/>
+	<m:write id="report_version" value="${report.version.name}"/>
 	<m:write id="report_environment" value="${report.environment}"/>
 	<m:write id="report_detail" value="${report.detail}"/>
 	
@@ -128,13 +130,13 @@
 	<m:forEach id="workflow_history" items="${statusHistoryList}" var="item" replace="false" />
 		<m:write id="history_status" value="${item.status.name}"/>
 		<m:write id="history_changer" value="${item.changer.name}"/>
-		<m:formatDate id="history_rdate" value="${item.rdate}" pattern="yyyy/MM/dd hh:mm" />
+		<m:formatDate id="history_rdate" value="${item.rdate}" pattern="yyyy/MM/dd HH:mm" />
 	
 	<m:forEach id="commentList" items="${commentList}" var="item" replace="false"/>
 	<m:insert m:id="comment_id" path="/component/hidden.html"
 		nameValue="commentid" value="${item.id}"/>
 	<m:write id="comment_comment" value="${item.comment}" />
-	<m:formatDate id="comment_rdate" value="${item.rdate}" pattern="yyyy/MM/dd hh:mm" />
+	<m:formatDate id="comment_rdate" value="${item.rdate}" pattern="yyyy/MM/dd HH:mm" />
 	<m:write id="comment_writer" value="${item.writer.name}" />
 	<m:if id="comment_delete" test="${item.writerid == loginid}" >
 		<m:element name="input">

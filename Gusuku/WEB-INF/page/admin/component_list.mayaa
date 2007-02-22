@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork"
+	extends="/base.html">
+	
+    <m:doRender m:id="menuSlot" name="menu">
+    	<m:insert path="/admin/menu.html" name="menu"/>
+    </m:doRender>
+
+    <m:doRender m:id="contentSlot" name="content"/>
+
+	<m:write id="project_name" value="${project.name}" />
+
+	<m:insert id="registration_link" path="/component/a.html"
+		href="component_edit.html?projectid=${project.id}" link="新規登録" />
+
+ 	<m:insert m:id="search_name" path="/component/textfield.html"
+		nameValue="name" value="${model.name}" />
+	
+	<m:insert id="projectid" path="/component/hidden.html"
+		nameValue="projectid" value="${project.id}" />
+	
+	<m:forEach m:id="list" items="${list}" var="item" replace="false" />
+	<m:insert m:id="del" path="/component/checkbox.html"
+		nameValue="delid" value="${item.id}"/>
+	<m:insert id="update_link" path="/component/a.html"
+		href="component_edit.html?id=${item.id}&amp;projectid=${project.id}" link="${item.name}" />
+</m:mayaa>

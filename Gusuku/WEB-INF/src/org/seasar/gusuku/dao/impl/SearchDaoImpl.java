@@ -79,6 +79,16 @@ public class SearchDaoImpl extends AbstractDao implements SearchDao {
 				sql.append("AND REPORT.ASSIGNEEID IN ("+makeInValue(value.length)+") ");
 				addInValue(params,value);
 			}
+			if(!StringUtil.isEmpty(searchConditionBasic.getComponentid())){
+				String[] value = ParameterUtil.splitValue(searchConditionBasic.getComponentid());
+				sql.append("AND REPORT.COMPONENTID IN ("+makeInValue(value.length)+") ");
+				addInValue(params,value);
+			}
+			if(!StringUtil.isEmpty(searchConditionBasic.getVersionid())){
+				String[] value = ParameterUtil.splitValue(searchConditionBasic.getVersionid());
+				sql.append("AND REPORT.VERSIONID IN ("+makeInValue(value.length)+") ");
+				addInValue(params,value);
+			}
 			if(!StringUtil.isEmpty(searchConditionBasic.getTitle())){
 				sql.append("AND REPORT.TITLE LIKE ? "); 
 				params.add("%"+searchConditionBasic.getTitle()+"%");
@@ -108,7 +118,7 @@ public class SearchDaoImpl extends AbstractDao implements SearchDao {
 			
 			
 			List searchConditionCustomList = searchConditionBasic.getCustom();
-			if(searchConditionCustomList.size() > 0){
+			if(searchConditionCustomList != null && searchConditionCustomList.size() > 0){
 				sql.append("AND REPORT.ID IN (SELECT REPORTDATA.REPORTID ");
 				sql.append("FROM REPORT_DATA REPORTDATA ");
 				sql.append("WHERE TRUE = TRUE ");

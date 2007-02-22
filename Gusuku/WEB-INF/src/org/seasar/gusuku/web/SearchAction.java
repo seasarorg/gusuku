@@ -21,6 +21,7 @@ import java.util.Map;
 
 import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.helper.AccountHelper;
+import org.seasar.gusuku.helper.ComponentHelper;
 import org.seasar.gusuku.helper.CustomFormHelper;
 import org.seasar.gusuku.helper.CustomValueHelper;
 import org.seasar.gusuku.helper.PriorityHelper;
@@ -28,6 +29,7 @@ import org.seasar.gusuku.helper.ProjectHelper;
 import org.seasar.gusuku.helper.ReportDataHelper;
 import org.seasar.gusuku.helper.SearchConditionHelper;
 import org.seasar.gusuku.helper.TypeHelper;
+import org.seasar.gusuku.helper.VersionHelper;
 import org.seasar.gusuku.helper.WorkflowStatusHelper;
 import org.seasar.gusuku.logic.SearchLogic;
 import org.seasar.gusuku.util.ParameterUtil;
@@ -48,6 +50,8 @@ public class SearchAction extends GusukuAction implements ParameterAware {
 	private AccountHelper accountHelper;
 	private TypeHelper typeHelper;
 	private WorkflowStatusHelper workflowStatusHelper;
+	private ComponentHelper componentHelper;
+	private VersionHelper versionHelper;
 	
 	private ProjectHelper projectHelper;
 
@@ -184,6 +188,26 @@ public class SearchAction extends GusukuAction implements ParameterAware {
 
 	public void setWorkflowStatusHelper(WorkflowStatusHelper workflowStatusHelper) {
 		this.workflowStatusHelper = workflowStatusHelper;
+	}
+
+	
+	public ComponentHelper getComponentHelper() {
+		return componentHelper;
+	}
+
+	
+	public void setComponentHelper(ComponentHelper componentHelper) {
+		this.componentHelper = componentHelper;
+	}
+
+	
+	public VersionHelper getVersionHelper() {
+		return versionHelper;
+	}
+
+	
+	public void setVersionHelper(VersionHelper versionHelper) {
+		this.versionHelper = versionHelper;
 	}
 
 }

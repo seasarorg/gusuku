@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork" extends="/base.html">
+
+    <m:doRender m:id="menuSlot" name="menu">
+    	<m:insert path="/admin/menu.html" name="menu"/>
+    </m:doRender>
+
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+    <m:insert id="newlabel" path="/component/newlabel.html" value="${model.id}"/>
+    <m:insert id="newbutton" path="/component/newbutton.html" value="${model.id}"/>
+    
+    <m:write id="project_name" value="${project.name}" />
+    
+	<m:insert m:id="id" path="/component/hidden.html"
+		nameValue="id" value="${model.id}" />
+	<m:insert m:id="projectid" path="/component/hidden.html"
+		nameValue="projectid" value="${model.projectid}" />
+	<m:insert m:id="name" path="/component/textfield.html"
+		nameValue="name" value="${model.name}" />
+	<m:insert m:id="description" path="/component/textarea.html"
+		nameValue="description" value="${model.description}" />
+
+</m:mayaa>

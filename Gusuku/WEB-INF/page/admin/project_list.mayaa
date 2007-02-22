@@ -30,6 +30,15 @@
 	<m:insert id="update_link" path="/component/a.html"
 		href="project_edit.html?id=${item.id}" link="${item.name}" />
 
+	<!-- グループ編集 -->
 	<m:insert id="member_link" path="/component/a.html"
 		href="project_member.html?id=${item.id}" link="編集" />
+
+	<!-- バージョン編集 -->
+	<m:insert id="version_link" path="/component/a.html"
+		href="version_list.html?projectid=${item.id}" link="編集" />
+		
+	<!-- コンポーネント編集-->
+	<m:insert id="component_link" path="/component/a.html"
+		href="component_list.html?projectid=${item.id}" link="編集" />
 </m:mayaa>

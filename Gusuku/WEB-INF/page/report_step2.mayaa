@@ -44,7 +44,17 @@
         nameValue="priorityid" list="${priorityList}"
         selected="${parameters.priorityid !=null ? parameters.priorityid[0] : ''}" listKey="priority"
         listValue="priority" headerKey="" headerValue="優先度を選択して下さい" extra="true" />      
-        
+
+    <m:insert m:id="componentid" path="/component/select.html"
+        nameValue="componentid" list="${componentList}"
+        selected="${parameters.componentid !=null ? parameters.componentid[0] : ''}" listKey="id"
+        listValue="name" headerKey="" headerValue="コンポーネントを選択して下さい"/>      
+
+    <m:insert m:id="versionid" path="/component/select.html"
+        nameValue="versionid" list="${versionList}"
+        selected="${parameters.versionid !=null ? parameters.versionid[0] : ''}" listKey="id"
+        listValue="name" headerKey="" headerValue="バージョンを選択して下さい"/>  
+
     <m:insert m:id="assigneeid" path="/component/select.html"
         nameValue="assigneeid" list="${assigneeList}"
         selected="${parameters.assigneeid != null ? parameters.assigneeid[0] : ''}" listKey="id"

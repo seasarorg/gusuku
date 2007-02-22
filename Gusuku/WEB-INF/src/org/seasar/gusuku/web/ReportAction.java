@@ -26,14 +26,17 @@ import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dto.ReportDto;
 import org.seasar.gusuku.entity.Account;
 import org.seasar.gusuku.entity.Comment;
+import org.seasar.gusuku.entity.Component;
 import org.seasar.gusuku.entity.CustomFormDetail;
 import org.seasar.gusuku.entity.PriorityScheme;
 import org.seasar.gusuku.entity.Project;
 import org.seasar.gusuku.entity.Report;
 import org.seasar.gusuku.entity.StatusHistory;
 import org.seasar.gusuku.entity.TypeScheme;
+import org.seasar.gusuku.entity.Version;
 import org.seasar.gusuku.helper.AccountHelper;
 import org.seasar.gusuku.helper.CommentHelper;
+import org.seasar.gusuku.helper.ComponentHelper;
 import org.seasar.gusuku.helper.CustomFormHelper;
 import org.seasar.gusuku.helper.CustomValueHelper;
 import org.seasar.gusuku.helper.PriorityHelper;
@@ -44,6 +47,7 @@ import org.seasar.gusuku.helper.ResolutionHelper;
 import org.seasar.gusuku.helper.StatusHelper;
 import org.seasar.gusuku.helper.StatusHistoryHelper;
 import org.seasar.gusuku.helper.TypeHelper;
+import org.seasar.gusuku.helper.VersionHelper;
 import org.seasar.gusuku.helper.WorkflowStatusHelper;
 import org.seasar.gusuku.logic.ReportLogic;
 import org.seasar.gusuku.util.ParameterUtil;
@@ -77,7 +81,8 @@ public class ReportAction extends GusukuAction implements ParameterAware,Prepara
 	private StatusHistoryHelper statusHistoryHelper;
 	private ReportDataHelper reportDataHelper;
 	private WorkflowStatusHelper workflowStatusHelper;
-	
+	private ComponentHelper componentHelper;
+	private VersionHelper versionHelper;
 	private CustomFormHelper customFormHelper;
 	private CustomValueHelper customValueHelper;
 
@@ -89,7 +94,9 @@ public class ReportAction extends GusukuAction implements ParameterAware,Prepara
 	private List<Project> projectEntryList;
 	private List<Account> assigneeList;
 	private List<PriorityScheme> priorityList;
-	
+	private List<Component> componentList;
+	private List<Version> versionList;
+ 	
 	private List<Comment> commentList;
 	private List<StatusHistory> statusHistoryList;
 
@@ -108,6 +115,8 @@ public class ReportAction extends GusukuAction implements ParameterAware,Prepara
 		typeList = typeHelper.getTypeListWithScheme(project.getTypeid());
 		priorityList = priorityHelper.getPriorityListWithScheme(project.getPriorityid());
 		assigneeList = accountHelper.getProjectAccountList(project.getId());
+		componentList = componentHelper.getComponentList(project.getId());
+		versionList = versionHelper.getVersionList(project.getId());
 	}
 	public void prepareRegistration(){
 		project = projectHelper.getProject(ParameterUtil.getParameterLongValue(parameters,"projectid"));
@@ -117,6 +126,8 @@ public class ReportAction extends GusukuAction implements ParameterAware,Prepara
 		}
 		priorityList = priorityHelper.getPriorityListWithScheme(project.getPriorityid());
 		assigneeList = accountHelper.getProjectAccountList(project.getId());
+		componentList = componentHelper.getComponentList(project.getId());
+		versionList = versionHelper.getVersionList(project.getId());
 	}
 
 	/**
@@ -196,6 +207,8 @@ public class ReportAction extends GusukuAction implements ParameterAware,Prepara
 		dto.setAssigneeid(ParameterUtil.getParameterLongValue(parameters,"assigneeid"));
 		dto.setEnvironment(ParameterUtil.getParameterValue(parameters,"environment"));
 		dto.setTypeid(ParameterUtil.getParameterLongValue(parameters,"typeid"));
+		dto.setComponentid(ParameterUtil.getParameterLongValue(parameters,"componentid"));
+		dto.setVersionid(ParameterUtil.getParameterLongValue(parameters,"versionid"));
 		Long projectid = ParameterUtil.getParameterLongValue(parameters,"projectid");
 		dto.setProjectid(projectid);
 		
@@ -542,6 +555,26 @@ public class ReportAction extends GusukuAction implements ParameterAware,Prepara
 	
 	public List<PriorityScheme> getPriorityList() {
 		return priorityList;
+	}
+
+	
+	public List<Component> getComponentList() {
+		return componentList;
+	}
+
+	
+	public void setComponentHelper(ComponentHelper componentHelper) {
+		this.componentHelper = componentHelper;
+	}
+
+	
+	public List<Version> getVersionList() {
+		return versionList;
+	}
+
+	
+	public void setVersionHelper(VersionHelper versionHelper) {
+		this.versionHelper = versionHelper;
 	}
 
 }

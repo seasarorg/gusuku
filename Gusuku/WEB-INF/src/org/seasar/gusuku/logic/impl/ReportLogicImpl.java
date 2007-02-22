@@ -318,6 +318,8 @@ public class ReportLogicImpl implements ReportLogic {
 		ParameterUtil.putParameterValue(parameters,"environment",report.getEnvironment());
 		ParameterUtil.putParameterValue(parameters,"typeid",report.getTypeid());
 		ParameterUtil.putParameterValue(parameters,"projectid",report.getProjectid());
+		ParameterUtil.putParameterValue(parameters,"componentid",report.getComponentid());
+		ParameterUtil.putParameterValue(parameters,"versionid",report.getVersionid());
 		ParameterUtil.putParameterValue(parameters,"id",reportid);
 		
 		//拡張情報取得

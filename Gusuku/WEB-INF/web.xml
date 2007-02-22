@@ -38,11 +38,11 @@
         <url-pattern>*.html</url-pattern>
     </filter-mapping>
 
-<!--
+
     <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+        <listener-class>org.seasar.gusuku.listener.H2Listener</listener-class>
     </listener>
--->
+
 
 	<servlet>
 		<servlet-name>s2servlet</servlet-name>

@@ -129,16 +129,19 @@ public class SearchLogicImpl implements SearchLogic {
 				//過去に所属していたプロジェクトｊに関わるものを除く
 				if(project != null){
 					SearchConditionBasic searchConditionBasic = getBasicCondition(parameters,projectid);
-					List<CustomFormDetail> customFormList = customFormDetailDao.findByFormheadid(project.getFormid());
-					List<SearchConditionCustom> conditionCustomList = new ArrayList<SearchConditionCustom>();
-					for(Iterator ite = customFormList.iterator();ite.hasNext();){
-						CustomFormDetail customFormDetail = (CustomFormDetail)ite.next();
-						SearchConditionCustom searchConditionCustom =getCustomCondition(parameters,customFormDetail,projectid);
-						if(searchConditionCustom.getFormid() != null){
-							conditionCustomList.add(searchConditionCustom);
+					//カスタムフォーム設定時のみ
+					if(project.getFormid() != null){
+						List<CustomFormDetail> customFormList = customFormDetailDao.findByFormheadid(project.getFormid());
+						List<SearchConditionCustom> conditionCustomList = new ArrayList<SearchConditionCustom>();
+						for(Iterator ite = customFormList.iterator();ite.hasNext();){
+							CustomFormDetail customFormDetail = (CustomFormDetail)ite.next();
+							SearchConditionCustom searchConditionCustom =getCustomCondition(parameters,customFormDetail,projectid);
+							if(searchConditionCustom.getFormid() != null){
+								conditionCustomList.add(searchConditionCustom);
+							}
 						}
+						searchConditionBasic.setCustom(conditionCustomList);
 					}
-					searchConditionBasic.setCustom(conditionCustomList);
 					searchConditionBasicList.add(searchConditionBasic);
 				}
 			}
@@ -152,10 +155,14 @@ public class SearchLogicImpl implements SearchLogic {
 		SearchConditionBasic searchConditionBasic = new SearchConditionBasic();
 		//String id =  ParameterUtil.getParameterValue(parameters,"basic_id_"+projectid);
 		String title = ParameterUtil.getParameterValue(parameters,"basic_title_"+projectid);
-		String typeid = ParameterUtil.getParameterValue(parameters,"basic_typeid_"+projectid);
-		String statusid = ParameterUtil.getParameterValue(parameters,"basic_statusid_"+projectid);
-		String priorityid = ParameterUtil.getParameterValue(parameters,"basic_priorityid_"+projectid);
-		String assigneeid = ParameterUtil.getParameterValue(parameters,"basic_assigneeid_"+projectid);
+		
+		String typeid = ParameterUtil.getParameterCsvValue(parameters,"basic_typeid_"+projectid);
+		String statusid = ParameterUtil.getParameterCsvValue(parameters,"basic_statusid_"+projectid);
+		String priorityid = ParameterUtil.getParameterCsvValue(parameters,"basic_priorityid_"+projectid);
+		String assigneeid = ParameterUtil.getParameterCsvValue(parameters,"basic_assigneeid_"+projectid);
+		String componentid = ParameterUtil.getParameterCsvValue(parameters,"basic_componentid_"+projectid);
+		String versionid = ParameterUtil.getParameterCsvValue(parameters,"basic_versionid_"+projectid);
+		
 		String environment = ParameterUtil.getParameterValue(parameters,"basic_environment_"+projectid);
 		String detail = ParameterUtil.getParameterValue(parameters,"basic_detail_"+projectid);
 		Date datefrom = ParameterUtil.getParameterDateValue(parameters,"basic_datefrom_"+projectid);
@@ -167,6 +174,8 @@ public class SearchLogicImpl implements SearchLogic {
 		searchConditionBasic.setStatusid(statusid);
 		searchConditionBasic.setPriorityid(priorityid);
 		searchConditionBasic.setAssigneeid(assigneeid);
+		searchConditionBasic.setComponentid(componentid);
+		searchConditionBasic.setVersionid(versionid);
 		searchConditionBasic.setEnvironment(environment);
 		searchConditionBasic.setDetail(detail);
 		searchConditionBasic.setDatefrom(datefrom);
@@ -370,10 +379,14 @@ public class SearchLogicImpl implements SearchLogic {
 				if(project != null){
 					projectidList.add(projectid);
 					ParameterUtil.putParameterValue(parameters,"basic_id_"+projectid,searchConditionBasic.getId());
-					ParameterUtil.putParameterValue(parameters,"basic_typeid_"+projectid,searchConditionBasic.getTypeid());
-					ParameterUtil.putParameterValue(parameters,"basic_statusid_"+projectid,searchConditionBasic.getStatusid());
-					ParameterUtil.putParameterValue(parameters,"basic_priorityid_"+projectid,searchConditionBasic.getPriorityid());
-					ParameterUtil.putParameterValue(parameters,"basic_assigneeid_"+projectid,searchConditionBasic.getAssigneeid());
+					
+					ParameterUtil.putParameterCsvValue(parameters,"basic_typeid_"+projectid,searchConditionBasic.getTypeid());
+					ParameterUtil.putParameterCsvValue(parameters,"basic_statusid_"+projectid,searchConditionBasic.getStatusid());
+					ParameterUtil.putParameterCsvValue(parameters,"basic_priorityid_"+projectid,searchConditionBasic.getPriorityid());
+					ParameterUtil.putParameterCsvValue(parameters,"basic_assigneeid_"+projectid,searchConditionBasic.getAssigneeid());
+					ParameterUtil.putParameterCsvValue(parameters,"basic_componentid_"+projectid,searchConditionBasic.getComponentid());
+					ParameterUtil.putParameterCsvValue(parameters,"basic_versionid_"+projectid,searchConditionBasic.getVersionid());
+					
 					ParameterUtil.putParameterValue(parameters,"basic_title_"+projectid,searchConditionBasic.getTitle());
 					ParameterUtil.putParameterValue(parameters,"basic_environment_"+projectid,searchConditionBasic.getEnvironment());
 					ParameterUtil.putParameterValue(parameters,"basic_datefrom_"+projectid,searchConditionBasic.getDatefrom());

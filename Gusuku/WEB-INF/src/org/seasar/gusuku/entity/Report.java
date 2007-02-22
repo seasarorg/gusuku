@@ -58,6 +58,10 @@ public class Report implements Serializable {
 	
 	private Project project;
 	
+	private Component component;
+	
+	private Version version;
+	
 	public Long getAssigneeid() {
 		return assigneeid;
 	}
@@ -227,6 +231,24 @@ public class Report implements Serializable {
 	
 	public void setVersionid(Long versionid) {
 		this.versionid = versionid;
+	}
+	
+	@Relation(relationNo=7,relationKey="COMPONENTID:ID")
+	public Component getComponent() {
+		return component;
+	}
+	
+	public void setComponent(Component component) {
+		this.component = component;
+	}
+	
+	@Relation(relationNo=8,relationKey="VERSIONID:ID")
+	public Version getVersion() {
+		return version;
+	}
+	
+	public void setVersion(Version version) {
+		this.version = version;
 	}
 	
 	

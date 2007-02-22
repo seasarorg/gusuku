@@ -29,32 +29,51 @@
 			<m:attribute name="id" value="project_${project.id}"/>
 		</m:echo>
 
+		<!-- タイプ -->
 	    <m:insert m:id="type" path="/component/select.html"
 	        nameValue="basic_typeid_${project.id}" list="${typeHelper.getTypeListWithScheme(project.priorityid)}"
 	        selected="${parameters['basic_typeid_'+project.id] !=null ? parameters['basic_typeid_'+project.id] : ''}" listKey="type"
 	        listValue="type" multiple="true" size="5" extra="true"/>   
 
+		<!-- 件名 -->
 	   	<m:insert m:id="title" path="/component/textfield.html"
 			nameValue="basic_title_${project.id}" value="${parameters['basic_title_'+project.id] !=null ? parameters['basic_title_'+project.id][0]:''}" />
 
+		<!-- 優先度 -->
 	    <m:insert m:id="priorityid" path="/component/select.html"
 	        nameValue="basic_priorityid_${project.id}" list="${priorityHelper.getPriorityListWithScheme(project.priorityid)}"
 	        selected="${parameters['basic_priorityid_'+project.id] !=null ? parameters['basic_priorityid_'+project.id] : ''}" listKey="priority"
 	        listValue="priority" multiple="true" size="5" extra="true"/>
-	           
+
+		<!-- 状態 -->
 	    <m:insert m:id="statusid" path="/component/select.html"
 	        nameValue="basic_statusid_${project.id}" list="${workflowStatusHelper.getStatusList(project.workflowid)}"
 	        selected="${parameters['basic_statusid_'+project.id] !=null ? parameters['basic_statusid_'+project.id] : ''}" listKey="status"
 	        listValue="status" multiple="true" size="5" extra="true" />
-	        	        
+
+		<!-- アサイン先 -->	        	        
 	    <m:insert m:id="assigneeid" path="/component/select.html"
 	        nameValue="basic_assigneeid_${project.id}" list="${accountHelper.getProjectAccountList(project.id)}"
 	        selected="${parameters['basic_assigneeid_'+project.id] != null ? parameters['basic_assigneeid_'+project.id] : ''}" listKey="id"
 	        listValue="name" multiple="true" size="5"/>
 
+		<!-- コンポーネント -->
+	    <m:insert m:id="componentid" path="/component/select.html"
+	        nameValue="basic_componentid_${project.id}" list="${componentHelper.getComponentList(project.id)}"
+	        selected="${parameters['basic_componentid_'+project.id] != null ? parameters['basic_componentid_'+project.id] : ''}" listKey="id"
+	        listValue="name" multiple="true" size="5"/>
+
+		<!-- バージョン -->	        
+	    <m:insert m:id="versionid" path="/component/select.html"
+	        nameValue="basic_versionid_${project.id}" list="${versionHelper.getVersionList(project.id)}"
+	        selected="${parameters['basic_versionid_'+project.id] != null ? parameters['basic_versionid_'+project.id] : ''}" listKey="id"
+	        listValue="name" multiple="true" size="5"/>
+
+		<!-- 環境 -->
 		<m:insert m:id="environment" path="/component/textarea.html"
 			nameValue="basic_environment_${project.id}" value="${parameters['basic_environment_'+project.id] != null ? parameters['basic_environment_'+project.id][0] : ''}" />	
 
+		<!-- カスタムフォーム群 -->
 		<m:forEach id="custom" items="${customFormHelper.getFormList(project.formid)}" var="form"/>
 
 		<m:with id="if">

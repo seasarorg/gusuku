@@ -15,6 +15,7 @@
  */
 package org.seasar.gusuku.helper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.seasar.gusuku.dao.CustomFormDetailDao;
@@ -39,6 +40,9 @@ public class CustomFormHelper {
 	 * @return フォーム一覧
 	 */
 	public List<CustomFormDetail> getFormList(Long formheadid){
+		if(formheadid == null){
+			return new ArrayList<CustomFormDetail>();
+		}
 		return customFormDetailDao.findByFormheadid(formheadid);
 	}
 	

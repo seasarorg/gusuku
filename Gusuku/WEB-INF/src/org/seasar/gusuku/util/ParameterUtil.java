@@ -41,6 +41,20 @@ public class ParameterUtil {
 		}
 		return (String)value[0];
 	}
+	public static String getParameterCsvValue(Map parameters,String parameter) {
+		String[] value = (String[]) parameters.get(parameter);
+		if(value == null){
+			return null;
+		}
+		StringBuffer sb = new StringBuffer();
+		for(int i=0;i<value.length;i++){
+			if(i > 0){
+				sb.append(",");
+			}
+			sb.append(value[i]);
+		}
+		return sb.toString();
+	}
 	
 	/**
 	 * Mapから値(String[])を取得する ParameterAware用
@@ -108,6 +122,9 @@ public class ParameterUtil {
 	
 	public static void putParameterValue(Map<String,String[]> parameters,String key,String value){
 		parameters.put(key,new String[]{value});
+	}
+	public static void putParameterCsvValue(Map<String,String[]> parameters,String key,String value){
+		parameters.put(key,splitValue(value));
 	}
 	public static void putParameterValue(Map<String,String[]> parameters,String key,String[] value){
 		parameters.put(key,value);

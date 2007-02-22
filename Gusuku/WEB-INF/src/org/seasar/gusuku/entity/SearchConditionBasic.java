@@ -35,6 +35,8 @@ public class SearchConditionBasic implements Serializable {
 	private String statusid;
 	private String priorityid;
 	private String assigneeid;
+	private String componentid;
+	private String versionid;
 	private String environment;
 	private String detail;
 	private Date datefrom;
@@ -121,6 +123,22 @@ public class SearchConditionBasic implements Serializable {
 	}
 	public void setStatusid(String statusid) {
 		this.statusid = statusid;
+	}
+	
+	public String getComponentid() {
+		return componentid;
+	}
+	
+	public void setComponentid(String componentid) {
+		this.componentid = componentid;
+	}
+	
+	public String getVersionid() {
+		return versionid;
+	}
+	
+	public void setVersionid(String versionid) {
+		this.versionid = versionid;
 	}
 	
 }
