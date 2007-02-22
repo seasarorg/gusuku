@@ -18,6 +18,7 @@
         selected="${model.kind}" listKey="id"
         listValue="kindname" headerKey="" headerValue="全て"/>
 
+	<m:write id="total_count" value="${model.count}"/>
 	
 	<m:forEach m:id="list" items="${list}" var="item" replace="false" />
 	<m:insert m:id="del" path="/component/checkbox.html"
@@ -26,5 +27,6 @@
 	<m:write id="kindname" value="${item.accountKind.kindname}"/>
 	<m:insert id="update_link" path="/component/a.html"
 		href="account_edit.html?id=${item.id}" link="${item.name}" />
+		
 	
 </m:mayaa>

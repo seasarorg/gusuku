@@ -87,6 +87,8 @@ public class AccountHelper {
 	}
 
 	public List<Account> getAccountList(AccountAdminDto dto) {
+		dto.setLimit(2);
+		dto.setOffset(0);
 		return accountDao.findByDto(dto);
 	}
 }

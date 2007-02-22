@@ -4,17 +4,38 @@
 <components namespace="jdbc">
 	<include path="jta.dicon"/>
 	<include path="jdbc-extension.dicon"/>
-
-	<component class="org.seasar.extension.jdbc.impl.BasicResultSetFactory"/>
+	
+	<!-- Pager -->
+	<component 
+		name="resultSetFactory"
+		class="org.seasar.dao.pager.PagerResultSetFactoryWrapper">
+		<arg>
+			<component class="org.seasar.extension.jdbc.impl.BasicResultSetFactory"/>
+		</arg>
+		<property name="useScrollCursor">true</property>
+	</component>
 	<component class="org.seasar.extension.jdbc.impl.ConfigurableStatementFactory">
 		<arg>
-			<component class="org.seasar.extension.jdbc.impl.BasicStatementFactory"/>
+			<component class="org.seasar.dao.pager.PagerStatementFactory"/>
 		</arg>
 		<property name="fetchSize">100</property>
 		<!--
 		<property name="maxRows">100</property>
 		-->
 	</component>
+
+	<!--
+	<component class="org.seasar.extension.jdbc.impl.BasicResultSetFactory"/>
+	<component class="org.seasar.extension.jdbc.impl.ConfigurableStatementFactory">
+		<arg>
+			<component class="org.seasar.extension.jdbc.impl.BasicStatementFactory"/>
+		</arg>
+		<property name="fetchSize">100</property>
+		<! - -
+		<property name="maxRows">100</property>
+		- - >
+	</component>
+	-->
 	<!--
 	<component class="org.seasar.extension.jdbc.impl.OracleResultSetFactory"/>
 	<component class="org.seasar.extension.jdbc.impl.BooleanToIntStatementFactory"/>
@@ -46,14 +67,14 @@
 		</property>
 		<property name="URL">
 
-<!--
-			"jdbc:h2:tcp://localhost:9092/../data/gusuku"
--->
 
+			"jdbc:h2:tcp://localhost:9092/gusuku"
+
+<!--
 			"jdbc:h2:file:"
 				+ @org.seasar.framework.util.ResourceUtil@getBuildDir(@org.seasar.gusuku.web.GusukuAction@class).getCanonicalPath().substring(0,@org.seasar.framework.util.ResourceUtil@getBuildDir(@org.seasar.gusuku.web.GusukuAction@class).getCanonicalPath().indexOf("WEB-INF")+"WEB-INF".length())
 				+ "/data/gusuku" 
-
+-->
 		</property>
 		<property name="user">"sa"</property>
 		<property name="password">""</property>

@@ -17,7 +17,9 @@ package org.seasar.gusuku.dto;
 
 import java.io.Serializable;
 
-public class AccountAdminDto implements Serializable {
+import org.seasar.dao.pager.DefaultPagerCondition;
+
+public class AccountAdminDto extends DefaultPagerCondition implements Serializable {
 
 	private static final long serialVersionUID = 8520746126192597905L;
 
