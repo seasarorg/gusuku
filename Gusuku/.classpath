@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="WEB-INF/src"/>
-	<classpathentry output="work" kind="src" path="work"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/common/lib/servlet-api.jar"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/common/lib/jasper-runtime.jar"/>
 	<classpathentry kind="var" path="TOMCAT_HOME/common/lib/jsp-api.jar"/>
@@ -10,25 +9,25 @@
 	<classpathentry kind="lib" path="WEB-INF/lib/rife-continuations.jar"/>
 	<classpathentry sourcepath="WEB-INF/lib/ognl-2.6.7-dist.zip" kind="lib" path="WEB-INF/lib/ognl-2.6.7.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/geronimo-jta_1.0.1B_spec-1.0.jar"/>
-	<classpathentry sourcepath="C:/Documents and Settings/Naoki/デスクトップ/h2/src/main/org" kind="lib" path="WEB-INF/lib/h2.jar"/>
+	<classpathentry sourcepath="C:/Documents and Settings/Administrator/デスクトップ/h2/src/main" kind="lib" path="WEB-INF/lib/h2.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/aopalliance-1.0.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/log4j-1.2.13.jar"/>
 	<classpathentry sourcepath="WEB-INF/lib/webwork-src-2.2.4.jar" kind="lib" path="WEB-INF/lib/webwork-2.2.4.jar"/>
-	<classpathentry sourcepath="WEB-INF/lib/s2-dao-1.0.39-sources.jar" kind="lib" path="WEB-INF/lib/s2-dao-1.0.39.jar"/>
 	<classpathentry sourcepath="WEB-INF/lib/s2-xwork-tiger-1.0.0-sources.jar" kind="lib" path="WEB-INF/lib/s2-xwork-tiger-1.0.0.jar"/>
 	<classpathentry sourcepath="WEB-INF/lib/s2-xwork-1.0.1-sources.jar" kind="lib" path="WEB-INF/lib/s2-xwork-1.0.1.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/commons-beanutils-core-1.7.0.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/mayaa-webwork2-1.0.0.jar"/>
-	<classpathentry kind="lib" path="WEB-INF/lib/s2-dao-tiger-1.0.35.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/mail.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/javassist-3.4.ga.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/ozacc-mail-1.2-rc8.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/commons-io.jar"/>
-	<classpathentry kind="lib" path="WEB-INF/lib/s2-extension-2.4.8.jar"/>
-	<classpathentry kind="lib" path="WEB-INF/lib/s2-framework-2.4.8.jar"/>
-	<classpathentry kind="lib" path="WEB-INF/lib/s2-tiger-2.4.8.jar"/>
 	<classpathentry sourcepath="WEB-INF/lib/mayaa-1.1.5-sources.jar" kind="lib" path="WEB-INF/lib/mayaa-1.1.5.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/commons-logging-1.1.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/freemarker.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/s2-dao-1.0.40.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/s2-dao-tiger-1.0.40.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/s2-extension-2.4.10.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/s2-framework-2.4.10.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/s2-tiger-2.4.10.jar"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>
