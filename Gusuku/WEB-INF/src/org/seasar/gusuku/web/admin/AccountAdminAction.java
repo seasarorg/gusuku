@@ -18,7 +18,9 @@ package org.seasar.gusuku.web.admin;
 import java.util.List;
 
 import org.seasar.framework.util.StringUtil;
+import org.seasar.gusuku.GusukuConstant;
 import org.seasar.gusuku.dto.AccountAdminDto;
+import org.seasar.gusuku.dto.PagerSupport;
 import org.seasar.gusuku.entity.Account;
 import org.seasar.gusuku.entity.AccountKind;
 import org.seasar.gusuku.helper.AccountHelper;
@@ -29,6 +31,7 @@ import org.seasar.xwork.annotation.Param;
 import org.seasar.xwork.annotation.Result;
 import org.seasar.xwork.annotation.XWorkAction;
 
+import com.opensymphony.webwork.ServletActionContext;
 import com.opensymphony.webwork.util.TokenHelper;
 import com.opensymphony.xwork.ModelDriven;
 import com.opensymphony.xwork.Preparable;
@@ -46,6 +49,7 @@ public class AccountAdminAction extends GusukuAction implements ModelDriven,Prep
 	private AccountHelper accountHelper;
 
 	private AccountAdminDto dto = new AccountAdminDto();
+	private PagerSupport pagerSupport = new PagerSupport(GusukuConstant.SEARCH_LIMIT,"accountAdminDto");
 
 	private List<Account> list;
 	private List<AccountKind> kindList;
@@ -74,6 +78,8 @@ public class AccountAdminAction extends GusukuAction implements ModelDriven,Prep
 	 */
 	@XWorkAction(name = "account_list", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/account_list.html")))
 	public String list() {
+	
+		dto = (AccountAdminDto)pagerSupport.getPagerCondition(ServletActionContext.getRequest(),dto);
 		list = accountHelper.getAccountList(dto);
 		return SUCCESS;
 	}

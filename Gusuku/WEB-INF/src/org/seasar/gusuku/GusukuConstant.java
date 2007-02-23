@@ -34,4 +34,6 @@ public class GusukuConstant {
 	
 	public static final String IMAGE_DIR = File.separator + "image" + File.separator;
 	
+	public static final int SEARCH_LIMIT = 10;
+	
 }
