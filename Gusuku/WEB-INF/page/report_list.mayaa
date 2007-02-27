@@ -3,8 +3,12 @@
 	xmlns:ww="/webwork" extends="/base.html">
 	
     <m:doRender m:id="contentSlot" name="content"/>
-	<m:write id="project_name" value="${project.name}"/>    
-
+	<m:insert id="project_name" path="/component/a.html"
+		href="project_detail.html?id=${project.id}" link="${project.name}"/>
+	
+	<m:insert m:id="pagination" path="/component/pagination.html"
+		action="" page="${model.page}" total="${model.count}" limit="${model.limit}" param="&amp;projectid=${project.id}"/>
+		
     <m:forEach m:id="reportList" items="${reportList}" var="item" replace="false" />
 	<!--m:write id="report_type" value="${item.type.name}"/-->
    	<m:insert id="report_type" path="/component/img.html"
@@ -17,5 +21,8 @@
 		src="${item.priority.icon}" alt="${item.priority.name}"/>
 	<m:insert id="report_status" path="/component/img.html"
 		src="${item.status.icon}" alt="${item.status.name}"/>
+	<m:write id="result_assignee" value="${item.assignee != null?item.assignee.name:''}"/>
+	<m:write id="result_reporter" value="${item.reporter.name}"/>
+	<m:formatDate id="result_rdate" value="${item.rdate}" pattern="yyyy/MM/dd HH:mm" />
 			
 </m:mayaa>

@@ -20,15 +20,38 @@ import org.seasar.dao.pager.DefaultPagerCondition;
 public class GusukuPagerCondition extends DefaultPagerCondition {
 	
 	private static final long serialVersionUID = 2936257425109490902L;
-	private String page;
+	private Integer page;
+	private String sort = "";
+	private String order = "";
 
-	public String getPage() {
+	public Integer getPage() {
 		return page;
 	}
 
-	public void setPage(String page) {
+	public void setPage(Integer page) {
 		this.page = page;
 	}
+
 	
+	public String getSort() {
+		return sort;
+	}
+
+	
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+
+	
+	public String getOrder() {
+		return order;
+	}
+
+	
+	public void setOrder(String order) {
+		this.order = order;
+	}
+	
+
 
 }

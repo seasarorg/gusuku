@@ -40,8 +40,12 @@ public class PagerSupport {
 	 */
 	public GusukuPagerCondition getPagerCondition(HttpServletRequest request,GusukuPagerCondition pagerCondition){
 		
-		if(StringUtil.isEmpty(pagerCondition.getPage())){
+		if(pagerCondition.getPage() == null && StringUtil.isEmpty(pagerCondition.getSort())){
 			request.getSession().removeAttribute(pagerConditionName);
+			if(StringUtil.isEmpty(pagerCondition.getSort())){
+				pagerCondition.setSort("PRIORITY");
+				pagerCondition.setOrder("ASC");
+			}
 		}
 		
 		GusukuPagerCondition dto = (GusukuPagerCondition) request.getSession().getAttribute(pagerConditionName);
@@ -50,10 +54,16 @@ public class PagerSupport {
 			dto = pagerCondition;
 			dto.setLimit(limit);
 			request.getSession().setAttribute(pagerConditionName,dto);
+			System.out.println("Save Condition");
+		}else{
+			System.out.println("Load Condition");
+			if(!StringUtil.isEmpty(pagerCondition.getSort()) && !StringUtil.isEmpty(pagerCondition.getOrder())){
+				dto.setSort(pagerCondition.getSort());
+				dto.setOrder(pagerCondition.getOrder());
+			}
 		}
 		
 		updateOffset(request,dto);
-
 		return dto;
 	}
 	
@@ -64,8 +74,8 @@ public class PagerSupport {
 	 */
 	private void updateOffset(HttpServletRequest request,GusukuPagerCondition dto){
 		int page = getPage(request);
-		dto.setOffset(page * limit);
-		dto.setPage(Integer.toString(page));
+		dto.setOffset((page-1) * dto.getLimit());
+		dto.setPage(page);
 	}
 	/**
 	 * HttpServletResuestより指定されたpage数を取得する
@@ -75,18 +85,22 @@ public class PagerSupport {
 	private int getPage(HttpServletRequest request){
 		String value = request.getParameter(pageName);
 		if(StringUtil.isEmpty(value)){
-			return 0;
+			return 1;
 		}else{
 			try{
 				int page = Integer.parseInt(value);
-				if(page < 0){
-					page = 0;
+				if(page <= 0){
+					page = 1;
 				}
 				return page;
 			}catch(NumberFormatException e){
-				return 0;
+				return 1;
 			}
 		}
+	}
+	
+	public void setLimit(int limit) {
+		this.limit = limit;
 	}
 
 }

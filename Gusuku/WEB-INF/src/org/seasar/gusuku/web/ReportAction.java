@@ -23,6 +23,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.seasar.framework.util.StringUtil;
+import org.seasar.gusuku.GusukuConstant;
+import org.seasar.gusuku.dto.PagerSupport;
+import org.seasar.gusuku.dto.ProjectReportDto;
 import org.seasar.gusuku.dto.ReportDto;
 import org.seasar.gusuku.entity.Account;
 import org.seasar.gusuku.entity.Comment;
@@ -55,6 +58,7 @@ import org.seasar.xwork.annotation.Param;
 import org.seasar.xwork.annotation.Result;
 import org.seasar.xwork.annotation.XWorkAction;
 
+import com.opensymphony.webwork.ServletActionContext;
 import com.opensymphony.webwork.interceptor.ParameterAware;
 import com.opensymphony.webwork.util.TokenHelper;
 import com.opensymphony.xwork.Preparable;
@@ -101,7 +105,10 @@ public class ReportAction extends GusukuAction implements ParameterAware,Prepara
 	private List<StatusHistory> statusHistoryList;
 
 	private Map parameters;
-
+	
+	private ProjectReportDto projectReportDto = new ProjectReportDto();
+	private PagerSupport pagerSupport = new PagerSupport(GusukuConstant.SEARCH_LIMIT,"projectReportDto");
+	
 	public void setParameters(Map parameters) {
 		this.parameters = parameters;
 	}
@@ -386,9 +393,31 @@ public class ReportAction extends GusukuAction implements ParameterAware,Prepara
 	public String list(){
 		Long projectid = ParameterUtil.getParameterLongValue(parameters,"projectid");
 		Long typeid = ParameterUtil.getParameterLongValue(parameters,"typeid");
+		Long statusid = ParameterUtil.getParameterLongValue(parameters,"statusid");
+		Long page = ParameterUtil.getParameterLongValue(parameters,"page");
+		
 		project = projectHelper.getProject(projectid);
-		reportList = reportHelper.getProjectTypeReportList(projectid,typeid,project.getWorkflowid());
+		
+		projectReportDto.setProjectid(projectid);
+		projectReportDto.setTypeid(typeid);
+		projectReportDto.setStatusid(statusid);
+		projectReportDto.setWorkflowid(project.getWorkflowid());
+		
+		if(page != null){
+			projectReportDto.setPage(page.intValue());
+		}
+		
+		projectReportDto = (ProjectReportDto) pagerSupport.getPagerCondition(ServletActionContext.getRequest(),projectReportDto);
+		
+		reportList = reportHelper.getProjectReportList(projectReportDto);
+		
+			
+		
 		return SUCCESS;
+	}
+	
+	public Object getModel(){
+		return projectReportDto;
 	}
 	
 	public void setProjectHelper(ProjectHelper projectHelper) {

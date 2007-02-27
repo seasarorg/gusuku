@@ -15,6 +15,7 @@
  */
 package org.seasar.gusuku.logic.impl;
 
+import java.io.File;
 import java.util.Map;
 
 import org.seasar.framework.util.StringUtil;
@@ -88,6 +89,13 @@ public class SystemPropertyLogicImpl implements SystemPropertyLogic {
 	
 	private void updateProperty(String key,String idKey,String valueKey,Map parameters){
 		String value = ParameterUtil.getParameterValue(parameters, valueKey);
+		
+		//ディレクトリの場合、最後に区切り文字を入れる
+		if(valueKey.equals("dir")){
+			if(!value.endsWith(File.separator)){
+				value = value + File.separator;
+			}
+		}
 
 		String id = ParameterUtil.getParameterValue(parameters, idKey);
 		SystemProperty prop = new SystemProperty();

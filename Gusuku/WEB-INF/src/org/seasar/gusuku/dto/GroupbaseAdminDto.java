@@ -17,7 +17,7 @@ package org.seasar.gusuku.dto;
 
 import java.io.Serializable;
 
-public class GroupbaseAdminDto implements Serializable {
+public class GroupbaseAdminDto extends GusukuPagerCondition implements Serializable {
 
 	private static final long serialVersionUID = 5952890776036998077L;
 	private Long id;

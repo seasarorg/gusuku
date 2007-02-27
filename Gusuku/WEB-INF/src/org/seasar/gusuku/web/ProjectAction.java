@@ -93,6 +93,7 @@ public class ProjectAction extends GusukuAction {
 		
 		Progress startProgress = new Progress();
 		startProgress.setName(startStatus.getStatus().getName());
+		startProgress.setId(startStatus.getStatusid());
 		startProgress.setTotal(startCount);
 		statusProgress.add(startProgress);
 		//経過
@@ -104,6 +105,7 @@ public class ProjectAction extends GusukuAction {
 			totalCount += count;
 			Progress progress = new Progress();
 			progress.setName(workflowStatus.getStatus().getName());
+			progress.setId(workflowStatus.getStatusid());
 			progress.setTotal(count);
 			statusProgress.add(progress);
 		}
@@ -113,6 +115,7 @@ public class ProjectAction extends GusukuAction {
 		
 		Progress endProgress = new Progress();
 		endProgress.setName(endStatus.getStatus().getName());
+		endProgress.setId(endStatus.getStatusid());
 		endProgress.setTotal(endCount);
 		statusProgress.add(endProgress);
 		
@@ -132,6 +135,7 @@ public class ProjectAction extends GusukuAction {
 			int end =  reportHelper.getTypeCount(project.getId(),typeScheme.getTypeid(),endStatus.getStatusid());
 			Progress progress = new Progress();
 			progress.setName(typeScheme.getType().getName());
+			progress.setId(typeScheme.getTypeid());
 			progress.setTotal(count);
 			progress.setEnd(end);
 			typeProgress.add(progress);
@@ -228,6 +232,7 @@ public class ProjectAction extends GusukuAction {
 	private class Progress{
 		
 		private String name;
+		private Long id;
 		private int end;
 		private int total;
 		
@@ -255,6 +260,14 @@ public class ProjectAction extends GusukuAction {
 		}
 		public void setTotal(int total) {
 			this.total = total;
+		}
+		
+		public Long getId() {
+			return id;
+		}
+		
+		public void setId(Long id) {
+			this.id = id;
 		}
 		
 		

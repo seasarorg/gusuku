@@ -15,8 +15,18 @@
 		nameValue="id" value="${model.id}" />
 	<m:insert m:id="name" path="/component/textfield.html"
 		nameValue="name" value="${model.name}" />
-	<m:insert m:id="key" path="/component/textfield.html"
-		nameValue="key" value="${model.key}" size="8"/>
+	
+	<m:with id="key">
+		<m:if test="${model.id != null}">
+			<m:write value="${model.key}" />
+			<m:insert path="/component/hidden.html"
+				nameValue="key" value="${model.key}" />
+		</m:if>
+		<m:if test="${model.id == null}">
+			<m:insert m:id="key" path="/component/textfield.html"
+				nameValue="key" value="${model.key}" size="8"/>
+		</m:if>
+	</m:with>
 
 	<m:insert m:id="workflow" path="/component/select.html"
         nameValue="workflowid" list="${workflowList}"

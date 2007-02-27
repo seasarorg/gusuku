@@ -3,10 +3,13 @@ body{
 	font-size:0.8em;
 }
 a{
-	text-decoration: none;
+	#text-decoration: none;
 }
 a:visited {
- color: navy 
+ color: navy;
+}
+a:link {
+ color: navy;
 }
 table {
 	border-collapse: collapse
@@ -32,6 +35,9 @@ div.searchresult{
 div.project_detail{
 	width:35%;
 	float:left;
+}
+div.pagination,li{
+	padding:3px 3px 5px;
 }
 
 div.project_report{

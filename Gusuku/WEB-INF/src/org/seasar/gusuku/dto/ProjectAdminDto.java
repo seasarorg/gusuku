@@ -17,7 +17,7 @@ package org.seasar.gusuku.dto;
 
 import java.io.Serializable;
 
-public class ProjectAdminDto implements Serializable {
+public class ProjectAdminDto extends GusukuPagerCondition implements Serializable {
 	
 	private static final long serialVersionUID = 5825922484284305575L;
 	private Long id;

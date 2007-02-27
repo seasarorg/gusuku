@@ -21,6 +21,7 @@ import org.seasar.dao.annotation.tiger.Arguments;
 import org.seasar.dao.annotation.tiger.NoPersistentProperty;
 import org.seasar.dao.annotation.tiger.Query;
 import org.seasar.dao.annotation.tiger.S2Dao;
+import org.seasar.gusuku.dto.ProjectReportDto;
 import org.seasar.gusuku.entity.Report;
 
 @S2Dao(bean=Report.class)
@@ -56,9 +57,9 @@ public interface ReportDao {
 	@Query("Report.ID = /*id*/ AND Report.DELFLAG = FALSE ORDER BY Report.ID")
 	public Report findById(Long id);
 
-	@Query("Report.PROJECTID = /*projectid*/ /*IF typeid != null */AND Report.TYPEID = /*typeid*/ /*END*/AND Report.DELFLAG = FALSE AND Report.STATUSID NOT IN (SELECT STATUSID FROM WORKFLOW_STATUS WHERE WORKFLOWID = /*workflowid*/ AND EFLAG = TRUE) ORDER BY Report.ID")
-	@Arguments({"projectid","typeid","workflowid"})
-	public List<Report> findByProjectidAndTypeid(Long projectid, Long typeid,Long workflowid);
+	//@Query("Report.PROJECTID = /*dto.projectid*/ /*IF dto.typeid != null */AND Report.TYPEID = /*dto.typeid*/ /*END*/ /*IF dto.statusid != null */AND Report.STATUSID = /*dto.statusid*/ /*END*/ AND Report.DELFLAG = FALSE AND Report.STATUSID NOT IN (SELECT STATUSID FROM WORKFLOW_STATUS WHERE WORKFLOWID = /*dto.workflowid*/ AND EFLAG = TRUE) ORDER BY (SELECT SORT FROM PRIORITY_SCHEME WHERE HEADID = PROJECT.PRIORITYID AND REPORT.PRIORITYID = PRIORITYID),Report.RDATE")
+	@Query("Report.PROJECTID = /*dto.projectid*/ /*IF dto.typeid != null */AND Report.TYPEID = /*dto.typeid*/ /*END*/ /*IF dto.statusid != null */AND Report.STATUSID = /*dto.statusid*/ /*END*/ AND Report.DELFLAG = FALSE ORDER BY (SELECT SORT FROM PRIORITY_SCHEME WHERE HEADID = PROJECT.PRIORITYID AND REPORT.PRIORITYID = PRIORITYID),Report.RDATE")
+	public List<Report> findByProjectidAndTypeidAndStatusid(ProjectReportDto dto);
 	
 	@Arguments({"projectid","statusid"})
 	public int countByProjectidAndStatusid(Long projectid,Long statusid);

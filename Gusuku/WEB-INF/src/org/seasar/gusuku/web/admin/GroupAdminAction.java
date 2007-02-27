@@ -17,7 +17,9 @@ package org.seasar.gusuku.web.admin;
 
 import java.util.List;
 
+import org.seasar.gusuku.GusukuConstant;
 import org.seasar.gusuku.dto.GroupbaseAdminDto;
+import org.seasar.gusuku.dto.PagerSupport;
 import org.seasar.gusuku.entity.Account;
 import org.seasar.gusuku.entity.Groupbase;
 import org.seasar.gusuku.helper.AccountHelper;
@@ -28,6 +30,7 @@ import org.seasar.xwork.annotation.Param;
 import org.seasar.xwork.annotation.Result;
 import org.seasar.xwork.annotation.XWorkAction;
 
+import com.opensymphony.webwork.ServletActionContext;
 import com.opensymphony.webwork.util.TokenHelper;
 import com.opensymphony.xwork.ModelDriven;
 
@@ -54,6 +57,7 @@ public class GroupAdminAction extends GusukuAction implements ModelDriven{
 	private Groupbase groupbase;
 	
 	private GroupbaseAdminDto dto = new GroupbaseAdminDto();
+	private PagerSupport pagerSupport = new PagerSupport(GusukuConstant.SEARCH_LIMIT,"groupbaseAdminDto");
 	
 	/**
 	 * グループ一覧
@@ -61,6 +65,7 @@ public class GroupAdminAction extends GusukuAction implements ModelDriven{
 	 */
 	@XWorkAction(name = "group_list", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/group_list.html")))
 	public String list(){
+		dto = (GroupbaseAdminDto)pagerSupport.getPagerCondition(ServletActionContext.getRequest(),dto);
 		groupList = groupbaseHelper.getGroupbaseList(dto);
 		return SUCCESS;
 	}

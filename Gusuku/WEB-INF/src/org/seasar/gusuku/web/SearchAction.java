@@ -20,6 +20,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.seasar.framework.util.StringUtil;
+import org.seasar.gusuku.GusukuConstant;
+import org.seasar.gusuku.dto.PagerSupport;
+import org.seasar.gusuku.dto.SearchDto;
 import org.seasar.gusuku.helper.AccountHelper;
 import org.seasar.gusuku.helper.ComponentHelper;
 import org.seasar.gusuku.helper.CustomFormHelper;
@@ -37,6 +40,7 @@ import org.seasar.xwork.annotation.Param;
 import org.seasar.xwork.annotation.Result;
 import org.seasar.xwork.annotation.XWorkAction;
 
+import com.opensymphony.webwork.ServletActionContext;
 import com.opensymphony.webwork.interceptor.ParameterAware;
 import com.opensymphony.webwork.util.TokenHelper;
 
@@ -62,6 +66,9 @@ public class SearchAction extends GusukuAction implements ParameterAware {
 	private Map<String, String[]> parameters;
 	
 	private List searchResult = new ArrayList();
+	
+	private PagerSupport pagerSupport = new PagerSupport(GusukuConstant.SEARCH_LIMIT,"searchCondition");
+	private SearchDto dto = new SearchDto();
 	
 	public Map getParameters() {
 		return parameters;
@@ -90,7 +97,40 @@ public class SearchAction extends GusukuAction implements ParameterAware {
 			@Result(name = "input", type = "mayaa", param = @Param(name = "location", value = "/search.html")) })
 	public String search(){
 		//パラメーターから条件組み立て
-		searchResult = searchLogic.search(null,parameters,getLoginid());
+		dto = searchLogic.makeCondition(null,parameters,getLoginid());
+		Long page = ParameterUtil.getParameterLongValue(parameters,"page");
+		Long limit = ParameterUtil.getParameterLongValue(parameters,"limit");
+		String sort = ParameterUtil.getParameterValue(parameters,"sort");
+		String order = ParameterUtil.getParameterValue(parameters,"order");
+		boolean sortchange = false;
+		if(!StringUtil.isEmpty(sort)){
+			dto.setSort(sort);
+			//ソート条件が変更された場合はページ数を初期化
+			page = null;
+			sortchange = true;
+			System.out.println("SORT CHANGE");
+		}
+		if(!StringUtil.isEmpty(order)){
+			dto.setOrder(order);
+		}
+		
+		if(page != null){
+			dto.setPage(page.intValue());
+		}
+		if(limit != null){
+			pagerSupport.setLimit(limit.intValue());
+		}
+		
+		
+		dto = (SearchDto)pagerSupport.getPagerCondition(ServletActionContext.getRequest(),dto);
+		//検索条件復元
+		if(page != null || sortchange){
+			searchLogic.load(parameters,dto);
+			System.out.println("LOAD CONDITION");
+		}
+		
+		searchResult = searchLogic.search(dto);
+
 		return SUCCESS;
 	}
 	
@@ -108,6 +148,9 @@ public class SearchAction extends GusukuAction implements ParameterAware {
 			searchLogic.saveCondition(parameters,getLoginid());
 		}
 		return "save";
+	}
+	public Object getModel(){
+		return dto;
 	}
 
 	public CustomFormHelper getCustomFormHelper() {

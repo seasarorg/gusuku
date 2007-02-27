@@ -163,7 +163,43 @@
 		
 		<m:insert id="condition_name" path="/component/textfield.html"
 			nameValue="name" value="${parameters['name'] != null ? parameters['name'][0] : ''}" />
-			
+
+
+	<m:insert m:id="pagination" path="/component/pagination.html"
+		action="" page="${model.page}" total="${model.count}" limit="${model.limit}"/>
+
+	<m:insert m:id="sort_type" path="/component/sortlink.html"
+		href="search_list.html" link="タイプ"
+		sortKey="TYPE" sort="${model.sort}" order="${model.order}" />
+		
+	<m:insert m:id="sort_key" path="/component/sortlink.html"
+		href="search_list.html" link="KEY"
+		sortKey="KEY" sort="${model.sort}" order="${model.order}" />
+
+	<m:insert m:id="sort_title" path="/component/sortlink.html"
+		href="search_list.html" link="件名"
+		sortKey="TITLE" sort="${model.sort}" order="${model.order}" />
+
+	<m:insert m:id="sort_priority" path="/component/sortlink.html"
+		href="search_list.html" link="優先度"
+		sortKey="PRIORITY" sort="${model.sort}" order="${model.order}" />
+
+	<m:insert m:id="sort_status" path="/component/sortlink.html"
+		href="search_list.html" link="ステータス"
+		sortKey="STATUS" sort="${model.sort}" order="${model.order}" />
+		
+	<m:insert m:id="sort_assignee" path="/component/sortlink.html"
+		href="search_list.html" link="アサイン先"
+		sortKey="ASSIGNEE" sort="${model.sort}" order="${model.order}" />
+
+	<m:insert m:id="sort_reporter" path="/component/sortlink.html"
+		href="search_list.html" link="報告者"
+		sortKey="REPORTER" sort="${model.sort}" order="${model.order}" />
+		
+	<m:insert m:id="sort_rdate" path="/component/sortlink.html"
+		href="search_list.html" link="報告日"
+		sortKey="RDATE" sort="${model.sort}" order="${model.order}" />
+						
 	<m:forEach m:id="resultList" items="${searchResult}" var="item" replace="false" />
 
 	<m:insert id="result_type" path="/component/img.html"
@@ -176,5 +212,7 @@
 		src="${item.priority.icon}" alt="${item.priority.name}"/>
 	<m:insert id="result_status" path="/component/img.html"
 		src="${item.status.icon}" alt="${item.status.name}"/>
-
+	<m:write id="result_assignee" value="${item.assignee != null?item.assignee.name:''}"/>
+	<m:write id="result_reporter" value="${item.reporter.name}"/>
+	<m:formatDate id="result_rdate" value="${item.rdate}" pattern="yyyy/MM/dd HH:mm" />
 </m:mayaa>

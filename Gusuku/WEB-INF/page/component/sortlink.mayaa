@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org">
+	<m:beforeRender>
+	var order = binding.order=='ASC'?'DESC':'ASC';
+	if(binding.sortKey != binding.sort){
+		order = 'ASC';
+	}
+	</m:beforeRender>
+	<m:doRender m:id="aTag" >
+	<m:with>
+		<m:element name="a">
+			<m:attribute name="href" value="${binding.href}?sort=${binding.sortKey}&amp;order=${order}" />
+			<m:attribute name="target" value="${binding.target}" />
+			<m:attribute name="title" value="${binding.title}" />
+			<m:write value="${binding.link}" />
+		</m:element>
+		<m:if test="${binding.sortKey == binding.sort &amp;&amp; binding.order == 'ASC'}">
+			<m:write value="▼" />
+		</m:if>
+		<m:if test="${binding.sortKey == binding.sort &amp;&amp; binding.order == 'DESC'}">
+			<m:write value="▲" />
+		</m:if>
+	</m:with>
+	</m:doRender>
+
+</m:mayaa>

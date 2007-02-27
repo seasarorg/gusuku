@@ -1,51 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <m:mayaa xmlns:m="http://mayaa.seasar.org">
 	<m:beforeRender>
-		var page = 0;
-		if(binding.page == null || binding.page == ""){
-			page = 0;
+		var page = 1;
+		if(binding.page == null){
+			page = 1;
 		}else{
-			page = java.lang.Integer.parseInt(binding.page);
+			page = binding.page;
 		}
-		var start = page * binding.limit + 1;
+		var start = (page-1) * binding.limit + 1;
 		if(binding.total == 0){
 			start = 0;
 		}
-		var end = page * binding.limit + binding.limit;
+		var end = (page-1) * binding.limit + binding.limit;
 		if(binding.total &lt; end){
 			end = binding.total;
+		}
+		if(end &lt; 0){
+			end = 0;
 		}
 	</m:beforeRender>
 	<m:doRender m:id="paginationTag" >
 
-	<m:with>
-		<!-- current
-		binding.start 開始
-		binding.end 終了
-		binding.total 総ページ数
-		binding.limit 1ページ件数
-		binding.page 現在のページ
-		binding.action ページ遷移先
-		-->
-		<m:write value="${start} - ${end} / ${binding.total}件中" />
-		<!-- prev link -->
-		<m:if test="${start &gt;= binding.limit}">
-			<m:write value=" "/>
-			<m:element name="a">
-				<m:attribute name="href" value="${binding.action}?page=${page-1}" />
-				<m:write value="&lt;前へ" />
+	<m:if test="${binding.total &gt; 0 }">
+		<m:with>
+			<!-- current
+			binding.start 開始
+			binding.end 終了
+			binding.total 総ページ数
+			binding.limit 1ページ件数
+			binding.page 現在のページ
+			binding.action ページ遷移先
+			-->
+			<m:element name="div">
+				<m:attribute name="class" value="pagination"/>
+				<m:write value="${start} - ${end} / ${binding.total}件中" />
+				<!-- prev link -->
+				<m:if test="${start &gt; 1}">
+					<m:write value=" "/>
+					<m:element name="a">
+						<m:attribute name="href" value="${binding.action}?page=${page-1}${binding.param}" />
+						<m:write value="&lt;前へ" />
+					</m:element>
+				</m:if>
+		
+				<!-- next link -->
+				<m:if test="${end &lt; binding.total}">
+					<m:write value=" "/>
+					<m:element name="a">
+						<m:attribute name="href" value="${binding.action}?page=${page+1}${binding.param}" />
+						<m:write value="次へ&gt;" />
+					</m:element>
+				</m:if>
 			</m:element>
-		</m:if>
-
-		<!-- next link -->
-		<m:if test="${end &lt; binding.total}">
-			<m:write value=" "/>
-			<m:element name="a">
-				<m:attribute name="href" value="${binding.action}?page=${page+1}" />
-				<m:write value="次へ&gt;" />
-			</m:element>
-		</m:if>
-	</m:with>
+		</m:with>
+	</m:if>
 	</m:doRender>
 
 </m:mayaa>

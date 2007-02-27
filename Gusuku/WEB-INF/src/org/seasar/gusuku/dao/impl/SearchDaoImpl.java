@@ -24,6 +24,7 @@ import org.seasar.dao.annotation.tiger.S2Dao;
 import org.seasar.dao.impl.AbstractDao;
 import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dao.SearchDao;
+import org.seasar.gusuku.dto.SearchDto;
 import org.seasar.gusuku.entity.Report;
 import org.seasar.gusuku.entity.SearchConditionBasic;
 import org.seasar.gusuku.entity.SearchConditionCustom;
@@ -37,8 +38,11 @@ public class SearchDaoImpl extends AbstractDao implements SearchDao {
 		super(daoMetaDataFactory);
 	}
 
-	public List<Report> findByPamameter(SearchConditionHead searchConditionHead,List<SearchConditionBasic> searchConditionBasicList) {
+	//public List<Report> findByPamameter(SearchConditionHead searchConditionHead,List<SearchConditionBasic> searchConditionBasicList) {
+	public List<Report> findByPamameter(SearchDto searchDto) {
 		
+		SearchConditionHead searchConditionHead = searchDto.getSearchConditionHead();
+		List<SearchConditionBasic> searchConditionBasicList = searchDto.getSearchConditionBasicList();		
 		//条件が存在しない場合は結果を返さない
 		if(searchConditionBasicList.size() == 0){
 			return new ArrayList<Report>();
@@ -179,14 +183,51 @@ public class SearchDaoImpl extends AbstractDao implements SearchDao {
 		}
 		
 		//TODO ソート順序をどうするか？
-		sql.append("ORDER BY REPORT.RDATE DESC ");
-		
-		
-		//ホーム表示用
-		if(searchConditionHead != null){
-			sql.append("LIMIT " + searchConditionHead.getAmount());
+		if(!StringUtil.isEmpty(searchDto.getSort())){
+			sql.append("ORDER BY ");
+
+			if(searchDto.getSort().equals("PRIORITY")){
+				//優先度ソート
+				sql.append("(SELECT SORT FROM PRIORITY_SCHEME WHERE HEADID = PROJECT.PRIORITYID AND REPORT.PRIORITYID = PRIORITYID) ");
+			}else if(searchDto.getSort().equals("TYPE")){
+				sql.append("(SELECT SORT FROM TYPE_SCHEME WHERE HEADID = PROJECT.TYPEID AND REPORT.TYPEID = TYPEID) ");
+			}else if(searchDto.getSort().equals("KEY")){
+				sql.append("CONVERT(SUBSTR(REPORT.KEY,POSITION('-',REPORT.KEY)+1),INT) ");
+			}else if(searchDto.getSort().equals("STATUS")){
+				sql.append(" (SELECT CASE WHEN SFLAG = TRUE THEN 1 ELSE (CASE WHEN EFLAG = TRUE THEN 99 ELSE ID END) END  FROM WORKFLOW_STATUS WHERE WORKFLOWID = PROJECT.WORKFLOWID AND STATUSID = REPORT.STATUSID) ");
+			}else if(searchDto.getSort().equals("TITLE")){
+				sql.append("REPORT.TITLE ");
+			}else if(searchDto.getSort().equals("ASSIGNEE")){
+				sql.append("(SELECT NAME FROM ACCOUNT WHERE ID = REPORT.ASSIGNEEID) ");
+			}else if(searchDto.getSort().equals("REPORTER")){
+				sql.append("(SELECT NAME FROM ACCOUNT WHERE ID = REPORT.REPORTERID) ");
+			}else if(searchDto.getSort().equals("RDATE")){
+				sql.append("RDATE ");
+			}
+			
+			if(searchDto.getOrder().equals("DESC")){
+				sql.append("DESC");
+			}
+			
+			if(!searchDto.getSort().equals("KEY")){
+				sql.append(",CONVERT(SUBSTR(REPORT.KEY,POSITION('-',REPORT.KEY)+1),INT)  ");
+			}
+		}else{
+			sql.append("ORDER BY ");
+
+				//優先度ソート
+				sql.append("(SELECT SORT FROM PRIORITY_SCHEME WHERE HEADID = PROJECT.PRIORITYID AND REPORT.PRIORITYID = PRIORITYID) ");
+			
 		}
 		
+		//sql.append("REPORT.RDATE DESC ");
+//		ホーム表示用
+		if(searchConditionHead != null){
+			sql.append(" LIMIT " + searchConditionHead.getAmount());
+		}else{
+			//sql.append(" LIMIT " + searchDto.getLimit() + " OFFSET " + searchDto.getOffset());
+		}
+
 		return getEntityManager().find(sql.toString(),params.toArray());
 	}
 	

@@ -15,9 +15,10 @@ public class H2Listener implements ServletContextListener {
 
 	public void contextInitialized(ServletContextEvent arg0) {
 		// TODO Auto-generated method stub
-		System.out.print("Starting H2 database ... ");
+		System.out.println("Starting H2 database ... ");
 		try {
 			//String[] params = new String[]{"-baseDir","sample"};
+			/*
 			String[] params = new String[]{"-baseDir","E:/EclipseProjects/Gusuku/WEB-INF/data","-tcpAllowOthers","true"};
 			tcpServer = Server.createTcpServer(params);
 			tcpServer.start();
@@ -25,6 +26,10 @@ public class H2Listener implements ServletContextListener {
 			webServer.start();
 			System.out.println("done");
 			System.out.println(tcpServer.getURL());
+			*/
+			
+			Server.main(new String[]{"-tcp","-baseDir","E:/EclipseProjects/Gusuku/WEB-INF/data"});
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -32,15 +37,24 @@ public class H2Listener implements ServletContextListener {
 	}
 
 	public void contextDestroyed(ServletContextEvent arg0) {
-		System.out.print("Shutting down H2 database ... ");
+		System.out.println("Shutting down H2 database ... ");
+		try{
+		//Server.main(new String[]{"-tcpShutdown","tcp://localhost:9092"});
+		Server.shutdownTcpServer("tcp://localhost:9092","",true);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		/*
 		if(tcpServer != null && tcpServer.isRunning()){
-			//server.stop();
+			tcpServer.stop();
+			
 			try{
 			Server.shutdownTcpServer(tcpServer.getURL(),"",true);
 			System.out.println("done");
 			}catch(SQLException e){
 				e.printStackTrace();
 			}
+			
 		}else{
 			System.out.println("not running");
 		}
@@ -49,6 +63,7 @@ public class H2Listener implements ServletContextListener {
 		}else{
 			System.out.println("not running");
 		}
+		*/
 	}
 
 }

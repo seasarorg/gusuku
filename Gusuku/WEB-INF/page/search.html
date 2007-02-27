@@ -113,20 +113,22 @@ Gusuku ヘッダ
 			</div>
 			</div>
 		<span id="error"/>
+
 		<p>条件名：<input type="text" id="condition_name"/>&nbsp;<input type="submit" name="method:save" value=" 保存 " class="submit"/><br/>
-		<div align="center"><input type="submit" value=" 検索 " class="submit"/></div></p>
+		<div align="center">表示件数：<select name="limit"><option value="20">20</option><option value="50">50</option><option value="100">100</option></select> <input type="submit" value=" 検索 " class="submit"/></div></p>
 		</form>
 		</div>
 	</div>
 	<div class="searchresult">
 		<div class="border">
 			<div class="label">検索結果</div>
+			<div id="pagination"/>
 			<table border="1" cellspacing="0" cellpadding="3">
 			<thead>
-			<tr><td>タイプ</td><td>KEY</td><td>件名</td><td>優先度</td><td>ステータス</td></tr>
+			<tr><td><span id="sort_type">タイプ</span></td><td><span id="sort_key">KEY</span></td><td><span id="sort_title">件名</span></td><td><span id="sort_priority">優先度</span></td><td><span id="sort_status">ステータス</span></td><td><span id="sort_assignee">アサイン先</span></td><td><span id="sort_reporter">報告者</span></td><td><span id="sort_rdate">報告日</span></td></tr>
 			</thead>
 			<tbody>
-			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="resultList"><td align="center"><span id="result_type">バグ</span></td><td><span id="result_key">TEST-1</span></td><td><span id="result_title_link">バグが見つかりました</span></td><td align="center"><span id="result_priority">5</span></td><td align="center"><span id="result_status">オープン</span></td></tr>
+			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="resultList"><td align="center"><span id="result_type">バグ</span></td><td><span id="result_key">TEST-1</span></td><td><span id="result_title_link">バグが見つかりました</span></td><td align="center"><span id="result_priority">5</span></td><td align="center"><span id="result_status">オープン</span></td><td><span id="result_assignee">アサイン先</span></td><td><span id="result_reporter">報告者</span></td><td><span id="result_rdate">2007/2/2</span></td></tr>
 			</tbody>
 			</table>
 		</div>

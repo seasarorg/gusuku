@@ -18,6 +18,7 @@ package org.seasar.gusuku.dao;
 import java.util.List;
 
 import org.seasar.dao.annotation.tiger.S2Dao;
+import org.seasar.gusuku.dto.SearchDto;
 import org.seasar.gusuku.entity.Report;
 import org.seasar.gusuku.entity.SearchConditionBasic;
 import org.seasar.gusuku.entity.SearchConditionHead;
@@ -25,6 +26,6 @@ import org.seasar.gusuku.entity.SearchConditionHead;
 @S2Dao(bean=Report.class)
 public interface SearchDao {
 	
-	public List<Report> findByPamameter(SearchConditionHead searchConditionHead,List<SearchConditionBasic> searchConditionBasicList);
-
+	//public List<Report> findByPamameter_old(SearchConditionHead searchConditionHead,List<SearchConditionBasic> searchConditionBasicList);
+	public List<Report> findByPamameter(SearchDto searchDto);
 }

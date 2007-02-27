@@ -16,12 +16,12 @@
    	<m:insert m:id="groupList" path="/component/select.html"
         nameValue="addid" list="${groupList}"
         selected="" listKey="id"
-        listValue="name" size="10" force="true"/>  
+        listValue="name" size="10" force="true" multiple="true"/>  
         
    	<m:insert m:id="memberList" path="/component/select.html"
         nameValue="removeid" list="${memberList}"
         selected="" listKey="id" size="10"
-        listValue="name" force="true"/>
+        listValue="name" force="true" multiple="true"/>
 
       
 </m:mayaa>

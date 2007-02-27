@@ -62,10 +62,10 @@ public class CustomFormDetail implements Serializable {
 	public void setDateto(Date dateto) {
 		this.dateto = dateto;
 	}
-	public long getFormheadid() {
+	public Long getFormheadid() {
 		return formheadid;
 	}
-	public void setFormheadid(long formheadid) {
+	public void setFormheadid(Long formheadid) {
 		this.formheadid = formheadid;
 	}
 	

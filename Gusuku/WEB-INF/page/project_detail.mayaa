@@ -59,7 +59,9 @@
 		nameValue="end" value="3" checked="${mailCondition.end}" />  
 	
 	<m:forEach id="typeList" items="${projectReport.typeProgress}" var="type" replace="false"/>
-	<m:write id="type_name" value="${type.name}" />
+	<!--m:write id="type_name" value="${type.name}" /-->
+	<m:insert id="type_name" path="/component/a.html"
+		href="report_list.html?projectid=${project.id}&amp;typeid=${type.id}" link="${type.name}" />
 	<m:write id="type_end" value="${type.end}" />
 	<m:write id="type_total" value="${type.total}" />
 	<m:with id="type_graph">
@@ -81,6 +83,8 @@
 	<m:formatNumber id="type_progress" value="${type.progress}" pattern="##0.0"/>
 		
 	<m:forEach id="statusList" items="${projectReport.statusProgress}" var="status" replace="false"/>
-	<m:write id="status_name" value="${status.name}" />
+	<!--m:write id="status_name" value="${status.name}" /-->
+	<m:insert id="status_name" path="/component/a.html"
+		href="report_list.html?projectid=${project.id}&amp;statusid=${status.id}" link="${status.name}" />
 	<m:write id="status_total" value="${status.total}" />
 </m:mayaa>

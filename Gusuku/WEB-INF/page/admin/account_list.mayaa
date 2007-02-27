@@ -18,7 +18,6 @@
         selected="${model.kind}" listKey="id"
         listValue="kindname" headerKey="" headerValue="全て"/>
 
-	<m:write id="total_count" value="${model.count}"/>
 	<m:insert m:id="pagination" path="/component/pagination.html"
 		action="" page="${model.page}" total="${model.count}" limit="${model.limit}"/>
 	

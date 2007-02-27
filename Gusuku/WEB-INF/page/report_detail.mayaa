@@ -39,7 +39,7 @@
 		<m:if test="${form.formType.tagname.equals('file')}">
 			<tr>
 			<td><m:write id="customLabel" value="${form.label}"/></td>
-			<td><m:insert path="/component/report_value.html" value="${reportDataHelper.getReportData(report.id,form.id)}" form="${form}" download="true"/></td>
+			<td><m:insert path="/component/report_value.html" value="${reportDataHelper.getReportData(report.id,form.id)}" form="${form}" download="true" projectid="${project.id}"/></td>
 			</tr>
 		</m:if>
 
@@ -149,7 +149,7 @@
 		<m:if id="comment_file" test="${item.filename != null}">
 			<m:write value="${item.filename}"/>
 			<m:element name="a">
-			<m:attribute name="href" value="./download/cmt${item.id}/${Packages.java.net.URLEncoder.encode(item.filename,'UTF-8')}"/>
+			<m:attribute name="href" value="./download/${project.id}/comment/${item.id}/${Packages.java.net.URLEncoder.encode(item.filename,'UTF-8')}"/>
 			<img src="./image/download.gif" alt="ダウンロード" border="0"/>
 			</m:element>
 		</m:if>

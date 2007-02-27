@@ -19,6 +19,7 @@ import java.util.List;
 
 import org.seasar.gusuku.dao.ProjectDao;
 import org.seasar.gusuku.dao.ReportDao;
+import org.seasar.gusuku.dto.ProjectReportDto;
 import org.seasar.gusuku.entity.Project;
 import org.seasar.gusuku.entity.Report;
 import org.seasar.gusuku.exception.EntityNotFoundException;
@@ -92,8 +93,8 @@ public class ReportHelper {
 	 * @param typeid タイプID
 	 * @return 報告一覧
 	 */
-	public List<Report> getProjectTypeReportList(Long projectid,Long typeid,Long workflowid){
-		return reportDao.findByProjectidAndTypeid(projectid,typeid,workflowid);
+	public List<Report> getProjectReportList(ProjectReportDto projectReportDto){
+		return reportDao.findByProjectidAndTypeidAndStatusid(projectReportDto);
 	}
 	
 	/**

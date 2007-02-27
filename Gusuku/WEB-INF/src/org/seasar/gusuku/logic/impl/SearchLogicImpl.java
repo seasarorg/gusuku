@@ -30,6 +30,7 @@ import org.seasar.gusuku.dao.SearchConditionBasicDao;
 import org.seasar.gusuku.dao.SearchConditionCustomDao;
 import org.seasar.gusuku.dao.SearchConditionHeadDao;
 import org.seasar.gusuku.dao.SearchDao;
+import org.seasar.gusuku.dto.SearchDto;
 import org.seasar.gusuku.entity.CustomFormDetail;
 import org.seasar.gusuku.entity.Project;
 import org.seasar.gusuku.entity.SearchConditionBasic;
@@ -119,8 +120,11 @@ public class SearchLogicImpl implements SearchLogic {
 	}
 	
 
-	public List search(SearchConditionHead searchConditionHead,Map<String,String[]> parameters,Long accountid) {
-
+	public List search(SearchDto searchDto) {
+		return searchDao.findByPamameter(searchDto);
+	}
+	
+	public SearchDto makeCondition(SearchConditionHead searchConditionHead,Map<String,String[]> parameters,Long accountid){
 		Long[] projectids = ParameterUtil.getParameterLongArrayValue(parameters,"projectid");
 		List<SearchConditionBasic> searchConditionBasicList = new ArrayList<SearchConditionBasic>();
 		if(projectids != null){
@@ -147,7 +151,11 @@ public class SearchLogicImpl implements SearchLogic {
 			}
 		}
 		
-		return searchDao.findByPamameter(searchConditionHead,searchConditionBasicList);
+		SearchDto searchDto = new SearchDto();
+		searchDto.setSearchConditionHead(searchConditionHead);
+		searchDto.setSearchConditionBasicList(searchConditionBasicList);
+
+		return searchDto;
 	}
 	
 	
@@ -358,6 +366,57 @@ public class SearchLogicImpl implements SearchLogic {
 		//保存
 		searchConditionHeadDao.update(target);
 		searchConditionHeadDao.update(after);
+	}
+	
+	public void load(Map<String,String[]> parameters,SearchDto searchDto){
+		List<SearchConditionBasic> searchConditionBasicList = searchDto.getSearchConditionBasicList();
+		List<Long> projectidList = new ArrayList<Long>();
+		for(SearchConditionBasic searchConditionBasic:searchConditionBasicList){
+			Long projectid = searchConditionBasic.getProjectid();
+			//過去に所属していたプロジェクトｊに関わるものを除く
+			if(projectid != null){
+				projectidList.add(projectid);
+				ParameterUtil.putParameterValue(parameters,"basic_id_"+projectid,searchConditionBasic.getId());
+				
+				ParameterUtil.putParameterCsvValue(parameters,"basic_typeid_"+projectid,searchConditionBasic.getTypeid());
+				ParameterUtil.putParameterCsvValue(parameters,"basic_statusid_"+projectid,searchConditionBasic.getStatusid());
+				ParameterUtil.putParameterCsvValue(parameters,"basic_priorityid_"+projectid,searchConditionBasic.getPriorityid());
+				ParameterUtil.putParameterCsvValue(parameters,"basic_assigneeid_"+projectid,searchConditionBasic.getAssigneeid());
+				ParameterUtil.putParameterCsvValue(parameters,"basic_componentid_"+projectid,searchConditionBasic.getComponentid());
+				ParameterUtil.putParameterCsvValue(parameters,"basic_versionid_"+projectid,searchConditionBasic.getVersionid());
+				
+				ParameterUtil.putParameterValue(parameters,"basic_title_"+projectid,searchConditionBasic.getTitle());
+				ParameterUtil.putParameterValue(parameters,"basic_environment_"+projectid,searchConditionBasic.getEnvironment());
+				ParameterUtil.putParameterValue(parameters,"basic_datefrom_"+projectid,searchConditionBasic.getDatefrom());
+				ParameterUtil.putParameterValue(parameters,"basic_dateto_"+projectid,searchConditionBasic.getDateto());
+				ParameterUtil.putParameterValue(parameters,"basic_detail_"+projectid,searchConditionBasic.getDetail());
+				List searchConditionCustomList = searchConditionCustomDao.findByConditionbasicid(searchConditionBasic.getId());
+
+				for(Iterator ite_custom = searchConditionCustomList.iterator();ite_custom.hasNext();){
+					SearchConditionCustom searchConditionCustom = (SearchConditionCustom) ite_custom.next();
+					ParameterUtil.putParameterValue(parameters,"custom_id_"+searchConditionCustom.getFormid()+"_"+projectid,searchConditionCustom.getId());
+					switch(searchConditionCustom.getCustomFormDetail().getValuetype()){
+					case 1:
+						if(searchConditionCustom.getCustomFormDetail().getValueid() != null){
+							ParameterUtil.putParameterValue(parameters,"custom_"+searchConditionCustom.getFormid()+"_"+projectid,ParameterUtil.splitValue(searchConditionCustom.getTextvalue()));
+						}else{
+							ParameterUtil.putParameterValue(parameters,"custom_"+searchConditionCustom.getFormid()+"_"+projectid,searchConditionCustom.getTextvalue());
+						}
+						break;
+					case 2:
+						ParameterUtil.putParameterValue(parameters,"custom_low_"+searchConditionCustom.getFormid()+"_"+projectid,searchConditionCustom.getRangelow());
+						ParameterUtil.putParameterValue(parameters,"custom_high_"+searchConditionCustom.getFormid()+"_"+projectid,searchConditionCustom.getRangehigh());
+						break;
+					case 3:
+						ParameterUtil.putParameterValue(parameters,"custom_from_"+searchConditionCustom.getFormid()+"_"+projectid,searchConditionCustom.getDatefrom());
+						ParameterUtil.putParameterValue(parameters,"custom_to_"+searchConditionCustom.getFormid()+"_"+projectid,searchConditionCustom.getDateto());
+						break;
+					}
+					
+				}
+			}
+		}
+		ParameterUtil.putParameterValue(parameters,"projectid",(Long[])projectidList.toArray(new Long[0]));
 	}
 	
 	public void load(Map<String,String[]> parameters,Long conditionid){

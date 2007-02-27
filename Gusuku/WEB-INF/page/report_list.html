@@ -30,13 +30,13 @@ Gusuku ヘッダ
 	<div class="fullcontent">
 		<div class="border">
 			<div class="label"><span id="project_name">プロジェクト名</span> 報告一覧</div>
-			
+			<div id="pagination">start - end/total <a href="">&lt;</a> <a href="">&gt;</a></div>
 			<table border="1" cellspacing="0" cellpadding="3">
 			<thead>
-			<tr><td>タイプ</td><td>KEY</td><td>件名</td><td>優先度</td><td>ステータス</td></tr>
+			<tr><td>タイプ</td><td>KEY</td><td>件名</td><td>優先度</td><td>ステータス</td><td>アサイン先</td><td>報告者</td><td>報告日</td></tr>
 			</thead>
 			<tbody>
-			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="reportList"><td><span id="report_type">バグ</span></td><td><span id="report_key">TEST-1</span></td><td><span id="report_title_link">バグが見つかりました</span></td><td align="center"><span id="report_priority">5</span></td><td align="center"><span id="report_status">オープン</span></td></tr>
+			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="reportList"><td><span id="report_type">バグ</span></td><td><span id="report_key">TEST-1</span></td><td><span id="report_title_link">バグが見つかりました</span></td><td align="center"><span id="report_priority">5</span></td><td align="center"><span id="report_status">オープン</span></td><td><span id="result_assignee">アサイン先</span></td><td><span id="result_reporter">報告者</span></td><td><span id="result_rdate">2007/2/2</span></td></tr>
 			</tbody>
 			</table>
 			<p/>

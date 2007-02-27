@@ -15,7 +15,7 @@
 			</m:if>
 			<m:if test="${binding.download == 'true'}">　
 				<m:element name="a">
-				<m:attribute name="href"  value="./../download/${binding.value.id}/${Packages.java.net.URLEncoder.encode(binding.value.textvalue,'UTF-8')}" />
+				<m:attribute name="href"  value="./../download/${binding.projectid}/attach/${binding.value.id}/${Packages.java.net.URLEncoder.encode(binding.value.textvalue,'UTF-8')}" />
 				<img src="./../image/download.gif" alt="ダウンロード" border="0"/>
 				</m:element>
 			</m:if>		</m:if>		

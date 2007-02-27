@@ -161,8 +161,9 @@ public class ReportLogicImpl implements ReportLogic {
 					
 					reportDataDao.insert(data);	
 	
-					String uploaddir = PropertyUtil.getProperty(GusukuConstant.UPLOAD_DIR_KEY);
-					FileUploadUtil.save(file,uploaddir,Long.toString(data.getId()));
+					String uploaddir = PropertyUtil.getProperty(GusukuConstant.UPLOAD_DIR_KEY) + project.getKey() + File.separator;
+					
+					FileUploadUtil.save(file,uploaddir + GusukuConstant.UPLOAD_ATTACHMENT,Long.toString(data.getId()));
 					
 				}
 				
@@ -193,13 +194,15 @@ public class ReportLogicImpl implements ReportLogic {
 			}
 			commentDao.insert(comment);
 			
+			Report report = reportDao.findById(id);
+			
 			if(file != null){
-				String uploaddir = PropertyUtil.getProperty(GusukuConstant.UPLOAD_DIR_KEY);
-				FileUploadUtil.save(file,uploaddir,"cmt"+comment.getId());
+				String uploaddir = PropertyUtil.getProperty(GusukuConstant.UPLOAD_DIR_KEY) + report.getProject().getKey() + File.separator;
+				FileUploadUtil.save(file,uploaddir + GusukuConstant.UPLOAD_COMMENT,Long.toString(comment.getId()));
 				
 			}
 			
-			Report report = reportDao.findById(id);
+			
 			
 			List<MailCondition> pickList = mailConditionDao.findMailList(report.getProjectid());
 			List<Mail> sendList = new ArrayList<Mail>();

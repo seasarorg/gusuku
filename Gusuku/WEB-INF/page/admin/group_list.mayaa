@@ -11,6 +11,9 @@
     
 	<m:insert m:id="search_name" path="/component/textfield.html"
 		nameValue="name" value="${model.name}" />
+		
+	<m:insert m:id="pagination" path="/component/pagination.html"
+		action="" page="${model.page}" total="${model.count}" limit="${model.limit}"/>
 	
 	<m:forEach m:id="list" items="${groupList}" var="item" replace="false" />
 	<m:insert m:id="del" path="/component/checkbox.html"

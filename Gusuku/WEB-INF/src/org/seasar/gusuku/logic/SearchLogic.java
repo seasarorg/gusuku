@@ -18,6 +18,7 @@ package org.seasar.gusuku.logic;
 import java.util.List;
 import java.util.Map;
 
+import org.seasar.gusuku.dto.SearchDto;
 import org.seasar.gusuku.entity.SearchConditionHead;
 
 public interface SearchLogic {
@@ -35,13 +36,14 @@ public interface SearchLogic {
 	 * @param accountid
 	 * @return
 	 */
-	public List search(SearchConditionHead searchConditionHead,Map<String,String[]> parameters,Long accountid);
-	
+	public List search(SearchDto searchDto);
+	public SearchDto makeCondition(SearchConditionHead searchConditionHead,Map<String,String[]> parameters,Long accountid);
 	/**
 	 * 
 	 *
 	 */
 	public void load(Map<String,String[]> parameters,Long conditionid);
+	public void load(Map<String,String[]> parameters,SearchDto searchDto);
 	
 	/**
 	 * 検索条件を削除します

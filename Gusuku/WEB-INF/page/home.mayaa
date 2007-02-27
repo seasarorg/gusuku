@@ -6,7 +6,7 @@
     
     <m:forEach m:id="entryList" items="${entryList}" var="project"/>
     <m:insert id="project_name" path="/component/a.html"
-    	href="project_detail.html?id=${project.id}" link="${project.name}" />
+    	href="project_detail.html?id=${project.id}" link="${project.name}"/>
     <m:forEach m:id="assignList" items="${assignListMap.get(project.id)}" var="item" replace="false" />
 
 	<m:insert id="assign_type" path="/component/img.html"

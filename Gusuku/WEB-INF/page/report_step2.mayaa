@@ -37,32 +37,39 @@
 	    </m:if>
     </m:with>
     
+    <!-- 件名 -->
    	<m:insert m:id="title" path="/component/textfield.html"
-		nameValue="title" value="${parameters.title !=null ? parameters.title[0]:''}" />
+		nameValue="title" value="${parameters.title !=null ? parameters.title[0]:''}" size="80"/>
 
+	<!-- 優先度 -->
     <m:insert m:id="priorityid" path="/component/select.html"
         nameValue="priorityid" list="${priorityList}"
         selected="${parameters.priorityid !=null ? parameters.priorityid[0] : ''}" listKey="priority"
         listValue="priority" headerKey="" headerValue="優先度を選択して下さい" extra="true" />      
 
+	<!-- コンポーネント -->
     <m:insert m:id="componentid" path="/component/select.html"
         nameValue="componentid" list="${componentList}"
         selected="${parameters.componentid !=null ? parameters.componentid[0] : ''}" listKey="id"
         listValue="name" headerKey="" headerValue="コンポーネントを選択して下さい"/>      
 
+	<!-- バージョン -->
     <m:insert m:id="versionid" path="/component/select.html"
         nameValue="versionid" list="${versionList}"
         selected="${parameters.versionid !=null ? parameters.versionid[0] : ''}" listKey="id"
         listValue="name" headerKey="" headerValue="バージョンを選択して下さい"/>  
 
+	<!-- アサイン先 -->
     <m:insert m:id="assigneeid" path="/component/select.html"
         nameValue="assigneeid" list="${assigneeList}"
         selected="${parameters.assigneeid != null ? parameters.assigneeid[0] : ''}" listKey="id"
         listValue="name" headerKey="" headerValue="アサイン先を選択して下さい"/>
-        
-	<m:insert m:id="environment" path="/component/textarea.html"
-		nameValue="environment" value="${parameters.environment != null ? parameters.environment[0] : ''}" />	
 
+	<!-- 環境 -->        
+	<m:insert m:id="environment" path="/component/textarea.html"
+		nameValue="environment" value="${parameters.environment != null ? parameters.environment[0] : ''}" cols="50" rows="4"/>	
+
+	<!-- カスタムフォーム -->
 	<m:forEach id="custom" items="${customFormHelper.getFormList(projectHelper.getProject(new java.lang.Long(parameters.projectid[0])).formid)}" var="form"/>
 
 		<m:with id="if">
@@ -88,7 +95,7 @@
 			</m:if>
 			</td>
 			<td class="colitem"><m:insert id="customForm" path="/component/textfield.html"
-				nameValue="custom${form.id}" value="${parameters['custom'+form.id]!=null?parameters['custom'+form.id][0]:''}" defaultValue="${form.defaultvalue}"/>
+				nameValue="custom${form.id}" value="${parameters['custom'+form.id]!=null?parameters['custom'+form.id][0]:''}" defaultValue="${form.defaultvalue}" size="80"/>
 			<m:if test="${form.comment != null }">
 				<span class="note"><m:write value="${form.comment}"/></span>
 			</m:if></td>
@@ -175,5 +182,5 @@
 
 		</m:with>
 	<m:insert m:id="detail" path="/component/textarea.html"
-		nameValue="detail" value="${parameters.detail != null ? parameters.detail[0] : ''}" />
+		nameValue="detail" value="${parameters.detail != null ? parameters.detail[0] : ''}" cols="50" rows="8"/>
 </m:mayaa>

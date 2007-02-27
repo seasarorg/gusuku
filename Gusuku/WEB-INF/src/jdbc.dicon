@@ -14,9 +14,8 @@
 		</arg>
 		<property name="useScrollCursor">true</property>
 	</component>
-
 	<!-- limit offset -->
-	<!--
+<!--
 	<component 
 		name="resultSetFactory"
 		class="org.seasar.dao.pager.PagerResultSetFactoryLimitOffsetWrapper">
@@ -25,7 +24,7 @@
 		</arg>
 		<arg>dataSource</arg>
 	</component>
-	-->
+-->
 
 	<component class="org.seasar.extension.jdbc.impl.ConfigurableStatementFactory">
 		<arg>
@@ -80,14 +79,14 @@
 		</property>
 		<property name="URL">
 
-
+<!--
 			"jdbc:h2:tcp://localhost:9092/gusuku"
 
-<!--
+-->
 			"jdbc:h2:file:"
 				+ @org.seasar.framework.util.ResourceUtil@getBuildDir(@org.seasar.gusuku.web.GusukuAction@class).getCanonicalPath().substring(0,@org.seasar.framework.util.ResourceUtil@getBuildDir(@org.seasar.gusuku.web.GusukuAction@class).getCanonicalPath().indexOf("WEB-INF")+"WEB-INF".length())
 				+ "/data/gusuku" 
--->
+
 		</property>
 		<property name="user">"sa"</property>
 		<property name="password">""</property>

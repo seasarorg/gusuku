@@ -21,6 +21,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.seasar.gusuku.dto.SearchDto;
 import org.seasar.gusuku.entity.Project;
 import org.seasar.gusuku.entity.Report;
 import org.seasar.gusuku.entity.SearchConditionHead;
@@ -75,7 +76,8 @@ public class HomeAction extends GusukuAction {
 			searchLogic.load(parameters,searchConditionHead.getId());
 			
 			
-			List result = searchLogic.search(searchConditionHead,parameters,getLoginid());
+			SearchDto searchDto = searchLogic.makeCondition(searchConditionHead,parameters,getLoginid());
+			List result = searchLogic.search(searchDto);
 			
 			SearchConditionInformation searchConditionInformation = new SearchConditionInformation();
 			searchConditionInformation.setSearchConditionHead(searchConditionHead);

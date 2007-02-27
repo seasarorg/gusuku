@@ -17,6 +17,8 @@ package org.seasar.gusuku.web.admin;
 
 import java.util.List;
 
+import org.seasar.gusuku.GusukuConstant;
+import org.seasar.gusuku.dto.PagerSupport;
 import org.seasar.gusuku.dto.ProjectAdminDto;
 import org.seasar.gusuku.entity.Account;
 import org.seasar.gusuku.entity.CustomFormHead;
@@ -40,6 +42,7 @@ import org.seasar.xwork.annotation.Param;
 import org.seasar.xwork.annotation.Result;
 import org.seasar.xwork.annotation.XWorkAction;
 
+import com.opensymphony.webwork.ServletActionContext;
 import com.opensymphony.webwork.util.TokenHelper;
 import com.opensymphony.xwork.ModelDriven;
 import com.opensymphony.xwork.Preparable;
@@ -80,6 +83,7 @@ public class ProjectAdminAction extends GusukuAction implements ModelDriven,Prep
 	private Long[] removeid;
 	
 	private ProjectAdminDto dto = new ProjectAdminDto();
+	private PagerSupport pagerSupport = new PagerSupport(GusukuConstant.SEARCH_LIMIT,"projectAdminDto");
 	
 	public void prepare(){
 	}
@@ -117,6 +121,7 @@ public class ProjectAdminAction extends GusukuAction implements ModelDriven,Prep
 	 */
 	@XWorkAction(name = "project_list", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/admin/project_list.html")))
 	public String list() {
+		dto = (ProjectAdminDto)pagerSupport.getPagerCondition(ServletActionContext.getRequest(),dto);
 		list = projectHelper.getProjectList(dto);
 		return SUCCESS;
 	}

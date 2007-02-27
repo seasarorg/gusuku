@@ -13,7 +13,10 @@
 		nameValue="name" value="${model.name}" />
 	<m:insert m:id="search_key" path="/component/textfield.html"
 		nameValue="key" value="${model.key}" size="4" />
-	
+
+	<m:insert m:id="pagination" path="/component/pagination.html"
+		action="" page="${model.page}" total="${model.count}" limit="${model.limit}"/>
+
 	<m:forEach m:id="list" items="${list}" var="item" replace="false" />
 	<m:insert m:id="del" path="/component/checkbox.html"
 		nameValue="delid" value="${item.id}"/>
