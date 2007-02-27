@@ -9,6 +9,7 @@ import org.seasar.gusuku.entity.SearchConditionHead;
 
 public class SearchDto extends GusukuPagerCondition implements Serializable {
 	
+	private static final long serialVersionUID = 5209916828106291626L;
 	private SearchConditionHead searchConditionHead;
 	private List<SearchConditionBasic> searchConditionBasicList;
 	

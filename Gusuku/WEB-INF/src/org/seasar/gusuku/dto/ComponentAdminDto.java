@@ -20,6 +20,7 @@ import java.io.Serializable;
 
 public class ComponentAdminDto implements Serializable {
 	
+	private static final long serialVersionUID = 8535278990069423795L;
 	private Long id;
 	private Long projectid;
 	private String name;

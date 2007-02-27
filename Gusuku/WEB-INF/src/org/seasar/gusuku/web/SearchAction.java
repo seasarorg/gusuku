@@ -108,7 +108,6 @@ public class SearchAction extends GusukuAction implements ParameterAware {
 			//ソート条件が変更された場合はページ数を初期化
 			page = null;
 			sortchange = true;
-			System.out.println("SORT CHANGE");
 		}
 		if(!StringUtil.isEmpty(order)){
 			dto.setOrder(order);
@@ -126,7 +125,6 @@ public class SearchAction extends GusukuAction implements ParameterAware {
 		//検索条件復元
 		if(page != null || sortchange){
 			searchLogic.load(parameters,dto);
-			System.out.println("LOAD CONDITION");
 		}
 		
 		searchResult = searchLogic.search(dto);

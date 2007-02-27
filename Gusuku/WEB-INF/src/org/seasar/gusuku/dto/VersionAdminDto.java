@@ -20,6 +20,7 @@ import java.io.Serializable;
 
 public class VersionAdminDto implements Serializable {
 	
+	private static final long serialVersionUID = 242367408332029861L;
 	private Long id;
 	private Long projectid;
 	private String name;

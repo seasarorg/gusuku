@@ -6,6 +6,7 @@ import java.io.Serializable;
 public class ProjectReportDto extends GusukuPagerCondition implements
 		Serializable {
 
+	private static final long serialVersionUID = -6541472585482627310L;
 	private Long projectid;
 	private Long typeid;
 	private Long statusid;

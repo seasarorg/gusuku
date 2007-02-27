@@ -20,8 +20,6 @@ import java.util.List;
 import org.seasar.dao.annotation.tiger.S2Dao;
 import org.seasar.gusuku.dto.SearchDto;
 import org.seasar.gusuku.entity.Report;
-import org.seasar.gusuku.entity.SearchConditionBasic;
-import org.seasar.gusuku.entity.SearchConditionHead;
 
 @S2Dao(bean=Report.class)
 public interface SearchDao {

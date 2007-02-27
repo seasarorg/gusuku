@@ -54,9 +54,9 @@ public class PagerSupport {
 			dto = pagerCondition;
 			dto.setLimit(limit);
 			request.getSession().setAttribute(pagerConditionName,dto);
-			System.out.println("Save Condition");
+			//System.out.println("Save Condition");
 		}else{
-			System.out.println("Load Condition");
+			//System.out.println("Load Condition");
 			if(!StringUtil.isEmpty(pagerCondition.getSort()) && !StringUtil.isEmpty(pagerCondition.getOrder())){
 				dto.setSort(pagerCondition.getSort());
 				dto.setOrder(pagerCondition.getOrder());
