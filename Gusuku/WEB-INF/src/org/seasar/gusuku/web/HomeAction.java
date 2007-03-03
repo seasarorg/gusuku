@@ -50,7 +50,7 @@ public class HomeAction extends GusukuAction {
 	private List<Report> reportList;
 	
 	private List<Project> entryList;
-	private Map<Long,List> assignListMap = new HashMap();
+	private Map<Long,List> assignListMap = new HashMap<Long,List>();
 	
 	/**
 	 * ホーム
