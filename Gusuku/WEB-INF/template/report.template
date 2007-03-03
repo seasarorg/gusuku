@@ -1,12 +1,12 @@
 ${report.title}
 
-ƒvƒƒWƒFƒNƒg: ${report.project.name}
+ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ: ${report.project.name}
 KEY         : ${report.key}
-ƒ^ƒCƒv      : ${report.type.name}
-—Dæ“x      : ${report.priority.name}
-•ñÒ      : ${report.reporter.name}
-ƒAƒTƒCƒ“æ  : <#if report.assignee.name?exists>${report.assignee.name}</#if>
-ó‘Ô        : <#if report.resolution.name?exists>${report.resolution.name}</#if>
-ƒXƒe[ƒ^ƒX  : ${report.status.name} => ${next.name}
+ã‚¿ã‚¤ãƒ—      : ${report.type.name}
+å„ªå…ˆåº¦      : ${report.priority.name}
+å ±å‘Šè€…      : ${report.reporter.name}
+ã‚¢ã‚µã‚¤ãƒ³å…ˆ  : <#if report.assignee.name?exists>${report.assignee.name}</#if>
+çŠ¶æ…‹        : <#if report.resolution.name?exists>${report.resolution.name}</#if>
+ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹  : ${report.status.name} => ${next.name}
 
 ${report.detail}

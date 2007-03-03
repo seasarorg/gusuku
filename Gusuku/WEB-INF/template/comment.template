@@ -1,10 +1,10 @@
 ${report.title}
 
-ƒvƒƒWƒFƒNƒg: ${report.project.name}
+ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ: ${report.project.name}
 KEY         : ${report.key}
-ƒ^ƒCƒv      : ${report.type.name}
-—Dæ“x      : ${report.priority.name}
+ã‚¿ã‚¤ãƒ—      : ${report.type.name}
+å„ªå…ˆåº¦      : ${report.priority.name}
 
-“ŠeÒ      : ${writer}
+æŠ•ç¨¿è€…      : ${writer}
 
 ${comment}

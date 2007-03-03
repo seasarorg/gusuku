@@ -38,6 +38,7 @@ public class FreemarkerUtil {
 		if(!initialized){
 			try{
 				String path = ServletActionContext.getServletContext().getRealPath("WEB-INF"+File.separator+"template");
+				configuration.setDefaultEncoding("UTF-8");
 				configuration.setDirectoryForTemplateLoading(new File(path));
 			}catch(IOException e){
 				System.out.println(e);
