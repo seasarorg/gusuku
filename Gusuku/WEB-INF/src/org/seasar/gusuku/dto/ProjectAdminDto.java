@@ -23,6 +23,7 @@ public class ProjectAdminDto extends GusukuPagerCondition implements Serializabl
 	private Long id;
 	private String name;
 	private String key;
+	private Long counter;
 	private Long workflowid;
 	private Long typeid;
 	private Long priorityid;
@@ -159,6 +160,12 @@ public class ProjectAdminDto extends GusukuPagerCondition implements Serializabl
 	
 	public void setTypeid(Long typeid) {
 		this.typeid = typeid;
+	}
+	public Long getCounter() {
+		return counter;
+	}
+	public void setCounter(Long counter) {
+		this.counter = counter;
 	}
 	
 
