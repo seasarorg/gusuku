@@ -15,7 +15,7 @@
 
 	<m:insert m:id="projectid" path="/component/hidden.html"
 		nameValue="projectid" value="${project.id}"/>
-    <m:write id="report_key" value="${report.key}"/>
+    <m:write id="report_key" value="${report.key}-${report.seq}"/>
    	<m:insert id="report_type" path="/component/img.html"
 		src="${report.type.icon}" alt="${report.type.name}"/>
 	<m:write id="report_title" value="${report.title}"/>

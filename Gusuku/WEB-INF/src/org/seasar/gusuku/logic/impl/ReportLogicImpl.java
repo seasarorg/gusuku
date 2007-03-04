@@ -86,12 +86,13 @@ public class ReportLogicImpl implements ReportLogic {
 		if(!update){
 			//KEY値生成
 			//プロジェクトのカウンターをインクリメント
-			project.setCounter(project.getCounter()+1);
+			project.setSeq(project.getSeq()+1);
 			projectDao.update(project);
 			//インクリメント値を取得
 			//KEY + インクリメント値　を生成
 			//report へセット
-			report.setKey(project.getKey()+"-" + project.getCounter());
+			report.setKey(project.getKey());
+			report.setSeq(project.getSeq());
 			report.setMessageid("");
 			//ワークフローの初期状態をセット
 			WorkflowStatus workflowStatus =workflowStatusDao.findStartStatusById(project.getWorkflowid());

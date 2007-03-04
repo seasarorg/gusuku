@@ -30,6 +30,7 @@ public class Report implements Serializable {
 	private Long typeid;
 	private String title;
 	private String key;
+	private Long seq;
 	private String messageid;
 	private Long statusid;
 	private Long resolutionid;
@@ -249,6 +250,14 @@ public class Report implements Serializable {
 	
 	public void setVersion(Version version) {
 		this.version = version;
+	}
+	
+	public Long getSeq() {
+		return seq;
+	}
+	
+	public void setSeq(Long seq) {
+		this.seq = seq;
 	}
 	
 	

@@ -207,7 +207,7 @@
 		
 	<m:insert id="result_title_link" path="/component/a.html"
 		href="report_detail.html?id=${item.id}" link="${item.title}" title="${item.detail}"/>
-	<m:write id="result_key" value="${item.key}"/>
+	<m:write id="result_key" value="${item.key}-${item.seq}"/>
 	<m:insert id="result_priority" path="/component/img.html"
 		src="${item.priority.icon}" alt="${item.priority.name}"/>
 	<m:insert id="result_status" path="/component/img.html"

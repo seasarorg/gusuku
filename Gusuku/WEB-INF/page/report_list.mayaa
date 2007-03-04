@@ -15,7 +15,7 @@
 		src="${item.type.icon}" alt="${item.type.name}"/>
 	<m:insert id="report_title_link" path="/component/a.html"
 		href="report_detail.html?id=${item.id}" link="${item.title}" title="${item.detail}"/>
-	<m:write id="report_key" value="${item.key}"/>
+	<m:write id="report_key" value="${item.key}-${item.seq}"/>
 	<!--m:write id="report_priority" value="${item.priority.name}"/-->
 	<m:insert id="report_priority" path="/component/img.html"
 		src="${item.priority.icon}" alt="${item.priority.name}"/>

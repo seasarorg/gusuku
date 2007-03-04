@@ -37,6 +37,14 @@ public class SessionManagerServiceImpl implements SessionManagerService {
 		Account account = (Account)ServletActionContext.getRequest().getSession().getAttribute(GusukuConstant.AUTHENTICATE_KEY);
 		return account != null;
 	}
+	
+	public boolean isAdmin(){
+		Account account = (Account)ServletActionContext.getRequest().getSession().getAttribute(GusukuConstant.AUTHENTICATE_KEY);
+		if(account != null){
+			return account.getKind() == 1;
+		}
+		return false;
+	}
 
 	public Account getAccount() {
 		return (Account)ServletActionContext.getRequest().getSession().getAttribute(GusukuConstant.AUTHENTICATE_KEY);

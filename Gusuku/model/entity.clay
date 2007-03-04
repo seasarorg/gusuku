@@ -193,7 +193,7 @@
 <variant type-name-pattern="TEXT"/>
 </data-type>
 </column>
-<column alias="カウンタ" auto-increment="false" column-size="0" decimal-digits="0" default-value="0" mandatory="true" name="COUNTER" remarks="">
+<column alias="カウンタ" auto-increment="false" column-size="0" decimal-digits="0" default-value="0" mandatory="true" name="SEQ" remarks="">
 <column-description></column-description>
 <data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
 <variant type-name-pattern="BIGINT"/>
@@ -818,6 +818,12 @@
 <column-description></column-description>
 <data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
 <variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="カウンタ" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="SEQ" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
+<variant type-name-pattern="BIGINT"/>
 </data-type>
 </column>
 <column alias="Message-ID" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="MESSAGEID" remarks="">

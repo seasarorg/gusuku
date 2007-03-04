@@ -13,8 +13,8 @@
     
 	<m:insert m:id="id" path="/component/hidden.html"
 		nameValue="id" value="${model.id}" />
-	<m:insert m:id="counter" path="/component/hidden.html"
-		nameValue="counter" value="${model.counter}" />
+	<m:insert m:id="seq" path="/component/hidden.html"
+		nameValue="seq" value="${model.seq}" />
 	<m:insert m:id="name" path="/component/textfield.html"
 		nameValue="name" value="${model.name}" />
 	

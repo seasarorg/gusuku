@@ -1,5 +1,5 @@
 SELECT
-Project.ID,Project.NAME,Project.KEY,Project.COUNTER,Project.LEADERID,Project.WORKFLOWID,Project.TYPEID,Project.PRIORITYID,Project.RESOLUTIONID,Project.FORMID,Project.URL,Project.DEVURL,Project.SDATE,Project.EDATE,Project.DESCRIPTION,
+Project.ID,Project.NAME,Project.KEY,Project.SEQ,Project.LEADERID,Project.WORKFLOWID,Project.TYPEID,Project.PRIORITYID,Project.RESOLUTIONID,Project.FORMID,Project.URL,Project.DEVURL,Project.SDATE,Project.EDATE,Project.DESCRIPTION,
 Account.NAME NAME_0
 FROM PROJECT Project LEFT OUTER JOIN ACCOUNT Account ON Project.LEADERID = Account.ID
 WHERE

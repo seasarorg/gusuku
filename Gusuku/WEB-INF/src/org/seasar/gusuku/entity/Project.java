@@ -27,7 +27,7 @@ public class Project implements Serializable {
 	private static final long serialVersionUID = -1902238916067714889L;
 	private Long id;
 	private String key;
-	private long counter;
+	private Long seq;
 	private String name;
 	private Long leaderid;
 	private Long workflowid;
@@ -56,11 +56,11 @@ public class Project implements Serializable {
 	public void setLeader(Account leader) {
 		this.leader = leader;
 	}
-	public long getCounter() {
-		return counter;
+	public Long getSeq() {
+		return seq;
 	}
-	public void setCounter(long counter) {
-		this.counter = counter;
+	public void setSeq(Long seq) {
+		this.seq = seq;
 	}
 	public boolean isDelflag() {
 		return delflag;

@@ -37,6 +37,12 @@ public interface SessionManagerService {
 	public boolean isLogin();
 	
 	/**
+	 * 管理者かどうかを調べる
+	 * @return true:管理者
+	 */
+	public boolean isAdmin();
+	
+	/**
 	 * セッションからアカウント情報を取得する
 	 * @return アカウント情報
 	 */

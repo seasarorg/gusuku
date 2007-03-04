@@ -97,11 +97,7 @@ public class SearchDaoImpl extends AbstractDao implements SearchDao {
 				sql.append("AND REPORT.TITLE LIKE ? "); 
 				params.add("%"+searchConditionBasic.getTitle()+"%");
 			}
-			/*
-			if(!StringUtil.isEmpty(searchConditionBasic.getKey())){
-				sql.append("AND REPORT.KEY = ? ");
-			}
-			*/
+			
 			if(!StringUtil.isEmpty(searchConditionBasic.getEnvironment())){
 				sql.append("AND REPORT.ENVIRONMENT LIKE ? ");
 				params.add("%"+searchConditionBasic.getEnvironment()+"%");
@@ -192,7 +188,11 @@ public class SearchDaoImpl extends AbstractDao implements SearchDao {
 			}else if(searchDto.getSort().equals("TYPE")){
 				sql.append("(SELECT SORT FROM TYPE_SCHEME WHERE HEADID = PROJECT.TYPEID AND REPORT.TYPEID = TYPEID) ");
 			}else if(searchDto.getSort().equals("KEY")){
-				sql.append("CONVERT(SUBSTR(REPORT.KEY,POSITION('-',REPORT.KEY)+1),INT) ");
+				if(searchDto.getOrder().equals("DESC")){
+					sql.append("REPORT.KEY DESC,REPORT.SEQ ");
+				}else{
+					sql.append("REPORT.KEY,REPORT.SEQ ");
+				}
 			}else if(searchDto.getSort().equals("STATUS")){
 				sql.append(" (SELECT CASE WHEN SFLAG = TRUE THEN 1 ELSE (CASE WHEN EFLAG = TRUE THEN 99 ELSE ID END) END  FROM WORKFLOW_STATUS WHERE WORKFLOWID = PROJECT.WORKFLOWID AND STATUSID = REPORT.STATUSID) ");
 			}else if(searchDto.getSort().equals("TITLE")){
@@ -210,18 +210,16 @@ public class SearchDaoImpl extends AbstractDao implements SearchDao {
 			}
 			
 			if(!searchDto.getSort().equals("KEY")){
-				sql.append(",CONVERT(SUBSTR(REPORT.KEY,POSITION('-',REPORT.KEY)+1),INT)  ");
+				sql.append(",REPORT.KEY,REPORT.SEQ  ");
 			}
 		}else{
 			sql.append("ORDER BY ");
-
-				//優先度ソート
-				sql.append("(SELECT SORT FROM PRIORITY_SCHEME WHERE HEADID = PROJECT.PRIORITYID AND REPORT.PRIORITYID = PRIORITYID) ");
+			//優先度ソート
+			sql.append("(SELECT SORT FROM PRIORITY_SCHEME WHERE HEADID = PROJECT.PRIORITYID AND REPORT.PRIORITYID = PRIORITYID) ");
 			
 		}
 		
-		//sql.append("REPORT.RDATE DESC ");
-//		ホーム表示用
+		//ホーム表示用
 		if(searchConditionHead != null){
 			sql.append(" LIMIT " + searchConditionHead.getAmount());
 		}else{
