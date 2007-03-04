@@ -21,6 +21,7 @@ import org.seasar.gusuku.dto.CustomValueDetailAdminDto;
 import org.seasar.gusuku.entity.CustomValueDetail;
 import org.seasar.gusuku.entity.CustomValueHead;
 import org.seasar.gusuku.helper.CustomValueHelper;
+import org.seasar.gusuku.interceptor.AdminAuthenticateAware;
 import org.seasar.gusuku.logic.CustomValueDetailAdminLogic;
 import org.seasar.gusuku.web.GusukuAction;
 import org.seasar.xwork.annotation.Param;
@@ -37,7 +38,7 @@ import com.opensymphony.xwork.Preparable;
  *
  */
 public class CustomValueDetailAdminAction extends GusukuAction implements
-		ModelDriven,Preparable {
+		ModelDriven,Preparable,AdminAuthenticateAware {
 
 	private static final long serialVersionUID = -3748386991488460481L;
 	private CustomValueDetailAdminLogic customValueDetailAdminLogic;

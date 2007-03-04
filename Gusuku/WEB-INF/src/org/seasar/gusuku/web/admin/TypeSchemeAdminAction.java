@@ -22,6 +22,7 @@ import org.seasar.gusuku.entity.Type;
 import org.seasar.gusuku.entity.TypeHead;
 import org.seasar.gusuku.entity.TypeScheme;
 import org.seasar.gusuku.helper.TypeHelper;
+import org.seasar.gusuku.interceptor.AdminAuthenticateAware;
 import org.seasar.gusuku.logic.TypeSchemeAdminLogic;
 import org.seasar.gusuku.web.GusukuAction;
 import org.seasar.xwork.annotation.Param;
@@ -31,7 +32,7 @@ import org.seasar.xwork.annotation.XWorkAction;
 import com.opensymphony.xwork.ModelDriven;
 
 
-public class TypeSchemeAdminAction extends GusukuAction implements ModelDriven{
+public class TypeSchemeAdminAction extends GusukuAction implements ModelDriven,AdminAuthenticateAware{
 	
 	private static final long serialVersionUID = 7421966414760767061L;
 	private TypeSchemeAdminDto dto = new TypeSchemeAdminDto();

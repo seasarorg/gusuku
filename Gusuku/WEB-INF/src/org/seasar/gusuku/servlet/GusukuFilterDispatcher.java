@@ -15,6 +15,7 @@
  */
 package org.seasar.gusuku.servlet;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,7 +40,7 @@ public class GusukuFilterDispatcher extends FilterDispatcher {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
 		ServletContext servletContext = filterConfig.getServletContext();
-		String appName = "/" + servletContext.getServletContextName();
+		String appName = "/" + servletContext.getRealPath("").substring(servletContext.getRealPath("").lastIndexOf(File.separator)+1);
 		String path = ((HttpServletRequest)request).getRequestURI();
 		path = path.substring(appName.length());
 

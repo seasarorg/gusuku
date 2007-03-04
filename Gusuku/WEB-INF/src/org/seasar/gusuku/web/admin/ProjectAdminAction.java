@@ -36,6 +36,7 @@ import org.seasar.gusuku.helper.ProjectHelper;
 import org.seasar.gusuku.helper.ResolutionHelper;
 import org.seasar.gusuku.helper.TypeHelper;
 import org.seasar.gusuku.helper.WorkflowHelper;
+import org.seasar.gusuku.interceptor.AdminAuthenticateAware;
 import org.seasar.gusuku.logic.ProjectAdminLogic;
 import org.seasar.gusuku.web.GusukuAction;
 import org.seasar.xwork.annotation.Param;
@@ -52,7 +53,7 @@ import com.opensymphony.xwork.Preparable;
  * @author duran
  *
  */
-public class ProjectAdminAction extends GusukuAction implements ModelDriven,Preparable {
+public class ProjectAdminAction extends GusukuAction implements ModelDriven,Preparable,AdminAuthenticateAware {
 
 	private static final long serialVersionUID = 1532329301918514343L;
 	private ProjectAdminLogic projectAdminLogic;

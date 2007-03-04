@@ -15,9 +15,11 @@
  */
 package org.seasar.gusuku.web.mypage;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.entity.SearchConditionHead;
 import org.seasar.gusuku.helper.SearchConditionHelper;
 import org.seasar.gusuku.logic.SearchLogic;
@@ -26,7 +28,9 @@ import org.seasar.xwork.annotation.Param;
 import org.seasar.xwork.annotation.Result;
 import org.seasar.xwork.annotation.XWorkAction;
 
-public class HomeAction extends GusukuAction {
+import com.opensymphony.xwork.Preparable;
+
+public class HomeAction extends GusukuAction implements Preparable{
 	
 	private static final long serialVersionUID = 7632043202798048261L;
 	private SearchConditionHelper searchConditionHelper;
@@ -37,14 +41,45 @@ public class HomeAction extends GusukuAction {
 	private Map amount;
 	private Long id;
 	
+	public void prepare(){
+	}
+	
+	public void prepareInit(){
+		list = searchConditionHelper.getSearchConditionHead(getLoginid());	
+	}
+	public void prepareUpdate(){
+		list = searchConditionHelper.getSearchConditionHead(getLoginid());
+	}
+	
 	@XWorkAction(name = "portlet", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/mypage/home.html")))
 	public String init(){
-		list = searchConditionHelper.getSearchConditionHead(getLoginid());
+	
 		return SUCCESS;
 	}
 	
-	@XWorkAction(name = "portlet_update", result = @Result(type = "redirect", param = @Param(name = "location", value = "portlet.html")))
+	@XWorkAction(name = "portlet_update", result = {
+			@Result(type = "redirect", param = @Param(name = "location", value = "portlet.html")),
+			@Result(name = "input", type = "mayaa", param = @Param(name = "location", value = "/mypage/home.html")) })
 	public String update(){
+		if(amount != null && amount.size() > 0){
+			for(Iterator ite = amount.keySet().iterator();ite.hasNext();){
+				String id = (String)ite.next();
+				String tmp = ((String[])amount.get(id))[0];
+				if(StringUtil.isEmpty(tmp)){
+					addFieldError("amount",getText("home.amount.required"));
+					break;
+				}
+				try{
+					Long.parseLong(tmp);
+				}catch(NumberFormatException e){
+					addFieldError("amount",getText("home.amount.number"));
+					break;
+				}
+			}
+		}
+		if(hasFieldErrors()){
+			return INPUT;
+		}
 		searchLogic.update(visible,amount);
 		return SUCCESS;
 	}

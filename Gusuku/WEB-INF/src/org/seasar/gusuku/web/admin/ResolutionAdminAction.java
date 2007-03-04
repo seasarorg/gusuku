@@ -20,6 +20,7 @@ import java.util.List;
 import org.seasar.gusuku.dto.ResolutionAdminDto;
 import org.seasar.gusuku.entity.Resolution;
 import org.seasar.gusuku.helper.ResolutionHelper;
+import org.seasar.gusuku.interceptor.AdminAuthenticateAware;
 import org.seasar.gusuku.logic.ResolutionAdminLogic;
 import org.seasar.gusuku.web.GusukuAction;
 import org.seasar.xwork.annotation.Param;
@@ -29,7 +30,7 @@ import org.seasar.xwork.annotation.XWorkAction;
 import com.opensymphony.webwork.util.TokenHelper;
 import com.opensymphony.xwork.ModelDriven;
 
-public class ResolutionAdminAction extends GusukuAction implements ModelDriven{
+public class ResolutionAdminAction extends GusukuAction implements ModelDriven,AdminAuthenticateAware{
 
 	private static final long serialVersionUID = -6469970456867745572L;
 	private ResolutionAdminDto dto = new ResolutionAdminDto();

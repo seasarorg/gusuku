@@ -20,6 +20,6 @@ package org.seasar.gusuku.interceptor;
  * @author duran
  *
  */
-public interface NonAuthenticateAction {
+public interface NonAuthenticateAware {
 
 }

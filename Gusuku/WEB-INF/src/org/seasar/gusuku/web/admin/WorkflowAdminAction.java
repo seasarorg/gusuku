@@ -24,6 +24,7 @@ import org.seasar.gusuku.entity.WorkflowStatus;
 import org.seasar.gusuku.helper.StatusHelper;
 import org.seasar.gusuku.helper.WorkflowHelper;
 import org.seasar.gusuku.helper.WorkflowStatusHelper;
+import org.seasar.gusuku.interceptor.AdminAuthenticateAware;
 import org.seasar.gusuku.logic.WorkflowAdminLogic;
 import org.seasar.gusuku.web.GusukuAction;
 import org.seasar.xwork.annotation.Param;
@@ -39,7 +40,7 @@ import com.opensymphony.xwork.Preparable;
  * @author duran
  *
  */
-public class WorkflowAdminAction extends GusukuAction implements ModelDriven,Preparable {
+public class WorkflowAdminAction extends GusukuAction implements ModelDriven,Preparable,AdminAuthenticateAware {
 
 	private static final long serialVersionUID = 5402723495850746817L;
 

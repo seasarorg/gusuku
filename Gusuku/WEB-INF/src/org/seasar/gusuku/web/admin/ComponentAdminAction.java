@@ -21,6 +21,7 @@ import org.seasar.gusuku.dto.ComponentAdminDto;
 import org.seasar.gusuku.entity.Project;
 import org.seasar.gusuku.helper.ComponentHelper;
 import org.seasar.gusuku.helper.ProjectHelper;
+import org.seasar.gusuku.interceptor.AdminAuthenticateAware;
 import org.seasar.gusuku.logic.ComponentAdminLogic;
 import org.seasar.gusuku.web.GusukuAction;
 import org.seasar.xwork.annotation.Param;
@@ -36,7 +37,7 @@ import com.opensymphony.xwork.Preparable;
  * @author duran
  *
  */
-public class ComponentAdminAction extends GusukuAction implements ModelDriven,Preparable {
+public class ComponentAdminAction extends GusukuAction implements ModelDriven,Preparable,AdminAuthenticateAware {
 	
 	private static final long serialVersionUID = 95904290698645852L;
 	private ComponentAdminLogic componentAdminLogic;

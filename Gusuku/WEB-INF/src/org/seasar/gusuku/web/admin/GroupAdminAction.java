@@ -24,6 +24,7 @@ import org.seasar.gusuku.entity.Account;
 import org.seasar.gusuku.entity.Groupbase;
 import org.seasar.gusuku.helper.AccountHelper;
 import org.seasar.gusuku.helper.GroupbaseHelper;
+import org.seasar.gusuku.interceptor.AdminAuthenticateAware;
 import org.seasar.gusuku.logic.GroupbaseAdminLogic;
 import org.seasar.gusuku.web.GusukuAction;
 import org.seasar.xwork.annotation.Param;
@@ -39,7 +40,7 @@ import com.opensymphony.xwork.ModelDriven;
  * @author duran
  *
  */
-public class GroupAdminAction extends GusukuAction implements ModelDriven{
+public class GroupAdminAction extends GusukuAction implements ModelDriven,AdminAuthenticateAware{
 	
 	private static final long serialVersionUID = -142765400130553629L;
 	private GroupbaseAdminLogic groupbaseAdminLogic;

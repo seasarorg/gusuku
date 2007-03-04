@@ -16,7 +16,7 @@
 package org.seasar.gusuku.web;
 
 import org.seasar.gusuku.dto.AuthenticateDto;
-import org.seasar.gusuku.interceptor.NonAuthenticateAction;
+import org.seasar.gusuku.interceptor.NonAuthenticateAware;
 import org.seasar.gusuku.logic.AuthenticateLogic;
 import org.seasar.xwork.annotation.Param;
 import org.seasar.xwork.annotation.Result;
@@ -30,7 +30,7 @@ import com.opensymphony.xwork.ModelDriven;
  * @author duran
  */
 public class AuthenticateAction extends GusukuAction implements
-		NonAuthenticateAction, ModelDriven {
+		NonAuthenticateAware, ModelDriven {
 
 	private static final long serialVersionUID = 6373596856464873826L;
 

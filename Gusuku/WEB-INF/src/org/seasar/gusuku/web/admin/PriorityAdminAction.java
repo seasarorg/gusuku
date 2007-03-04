@@ -20,6 +20,7 @@ import java.util.List;
 import org.seasar.gusuku.dto.PriorityAdminDto;
 import org.seasar.gusuku.entity.Priority;
 import org.seasar.gusuku.helper.PriorityHelper;
+import org.seasar.gusuku.interceptor.AdminAuthenticateAware;
 import org.seasar.gusuku.logic.PriorityAdminLogic;
 import org.seasar.gusuku.web.GusukuAction;
 import org.seasar.xwork.annotation.Param;
@@ -29,7 +30,7 @@ import org.seasar.xwork.annotation.XWorkAction;
 import com.opensymphony.webwork.util.TokenHelper;
 import com.opensymphony.xwork.ModelDriven;
 
-public class PriorityAdminAction extends GusukuAction implements ModelDriven{
+public class PriorityAdminAction extends GusukuAction implements ModelDriven,AdminAuthenticateAware{
 	
 	private static final long serialVersionUID = -148895630206971613L;
 	private PriorityAdminDto dto = new PriorityAdminDto();

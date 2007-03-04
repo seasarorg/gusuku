@@ -20,6 +20,7 @@ import java.util.List;
 import org.seasar.gusuku.dto.CustomValueHeadAdminDto;
 import org.seasar.gusuku.entity.CustomValueHead;
 import org.seasar.gusuku.helper.CustomValueHelper;
+import org.seasar.gusuku.interceptor.AdminAuthenticateAware;
 import org.seasar.gusuku.logic.CustomValueHeadAdminLogic;
 import org.seasar.gusuku.web.GusukuAction;
 import org.seasar.xwork.annotation.Param;
@@ -34,7 +35,7 @@ import com.opensymphony.xwork.ModelDriven;
  * @author duran
  *
  */
-public class CustomValueHeadAdminAction extends GusukuAction implements ModelDriven{
+public class CustomValueHeadAdminAction extends GusukuAction implements ModelDriven,AdminAuthenticateAware{
 
 	private static final long serialVersionUID = 6699658705720352606L;
 	private CustomValueHeadAdminDto dto = new CustomValueHeadAdminDto();

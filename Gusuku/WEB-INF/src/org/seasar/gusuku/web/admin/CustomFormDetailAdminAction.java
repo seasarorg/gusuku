@@ -25,6 +25,7 @@ import org.seasar.gusuku.entity.FormType;
 import org.seasar.gusuku.helper.CustomFormHelper;
 import org.seasar.gusuku.helper.CustomValueHelper;
 import org.seasar.gusuku.helper.FormTypeHelper;
+import org.seasar.gusuku.interceptor.AdminAuthenticateAware;
 import org.seasar.gusuku.logic.CustomFormDetailAdminLogic;
 import org.seasar.gusuku.web.GusukuAction;
 import org.seasar.xwork.annotation.Param;
@@ -40,7 +41,7 @@ import com.opensymphony.xwork.Preparable;
  * @author duran
  *
  */
-public class CustomFormDetailAdminAction extends GusukuAction implements ModelDriven,Preparable{
+public class CustomFormDetailAdminAction extends GusukuAction implements ModelDriven,Preparable,AdminAuthenticateAware{
 
 	private static final long serialVersionUID = -3004552876672844928L;
 	private CustomFormDetailAdminDto dto = new CustomFormDetailAdminDto();

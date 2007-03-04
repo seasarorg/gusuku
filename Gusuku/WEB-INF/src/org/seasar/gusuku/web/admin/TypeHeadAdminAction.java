@@ -20,6 +20,7 @@ import java.util.List;
 import org.seasar.gusuku.dto.TypeHeadAdminDto;
 import org.seasar.gusuku.entity.TypeHead;
 import org.seasar.gusuku.helper.TypeHelper;
+import org.seasar.gusuku.interceptor.AdminAuthenticateAware;
 import org.seasar.gusuku.logic.TypeHeadAdminLogic;
 import org.seasar.gusuku.web.GusukuAction;
 import org.seasar.xwork.annotation.Param;
@@ -29,7 +30,7 @@ import org.seasar.xwork.annotation.XWorkAction;
 import com.opensymphony.webwork.util.TokenHelper;
 import com.opensymphony.xwork.ModelDriven;
 
-public class TypeHeadAdminAction extends GusukuAction implements ModelDriven{
+public class TypeHeadAdminAction extends GusukuAction implements ModelDriven,AdminAuthenticateAware{
 
 	private static final long serialVersionUID = -7801957126851026502L;
 	private TypeHeadAdminDto dto = new TypeHeadAdminDto();

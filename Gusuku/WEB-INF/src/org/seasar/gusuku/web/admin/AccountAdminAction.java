@@ -25,6 +25,7 @@ import org.seasar.gusuku.entity.Account;
 import org.seasar.gusuku.entity.AccountKind;
 import org.seasar.gusuku.helper.AccountHelper;
 import org.seasar.gusuku.helper.AccountKindHelper;
+import org.seasar.gusuku.interceptor.AdminAuthenticateAware;
 import org.seasar.gusuku.logic.AccountAdminLogic;
 import org.seasar.gusuku.web.GusukuAction;
 import org.seasar.xwork.annotation.Param;
@@ -41,7 +42,7 @@ import com.opensymphony.xwork.Preparable;
  * @author duran
  *
  */
-public class AccountAdminAction extends GusukuAction implements ModelDriven,Preparable {
+public class AccountAdminAction extends GusukuAction implements ModelDriven,Preparable,AdminAuthenticateAware {
 
 	private static final long serialVersionUID = -8360123046340756747L;
 	private AccountAdminLogic accountAdminLogic;

@@ -20,6 +20,7 @@ import java.util.List;
 import org.seasar.gusuku.dto.StatusAdminDto;
 import org.seasar.gusuku.entity.Status;
 import org.seasar.gusuku.helper.StatusHelper;
+import org.seasar.gusuku.interceptor.AdminAuthenticateAware;
 import org.seasar.gusuku.logic.StatusAdminLogic;
 import org.seasar.gusuku.web.GusukuAction;
 import org.seasar.xwork.annotation.Param;
@@ -34,7 +35,7 @@ import com.opensymphony.xwork.ModelDriven;
  * @author duran
  *
  */
-public class StatusAdminAction extends GusukuAction implements ModelDriven {
+public class StatusAdminAction extends GusukuAction implements ModelDriven ,AdminAuthenticateAware{
 
 	private static final long serialVersionUID = -2257989462791919363L;
 

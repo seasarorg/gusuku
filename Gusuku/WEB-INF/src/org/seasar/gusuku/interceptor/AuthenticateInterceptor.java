@@ -40,15 +40,15 @@ public class AuthenticateInterceptor implements Interceptor {
 	public String intercept(ActionInvocation invocation) throws Exception {
 		Action action = (Action)invocation.getAction();
 		
-		if(action instanceof NonAuthenticateAction){
+		if(action instanceof NonAuthenticateAware){
 			//チェックしない
 			return invocation.invoke();
 		}
 		
 		if(sessionManagerService.isLogin()){
 			//管理ツールチェック
-			if(action.getClass().getName().indexOf("Admin") > 0){
-				if(sessionManagerService.getAccount().getKind() == 1){
+			if(action instanceof AdminAuthenticateAware){
+				if(sessionManagerService.isAdmin()){
 					return invocation.invoke();
 				}
 			}else{

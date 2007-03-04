@@ -19,6 +19,7 @@ import java.io.File;
 import java.util.Map;
 
 import org.seasar.framework.util.StringUtil;
+import org.seasar.gusuku.interceptor.AdminAuthenticateAware;
 import org.seasar.gusuku.logic.SystemPropertyLogic;
 import org.seasar.gusuku.util.ParameterUtil;
 import org.seasar.gusuku.util.PropertyUtil;
@@ -31,7 +32,7 @@ import com.opensymphony.webwork.interceptor.ParameterAware;
 
 
 public class SystemPropertyAction extends GusukuAction implements
-		ParameterAware {
+		ParameterAware,AdminAuthenticateAware {
 	
 	private static final long serialVersionUID = 2662400126409905783L;
 	private Map<String, String[]> parameters;

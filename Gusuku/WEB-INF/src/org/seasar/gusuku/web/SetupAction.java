@@ -21,7 +21,7 @@ import java.util.Map;
 import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.GusukuConstant;
 import org.seasar.gusuku.dto.AccountAdminDto;
-import org.seasar.gusuku.interceptor.NonAuthenticateAction;
+import org.seasar.gusuku.interceptor.NonAuthenticateAware;
 import org.seasar.gusuku.logic.AccountAdminLogic;
 import org.seasar.gusuku.logic.SystemPropertyLogic;
 import org.seasar.gusuku.util.ParameterUtil;
@@ -30,9 +30,10 @@ import org.seasar.xwork.annotation.Param;
 import org.seasar.xwork.annotation.Result;
 import org.seasar.xwork.annotation.XWorkAction;
 
+import com.opensymphony.webwork.ServletActionContext;
 import com.opensymphony.webwork.interceptor.ParameterAware;
 
-public class SetupAction extends GusukuAction implements NonAuthenticateAction,
+public class SetupAction extends GusukuAction implements NonAuthenticateAware,
 		ParameterAware {
 
 	private static final long serialVersionUID = -5949576909188190374L;
@@ -45,7 +46,10 @@ public class SetupAction extends GusukuAction implements NonAuthenticateAction,
 	@XWorkAction(name = "setup", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/setup.html")))
 	public String init(){
 		String setup = PropertyUtil.getProperty(GusukuConstant.SETUP_DONE);
+		
 		if(StringUtil.isEmpty(setup)){
+			String path = ServletActionContext.getServletContext().getRealPath("WEB-INF"+File.separator+"upload");
+			ParameterUtil.putParameterValue(parameters,"dir",path);
 			return SUCCESS;
 		}else{
 			return "login";
