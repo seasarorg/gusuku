@@ -39,7 +39,8 @@ public class ResolutionHead implements Serializable {
 		this.description = description;
 	}
 	
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="RESOLUTION_HEAD_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

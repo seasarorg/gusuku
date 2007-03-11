@@ -47,7 +47,8 @@ public class StatusHistory implements Serializable {
 		this.changerid = changerid;
 	}
 	
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="STATUS_HISTORY_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

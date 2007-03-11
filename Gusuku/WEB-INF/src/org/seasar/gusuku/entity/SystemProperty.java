@@ -29,7 +29,8 @@ public class SystemProperty implements Serializable {
 	private String key;
 	private String value;
 	
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="SYSTEM_PROPERTY_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

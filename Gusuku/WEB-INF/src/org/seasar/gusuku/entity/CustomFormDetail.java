@@ -69,7 +69,8 @@ public class CustomFormDetail implements Serializable {
 		this.formheadid = formheadid;
 	}
 	
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="CUSTOM_FORM_DETAIL_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

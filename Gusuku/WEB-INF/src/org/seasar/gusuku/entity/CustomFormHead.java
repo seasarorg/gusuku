@@ -46,7 +46,8 @@ public class CustomFormHead implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="CUSTOM_FORM_HEAD_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

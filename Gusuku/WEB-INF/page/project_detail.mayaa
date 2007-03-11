@@ -38,25 +38,25 @@
 		nameValue="comment" value="3" checked="${mailCondition.comment}" />
 		
 	<m:insert id="start_all" path="/component/radio.html"
-		nameValue="start" value="1" checked="${mailCondition.start}" defaultValue="1" />
+		nameValue="startmail" value="1" checked="${mailCondition.startmail}" defaultValue="1" />
 	<m:insert id="start_assign" path="/component/radio.html"
-		nameValue="start" value="2" checked="${mailCondition.start}" />
+		nameValue="startmail" value="2" checked="${mailCondition.startmail}" />
 	<m:insert id="start_deny" path="/component/radio.html"
-		nameValue="start" value="3" checked="${mailCondition.start}" />
+		nameValue="startmail" value="3" checked="${mailCondition.startmail}" />
 
 	<m:insert id="process_all" path="/component/radio.html"
-		nameValue="process" value="1" checked="${mailCondition.process}" />
+		nameValue="processmail" value="1" checked="${mailCondition.processmail}" />
 	<m:insert id="process_assign" path="/component/radio.html"
-		nameValue="process" value="2" checked="${mailCondition.process}" />
+		nameValue="processmail" value="2" checked="${mailCondition.processmail}" />
 	<m:insert id="process_deny" path="/component/radio.html"
-		nameValue="process" value="3" checked="${mailCondition.process}" defaultValue="3" />  
+		nameValue="processmail" value="3" checked="${mailCondition.processmail}" defaultValue="3" />  
 		
 	<m:insert id="end_all" path="/component/radio.html"
-		nameValue="end" value="1" checked="${mailCondition.end}" defaultValue="1" />
+		nameValue="endmail" value="1" checked="${mailCondition.endmail}" defaultValue="1" />
 	<m:insert id="end_assign" path="/component/radio.html"
-		nameValue="end" value="2" checked="${mailCondition.end}" />
+		nameValue="endmail" value="2" checked="${mailCondition.endmail}" />
 	<m:insert id="end_deny" path="/component/radio.html"
-		nameValue="end" value="3" checked="${mailCondition.end}" />  
+		nameValue="endmail" value="3" checked="${mailCondition.endmail}" />  
 	
 	<m:forEach id="typeList" items="${projectReport.typeProgress}" var="type" replace="false"/>
 	<!--m:write id="type_name" value="${type.name}" /-->

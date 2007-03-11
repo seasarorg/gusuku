@@ -37,7 +37,8 @@ public class ProjectGroupbase implements Serializable {
 		this.groupbaseid = groupbaseid;
 	}
 	
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="PROJECT_GROUPBASE_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

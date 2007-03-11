@@ -39,7 +39,8 @@ public class ResolutionScheme implements Serializable {
 	public void setHeadid(Long headid) {
 		this.headid = headid;
 	}
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="RESOLUTION_SCHEME_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

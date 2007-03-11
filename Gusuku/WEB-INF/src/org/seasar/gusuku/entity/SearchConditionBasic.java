@@ -81,7 +81,8 @@ public class SearchConditionBasic implements Serializable {
 		this.environment = environment;
 	}
 	
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="SEARCH_CONDITION_BASIC_ID_SEQ")
 	public long getId() {
 		return id;
 	}

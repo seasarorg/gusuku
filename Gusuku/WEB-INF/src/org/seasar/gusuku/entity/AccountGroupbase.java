@@ -42,7 +42,8 @@ public class AccountGroupbase implements Serializable {
 		this.groupbaseid = groupbaseid;
 	}
 
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="ACCOUNT_GROUPBASE_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

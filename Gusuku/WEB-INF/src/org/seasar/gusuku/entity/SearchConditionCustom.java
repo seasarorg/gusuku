@@ -65,7 +65,8 @@ public class SearchConditionCustom implements Serializable {
 		this.formid = formid;
 	}
 	
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="SEARCH_CONDITION_CUSTOM_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

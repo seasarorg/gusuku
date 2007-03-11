@@ -38,7 +38,7 @@ public interface ProjectDao {
 	@Query("Project.ID = /*id*/ AND Project.DELFLAG = FALSE")
 	public Project findById(Long id);
 
-	@Query("Project.ID = /*id*/ AND Project.DELFLAG = FALSE FOR UPDATE")
+	@Query("Project.ID = /*id*/ AND Project.DELFLAG = FALSE ")//FOR UPDATE")
 	public Project findByIdForUpdate(Long projectid);
 	
 	public void updateDelflag(Long[] delids);

@@ -32,7 +32,8 @@ public class TypeHead implements Serializable {
 	private Date rdate;
 	private Date udate;
 	
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="TYPE_HEAD_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

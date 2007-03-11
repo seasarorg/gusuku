@@ -179,37 +179,43 @@ public class SearchDaoImpl extends AbstractDao implements SearchDao {
 		}
 		
 		//TODO ソート順序をどうするか？
-		if(!StringUtil.isEmpty(searchDto.getSort())){
+		String sort = searchDto.getSort();
+		String order = searchDto.getOrder();
+		if(searchConditionHead != null){
+			sort = searchConditionHead.getSortkey();
+			order = searchConditionHead.getOrdr();
+		}
+		if(!StringUtil.isEmpty(sort)){
 			sql.append("ORDER BY ");
 
-			if(searchDto.getSort().equals("PRIORITY")){
+			if(sort.equals("PRIORITY")){
 				//優先度ソート
 				sql.append("(SELECT SORT FROM PRIORITY_SCHEME WHERE HEADID = PROJECT.PRIORITYID AND REPORT.PRIORITYID = PRIORITYID) ");
-			}else if(searchDto.getSort().equals("TYPE")){
+			}else if(sort.equals("TYPE")){
 				sql.append("(SELECT SORT FROM TYPE_SCHEME WHERE HEADID = PROJECT.TYPEID AND REPORT.TYPEID = TYPEID) ");
-			}else if(searchDto.getSort().equals("KEY")){
+			}else if(sort.equals("KEY")){
 				if(searchDto.getOrder().equals("DESC")){
 					sql.append("REPORT.KEY DESC,REPORT.SEQ ");
 				}else{
 					sql.append("REPORT.KEY,REPORT.SEQ ");
 				}
-			}else if(searchDto.getSort().equals("STATUS")){
+			}else if(sort.equals("STATUS")){
 				sql.append(" (SELECT CASE WHEN SFLAG = TRUE THEN 1 ELSE (CASE WHEN EFLAG = TRUE THEN 99 ELSE ID END) END  FROM WORKFLOW_STATUS WHERE WORKFLOWID = PROJECT.WORKFLOWID AND STATUSID = REPORT.STATUSID) ");
-			}else if(searchDto.getSort().equals("TITLE")){
+			}else if(sort.equals("TITLE")){
 				sql.append("REPORT.TITLE ");
-			}else if(searchDto.getSort().equals("ASSIGNEE")){
+			}else if(sort.equals("ASSIGNEE")){
 				sql.append("(SELECT NAME FROM ACCOUNT WHERE ID = REPORT.ASSIGNEEID) ");
-			}else if(searchDto.getSort().equals("REPORTER")){
+			}else if(sort.equals("REPORTER")){
 				sql.append("(SELECT NAME FROM ACCOUNT WHERE ID = REPORT.REPORTERID) ");
-			}else if(searchDto.getSort().equals("RDATE")){
+			}else if(sort.equals("RDATE")){
 				sql.append("RDATE ");
 			}
 			
-			if(searchDto.getOrder().equals("DESC")){
+			if(order.equals("DESC")){
 				sql.append("DESC");
 			}
 			
-			if(!searchDto.getSort().equals("KEY")){
+			if(!sort.equals("KEY")){
 				sql.append(",REPORT.KEY,REPORT.SEQ  ");
 			}
 		}else{

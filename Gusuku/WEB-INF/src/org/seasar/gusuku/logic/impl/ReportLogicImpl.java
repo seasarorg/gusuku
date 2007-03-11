@@ -382,11 +382,11 @@ public class ReportLogicImpl implements ReportLogic {
 					//mail.setText(workflowStatus.getStatus().getName()+"へ変更");
 	
 					if (workflowStatus.isSflag()) {
-						addMailList(report, sendList, mailCondition.getStart(), mail,mailCondition.getAccountid());
+						addMailList(report, sendList, mailCondition.getStartmail(), mail,mailCondition.getAccountid());
 					}else if (workflowStatus.isEflag()) {
-						addMailList(report, sendList, mailCondition.getEnd(), mail,mailCondition.getAccountid());
+						addMailList(report, sendList, mailCondition.getEndmail(), mail,mailCondition.getAccountid());
 					}else{
-						addMailList(report, sendList, mailCondition.getProcess(), mail,mailCondition.getAccountid());
+						addMailList(report, sendList, mailCondition.getProcessmail(), mail,mailCondition.getAccountid());
 					}
 				}
 			}else{
@@ -394,11 +394,11 @@ public class ReportLogicImpl implements ReportLogic {
 				mail.addTo(mailaddr);
 				for (MailCondition mailCondition : pickList) {
 					if (workflowStatus.isSflag()) {
-						addBcc(report,mail,mailCondition.getStart(),mailCondition.getAccount().getMailaddr(),mailCondition.getAccountid());
+						addBcc(report,mail,mailCondition.getStartmail(),mailCondition.getAccount().getMailaddr(),mailCondition.getAccountid());
 					}else if (workflowStatus.isEflag()) {
-						addBcc(report,mail,mailCondition.getEnd(),mailCondition.getAccount().getMailaddr(),mailCondition.getAccountid());
+						addBcc(report,mail,mailCondition.getEndmail(),mailCondition.getAccount().getMailaddr(),mailCondition.getAccountid());
 					}else{
-						addBcc(report,mail,mailCondition.getProcess(),mailCondition.getAccount().getMailaddr(),mailCondition.getAccountid());
+						addBcc(report,mail,mailCondition.getProcessmail(),mailCondition.getAccount().getMailaddr(),mailCondition.getAccountid());
 					}
 				}
 				mail.setFrom(PropertyUtil.getProperty(GusukuConstant.MAIL_FROM));

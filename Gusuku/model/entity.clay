@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <clay-model clay-version="1.2.0">
-<database-model alias="" author="" begin-script="" end-script="" name="entity" remarks="" sql-dialect-id="jp.azzurri.clay.model.physical.dialect.HSQLDB_1_7_2_Dialect" version="1.0">
+<database-model alias="" author="" begin-script="" end-script="" name="entity" remarks="" sql-dialect-id="jp.azzurri.clay.model.physical.dialect.Postgre_7_3_Dialect" version="1.0">
 <database-model-description></database-model-description>
 <schema-list>
 <schema alias="" name="DEFAULT_SCHEMA" remarks="">
@@ -1707,6 +1707,18 @@
 <variant type-name-pattern="INT"/>
 </data-type>
 </column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="PRIORITY" mandatory="true" name="SORTKEY" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="ASC" mandatory="true" name="ORDR" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
 <column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="CURRENT_TIMESTAMP()" mandatory="true" name="RDATE" remarks="">
 <column-description></column-description>
 <data-type jdbc-type="93" literal-prefix="'" literal-suffix="'" name="TIMESTAMP" selected-variant-pattern="TIMESTAMP">
@@ -1827,19 +1839,19 @@
 <variant type-name-pattern="INT"/>
 </data-type>
 </column>
-<column alias="開始状態に対するメール 1：全て受取り 2：自分に対するアサインのみ 3：受取らない" auto-increment="false" column-size="0" decimal-digits="0" default-value="1" mandatory="true" name="START" remarks="">
+<column alias="開始状態に対するメール 1：全て受取り 2：自分に対するアサインのみ 3：受取らない" auto-increment="false" column-size="0" decimal-digits="0" default-value="1" mandatory="true" name="STARTMAIL" remarks="">
 <column-description></column-description>
 <data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
 <variant type-name-pattern="INT"/>
 </data-type>
 </column>
-<column alias="経過状態に対するメール 1：全て受取り 2：自分に対するアサインのみ 3：受取らない" auto-increment="false" column-size="0" decimal-digits="0" default-value="1" mandatory="true" name="PROCESS" remarks="">
+<column alias="経過状態に対するメール 1：全て受取り 2：自分に対するアサインのみ 3：受取らない" auto-increment="false" column-size="0" decimal-digits="0" default-value="1" mandatory="true" name="PROCESSMAIL" remarks="">
 <column-description></column-description>
 <data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
 <variant type-name-pattern="INT"/>
 </data-type>
 </column>
-<column alias="終了状態に対するメール 1：全て受取り 2：自分に対するアサインのみ 3：受取らない" auto-increment="false" column-size="0" decimal-digits="0" default-value="1" mandatory="true" name="END" remarks="">
+<column alias="終了状態に対するメール 1：全て受取り 2：自分に対するアサインのみ 3：受取らない" auto-increment="false" column-size="0" decimal-digits="0" default-value="1" mandatory="true" name="ENDMAIL" remarks="">
 <column-description></column-description>
 <data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
 <variant type-name-pattern="INT"/>

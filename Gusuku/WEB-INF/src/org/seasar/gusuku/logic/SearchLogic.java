@@ -56,8 +56,10 @@ public interface SearchLogic {
 	 * 更新内容　表示フラグ　表示件数
 	 * @param visible 表示設定を行うIDの配列
 	 * @param amount 表示件数のマップ ID:件数
+	 * @param sortkey ソートキー
+	 * @param ordr ソート順序
 	 */
-	public void update(Long[] visible, Map amount);
+	public void update(Long[] visible, Map amount, Map sortkey, Map ordr);
 	
 	
 	public void sortUp(Long id,Long accountid);

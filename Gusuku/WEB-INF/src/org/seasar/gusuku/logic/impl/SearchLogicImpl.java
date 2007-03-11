@@ -288,7 +288,7 @@ public class SearchLogicImpl implements SearchLogic {
 	}
 
 
-	public void update(Long[] visible, Map amount) {
+	public void update(Long[] visible, Map amount, Map sortkey, Map ordr) {
 		
 		Map<Long,SearchConditionHead> cache = new HashMap<Long,SearchConditionHead>();
 
@@ -308,6 +308,43 @@ public class SearchLogicImpl implements SearchLogic {
 					searchConditionHead.setAmount(Integer.parseInt(tmp));
 					searchConditionHead.setVisible(false);
 					cache.put(Long.parseLong(id),searchConditionHead);
+				}
+			}
+		}
+		if(sortkey != null && sortkey.size() > 0){
+			for(Iterator ite = sortkey.keySet().iterator();ite.hasNext();){
+				Integer id = (Integer)ite.next();
+				SearchConditionHead searchConditionHead = null;
+				if(cache.containsKey(new Long(id.longValue()))){
+					searchConditionHead = (SearchConditionHead)cache.get(new Long(id.longValue()));
+					String tmp = ((String[])sortkey.get(id))[0];
+					searchConditionHead.setSortkey(tmp);
+					searchConditionHead.setVisible(false);
+				}else{
+					searchConditionHead = searchConditionHeadDao.findById(id.longValue());
+					String tmp = ((String[])sortkey.get(id))[0];
+					searchConditionHead.setSortkey(tmp);
+					searchConditionHead.setVisible(false);
+					cache.put(new Long(id.longValue()),searchConditionHead);
+				}
+			}
+		}
+		
+		if(ordr != null && ordr.size() > 0){
+			for(Iterator ite = ordr.keySet().iterator();ite.hasNext();){
+				Integer id = (Integer)ite.next();
+				SearchConditionHead searchConditionHead = null;
+				if(cache.containsKey(new Long(id.longValue()))){
+					searchConditionHead = (SearchConditionHead)cache.get(new Long(id.longValue()));
+					String tmp = ((String[])ordr.get(id))[0];
+					searchConditionHead.setOrdr(tmp);
+					searchConditionHead.setVisible(false);
+				}else{
+					searchConditionHead = searchConditionHeadDao.findById(id.longValue());
+					String tmp = ((String[])ordr.get(id))[0];
+					searchConditionHead.setOrdr(tmp);
+					searchConditionHead.setVisible(false);
+					cache.put(new Long(id.longValue()),searchConditionHead);
 				}
 			}
 		}

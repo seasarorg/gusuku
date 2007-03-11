@@ -72,6 +72,7 @@
 	-->
 	
 	<!-- for H2 -->
+
 	<component name="xaDataSource"
 		class="org.seasar.extension.dbcp.impl.XADataSourceImpl">
 		<property name="driverClassName">
@@ -79,10 +80,6 @@
 		</property>
 		<property name="URL">
 
-<!--
-			"jdbc:h2:tcp://localhost:9092/gusuku"
-
--->
 			"jdbc:h2:file:"
 				+ @org.seasar.framework.util.ResourceUtil@getBuildDir(@org.seasar.gusuku.web.GusukuAction@class).getCanonicalPath().substring(0,@org.seasar.framework.util.ResourceUtil@getBuildDir(@org.seasar.gusuku.web.GusukuAction@class).getCanonicalPath().indexOf("WEB-INF")+"WEB-INF".length())
 				+ "/data/gusuku" 
@@ -112,19 +109,19 @@
 	-->
 
 	<!-- for PostgreSQL -->
-	<!--
+<!--
 	<component name="xaDataSource"
 		class="org.seasar.extension.dbcp.impl.XADataSourceImpl">
 		<property name="driverClassName">
 			"org.postgresql.Driver"
         </property>
         <property name="URL">
-          "jdbc:postgresql://localhost/TEST"
+          "jdbc:postgresql://localhost/gusuku"
         </property>
-        <property name="user">"xxxx"</property>
-        <property name="password">"xxxx"</property>
+        <property name="user">"postgres"</property>
+        <property name="password">"postgres"</property>
     </component>
-    -->
+-->
 
 	<!-- MySQL
 	- MySQL4.0以下でマルチバイト文字を扱う場合には，URL指定の後に，

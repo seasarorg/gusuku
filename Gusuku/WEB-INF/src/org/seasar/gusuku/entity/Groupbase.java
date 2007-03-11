@@ -18,9 +18,11 @@ package org.seasar.gusuku.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.seasar.dao.annotation.tiger.Bean;
 import org.seasar.dao.annotation.tiger.Id;
 import org.seasar.dao.annotation.tiger.IdType;
 
+@Bean(table="GROUPBASE")
 public class Groupbase implements Serializable {
 	
 	private static final long serialVersionUID = 1534612271022529535L;
@@ -44,7 +46,8 @@ public class Groupbase implements Serializable {
 		this.description = description;
 	}
 	
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="GROUPBASE_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

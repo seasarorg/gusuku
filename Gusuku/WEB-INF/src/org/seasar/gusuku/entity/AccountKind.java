@@ -29,7 +29,8 @@ public class AccountKind implements Serializable {
 	private Long id;
 	private String kindname;
 	
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="ACCOUNT_KIND_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

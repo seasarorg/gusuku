@@ -52,7 +52,8 @@ public class ReportData implements Serializable {
 		this.formid = formid;
 	}
 	
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="REPORT_DATA_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

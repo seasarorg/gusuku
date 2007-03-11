@@ -16,6 +16,14 @@
 		href="search_load.html?id=${condition.id}" link="${condition.name}"/>
 	<m:insert id="amount" path="/component/textfield.html" 
 		nameValue="amount[${condition.id}]" size="2" value="${condition.amount}" />
+	<m:insert id="sortkey" path="/component/select.html"
+		nameValue="sortkey[${condition.id}]" selected="${condition.sortkey}"
+		list="${sortkeyList}"
+		listValue="name" listKey="value" />
+	<m:insert id="ordr" path="/component/select.html"
+		nameValue="ordr[${condition.id}]" selected="${condition.ordr}"
+		list="${orderList}"
+		listValue="name" listKey="value" />
 	<m:with id="sort">
 		<m:element name="td">
 		<m:if test="${list.size() > 1 &amp;&amp; condition.sort &lt; list.size()}">

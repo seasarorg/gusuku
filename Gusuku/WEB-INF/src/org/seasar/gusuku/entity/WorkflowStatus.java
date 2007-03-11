@@ -45,7 +45,8 @@ public class WorkflowStatus implements Serializable {
 		this.eflag = eflag;
 	}
 
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="WORKFLOW_STATUS_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

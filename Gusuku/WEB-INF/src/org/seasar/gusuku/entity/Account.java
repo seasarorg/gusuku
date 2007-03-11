@@ -18,11 +18,12 @@ package org.seasar.gusuku.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.seasar.dao.annotation.tiger.Bean;
 import org.seasar.dao.annotation.tiger.Id;
 import org.seasar.dao.annotation.tiger.IdType;
 import org.seasar.dao.annotation.tiger.Relation;
 
-
+@Bean(table="ACCOUNT")
 public class Account implements Serializable {
 
 	private static final long serialVersionUID = -3935752424969497882L;
@@ -54,7 +55,8 @@ public class Account implements Serializable {
 		this.delflag = delflag;
 	}
 
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="ACCOUNT_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

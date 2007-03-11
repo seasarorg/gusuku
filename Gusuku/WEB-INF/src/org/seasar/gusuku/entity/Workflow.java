@@ -18,9 +18,10 @@ package org.seasar.gusuku.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.seasar.dao.annotation.tiger.Bean;
 import org.seasar.dao.annotation.tiger.Id;
 import org.seasar.dao.annotation.tiger.IdType;
-
+@Bean(table="WORKFLOW")
 public class Workflow implements Serializable {
 
 	private static final long serialVersionUID = 3473691020806224918L;
@@ -47,7 +48,8 @@ public class Workflow implements Serializable {
 		this.description = description;
 	}
 
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="WORKFLOW_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

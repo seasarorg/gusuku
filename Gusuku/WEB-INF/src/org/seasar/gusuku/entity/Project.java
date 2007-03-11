@@ -18,10 +18,12 @@ package org.seasar.gusuku.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.seasar.dao.annotation.tiger.Bean;
 import org.seasar.dao.annotation.tiger.Id;
 import org.seasar.dao.annotation.tiger.IdType;
 import org.seasar.dao.annotation.tiger.Relation;
 
+@Bean(table="PROJECT")
 public class Project implements Serializable {
 	
 	private static final long serialVersionUID = -1902238916067714889L;
@@ -81,7 +83,8 @@ public class Project implements Serializable {
 		this.edate = edate;
 	}
 	
-	@Id(IdType.IDENTITY)
+	//Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="PROJECT_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

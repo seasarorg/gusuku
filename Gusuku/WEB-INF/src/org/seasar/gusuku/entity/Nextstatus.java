@@ -17,9 +17,11 @@ package org.seasar.gusuku.entity;
 
 import java.io.Serializable;
 
+import org.seasar.dao.annotation.tiger.Bean;
 import org.seasar.dao.annotation.tiger.Id;
 import org.seasar.dao.annotation.tiger.IdType;
 
+@Bean(table="NEXTSTATUS")
 public class Nextstatus implements Serializable {
 
 	private static final long serialVersionUID = 8107437760136364303L;
@@ -27,7 +29,8 @@ public class Nextstatus implements Serializable {
 	private Long workflowstatusid;
 	private Long nextstatusid;
 
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="NEXTSTATUS_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

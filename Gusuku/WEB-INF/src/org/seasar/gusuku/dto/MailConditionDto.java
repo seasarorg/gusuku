@@ -23,14 +23,14 @@ public class MailConditionDto implements Serializable{
 	private Long id;
 	private Long projectid;
 	private String comment;
-	private String start;
-	private String process;
-	private String end;
-	public String getEnd() {
-		return end;
+	private String startmail;
+	private String processmail;
+	private String endmail;
+	public String getEndmail() {
+		return endmail;
 	}
-	public void setEnd(String end) {
-		this.end = end;
+	public void setEndmail(String endmail) {
+		this.endmail = endmail;
 	}
 	public Long getId() {
 		return id;
@@ -38,11 +38,11 @@ public class MailConditionDto implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getProcess() {
-		return process;
+	public String getProcessmail() {
+		return processmail;
 	}
-	public void setProcess(String process) {
-		this.process = process;
+	public void setProcessmail(String processmail) {
+		this.processmail = processmail;
 	}
 	public Long getProjectid() {
 		return projectid;
@@ -50,11 +50,11 @@ public class MailConditionDto implements Serializable{
 	public void setProjectid(Long projectid) {
 		this.projectid = projectid;
 	}
-	public String getStart() {
-		return start;
+	public String getStartmail() {
+		return startmail;
 	}
-	public void setStart(String start) {
-		this.start = start;
+	public void setStartmail(String startmail) {
+		this.startmail = startmail;
 	}
 	public String getComment() {
 		return comment;

@@ -40,7 +40,8 @@ public class CustomValueHead implements Serializable {
 		this.description = description;
 	}
 	
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="CUSTOM_VALUE_HEAD_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

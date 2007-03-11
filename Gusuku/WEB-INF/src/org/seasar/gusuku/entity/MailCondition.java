@@ -30,13 +30,14 @@ public class MailCondition implements Serializable {
 	private Long accountid;
 	private Long projectid;
 	private Long comment;
-	private Long start;
-	private Long process;
-	private Long end;
+	private Long startmail;
+	private Long processmail;
+	private Long endmail;
 	
 	private Account account;
 	
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="MAIL_CONDITION_ID_SEQ")
 	public Long getId() {
 		return id;
 	}
@@ -60,20 +61,20 @@ public class MailCondition implements Serializable {
 		this.comment = comment;
 	}
 	
-	public Long getEnd() {
-		return end;
+	public Long getEndmail() {
+		return endmail;
 	}
 	
-	public void setEnd(Long end) {
-		this.end = end;
+	public void setEndmail(Long endmail) {
+		this.endmail = endmail;
 	}
 	
-	public Long getProcess() {
-		return process;
+	public Long getProcessmail() {
+		return processmail;
 	}
 	
-	public void setProcess(Long process) {
-		this.process = process;
+	public void setProcessmail(Long processmail) {
+		this.processmail = processmail;
 	}
 	
 	public Long getProjectid() {
@@ -84,12 +85,12 @@ public class MailCondition implements Serializable {
 		this.projectid = projectid;
 	}
 	
-	public Long getStart() {
-		return start;
+	public Long getStartmail() {
+		return startmail;
 	}
 	
-	public void setStart(Long start) {
-		this.start = start;
+	public void setStartmail(Long startmail) {
+		this.startmail = startmail;
 	}
 	
 	@Relation(relationNo=0,relationKey="ACCOUNTID:ID")

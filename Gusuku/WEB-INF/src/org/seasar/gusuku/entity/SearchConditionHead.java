@@ -33,6 +33,8 @@ public class SearchConditionHead implements Serializable {
 	private boolean visible;
 	private int sort;
 	private int amount;
+	private String sortkey;
+	private String ordr;
 	private Date rdate;
 	
 	public Long getAccountid() {
@@ -42,7 +44,8 @@ public class SearchConditionHead implements Serializable {
 		this.accountid = accountid;
 	}
 	
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="SEARCH_CONDITION_HEAD_ID_SEQ")
 	public Long getId() {
 		return id;
 	}
@@ -78,6 +81,22 @@ public class SearchConditionHead implements Serializable {
 	}
 	public void setVisible(boolean visible) {
 		this.visible = visible;
+	}
+	
+	public String getOrdr() {
+		return ordr;
+	}
+	
+	public void setOrdr(String ordr) {
+		this.ordr = ordr;
+	}
+	
+	public String getSortkey() {
+		return sortkey;
+	}
+	
+	public void setSortkey(String sortkey) {
+		this.sortkey = sortkey;
 	}
 	
 

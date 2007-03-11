@@ -1,4 +1,4 @@
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table ACCOUNT_GROUPBASE not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -11,7 +11,33 @@ org.h2.jdbc.JdbcSQLException: Table ACCOUNT_GROUPBASE not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Table VERSION not found [42S02-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:54)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:83)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:03 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Table COMPONENT not found [42S02-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:54)
+	at org.h2.command.ddl.DropTable.update(DropTable.java:83)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table RESOLUTION_SCHEME not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -24,7 +50,7 @@ org.h2.jdbc.JdbcSQLException: Table RESOLUTION_SCHEME not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table PRIORITY_SCHEME not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -37,7 +63,7 @@ org.h2.jdbc.JdbcSQLException: Table PRIORITY_SCHEME not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table TYPE_SCHEME not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -50,7 +76,7 @@ org.h2.jdbc.JdbcSQLException: Table TYPE_SCHEME not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table MAIL_CONDITION not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -63,7 +89,7 @@ org.h2.jdbc.JdbcSQLException: Table MAIL_CONDITION not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table SEARCH_CONDITION_CUSTOM not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -76,7 +102,7 @@ org.h2.jdbc.JdbcSQLException: Table SEARCH_CONDITION_CUSTOM not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table REPORT_DATA not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -89,7 +115,7 @@ org.h2.jdbc.JdbcSQLException: Table REPORT_DATA not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table CUSTOM_VALUE_DETAIL not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -102,7 +128,7 @@ org.h2.jdbc.JdbcSQLException: Table CUSTOM_VALUE_DETAIL not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table STATUS_HISTORY not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -115,7 +141,7 @@ org.h2.jdbc.JdbcSQLException: Table STATUS_HISTORY not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table NEXTSTATUS not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -128,7 +154,7 @@ org.h2.jdbc.JdbcSQLException: Table NEXTSTATUS not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table COMMENT not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -141,7 +167,7 @@ org.h2.jdbc.JdbcSQLException: Table COMMENT not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table PROJECT_GROUPBASE not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -154,7 +180,7 @@ org.h2.jdbc.JdbcSQLException: Table PROJECT_GROUPBASE not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table SEARCH_CONDITION_BASIC not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -167,7 +193,7 @@ org.h2.jdbc.JdbcSQLException: Table SEARCH_CONDITION_BASIC not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table PROJECT not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -180,7 +206,7 @@ org.h2.jdbc.JdbcSQLException: Table PROJECT not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table SEARCH_CONDITION_HEAD not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -193,7 +219,7 @@ org.h2.jdbc.JdbcSQLException: Table SEARCH_CONDITION_HEAD not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table CUSTOM_FORM_DETAIL not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -206,7 +232,7 @@ org.h2.jdbc.JdbcSQLException: Table CUSTOM_FORM_DETAIL not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table REPORT not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -219,7 +245,7 @@ org.h2.jdbc.JdbcSQLException: Table REPORT not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table WORKFLOW_STATUS not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -232,7 +258,7 @@ org.h2.jdbc.JdbcSQLException: Table WORKFLOW_STATUS not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table ACCOUNT not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -245,7 +271,7 @@ org.h2.jdbc.JdbcSQLException: Table ACCOUNT not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table GROUPBASE not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -258,7 +284,7 @@ org.h2.jdbc.JdbcSQLException: Table GROUPBASE not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table RESOLUTION_HEAD not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -271,7 +297,7 @@ org.h2.jdbc.JdbcSQLException: Table RESOLUTION_HEAD not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table PRIORITY_HEAD not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -284,7 +310,7 @@ org.h2.jdbc.JdbcSQLException: Table PRIORITY_HEAD not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table TYPE_HEAD not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -297,7 +323,7 @@ org.h2.jdbc.JdbcSQLException: Table TYPE_HEAD not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table SYSTEM_PROPERTY not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -310,7 +336,7 @@ org.h2.jdbc.JdbcSQLException: Table SYSTEM_PROPERTY not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table CUSTOM_FORM_HEAD not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -323,7 +349,7 @@ org.h2.jdbc.JdbcSQLException: Table CUSTOM_FORM_HEAD not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table FORM_TYPE not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -336,7 +362,7 @@ org.h2.jdbc.JdbcSQLException: Table FORM_TYPE not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table CUSTOM_VALUE_HEAD not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -349,7 +375,7 @@ org.h2.jdbc.JdbcSQLException: Table CUSTOM_VALUE_HEAD not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table ACCOUNT_KIND not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -362,7 +388,7 @@ org.h2.jdbc.JdbcSQLException: Table ACCOUNT_KIND not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table WORKFLOW not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -375,7 +401,7 @@ org.h2.jdbc.JdbcSQLException: Table WORKFLOW not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table RESOLUTION not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -388,7 +414,7 @@ org.h2.jdbc.JdbcSQLException: Table RESOLUTION not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table STATUS not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -401,7 +427,7 @@ org.h2.jdbc.JdbcSQLException: Table STATUS not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table TYPE not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -414,7 +440,7 @@ org.h2.jdbc.JdbcSQLException: Table TYPE not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
+03-11 20:33:03 jdbc[0]: SQLException
 org.h2.jdbc.JdbcSQLException: Table PRIORITY not found [42S02-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
@@ -427,13 +453,11 @@ org.h2.jdbc.JdbcSQLException: Table PRIORITY not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
-org.h2.jdbc.JdbcSQLException: Table PROJECT not found [42S02-41]
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence ACCOUNT_GROUPBASE_ID_SEQ not found [90036-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
-	at org.h2.schema.Schema.getTableOrView(Schema.java:199)
-	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:107)
-	at org.h2.command.ddl.CreateTable.update(CreateTable.java:153)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
 	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
 	at org.h2.command.Command.executeUpdate(Command.java:120)
 	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
@@ -441,13 +465,11 @@ org.h2.jdbc.JdbcSQLException: Table PROJECT not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:18 jdbc[0]: SQLException
-org.h2.jdbc.JdbcSQLException: Table REPORT not found [42S02-41]
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence VERSION_ID_SEQ not found [90036-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
-	at org.h2.schema.Schema.getTableOrView(Schema.java:199)
-	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:107)
-	at org.h2.command.ddl.CreateTable.update(CreateTable.java:153)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
 	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
 	at org.h2.command.Command.executeUpdate(Command.java:120)
 	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
@@ -455,13 +477,11 @@ org.h2.jdbc.JdbcSQLException: Table REPORT not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:19 jdbc[0]: SQLException
-org.h2.jdbc.JdbcSQLException: Table REPORT not found [42S02-41]
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence COMPONENT_ID_SEQ not found [90036-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
-	at org.h2.schema.Schema.getTableOrView(Schema.java:199)
-	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:107)
-	at org.h2.command.ddl.CreateTable.update(CreateTable.java:153)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
 	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
 	at org.h2.command.Command.executeUpdate(Command.java:120)
 	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
@@ -469,13 +489,11 @@ org.h2.jdbc.JdbcSQLException: Table REPORT not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:19 jdbc[0]: SQLException
-org.h2.jdbc.JdbcSQLException: Table REPORT not found [42S02-41]
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence RESOLUTION_SCHEME_ID_SEQ not found [90036-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
-	at org.h2.schema.Schema.getTableOrView(Schema.java:199)
-	at org.h2.command.ddl.AlterTableAddConstraint.update(AlterTableAddConstraint.java:107)
-	at org.h2.command.ddl.CreateTable.update(CreateTable.java:153)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
 	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
 	at org.h2.command.Command.executeUpdate(Command.java:120)
 	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
@@ -483,12 +501,11 @@ org.h2.jdbc.JdbcSQLException: Table REPORT not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:34 jdbc[0]: SQLException
-org.h2.jdbc.JdbcSQLException: Table REPORT_DATA not found [42S02-41]
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence PRIORITY_SCHEME_ID_SEQ not found [90036-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
-	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:54)
-	at org.h2.command.ddl.DropTable.update(DropTable.java:83)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
 	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
 	at org.h2.command.Command.executeUpdate(Command.java:120)
 	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
@@ -496,12 +513,11 @@ org.h2.jdbc.JdbcSQLException: Table REPORT_DATA not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:34 jdbc[0]: SQLException
-org.h2.jdbc.JdbcSQLException: Table STATUS_HISTORY not found [42S02-41]
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence TYPE_SCHEME_ID_SEQ not found [90036-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
-	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:54)
-	at org.h2.command.ddl.DropTable.update(DropTable.java:83)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
 	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
 	at org.h2.command.Command.executeUpdate(Command.java:120)
 	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
@@ -509,12 +525,11 @@ org.h2.jdbc.JdbcSQLException: Table STATUS_HISTORY not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:34 jdbc[0]: SQLException
-org.h2.jdbc.JdbcSQLException: Table COMMENT not found [42S02-41]
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence MAIL_CONDITION_ID_SEQ not found [90036-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
-	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:54)
-	at org.h2.command.ddl.DropTable.update(DropTable.java:83)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
 	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
 	at org.h2.command.Command.executeUpdate(Command.java:120)
 	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
@@ -522,12 +537,11 @@ org.h2.jdbc.JdbcSQLException: Table COMMENT not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:34 jdbc[0]: SQLException
-org.h2.jdbc.JdbcSQLException: Table REPORT not found [42S02-41]
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence SEARCH_CONDITION_CUSTOM_ID_SEQ not found [90036-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
-	at org.h2.command.ddl.DropTable.prepareDrop(DropTable.java:54)
-	at org.h2.command.ddl.DropTable.update(DropTable.java:83)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
 	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
 	at org.h2.command.Command.executeUpdate(Command.java:120)
 	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
@@ -535,11 +549,323 @@ org.h2.jdbc.JdbcSQLException: Table REPORT not found [42S02-41]
 	at org.h2.server.web.AppThread.query(AppThread.java:616)
 	at org.h2.server.web.AppThread.process(AppThread.java:71)
 	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
-02-12 15:51:34 jdbc[0]: SQLException
-org.h2.jdbc.JdbcSQLException: Table PROJECT already exists [42S01-41]
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence REPORT_DATA_ID_SEQ not found [90036-41]
 	at org.h2.message.Message.getSQLException(Message.java:65)
 	at org.h2.message.Message.getSQLException(Message.java:47)
-	at org.h2.command.ddl.CreateTable.update(CreateTable.java:93)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence CUSTOM_VALUE_DETAIL_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence STATUS_HISTORY_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence NEXTSTATUS_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence COMMENT_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence PROJECT_GROUPBASE_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence SEARCH_CONDITION_BASIC_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence PROJECT_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence SEARCH_CONDITION_HEAD_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence CUSTOM_FORM_DETAIL_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence REPORT_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence WORKFLOW_STATUS_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence ACCOUNT_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence GROUPBASE_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence RESOLUTION_HEAD_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence PRIORITY_HEAD_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence TYPE_HEAD_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence SYSTEM_PROPERTY_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence CUSTOM_FORM_HEAD_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence FORM_TYPE_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence CUSTOM_VALUE_HEAD_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence ACCOUNT_KIND_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence WORKFLOW_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence RESOLUTION_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence STATUS_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence TYPE_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
+	at org.h2.command.Command.executeUpdate(Command.java:120)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)
+	at org.h2.server.web.AppThread.getResult(AppThread.java:946)
+	at org.h2.server.web.AppThread.query(AppThread.java:616)
+	at org.h2.server.web.AppThread.process(AppThread.java:71)
+	at org.h2.server.web.WebServerThread.run(WebServerThread.java:127)
+03-11 20:33:27 jdbc[0]: SQLException
+org.h2.jdbc.JdbcSQLException: Sequence PRIORITY_ID_SEQ not found [90036-41]
+	at org.h2.message.Message.getSQLException(Message.java:65)
+	at org.h2.message.Message.getSQLException(Message.java:47)
+	at org.h2.command.ddl.DropSequence.update(DropSequence.java:40)
 	at org.h2.command.CommandContainer.update(CommandContainer.java:64)
 	at org.h2.command.Command.executeUpdate(Command.java:120)
 	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:155)

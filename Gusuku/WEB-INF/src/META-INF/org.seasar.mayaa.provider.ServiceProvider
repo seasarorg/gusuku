@@ -5,9 +5,9 @@
 <provider>
     <engine>
         <parameter name="notTemplatePathPattern" value="/js/.*/.*.html"/>
-        <!--
-        <parameter name="autoBuild" value="false"/>
-        -->
+	<!--
+        <parameter name="autoBuild" value="true"/>
+     -->
     </engine>
 
 </provider>

@@ -151,9 +151,9 @@ public class ProjectAction extends GusukuAction {
 		if(mailCondition == null){
 			mailCondition = new MailCondition();
 			mailCondition.setComment(1l);
-			mailCondition.setStart(1l);
-			mailCondition.setProcess(3l);
-			mailCondition.setEnd(1l);
+			mailCondition.setStartmail(1l);
+			mailCondition.setProcessmail(3l);
+			mailCondition.setEndmail(1l);
 		}
 		return SUCCESS;
 	}

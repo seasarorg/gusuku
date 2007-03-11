@@ -20,9 +20,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.seasar.framework.util.StringUtil;
+import org.seasar.gusuku.dto.SelectValue;
 import org.seasar.gusuku.entity.SearchConditionHead;
 import org.seasar.gusuku.helper.SearchConditionHelper;
 import org.seasar.gusuku.logic.SearchLogic;
+import org.seasar.gusuku.util.SelectValueUtil;
 import org.seasar.gusuku.web.GusukuAction;
 import org.seasar.xwork.annotation.Param;
 import org.seasar.xwork.annotation.Result;
@@ -37,18 +39,26 @@ public class HomeAction extends GusukuAction implements Preparable{
 	private SearchLogic searchLogic;
 	
 	private List<SearchConditionHead> list;
+	private List<SelectValue> sortkeyList;
+	private List<SelectValue> orderList;
 	private Long[] visible;
 	private Map amount;
+	private Map sortkey;
+	private Map ordr;
 	private Long id;
 	
 	public void prepare(){
 	}
 	
 	public void prepareInit(){
-		list = searchConditionHelper.getSearchConditionHead(getLoginid());	
+		list = searchConditionHelper.getSearchConditionHead(getLoginid());
+		sortkeyList = SelectValueUtil.getSortKeyList();
+		orderList = SelectValueUtil.getOrderList();
 	}
 	public void prepareUpdate(){
 		list = searchConditionHelper.getSearchConditionHead(getLoginid());
+		sortkeyList = SelectValueUtil.getSortKeyList();
+		orderList = SelectValueUtil.getOrderList();
 	}
 	
 	@XWorkAction(name = "portlet", result = @Result(type = "mayaa", param = @Param(name = "location", value = "/mypage/home.html")))
@@ -80,7 +90,7 @@ public class HomeAction extends GusukuAction implements Preparable{
 		if(hasFieldErrors()){
 			return INPUT;
 		}
-		searchLogic.update(visible,amount);
+		searchLogic.update(visible,amount,sortkey,ordr);
 		return SUCCESS;
 	}
 	
@@ -131,6 +141,26 @@ public class HomeAction extends GusukuAction implements Preparable{
 	
 	public List<SearchConditionHead> getList() {
 		return list;
+	}
+
+	
+	public List<SelectValue> getOrderList() {
+		return orderList;
+	}
+
+	
+	public List<SelectValue> getSortkeyList() {
+		return sortkeyList;
+	}
+
+	
+	public void setOrdr(Map ordr) {
+		this.ordr = ordr;
+	}
+
+	
+	public void setSortkey(Map sortkey) {
+		this.sortkey = sortkey;
 	}
 
 }

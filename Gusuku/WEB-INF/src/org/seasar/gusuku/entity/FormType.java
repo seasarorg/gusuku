@@ -36,7 +36,8 @@ public class FormType implements Serializable {
 		this.description = description;
 	}
 	
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="FORM_TYPE_ID_SEQ")
 	public Long getId() {
 		return id;
 	}

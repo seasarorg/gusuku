@@ -44,7 +44,8 @@ public class CustomValueDetail implements Serializable {
 	public void setValueheadid(Long valueheadid) {
 		this.valueheadid = valueheadid;
 	}
-	@Id(IdType.IDENTITY)
+	//@Id(IdType.IDENTITY)
+	@Id(value=IdType.SEQUENCE,sequenceName="CUSTOM_VALUE_DETAIL_ID_SEQ")
 	public Long getId() {
 		return id;
 	}
