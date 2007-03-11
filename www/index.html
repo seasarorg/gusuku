@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Content-Language" content="ja" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="keywords" content="gusuku, Seasar, The Seasar Project, The Seasar Foundation, OSS, Open Source Software, Java, Framework, バグ, トラッキング, 不具合, 管理, バグ追跡, 障害, BTS" />
+<meta name="description" content="Gusuku" />
+<title>Gusuku　バグトラッキングシステム</title>
+<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/main.css" media="screen,projection" />
+<link rel="stylesheet" type="text/css" href="http://www.seasar.org/theme/print.css" media="print" />
+</head>
+
+<body>
+
+<div id="wrapper">
+
+<div id="header">
+
+<div class="line"><span class="hide">spacer</span></div>
+
+<div id="logo"><h2 id="h01" class="hide">The Seasar Foundation Project Site</h2><img src="http://www.seasar.org/images/seasar_logo_blue.gif" alt="The Seasar Project" width="390" height="180" /></div>
+
+<div id="tool">
+
+<h2><a href="http://search.seasar.org/">Site Search</a></h2>
+
+<form id="search" name="search" action="http://search.seasar.org/">
+<div>
+	<input id="search_phrase" type="text" name="phrase" size="20" />
+	<input type="hidden" name="perpage" value="30" />
+	<input type="hidden" name="enc" value="UTF-8" />
+	<input id="search_go" type="submit" value="Search" />
+</div>
+</form>
+
+<h2>Seasar Banner</h2>
+
+<p><a href="http://www.seasar.org/images/seasar_banner.gif"><img src="http://www.seasar.org/images/seasar_banner.gif" alt="Seasar Banner" title="Seasar Banner" width="146" height="33" /></a></p>
+</div>
+</div><!-- header -->
+
+<div id="contents_left">
+
+<h2>Menu</h2>
+
+<ul>
+	<li><a href="http://www.seasar.org/">The Seasar Project</a></li>
+	<li><a href="https://www.seasar.org/issues/browse/GUSUKU">JIRA</a></li>
+</ul>
+
+</div><!-- contents_left -->
+
+<div id="contents_center">
+
+<div id="article">
+
+<div class="section">
+
+<h2>Gusuku　へようこそ！</h2>
+<p>GusukuはJavaで作られたバグトラッキングシステムです。標準のDBにH2を使用しているので、DBを用意する必要がありません。<br>
+以下の機能を備えています。</p>
+<ul>
+<li>複数のプロジェクトを扱うことができます。</li>
+<li>状態変更をカスタマイズすることができます。</li>
+<li>バグ報告の入力内容をカスタマイズすることができます。</li>
+<li>検索条件を保存し、ログイン後のページに結果を表示させることができます。</li>
+<li>状態別にメール送受信の設定が可能です。</li>
+</ul>
+<p>※デザインについてはまだ仮の状態です。<br/>※Gusukuは沖縄の言葉で「城」という意味です。</p>
+
+<h2>更新履歴</h2>
+<p><span style="color:red;">※まだ、プロトタイプなので試用と考えて下さい。現時点で今後のバージョンアップにおけるデータの互換性は保証できません。</span></p>
+
+<h3>2007-03-11 Gusuku 0.1.3 リリース</h3>
+<p>・追加<br>
+PostgreSQLに対応しました。設定方法は<a href="#postgre">こちらから。</a>※Windows版8.2で確認しています。<br>
+ホームに表示する検索結果にソート順序を設定できるようにしました。<br>
+</p>
+<p>・変更<br>
+JIRA[GUSUKU-1] プロジェクトを編集するとカウンタが0に戻る を修正しました。<br>
+JIRA[GUSUKU-2] メールの一部が文字化けをおこす を修正しました。<br>
+依存ライブラリを更新しました。<br>
+</p>
+<p>
+ダウンロードは<a href="#download">こちらから。</a><br>
+<span style="color:red;">※0.1.2とデータの互換性はありません。</span></p>
+
+<h3>2007-02-28 Gusuku 0.1.2 リリース</h3>
+<p>プロジェクト単位にコンポーネントとバージョンを設定できるようにしました。<br>
+検索結果にページング機能を追加しました。<br>
+検索結果に項目別ソート機能を追加しました。<br>
+ホームに参加プロジェクトを表示するように変更しました。<br>
+
+<span style="color:red;">※0.1.1とデータの互換性はありません。</span></p>
+
+<h3>2007-02-12 Gusuku 0.1.1 リリース</h3>
+<p>ワークフローに権限を設定できるようにしました。<br>
+アサイン一覧はプロジェクト別に表示するように変更しました。<br>
+検索時にプロジェクトを選択できるようにしました。<br>
+
+<span style="color:red;">※0.1とデータの互換性はありません。</span></p>
+
+<h3>2007-01-20 Gusuku 0.1 リリース</h3>
+<p>Gusuku 0.1をリリースしました。
+</p>
+
+<h2>使用方法</h2>
+<h3>必要なもの</h3>
+<ul>
+<li>JDK 5以上</li>
+<li>サーブレットコンテナ　ServletAPI 2.4 / JSP 2.0</li>
+</ul>
+<p>※動作確認はWindows JDK1.5.0_11、Tomcat5.5.20で行っています。</p>
+<h3>手順</h3>
+<ol>
+<li>ダウンロードしたGusuku.warをwebappsの配下にコピーして下さい。</li>
+<li>サーブレットコンテナを起動して下さい。</li>
+<li>http://localhost:8080/Gusuku/setup.html にアクセスして下さい。</li>
+<li>管理アカウント、アップロードディレクトリ、SMTPの設定を行います。※メール送信を行わない場合は設定の必要はありません。</li>
+<li>http://localhost:8080/Gusuku/index.html からログインして下さい。</li>
+</ol>
+<p>以上でGusukuが使えるようになりました。ログイン後メニューの「管理」よりプロジェクトの登録を行って下さい。</p>
+<a name="download"/>
+<h2>ダウンロード</h2>
+<h3>Gusuku 0.1.3</h3>
+<ul>
+<li><a href="download/Gusuku.war">Gusuku.war</a></li>
+<li><a href="download/Gusuku-src-0.1.3.zip">Gusuku-src-0.1.3.zip</a></li>
+</ul>
+<a name="postgre"/>
+<h2>PostgreSQLでの使用方法</h2>
+<p>
+まず、このファイル(<a href="download/postgre.zip">postgre.zip</a>)をダウンロードして下さい。<br>
+解凍してできたファイルを作成したデータベース上で、下記の順序で実行して下さい。<br>
+1.entity_postgre.sql<br>
+2.sequence.sql<br>
+3.initialdata.sql<br>
+</p>
+<p>
+Gusuku/WEB-INF/classes/jdbc.dicon の下記部分の編集を行って下さい。<br>
+1.H2のコンポーネント定義をコメントアウトします。<br>
+2.PostgreSQLのコンポーネント定義のコメントを削除します。<br>
+3.接続先を作成したDBに書き換えます。<br>
+4.接続ユーザーとパスワードの設定を行います。<br>
+</p>
+<pre>
+&lt;!-- for H2 -->
+&lt;!-- ←コメントを挿入
+&lt;component name="xaDataSource"
+　　　　　　　　：
+　　　　　　　中略
+　　　　　　　　：
+&lt;/component>
+--> ←コメントを挿入
+　　　　　　　　：
+　　　　　　　中略
+　　　　　　　　：
+&lt;!-- for PostgreSQL -->
+&lt;!-- ←コメントを削除
+&lt;component name="xaDataSource"
+	class="org.seasar.extension.dbcp.impl.XADataSourceImpl">
+	&lt;property name="driverClassName">
+		"org.postgresql.Driver"
+       &lt;/property>
+       &lt;property name="URL">
+         "jdbc:postgresql://localhost/gusuku" ←接続先の設定
+       &lt;/property>
+       &lt;property name="user">"postgres"&lt;/property> ←接続ユーザー
+       &lt;property name="password">"postgres"&lt;/property> ←接続パスワード
+&lt;/component>
+--> ←コメントを削除
+</pre>
+<h2>今後の機能追加予定</h2>
+<ul>
+<li>SVN連携によるリポジトリブラウザ</li>
+<li>RSS配信</li>
+<li>インポート/エクスポート</li>
+<li>ユーザーの種別による権限の設定</li>
+<li>H2以外のデータベースへの対応 ※PostgreSQL対応済</li>
+</ul>
+上記以外にも、皆様のご要望にできるだけお応えしたいと思っていますので、下記ブログかメーリングリストまでどうぞ。
+<p/>
+<h2>開発者</h2>
+<p>duran ブログ：<a href="http://d.hatena.ne.jp/duran/" target="_blank">http://d.hatena.ne.jp/duran/</a></p>
+<p>メーリングリスト <a href="https://ml.seasar.org/mailman/listinfo/gusuku-user">gusuku-user</a></p>
+<p>Gusukuでは下記ライブラリを使用しています。</p>
+<ul>
+<li>Seasar2</li>
+<li>S2Dao</li>
+<li>Mayaa</li>
+<li>S2Xwork</li>
+<li>Webwork2</li>
+<li>H2 database</li>
+<li>ozacc-mail library</li>
+</ul>
+
+<!--
+This page is managed in SVN repository, URL is<br />
+<a href="https://www.seasar.org/svn/sandbox/gusuku/trunk/www/index.html">https://www.seasar.org/svn/sandbox/gusuku/trunk/www/index.html</a></p>
+-->
+</div><!-- section -->
+
+</div><!-- article -->
+
+</div><!-- contents_center -->
+
+<div id="footer">
+<address>&copy; Copyright The Seasar Foundation and the others 2006, all rights reserved.</address>
+<div class="line"><span class="hide">spacer</span></div>
+</div><!-- footer -->
+
+</div><!-- wrapper -->
+
+</body>
+</html>
