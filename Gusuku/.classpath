@@ -22,11 +22,11 @@
 	<classpathentry kind="lib" path="WEB-INF/lib/commons-io.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/commons-logging-1.1.jar"/>
 	<classpathentry kind="lib" path="WEB-INF/lib/freemarker.jar"/>
-	<classpathentry kind="lib" path="WEB-INF/lib/s2-dao-1.0.40.jar"/>
-	<classpathentry kind="lib" path="WEB-INF/lib/s2-dao-tiger-1.0.40.jar"/>
-	<classpathentry kind="lib" path="WEB-INF/lib/mayaa-1.1.7.jar"/>
-	<classpathentry kind="lib" path="WEB-INF/lib/s2-extension-2.4.11.jar"/>
-	<classpathentry kind="lib" path="WEB-INF/lib/s2-framework-2.4.11.jar"/>
-	<classpathentry kind="lib" path="WEB-INF/lib/s2-tiger-2.4.11.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/mayaa-1.1.8.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/s2-dao-1.0.41.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/s2-dao-tiger-1.0.41.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/s2-extension-2.4.12.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/s2-framework-2.4.12.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/s2-tiger-2.4.12.jar"/>
 	<classpathentry kind="output" path="WEB-INF/classes"/>
 </classpath>
