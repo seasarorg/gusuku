@@ -1,7 +1,7 @@
 ${report.title}
 
 プロジェクト: ${report.project.name}
-KEY         : ${report.key}
+KEY         : ${report.key}-${report.seq}
 タイプ      : ${report.type.name}
 優先度      : ${report.priority.name}
 報告者      : ${report.reporter.name}

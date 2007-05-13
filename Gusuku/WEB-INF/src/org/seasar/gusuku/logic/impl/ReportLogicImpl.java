@@ -234,7 +234,7 @@ public class ReportLogicImpl implements ReportLogic {
 					if(!StringUtil.isEmpty(from)){
 						mail.setFrom(from);
 					}
-					mail.setSubject("["+report.getKey()+"] コメントが登録されました " + report.getTitle());
+					mail.setSubject("["+report.getKey()+"-" +report.getSeq() +"] コメントが登録されました " + report.getTitle());
 					Map params = new HashMap();
 					params.put("report",report);
 					params.put("comment",commentValue);
@@ -374,7 +374,7 @@ public class ReportLogicImpl implements ReportLogic {
 					if(!StringUtil.isEmpty(from)){
 						mail.setFrom(from);
 					}
-					mail.setSubject("["+report.getKey()+"] " + workflowStatus.getStatus().getSubject() + " "+report.getTitle());
+					mail.setSubject("["+report.getKey()+"-" +report.getSeq() +"] " + workflowStatus.getStatus().getSubject() + " "+report.getTitle());
 					Map params = new HashMap();
 					params.put("report",report);
 					params.put("next",workflowStatus.getStatus());
@@ -402,7 +402,7 @@ public class ReportLogicImpl implements ReportLogic {
 					}
 				}
 				mail.setFrom(PropertyUtil.getProperty(GusukuConstant.MAIL_FROM));
-				mail.setSubject("["+report.getKey()+"] " + workflowStatus.getStatus().getSubject() + " "+report.getTitle());
+				mail.setSubject("["+report.getKey()+"-" +report.getSeq() +"] " + workflowStatus.getStatus().getSubject() + " "+report.getTitle());
 				//mail.setText(workflowStatus.getStatus().getName()+"へ変更");
 				Map params = new HashMap();
 				params.put("report",report);
