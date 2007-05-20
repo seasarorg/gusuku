@@ -18,6 +18,25 @@
 		if(end &lt; 0){
 			end = 0;
 		}
+		
+
+		var page_end_max = new java.lang.Integer(binding.total / binding.limit);
+		if(binding.total % binding.limit > 0){
+			page_end_max++;
+		}
+		var page_start = page - 4;
+		var page_end = page + 4;
+		if(page_start &lt;= 0){
+			page_end += -(page_start)+1;
+			page_start = 1;
+		}
+		if(page_end &gt;= page_end_max){
+			page_start -= page_end - page_end_max;
+			page_end = page_end_max;
+		}
+		if(page_start &lt;= 0){
+			page_start = 1;
+		}
 	</m:beforeRender>
 	<m:doRender m:id="paginationTag" >
 
@@ -39,7 +58,12 @@
 					<m:write value=" "/>
 					<m:element name="a">
 						<m:attribute name="href" value="${binding.action}?page=${page-1}${binding.param}" />
-						<m:write value="&lt;前へ" />
+						<!-- m:write value="&lt;前へ" /-->
+						<m:element name="img">
+							<m:attribute name="border" value="0" />
+							<m:attribute name="alt" value="前へ" />
+							<m:attribute name="src" value="./../image/page_prev.gif" />
+						</m:element>
 					</m:element>
 				</m:if>
 		
@@ -48,9 +72,28 @@
 					<m:write value=" "/>
 					<m:element name="a">
 						<m:attribute name="href" value="${binding.action}?page=${page+1}${binding.param}" />
-						<m:write value="次へ&gt;" />
+						<!-- m:write value="次へ&gt;" /-->
+						<m:element name="img">
+							<m:attribute name="border" value="0" />
+							<m:attribute name="alt" value="次へ" />
+							<m:attribute name="src" value="./../image/page_next.gif" />
+						</m:element>
 					</m:element>
 				</m:if>
+				<m:for init="${ var i = page_start }" test="${ i &lt;= page_end }" after="${ i++ }" >
+					<m:write value=" " />
+					<m:if test="${page != i}">
+					<m:element name="a">
+						<m:attribute name="href" value="${binding.action}?page=${i}${binding.param}" />
+						<m:write value="${i}" />
+					</m:element>
+					</m:if>
+					<m:if test="${page == i}">
+						<m:element name="strong">
+						<m:write value="${i}" />
+						</m:element>
+					</m:if>
+				</m:for>
 			</m:element>
 		</m:with>
 	</m:if>
