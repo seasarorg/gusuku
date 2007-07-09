@@ -37,4 +37,9 @@
 		nameValue="fromid" value="${parameters['fromid']!=null?parameters['fromid'][0]:''}" />
 	<m:insert id="from" path="/component/textfield.html"
 				nameValue="from" value="${parameters['from']!=null?parameters['from'][0]:''}" size="30"/>
+				
+	<m:insert m:id="hostid" path="/component/hidden.html"
+		nameValue="hostid" value="${parameters['hostid']!=null?parameters['hostid'][0]:''}" />
+	<m:insert id="host" path="/component/textfield.html"
+				nameValue="host" value="${parameters['host']!=null?parameters['host'][0]:''}" size="30"/>
 </m:mayaa>

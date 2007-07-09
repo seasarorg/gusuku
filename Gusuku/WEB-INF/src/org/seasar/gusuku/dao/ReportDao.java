@@ -69,6 +69,10 @@ public interface ReportDao {
 	
 	@Arguments({"assigneeid","projectid"})
 	public List<Report> findByAssigneeidAndProjectid(Long id, Long projectid);
+	
+	@Query("REPORT.KEY = /*key*/ AND REPORT.SEQ = /*seq*/")
+	@Arguments({"key","seq"})
+	public Report findByKeyAndSeq(String key, Long seq);
 
 
 }

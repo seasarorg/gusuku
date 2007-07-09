@@ -54,7 +54,7 @@ public interface AccountDao {
 	 * @param mailaddr
 	 * @return
 	 */
-	@Query(" Account.MAILADDR = /*mailaddr*/ /*IF accountid != null && accountid != ''*/AND Account.ID != /*accountid*/ /*END*/" )
+	@Query(" /*IF accountid != null*/ Account.ID != /*accountid*/ AND /*END*/ Account.MAILADDR = /*mailaddr*/ " )
 	@Arguments({"accountid","mailaddr"})
 	public Account findByMailaddr(Long accountid,String mailaddr);
 	

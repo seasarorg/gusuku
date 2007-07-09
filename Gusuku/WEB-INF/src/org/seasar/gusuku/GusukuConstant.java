@@ -30,6 +30,8 @@ public class GusukuConstant {
 	public static final String MAIL_FROM = "gusuku.mail.from";
 	public static final String UNDEFINED = "undefined";
 	
+	public static final String HOST_KEY = "gusuku.host";
+	
 	public static final String SETUP_DONE = "gusuku.setup.done";
 	
 	public static final String IMAGE_DIR = File.separator + "image" + File.separator;

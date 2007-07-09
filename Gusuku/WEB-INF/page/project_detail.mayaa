@@ -73,12 +73,14 @@
 				<m:attribute name="alt" value="${projectReport.endCount}"/>
 			</m:element>
 		</m:if>
-		<m:element name="img">
-			<m:attribute name="src" value="./image/red_bar.gif" />
-			<m:attribute name="width" value="${(100-type.progress)*2}" />
-			<m:attribute name="height" value="15" />
-			<m:attribute name="alt" value="${type.total-type.end}"/>
-		</m:element>
+		<m:if test="${(100-type.progress) > 0}">
+			<m:element name="img">
+				<m:attribute name="src" value="./image/red_bar.gif" />
+				<m:attribute name="width" value="${(100-type.progress)*2}" />
+				<m:attribute name="height" value="15" />
+				<m:attribute name="alt" value="${type.total-type.end}"/>
+			</m:element>
+		</m:if>
 	</m:with>
 	<m:formatNumber id="type_progress" value="${type.progress}" pattern="##0.0"/>
 		

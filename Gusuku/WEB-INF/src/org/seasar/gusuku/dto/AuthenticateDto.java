@@ -22,6 +22,14 @@ public class AuthenticateDto implements Serializable {
 	private static final long serialVersionUID = 8776245013956607759L;
 	private String mailaddr;
 	private String password;
+	private String report;
+	
+	public String getReport() {
+		return report;
+	}
+	public void setReport(String report) {
+		this.report = report;
+	}
 	public String getMailaddr() {
 		return mailaddr;
 	}

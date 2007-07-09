@@ -20,8 +20,10 @@
 		function hideFoldings() {
 			var i = 1;
 			var element = document.getElementById('project_' + i);
-			while (element) {
+			while (i < 10) {
+			if(element){
 				element.style.display = 'none';
-				element = document.getElementById('project_' + ++i)
+				}
+				element = document.getElementById('project_' + ++i);
 			}
 		}

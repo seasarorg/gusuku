@@ -66,7 +66,12 @@ public class SystemPropertyLogicImpl implements SystemPropertyLogic {
 			ParameterUtil.putParameterValue(parameters,"fromid",from.getId());
 			ParameterUtil.putParameterValue(parameters,"from",from.getValue());
 		}
-		
+
+		SystemProperty host = systemPropertyDao.findByKey(GusukuConstant.HOST_KEY);
+		if(host != null){
+			ParameterUtil.putParameterValue(parameters,"hostid",host.getId());
+			ParameterUtil.putParameterValue(parameters,"host",host.getValue());
+		}
 	}
 
 	public void update(Map<String,String[]> parameters,boolean setup) {
@@ -77,6 +82,7 @@ public class SystemPropertyLogicImpl implements SystemPropertyLogic {
 		updateProperty(GusukuConstant.SMTP_USER_KEY, "smtpuserid", "smtpuser", parameters);
 		updateProperty(GusukuConstant.SMTP_PASSWORD_KEY, "smtppasswordid", "smtppassword", parameters);
 		updateProperty(GusukuConstant.MAIL_FROM, "fromid", "from", parameters);
+		updateProperty(GusukuConstant.HOST_KEY, "hostid", "host", parameters);
 
 		if (setup) {
 			SystemProperty prop = new SystemProperty();

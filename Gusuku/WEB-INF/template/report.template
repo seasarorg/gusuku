@@ -10,3 +10,5 @@ KEY         : ${report.key}-${report.seq}
 ステータス  : ${report.status.name} => ${next.name}
 
 ${report.detail}
+
+http://${host}/Gusuku/report/${report.key}/${report.seq}

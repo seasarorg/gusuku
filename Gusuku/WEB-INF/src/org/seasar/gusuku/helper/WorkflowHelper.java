@@ -46,7 +46,7 @@ public class WorkflowHelper {
 	public Workflow getWorkflow(Long id){
 		return workflowDao.findById(id);
 	}
-
+	
 	public void setWorkflowDao(WorkflowDao workflowDao) {
 		this.workflowDao = workflowDao;
 	}

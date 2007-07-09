@@ -93,6 +93,10 @@ public class WorkflowStatusHelper {
 		return workflowStatusDao.findByWithoutNextstatus(workflowstatusid,workflowid);
 	}
 	
+	public WorkflowStatus getWorkflowStatus(Long workflowid,Long statusid){
+		return workflowStatusDao.findByWorkflowidAndStatusid(workflowid,statusid);
+	}
+	
 	public void setWorkflowStatusDao(WorkflowStatusDao workflowStatusDao) {
 		this.workflowStatusDao = workflowStatusDao;
 	}

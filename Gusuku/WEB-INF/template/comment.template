@@ -8,3 +8,5 @@ KEY         : ${report.key}-${report.seq}
 投稿者      : ${writer}
 
 ${comment}
+
+http://${host}/Gusuku/report/${report.key}/${report.seq}

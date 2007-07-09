@@ -6,6 +6,9 @@
 	</m:beforeRender>
     <m:doRender m:id="contentSlot" name="content"/>
     
+    <m:insert m:id="report" path="/component/hidden.html"
+    	nameValue="report" value="${model.report}" />
+    
 	<m:insert m:id="mailaddr" path="/component/textfield.html"
 		nameValue="mailaddr" value="${model.mailaddr}" />
 

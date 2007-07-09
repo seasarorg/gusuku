@@ -239,6 +239,7 @@ public class ReportLogicImpl implements ReportLogic {
 					params.put("report",report);
 					params.put("comment",commentValue);
 					params.put("writer",writer.getName());
+					params.put("host",PropertyUtil.getProperty(GusukuConstant.HOST_KEY));
 					mail.setText(FreemarkerUtil.merge(params,FreemarkerUtil.TEMPLATE_COMMENT));
 					//mail.setText(commentValue);
 					
@@ -262,6 +263,7 @@ public class ReportLogicImpl implements ReportLogic {
 				params.put("report",report);
 				params.put("comment",commentValue);
 				params.put("writer",writer.getName());
+				params.put("host",PropertyUtil.getProperty(GusukuConstant.HOST_KEY));
 				mail.setText(FreemarkerUtil.merge(params,FreemarkerUtil.TEMPLATE_COMMENT));
 				//mail.setText(commentValue);
 				//親記事がある場合は親のMessage-IDをReferencesにセット
@@ -378,6 +380,7 @@ public class ReportLogicImpl implements ReportLogic {
 					Map params = new HashMap();
 					params.put("report",report);
 					params.put("next",workflowStatus.getStatus());
+					params.put("host",PropertyUtil.getProperty(GusukuConstant.HOST_KEY));
 					mail.setText(FreemarkerUtil.merge(params,FreemarkerUtil.TEMPLATE_REPORT));
 					//mail.setText(workflowStatus.getStatus().getName()+"へ変更");
 	
@@ -407,6 +410,7 @@ public class ReportLogicImpl implements ReportLogic {
 				Map params = new HashMap();
 				params.put("report",report);
 				params.put("next",workflowStatus.getStatus());
+				params.put("host",PropertyUtil.getProperty(GusukuConstant.HOST_KEY));
 				mail.setText(FreemarkerUtil.merge(params,FreemarkerUtil.TEMPLATE_REPORT));
 				
 				sendList.add(mail);

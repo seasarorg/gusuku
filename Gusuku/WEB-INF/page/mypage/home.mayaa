@@ -3,6 +3,22 @@
 	xmlns:ww="/webwork"
 	extends="/base.html">
 
+	<m:beforeRender>
+	var sortKey = new java.util.Hashtable();
+	sortKey.put('タイプ','TYPE');
+	sortKey.put('KEY','KEY');
+	sortKey.put('件名','TITLE');
+	sortKey.put('優先度','PRIORITY');
+	sortKey.put('ステータス','STATUS');
+	sortKey.put('アサイン先','ASSIGNEE');
+	sortKey.put('報告者','REPORTER');
+	sortKey.put('報告日','RDATE');
+	
+	var order = new java.util.Hashtable();
+	order.put('昇順','ASC');
+	order.put('降順','DESC');
+	
+	</m:beforeRender>
     <m:doRender m:id="menuSlot" name="menu">
     	<m:insert path="/mypage/menu.html" name="menu"/>
     </m:doRender>
@@ -17,13 +33,13 @@
 	<m:insert id="amount" path="/component/textfield.html" 
 		nameValue="amount[${condition.id}]" size="2" value="${condition.amount}" />
 	<m:insert id="sortkey" path="/component/select.html"
-		nameValue="sortkey[${condition.id}]" selected="${condition.sortkey}"
-		list="${sortkeyList}"
-		listValue="name" listKey="value" />
-	<m:insert id="ordr" path="/component/select.html"
-		nameValue="ordr[${condition.id}]" selected="${condition.ordr}"
-		list="${orderList}"
-		listValue="name" listKey="value" />
+	    nameValue="sortkey" list="${sortKey}"
+        selected="${condition.sortkey}" listKey="value"
+        listValue="key" />
+	<m:insert id="order" path="/component/select.html"
+	    nameValue="order" list="${order}"
+        selected="${condition.order}" listKey="value"
+        listValue="key" />
 	<m:with id="sort">
 		<m:element name="td">
 		<m:if test="${list.size() > 1 &amp;&amp; condition.sort &lt; list.size()}">

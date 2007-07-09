@@ -1,82 +1,58 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<link rel="stylesheet" type="text/css" href="../css/default_style.css">
-<script type="text/javascript">
-	var normalColor = "transparent";
-	var hoverColor = "#EEEEEE";
-	function mout(obj) {
-		obj.style.backgroundColor = normalColor; 
-	}
-	function mover(obj) {
-		obj.style.backgroundColor = hoverColor;
-	}
-</script>
-<title></title>
-</head>
-<body>
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:ww="/webwork"
+	extends="/base.html">
 
-<div class="header">
-Gusuku ヘッダ
-</div>
+	<m:beforeRender>
+	var sortKey = new java.util.Hashtable();
+	sortKey.put('タイプ','TYPE');
+	sortKey.put('KEY','KEY');
+	sortKey.put('件名','TITLE');
+	sortKey.put('優先度','PRIORITY');
+	sortKey.put('ステータス','STATUS');
+	sortKey.put('アサイン先','ASSIGNEE');
+	sortKey.put('報告者','REPORTER');
+	sortKey.put('報告日','RDATE');
+	
+	var order = new java.util.Hashtable();
+	order.put('昇順','ASC');
+	order.put('降順','DESC');
+	
+	</m:beforeRender>
+    <m:doRender m:id="menuSlot" name="menu">
+    	<m:insert path="/mypage/menu.html" name="menu"/>
+    </m:doRender>
 
-<div class="headermenu">
-ヘッダめにゅー1 | ヘッダめにゅー2 | ヘッダめにゅー3
-</div>
+    <m:doRender m:id="contentSlot" name="content"/>
+    
+    <m:forEach id="list" items="${list}" var="condition" replace="false"/>
+    <m:insert id="visible" path="/component/checkbox.html"
+    	nameValue="visible" value="${condition.id}" checked="${condition.visible?new String(condition.id):''}"/>
+	<m:insert id="search_link" path="/component/a.html"
+		href="search_load.html?id=${condition.id}" link="${condition.name}"/>
+	<m:insert id="amount" path="/component/textfield.html" 
+		nameValue="amount[${condition.id}]" size="2" value="${condition.amount}" />
+	<m:insert id="sortkey" path="/component/select.html"
+	    nameValue="sortkey" list="${sortKey}"
+        selected="${condition.sortkey}" listKey="value"
+        listValue="key" />
+	<m:insert id="order" path="/component/select.html"
+	    nameValue="order" list="${order}"
+        selected="${condition.order}" listKey="value"
+        listValue="key" />
+	<m:with id="sort">
+		<m:element name="td">
+		<m:if test="${list.size() > 1 &amp;&amp; condition.sort &lt; list.size()}">
+			<m:insert path="/component/a.html"
+				href="portlet_down.html?id=${condition.id}" link="↓"/>
+		</m:if>
+		</m:element>
+		<m:element name="td">
+		<m:if test="${list.size() > 1 &amp;&amp; condition.sort > 1}">
+			<m:insert path="/component/a.html"
+				href="portlet_up.html?id=${condition.id}" link="↑"/>
+		</m:if>
+		</m:element>
+	</m:with>
 
-<div class="container">
-	<div id="contentSlot">
-	<div id="menuSlot">
-	<div class="sidemenu">
-		<div class="border">
-			<div class="menugroup">メニューカテゴリ</div>
-			<div class="menu">メニューコンテンツ1</div>
-			<div class="menu">メニューコンテンツ2</div>
-			<div class="menugroup">メニューカテゴリ</div>
-			<div class="menu">メニューコンテンツ1</div>
-			<div class="menu">メニューコンテンツ2</div>
-		</div>
-	</div>
-	</div>
-
-	<div class="content">
-		<div class="border">
-			<div class="label">ホーム設定</div>
-			<div class="help">
-			<table>
-				<tr>
-				<td><img src="./../image/help.gif"/></td>
-				<td>ホームの設定を行います。<br>
-				ここでは、保存した検索条件をホームに表示する件数と順序を設定します。<br>
-				表示する検索条件にチェックを入れ「表示変更」ボタンを押下して下さい。
-				</td>
-				</tr>
-			</table>
-			</div>
-			<span id="error"/>
-			<form action="portlet_update.html" method="post">
-			<table border="1" cellspacing="0" cellpadding="3">
-			<thead>
-			<tr><td>表示</td><td>検索条件名</td><td>件数</td><td>ソートキー</td><td>ソート順序</td><td colspan="2">順序</td></tr>
-			</thead>
-			<tbody>
-			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="list"><td><input type="checkbox" id="visible"/></td><td><a href="" id="search_link">オープン</a></td><td><input type="text" size="2" id="amount"></td><td><select id="sortkey"></select></td><td><select id="ordr"></select></td><td id="sort">↓</td></tr>
-			<tr onmouseover="mover(this);" onmouseout="mout(this);" id="remove"><td><input type="checkbox"/></td><td>あああああああああああ</td><td><input type="text" size="2"></td><td>↓</td></tr>
-			</tbody>
-			</table>
-			<p>
-			<input type="submit" value=" 表示変更 " class="submit"/>
-			</p>
-			</form>
-			<p/>
-		</div>
-	</div>
-	</div>
-</div>
-
-<div class="footer">
-フッタ
-</div>
-</body>
-</html>
+</m:mayaa>

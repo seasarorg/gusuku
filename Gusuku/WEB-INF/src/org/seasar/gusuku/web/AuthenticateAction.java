@@ -15,6 +15,7 @@
  */
 package org.seasar.gusuku.web;
 
+import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dto.AuthenticateDto;
 import org.seasar.gusuku.interceptor.NonAuthenticateAware;
 import org.seasar.gusuku.logic.AuthenticateLogic;
@@ -55,11 +56,16 @@ public class AuthenticateAction extends GusukuAction implements
 	 */
 	@XWorkAction(name = "login", result = {
 			@Result(type = "redirect", param = @Param(name = "location", value = "/home.html")),
+			@Result(name="report" ,type = "redirect", param = @Param(name = "location", value = "/report_detail.html?id=${model.report}")),
 			@Result(name = "input", type = "mayaa", param = @Param(name = "location", value = "/index.html")) })
 	public String login() {
 
 		if (authenticateLogic.authenticate(dto)) {
-			return SUCCESS;
+			if(!StringUtil.isEmpty(dto.getReport())){
+				return "report";
+			}else{
+				return SUCCESS;
+			}
 		} else {
 			addFieldError("login", getText("login.fail"));
 			return "input";
