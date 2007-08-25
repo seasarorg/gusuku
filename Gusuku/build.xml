@@ -4,7 +4,8 @@
 	<property file="project.properties"/>
 
 	<property name="zip.name" value="${project.name}-project-${project.ver}.zip"/>
-	<property name="war.name" value="${project.name}.war"/>
+	<property name="war.name" value="${project.name}-${project.ver}.war"/>
+	<property name="updatezip.name" value="${project.name}-upg-${project.ver}.zip"/>
 	<property name="war.title" value="${project.title} Bug Tracking System"/>
 	<property name="jar.name" value="${project.name}-${project.ver}.jar"/>
 	<property name="jar.title" value="${project.title}"/>
@@ -144,6 +145,56 @@
 				<attribute name="Version" value="${project.ver}"/>
 			</manifest>
 		</war>
+	</target>
+	<!-- バージョンアップ用  data抜き-->
+	<target name="makezip_update">
+		<zip destfile="../${updatezip.name}">
+			<fileset dir=".">
+				<include name="**/*"/>
+				<exclude name="${webinf}/web.xml"/>
+				<exclude name="${webinf}/lib/*-src*.jar"/>
+				<exclude name="${webinf}/lib/*-sources*.jar"/>
+				<exclude name="${webinf}/page/css"/>
+				<exclude name="${webinf}/page/css/**/*"/>
+				<exclude name="${webinf}/page/js"/>
+				<exclude name="${webinf}/page/js/**/*"/>
+				<exclude name="${webinf}/page/image"/>
+				<exclude name="${webinf}/page/image/**/*"/>
+				<exclude name="${webinf}/upload/**/*"/>
+				<exclude name="${webinf}/src"/>
+				<exclude name="${webinf}/src/**/*"/>
+				<exclude name="${webinf}/src/tool/*"/>
+				<exclude name="${webinf}/data/sample*/*"/>
+				<exclude name="${webinf}/data/*"/>
+				<!--
+				<exclude name="${webinf.classes}"/>
+				<exclude name="${webinf.classes}/**/*"/>
+-->
+				<exclude name="${webinf.lib-servlet}"/>
+				<exclude name="${webinf.lib-servlet}/**/*"/>
+				<exclude name="${webinf.spec-cache}"/>
+				<exclude name="${webinf.spec-cache}/**/*"/>
+				<exclude name="**/.svn"/>
+				<exclude name="**/.svn/**/*"/>
+				<exclude name="**/model"/>
+				<exclude name="**/model/**/*"/>
+				<exclude name="**/work"/>
+				<exclude name="**/work/**/*"/>
+				<exclude name="**/.*"/>
+				<exclude name="**/**/.*"/>
+				<exclude name="**/.settings"/>
+				<exclude name="**/.settings/**/*"/>
+				<exclude name="**/build.xml"/>
+				<exclude name="**/project.properties"/>
+				<exclude name="${folder.src.zip}/"/>
+				<exclude name="${folder.src.zip}/.*"/>
+			</fileset>
+			<!--
+			<fileset dir=".">
+				<include name="${folder.src.zip}/${src.name}"/>
+			</fileset>
+			-->
+		</zip>
 	</target>
 
 	<target name="distro" depends="makezip, makewar"/>
