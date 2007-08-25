@@ -61,9 +61,12 @@ public class HomeAction extends GusukuAction {
 
 		//自分へのアサインリストを取得
 		entryList = projectHelper.getEntryList(getLoginid());
-		for(Project project:entryList){
-			List<Report> assignList = reportHelper.getAssginListByProjectid(getLoginid(),project.getId());
-			assignListMap.put(project.getId(),assignList);
+		
+		if(getAccount().isAssignflag()){
+			for(Project project:entryList){
+				List<Report> assignList = reportHelper.getAssginListByProjectid(getLoginid(),project.getId());
+				assignListMap.put(project.getId(),assignList);
+			}
 		}
 		
 		//ホーム設定の条件に従って取得

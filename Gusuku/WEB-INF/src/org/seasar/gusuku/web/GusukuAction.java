@@ -38,6 +38,10 @@ public class GusukuAction extends ActionSupport {
 	public Long getLoginid() {
 		return sessionManager.getAccount().getId();
 	}
+	
+	public Account getAccount(){
+		return sessionManager.getAccount();
+	}
 
 	/**
 	 * 管理者かどうかを調べる

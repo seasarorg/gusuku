@@ -9,4 +9,4 @@ KEY         : ${report.key}-${report.seq}
 
 ${comment}
 
-http://${host}/Gusuku/report/${report.key}/${report.seq}
+${host}/report/${report.key}/${report.seq}

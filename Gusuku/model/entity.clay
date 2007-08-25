@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <clay-model clay-version="1.2.0">
-<database-model alias="" author="" begin-script="" end-script="" name="entity" remarks="" sql-dialect-id="jp.azzurri.clay.model.physical.dialect.Postgre_7_3_Dialect" version="1.0">
+<database-model alias="" author="" begin-script="" end-script="" name="entity" remarks="" sql-dialect-id="jp.azzurri.clay.model.physical.dialect.HSQLDB_1_7_2_Dialect" version="1.0">
 <database-model-description></database-model-description>
 <schema-list>
 <schema alias="" name="DEFAULT_SCHEMA" remarks="">
@@ -9,7 +9,7 @@
 <table-list>
 <table alias="" name="ACCOUNT" remarks="">
 <table-description></table-description>
-<table-figure-bounds height="-1" width="-1" x="453" y="-168"/>
+<table-figure-bounds height="129" width="144" x="453" y="-176"/>
 <column-list>
 <column alias="管理ID" auto-increment="true" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="ID" remarks="">
 <column-description></column-description>
@@ -39,6 +39,12 @@
 <column-description></column-description>
 <data-type jdbc-type="-5" name="BIGINT" selected-variant-pattern="BIGINT">
 <variant type-name-pattern="BIGINT"/>
+</data-type>
+</column>
+<column alias="デフォルトアサイン表示" auto-increment="false" column-size="0" decimal-digits="0" default-value="TRUE" mandatory="true" name="ASSIGNFLAG" remarks="">
+<column-description></column-description>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
 </data-type>
 </column>
 <column alias="削除フラグ" auto-increment="false" column-size="0" decimal-digits="0" default-value="FALSE" mandatory="true" name="DELFLAG" remarks="">

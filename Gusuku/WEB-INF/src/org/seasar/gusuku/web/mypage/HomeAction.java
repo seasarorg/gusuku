@@ -23,6 +23,7 @@ import org.seasar.framework.util.StringUtil;
 import org.seasar.gusuku.dto.SelectValue;
 import org.seasar.gusuku.entity.SearchConditionHead;
 import org.seasar.gusuku.helper.SearchConditionHelper;
+import org.seasar.gusuku.logic.AccountAdminLogic;
 import org.seasar.gusuku.logic.SearchLogic;
 import org.seasar.gusuku.util.SelectValueUtil;
 import org.seasar.gusuku.web.GusukuAction;
@@ -37,6 +38,7 @@ public class HomeAction extends GusukuAction implements Preparable{
 	private static final long serialVersionUID = 7632043202798048261L;
 	private SearchConditionHelper searchConditionHelper;
 	private SearchLogic searchLogic;
+	private AccountAdminLogic accountAdminLogic;
 	
 	private List<SearchConditionHead> list;
 	private List<SelectValue> sortkeyList;
@@ -47,6 +49,8 @@ public class HomeAction extends GusukuAction implements Preparable{
 	private Map ordr;
 	private Long id;
 	
+	private boolean assign;
+	
 	public void prepare(){
 	}
 	
@@ -54,6 +58,8 @@ public class HomeAction extends GusukuAction implements Preparable{
 		list = searchConditionHelper.getSearchConditionHead(getLoginid());
 		sortkeyList = SelectValueUtil.getSortKeyList();
 		orderList = SelectValueUtil.getOrderList();
+		
+		assign = getAccount().isAssignflag();
 	}
 	public void prepareUpdate(){
 		list = searchConditionHelper.getSearchConditionHead(getLoginid());
@@ -91,6 +97,7 @@ public class HomeAction extends GusukuAction implements Preparable{
 			return INPUT;
 		}
 		searchLogic.update(visible,amount,sortkey,ordr);
+		accountAdminLogic.updateAssignFlag(getLoginid(),assign);
 		return SUCCESS;
 	}
 	
@@ -161,6 +168,21 @@ public class HomeAction extends GusukuAction implements Preparable{
 	
 	public void setSortkey(Map sortkey) {
 		this.sortkey = sortkey;
+	}
+
+	
+	public void setAssign(boolean assign) {
+		this.assign = assign;
+	}
+
+	
+	public void setAccountAdminLogic(AccountAdminLogic accountAdminLogic) {
+		this.accountAdminLogic = accountAdminLogic;
+	}
+
+	
+	public boolean isAssign() {
+		return assign;
 	}
 
 }

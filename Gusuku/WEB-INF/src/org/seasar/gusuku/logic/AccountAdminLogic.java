@@ -29,4 +29,6 @@ public interface AccountAdminLogic {
 	public AccountDto getAccount(Long accountid);
 
 	public void update(AccountDto dto);
+	
+	public void updateAssignFlag(Long accountId,boolean assingFlag);
 }

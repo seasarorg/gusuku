@@ -21,6 +21,7 @@ import org.seasar.dao.annotation.tiger.Arguments;
 import org.seasar.dao.annotation.tiger.NoPersistentProperty;
 import org.seasar.dao.annotation.tiger.Query;
 import org.seasar.dao.annotation.tiger.S2Dao;
+import org.seasar.dao.annotation.tiger.Sql;
 import org.seasar.gusuku.dto.AccountAdminDto;
 import org.seasar.gusuku.entity.Account;
 
@@ -29,7 +30,7 @@ public interface AccountDao {
 
 	@NoPersistentProperty("rdate")
 	public void insert(Account account);
-	@NoPersistentProperty("rdate")
+	@NoPersistentProperty({"rdate","assignflag"})
 	public void update(Account account);
 	public void delete(Account account);
 	
@@ -63,6 +64,15 @@ public interface AccountDao {
 	 * @param delids
 	 */
 	public void updateDelflag(Long[] delids);
+	
+	/**
+	 * アサイン表示フラグを変更します
+	 * @param accountId
+	 * @param assingflag
+	 */
+	@Sql("UPDATE ACCOUNT SET ASSIGNFLAG = /*assignflag*/ WHERE ID = /*accountId*/")
+	@Arguments({"accountId","assignflag"})
+	public void updateAssignFlag(Long accountId,boolean assignflag);
 	
 	/**
 	 * 全てのAccountリストを取得します

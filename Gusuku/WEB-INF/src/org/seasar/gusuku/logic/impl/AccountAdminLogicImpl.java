@@ -24,11 +24,14 @@ import org.seasar.gusuku.dto.AccountDto;
 import org.seasar.gusuku.dxo.AccountDxo;
 import org.seasar.gusuku.entity.Account;
 import org.seasar.gusuku.logic.AccountAdminLogic;
+import org.seasar.gusuku.service.SessionManagerService;
 
 public class AccountAdminLogicImpl implements AccountAdminLogic {
 
 	private AccountDao accountDao;
 	private AccountDxo accountDxo;
+	
+	private SessionManagerService sessionManagerService;
 	
 	public void setAccountDao(AccountDao accountDao) {
 		this.accountDao = accountDao;
@@ -48,6 +51,7 @@ public class AccountAdminLogicImpl implements AccountAdminLogic {
 		}else{
 			account.setUdate(new Date());
 			accountDao.update(account);
+			sessionManagerService.setAccount(account);
 		}
 		
 	}
@@ -74,7 +78,18 @@ public class AccountAdminLogicImpl implements AccountAdminLogic {
 		}
 		account.setRdate(new Date());
 		accountDao.update(account);
+		sessionManagerService.setAccount(account);
 		
+	}
+	public void updateAssignFlag(Long accountId, boolean assignFlag) {
+		accountDao.updateAssignFlag(accountId,assignFlag);
+		Account account = sessionManagerService.getAccount();
+		account.setAssignflag(assignFlag);
+		sessionManagerService.setAccount(account);
+	}
+	
+	public void setSessionManagerService(SessionManagerService sessionManagerService) {
+		this.sessionManagerService = sessionManagerService;
 	}
 
 }

@@ -25,6 +25,9 @@
 
     <m:doRender m:id="contentSlot" name="content"/>
     
+    <m:insert id="assign" path="/component/checkbox.html"
+        nameValue="assign" value="true" checked="${assign?'true':'false'}" />
+
     <m:forEach id="list" items="${list}" var="condition" replace="false"/>
     <m:insert id="visible" path="/component/checkbox.html"
     	nameValue="visible" value="${condition.id}" checked="${condition.visible?new String(condition.id):''}"/>
@@ -36,10 +39,12 @@
 	    nameValue="sortkey" list="${sortKey}"
         selected="${condition.sortkey}" listKey="value"
         listValue="key" />
+        
 	<m:insert id="order" path="/component/select.html"
 	    nameValue="order" list="${order}"
         selected="${condition.order}" listKey="value"
         listValue="key" />
+        
 	<m:with id="sort">
 		<m:element name="td">
 		<m:if test="${list.size() > 1 &amp;&amp; condition.sort &lt; list.size()}">

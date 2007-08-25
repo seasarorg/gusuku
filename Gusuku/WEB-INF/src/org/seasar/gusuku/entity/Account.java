@@ -33,6 +33,7 @@ public class Account implements Serializable {
 	private String name;
 	private int kind;
 	private boolean delflag;
+	private boolean assignflag;
 	private Date rdate;
 	private Date udate;
 
@@ -111,6 +112,16 @@ public class Account implements Serializable {
 
 	public void setUdate(Date udate) {
 		this.udate = udate;
+	}
+
+	
+	public boolean isAssignflag() {
+		return assignflag;
+	}
+
+	
+	public void setAssignflag(boolean assignflag) {
+		this.assignflag = assignflag;
 	}
 
 }
