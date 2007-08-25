@@ -16,8 +16,11 @@
 	<m:insert m:id="projectid" path="/component/hidden.html"
 		nameValue="projectid" value="${project.id}"/>
     <m:write id="report_key" value="${report.key}-${report.seq}"/>
+	<m:echo m:id="report_type_link">
+		<m:attribute name="href" value="report_list.html?projectid=${project.id}&amp;typeid=${report.typeid}"/>
+	</m:echo>
    	<m:insert id="report_type" path="/component/img.html"
-		src="${report.type.icon}" alt="${report.type.name}"/>
+		src="${report.type.icon}" alt="${report.type.name}" border="0"/>
 	<m:write id="report_title" value="${report.title}"/>
 	<m:formatDate id="report_rdate" value="${report.rdate}" pattern="yyyy/MM/dd HH:mm" />
 	<m:formatDate id="report_udate" value="${report.udate}" pattern="yyyy/MM/dd HH:mm" />

@@ -8,6 +8,9 @@
 			<m:element name="img">
 				<m:attribute name="src" value="./../image/${binding.src}"/>
 				<m:attribute name="alt" value="${binding.alt}"/>
+				<m:if test="${binding.border != null &amp;&amp; binding.border != ''}">
+					<m:attribute name="border" value="${binding.border}"/>
+				</m:if>
 			</m:element>
 		</m:if>
 		<m:if test="${binding.src == null || binding.src == ''}">
