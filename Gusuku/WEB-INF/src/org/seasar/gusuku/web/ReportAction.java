@@ -119,11 +119,13 @@ public class ReportAction extends GusukuAction implements ParameterAware,Prepara
 	public void prepareStep2(){
 		projectEntryList = projectHelper.getEntryList(getLoginid());
 		project = projectHelper.getProject(ParameterUtil.getParameterLongValue(parameters,"projectid"));
-		typeList = typeHelper.getTypeListWithScheme(project.getTypeid());
-		priorityList = priorityHelper.getPriorityListWithScheme(project.getPriorityid());
-		assigneeList = accountHelper.getProjectAccountList(project.getId());
-		componentList = componentHelper.getComponentList(project.getId());
-		versionList = versionHelper.getVersionList(project.getId());
+		if(project != null){
+			typeList = typeHelper.getTypeListWithScheme(project.getTypeid());
+			priorityList = priorityHelper.getPriorityListWithScheme(project.getPriorityid());
+			assigneeList = accountHelper.getProjectAccountList(project.getId());
+			componentList = componentHelper.getComponentList(project.getId());
+			versionList = versionHelper.getVersionList(project.getId());
+		}
 	}
 	public void prepareRegistration(){
 		project = projectHelper.getProject(ParameterUtil.getParameterLongValue(parameters,"projectid"));

@@ -151,7 +151,7 @@
 		<zip destfile="../${updatezip.name}">
 			<fileset dir=".">
 				<include name="**/*"/>
-				<exclude name="${webinf}/web.xml"/>
+
 				<exclude name="${webinf}/lib/*-src*.jar"/>
 				<exclude name="${webinf}/lib/*-sources*.jar"/>
 				<exclude name="${webinf}/page/css"/>

@@ -28,7 +28,7 @@ import org.seasar.gusuku.entity.Account;
 @S2Dao(bean=Account.class)
 public interface AccountDao {
 
-	@NoPersistentProperty("rdate")
+	@NoPersistentProperty({"rdate","assignflag"})
 	public void insert(Account account);
 	@NoPersistentProperty({"rdate","assignflag"})
 	public void update(Account account);

@@ -61,11 +61,14 @@ public class ProjectHelper {
 	 * @return プロジェクト
 	 */
 	public Project getProject(Long id){
-		Project project = projectDao.findById(id);
-		if(project == null){
-			throw new EntityNotFoundException(id + "");
+		if(id != null){
+			Project project = projectDao.findById(id);
+			if(project == null){
+				throw new EntityNotFoundException(id + "");
+			}
+			return project;
 		}
-		return project;
+		return null;
 	}
 	
 	/**
