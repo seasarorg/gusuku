@@ -22,13 +22,12 @@
 			</m:if>
 			<m:forEach  items="${binding.list}" var="item">
 				<m:element name="option">
-					
 					<m:forEach items="${binding.selected}" var="selected">
-					<m:if test="${selected != null &amp;&amp; selected == (item[binding.listKey])}">
+					<m:if test="${selected != null &amp;&amp; selected+'' == (item[binding.listKey]+'')}">
 					<m:attribute name="selected" value="selected" />				
 					</m:if>
-					<m:if test="${selected != null &amp;&amp; binding.extra != null &amp;&amp; selected.equals(item[binding.listKey].id)}">
-					<m:attribute name="selected" value="selected" />				
+					<m:if test="${selected != null &amp;&amp; binding.extra != null &amp;&amp; selected == (item[binding.listKey].id + '')}">
+					<m:attribute name="selected" value="selected" />
 					</m:if>
 					</m:forEach>
 					<m:if test="${binding.extra == null}">
@@ -36,7 +35,7 @@
 					<m:write value="${item[binding.listValue]}" />
 					</m:if>
 					<m:if test="${binding.extra != null &amp;&amp; binding.extra.equals(true)}">
-					<m:attribute name="value" value="${item.id}" />
+					<m:attribute name="value" value="${item[binding.listKey].id}" />
 					<m:write value="${item[binding.listValue].name}" />
 					</m:if>
 				</m:element>
