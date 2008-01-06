@@ -33,7 +33,7 @@ public class Account implements Serializable {
 	private String name;
 	private int kind;
 	private boolean delflag;
-	private boolean assignflag;
+	private boolean assignflag = true;
 	private Date rdate;
 	private Date udate;
 
