@@ -2,12 +2,8 @@
 <m:mayaa xmlns:m="http://mayaa.seasar.org"
 	xmlns:ww="/webwork" extends="/base.html">
 	
-	<m:beforeRender>
-	var onload = "hideFoldings()";
-	</m:beforeRender>
-	
     <m:doRender m:id="contentSlot" name="content"/>
-    
+
     <m:insert id="save_condition" path="/component/select.html"
 				nameValue="id" list="${searchConditionHelper.getSearchConditionHead(loginid)}" listKey="id" listValue="name"
 				selected="${parameters['id']!=null?parameters['id']:''}"/>

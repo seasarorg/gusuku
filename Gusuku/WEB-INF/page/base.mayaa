@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <m:mayaa xmlns:m="http://mayaa.seasar.org">
 
-
-	
     <!--m:insert m:id="menuSlot" name="menu" /-->
     <!--m:write id="body" value="${onload}"/-->
-<!--
+
     <m:echo id="body">
     	<m:attribute name="onLoad" value="${page.onload}"/>
     </m:echo>
--->
+
     <m:insert m:id="contentSlot" name="content" />
     
     <m:if id="header" test="${login == true}" />
