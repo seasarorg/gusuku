@@ -97,7 +97,7 @@
 
 	<m:forEach id="workflow" items="${workflowStatusHelper.getNextList(workflowStatusHelper.getWorkflowStatus(project.workflowid,report.status.id).id,project.workflowid)}" var="item" replace="false"/>
 	
-		<m:if id="action" test="${item.reporter &amp;&amp; report.reporterid == loginid || item.assignee &amp;&amp; report.assigneeid == loginid || item.leader &amp;&amp; project.leaderid == loginid}"/>
+		<m:if id="action" test="${(!item.reporter &amp;&amp; !item.assignee &amp;&amp; !item.leader)||(item.reporter &amp;&amp; report.reporterid == loginid) || (item.assignee &amp;&amp; report.assigneeid == loginid) || (item.leader &amp;&amp; project.leaderid == loginid)}"/>
 			
 
 		<m:insert id="nextstatusid" path="/component/hidden.html"
