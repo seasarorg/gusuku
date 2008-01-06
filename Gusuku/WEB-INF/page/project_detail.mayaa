@@ -70,7 +70,7 @@
 				<m:attribute name="src" value="./image/green_bar.gif" />
 				<m:attribute name="width" value="${type.progress*2}" />
 				<m:attribute name="height" value="15" />
-				<m:attribute name="alt" value="${projectReport.endCount}"/>
+				<m:attribute name="alt" value="${type.end}"/>
 			</m:element>
 		</m:if>
 		<m:if test="${(100-type.progress) > 0}">
