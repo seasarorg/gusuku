@@ -34,8 +34,8 @@
 					<m:attribute name="value" value="${item[binding.listKey]}" />
 					<m:write value="${item[binding.listValue]}" />
 					</m:if>
-					<m:if test="${binding.extra != null &amp;&amp; binding.extra.equals(true)}">
-					<m:attribute name="value" value="${item[binding.listKey].id}" />
+					<m:if test="${binding.extra != null &amp;&amp; binding.extra}">
+					<m:attribute name="value" value="${item[binding.listKey]}" />
 					<m:write value="${item[binding.listValue].name}" />
 					</m:if>
 				</m:element>
