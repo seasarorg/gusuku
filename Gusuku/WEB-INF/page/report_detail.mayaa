@@ -119,7 +119,7 @@
 				<m:element name="td">
 			    <m:insert path="/component/select.html"
 			        nameValue="resolutionid" list="${resolutionHelper.getResolutionListWithScheme(project.resolutionid)}"
-			        selected="${new String(report.resolution.id)}" listKey="resolution"
+			        selected="${new String(report.resolution.id)}" listKey="id"
 			        listValue="resolution" headerKey="" headerValue="完了理由を選択して下さい" extra="true" />
 		        </m:element>
 	        </m:element>

@@ -28,7 +28,7 @@
 		<!-- タイプ -->
 	    <m:insert m:id="type" path="/component/select.html"
 	        nameValue="basic_typeid_${project.id}" list="${typeHelper.getTypeListWithScheme(project.priorityid)}"
-	        selected="${parameters['basic_typeid_'+project.id] !=null ? parameters['basic_typeid_'+project.id] : ''}" listKey="type"
+	        selected="${parameters['basic_typeid_'+project.id] !=null ? parameters['basic_typeid_'+project.id] : ''}" listKey="id"
 	        listValue="type" multiple="true" size="5" extra="true"/>   
 
 		<!-- 件名 -->
@@ -38,13 +38,13 @@
 		<!-- 優先度 -->
 	    <m:insert m:id="priorityid" path="/component/select.html"
 	        nameValue="basic_priorityid_${project.id}" list="${priorityHelper.getPriorityListWithScheme(project.priorityid)}"
-	        selected="${parameters['basic_priorityid_'+project.id] !=null ? parameters['basic_priorityid_'+project.id] : ''}" listKey="priority"
+	        selected="${parameters['basic_priorityid_'+project.id] !=null ? parameters['basic_priorityid_'+project.id] : ''}" listKey="id"
 	        listValue="priority" multiple="true" size="5" extra="true"/>
 
 		<!-- 状態 -->
 	    <m:insert m:id="statusid" path="/component/select.html"
 	        nameValue="basic_statusid_${project.id}" list="${workflowStatusHelper.getStatusList(project.workflowid)}"
-	        selected="${parameters['basic_statusid_'+project.id] !=null ? parameters['basic_statusid_'+project.id] : ''}" listKey="status"
+	        selected="${parameters['basic_statusid_'+project.id] !=null ? parameters['basic_statusid_'+project.id] : ''}" listKey="id"
 	        listValue="status" multiple="true" size="5" extra="true" />
 
 		<!-- アサイン先 -->	        	        

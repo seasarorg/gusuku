@@ -32,7 +32,7 @@
     	<m:if test="${parameters.id != null &amp;&amp; parameters.id[0] != ''}">
 		    <m:insert m:id="type" path="/component/select.html"
 		        nameValue="typeid" list="${typeList}"
-		        selected="${parameters.typeid !=null ? parameters.typeid[0] : ''}" listKey="type"
+		        selected="${parameters.typeid !=null ? parameters.typeid[0] : ''}" listKey="id"
 		        listValue="type" extra="true"/>
 	    </m:if>
     </m:with>
@@ -44,7 +44,7 @@
 	<!-- 優先度 -->
     <m:insert m:id="priorityid" path="/component/select.html"
         nameValue="priorityid" list="${priorityList}"
-        selected="${parameters.priorityid !=null ? parameters.priorityid[0] : ''}" listKey="priority"
+        selected="${parameters.priorityid !=null ? parameters.priorityid[0] : ''}" listKey="id"
         listValue="priority" headerKey="" headerValue="優先度を選択して下さい" extra="true" />      
 
 	<!-- コンポーネント -->

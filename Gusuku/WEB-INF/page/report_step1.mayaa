@@ -11,6 +11,6 @@
 
     <m:insert m:id="type" path="/component/select.html"
         nameValue="typeid" list="${typeList}"
-        selected="${parameters.typeid !=null ? parameters.typeid[0] : ''}" listKey="type"
+        selected="${parameters.typeid !=null ? parameters.typeid[0] : ''}" listKey="id"
         listValue="type" headerKey="" headerValue="タイプを選択して下さい" extra="true"/>        
 </m:mayaa>
